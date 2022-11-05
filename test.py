@@ -7,12 +7,14 @@ from influxdb import InfluxDBClient
 from time import sleep
 
 INFLUXDB_ADDRESS = '192.9.65.38' #라즈베리파이 아이피
-INFLUXDB_USER = 'mqtt'             #INFLUXDB 계정 유저설정
-INFLUXDB_PASSWORD = 'mqtt'         #INFLUXDB 계정 비밀번호
+INFLUXDB_USER = 'dohlee'             #INFLUXDB 계정 유저설정
+INFLUXDB_PASSWORD = 'dohlee'         #INFLUXDB 계정 비밀번호
 INFLUXDB_DATABASE = 'crc_stations'
 BYTE_REGEX = 'sensor/([^/]+)/([^/]+)'
 ser = serial.Serial ("/dev/ttyUSB0", 921600)    #Open port with baud rate
 influxdb_client = InfluxDBClient(INFLUXDB_ADDRESS, 8086, INFLUXDB_USER, INFLUXDB_PASSWORD, None)
+
+
 
 class SensorData(NamedTuple):
     location: str
@@ -33,7 +35,7 @@ def _parse_message(topic, data):
 def _send_sensor_data_to_influxdb(sensor_data):
     json_body = [
         {
-           'measurement': sensor_data.measurement
+           'measurement': sensor_data.measurement,
             'tags': {
                 'location': sensor_data.location
             },
@@ -44,8 +46,15 @@ def _send_sensor_data_to_influxdb(sensor_data):
     ]
     influxdb_client.write_points(json_body)
 
+def _init_influxdb_database():
+    databases = influxdb_client.get_list_database()
+    if len(list(filter(lambda x: x['name'] == INFLUXDB_DATABASE, databases))) == 0:
+        influxdb_client.create_database(INFLUXDB_DATABASE)
+    influxdb_client.switch_database(INFLUXDB_DATABASE)
+
 
 while True:
+    _init_influxdb_database()
     data = ser.readline()
 
     received_data = data.decode("ISO-8859-1") #.encode("utf-8")
