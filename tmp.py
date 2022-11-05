@@ -16,11 +16,12 @@ while True:
     #sleep(0.03)
     #a_left = ser.inWaiting()
     #data += ser.read(a_left)
+    a = ','
     received_data = data.decode("ISO-8859-1") # .encode("utf-8")
     #received_byte = int.from_bytes(received_data, "big")
     # struct.unpack('f',received_data)
     #received_decode = str(data, 'utf-8')
-    print(type(received_data))
+    print((received_data))
     #received_data = chardet.detect(data)
     #received_decode = received_data.dict(received_data["encoding"])
     #sleep(0.03)

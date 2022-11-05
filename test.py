@@ -5,6 +5,7 @@ import re
 from typing import NamedTuple
 from influxdb import InfluxDBClient
 from time import sleep
+import numpy as np
 
 INFLUXDB_ADDRESS = '192.9.65.38' #라즈베리파이 아이피
 INFLUXDB_USER = 'dohlee'             #INFLUXDB 계정 유저설정
@@ -52,40 +53,30 @@ def _init_influxdb_database():
         influxdb_client.create_database(INFLUXDB_DATABASE)
     influxdb_client.switch_database(INFLUXDB_DATABASE)
 
-
+_init_influxdb_database()
 while True:
-    _init_influxdb_database()
+
     data = ser.readline()
 
     received_data = data.decode("ISO-8859-1") #.encode("utf-8")
+    received_data = received_data + ','
     data_list = received_data.split(',')  #received_data.split(b',')
-    gyro_x =  data_list[1]
-    gyro_y = data_list[2]
-    print(gyro_y)
-    gyro_z = data_list[3]
-    acc_x = data_list[4]
-    acc_y = data_list[5]
-    acc_z = data_list[6]
-    sensor_battery = data_list[7]
-    sensor_channel = data_list[0]
-    sensor_data = _parse_message("sensor/lab/gyrox", gyro_x)
+
+    sensor_data = _parse_message("sensor/lab/gyrox", data_list[1])
     if sensor_data is not None:
         _send_sensor_data_to_influxdb(sensor_data)
-    sensor_data = _parse_message("sensor/lab/gyroy", gyro_y)
+    sensor_data = _parse_message("sensor/lab/gyroy", data_list[2])
     if sensor_data is not None:
         _send_sensor_data_to_influxdb(sensor_data)
-    sensor_data = _parse_message("sensor/lab/gyroz", gyro_z)
+    sensor_data = _parse_message("sensor/lab/gyroz", data_list[3])
     if sensor_data is not None:
         _send_sensor_data_to_influxdb(sensor_data)
-    sensor_data = _parse_message("sensor/lab/accx", acc_x)
+    sensor_data = _parse_message("sensor/lab/accx", data_list[4])
     if sensor_data is not None:
         _send_sensor_data_to_influxdb(sensor_data)
-    sensor_data = _parse_message("sensor/lab/accy", acc_y)
+    sensor_data = _parse_message("sensor/lab/accy", data_list[5])
     if sensor_data is not None:
         _send_sensor_data_to_influxdb(sensor_data)
-    sensor_data = _parse_message("sensor/lab/accz", acc_z)
-    if sensor_data is not None:
-        _send_sensor_data_to_influxdb(sensor_data)
-    sensor_data = _parse_message("sensor/lab/battery", sensor_battery)
+    sensor_data = _parse_message("sensor/lab/accz", data_list[6])
     if sensor_data is not None:
         _send_sensor_data_to_influxdb(sensor_data)
