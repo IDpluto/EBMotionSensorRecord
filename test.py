@@ -7,16 +7,16 @@ from influxdb import InfluxDBClient
 from time import sleep
 
 INFLUXDB_ADDRESS = '192.9.65.38' #라즈베리파이 아이피
-INFLUXDB_USER = 'dohlee'             #INFLUXDB 계정 유저설정
-INFLUXDB_PASSWORD = 'dohlee'         #INFLUXDB 계정 비밀번호
+INFLUXDB_USER = 'mqtt'             #INFLUXDB 계정 유저설정
+INFLUXDB_PASSWORD = 'mqtt'         #INFLUXDB 계정 비밀번호
 INFLUXDB_DATABASE = 'crc_stations'
 BYTE_REGEX = 'sensor/([^/]+)/([^/]+)'
 ser = serial.Serial ("/dev/ttyUSB0", 921600)    #Open port with baud rate
 influxdb_client = InfluxDBClient(INFLUXDB_ADDRESS, 8086, INFLUXDB_USER, INFLUXDB_PASSWORD, None)
 
 class SensorData(NamedTuple):
-    location: bytes
-    measurement: bytes
+    location: str
+    measurement: str
     value: float
 
 def _parse_message(topic, data):
@@ -33,7 +33,7 @@ def _parse_message(topic, data):
 def _send_sensor_data_to_influxdb(sensor_data):
     json_body = [
         {
-           'measurement': sensor_data.measurement,
+           'measurement': sensor_data.measurement
             'tags': {
                 'location': sensor_data.location
             },
@@ -48,8 +48,8 @@ def _send_sensor_data_to_influxdb(sensor_data):
 while True:
     data = ser.readline()
 
-    received_data = data.decode("ISO-8859-1").encode("utf-8")
-    data_list = received_data.split(b',')
+    received_data = data.decode("ISO-8859-1") #.encode("utf-8")
+    data_list = received_data.split(',')  #received_data.split(b',')
     gyro_x =  data_list[1]
     gyro_y = data_list[2]
     gyro_z = data_list[3]
@@ -82,4 +82,3 @@ while True:
     sensor_data = _parse_message("sensor/lab/channel", sensor_channel)
     if sensor_data is not None:
         _send_sensor_data_to_influxdb(sensor_data)
-    
