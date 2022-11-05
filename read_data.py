@@ -11,6 +11,7 @@ INFLUXDB_USER = 'mqtt'             #INFLUXDB 계정 유저설정
 INFLUXDB_PASSWORD = 'mqtt'         #INFLUXDB 계정 비밀번호
 INFLUXDB_DATABASE = 'crc_stations'
 
+influxdb_client = InfluxDBClient(INFLUXDB_ADDRESS, 8086, INFLUXDB_USER, INFLUXDB_PASSWORD, None)
 
 class SensorData(NamedTuple):
     location: str
@@ -57,18 +58,10 @@ def _init_influxdb_database():
         influxdb_client.create_database(INFLUXDB_DATABASE)
     influxdb_client.switch_database(INFLUXDB_DATABASE)
 
-
-
-
-    
-
-def main():
-    _init_influxdb_database()
-
-   ser = serial.Serial ("/dev/ttyUSB0", 921600)    #Open port with baud rate
-    while True:
-        data = ser.readline()
-        received_data = data.decode("ISO-8859-1").encode("utf-8")
-        data_list = received_data.split(",")
-        on_message(data_list)
-        
+ser = serial.Serial ("/dev/ttyUSB0", 921600)    #Open port with baud rate
+_init_influxdb_database()
+while True:
+    data = ser.readline()
+    received_data = data.decode("ISO-8859-1").encode("utf-8")
+    data_list = received_data.split(",")
+    on_message(data_list)
