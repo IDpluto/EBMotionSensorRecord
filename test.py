@@ -88,6 +88,6 @@ while True:
     sensor_data = _parse_message("sensor/lab/battery", sensor_battery)
     if sensor_data is not None:
         _send_sensor_data_to_influxdb(sensor_data)
-    sensor_data = _parse_message("sensor/lab/channel", sensor_channel)
+    sensor_data = _parse_message("sensor/lab/channel", sensor_channel[3:])
     if sensor_data is not None:
         _send_sensor_data_to_influxdb(sensor_data)
