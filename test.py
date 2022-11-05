@@ -61,6 +61,7 @@ while True:
     data_list = received_data.split(',')  #received_data.split(b',')
     gyro_x =  data_list[1]
     gyro_y = data_list[2]
+    print(gyro_y)
     gyro_z = data_list[3]
     acc_x = data_list[4]
     acc_y = data_list[5]
@@ -86,8 +87,5 @@ while True:
     if sensor_data is not None:
         _send_sensor_data_to_influxdb(sensor_data)
     sensor_data = _parse_message("sensor/lab/battery", sensor_battery)
-    if sensor_data is not None:
-        _send_sensor_data_to_influxdb(sensor_data)
-    sensor_data = _parse_message("sensor/lab/channel", sensor_channel[3:])
     if sensor_data is not None:
         _send_sensor_data_to_influxdb(sensor_data)
