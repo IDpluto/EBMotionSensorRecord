@@ -30,12 +30,7 @@ def animate(i):
     acc_x = data['acc_x']
     acc_y = data['acc_y']
     acc_z = data['acc_z']
-    gx.clear()
-    gy.clear()
-    gz.clear()
-    ax.clear()
-    ay.clear()
-    az.clear()
+    
     line[0].set_data(x_value, gyro_x)
     line[1].set_data(x_value, gyro_y)
     line[2].set_data(x_value, gyro_z)
@@ -45,6 +40,12 @@ def animate(i):
     
     return line
 
+gx.clear()
+gy.clear()
+gz.clear()
+ax.clear()
+ay.clear()
+az.clear()
 ani = FuncAnimation(fig , animate,  frames= 200, interval = 10)
  
 #plt.tight_layout()
