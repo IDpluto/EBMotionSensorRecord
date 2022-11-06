@@ -22,9 +22,9 @@ def parsing_data(data):
     # 리스트 구조로 들어 왔기 때문에
     # 작업하기 편하게 스트링으로 합침
     tmp = ''.join(data)
-
+    tmp = tmp.split(',')
     #출력!
-    print(tmp)
+    print(tmp[0])
 
 #본 쓰레드
 def readThread(ser):
