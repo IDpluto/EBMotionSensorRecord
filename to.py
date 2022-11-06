@@ -1,64 +1,31 @@
-import serial
-import serial.tools.list_ports as sp
+from matplotlib import pyplot as plt
+from matplotlib import animation
+import numpy as np
 
+arduino = serial.Serial('/dev/ttyUSB0', 921600)
 
-list = sp.comports()
+fig = plt.figure()
+ax = plt.axes(xlim=(0, 50), ylim=(0, 30))
+line, = ax.plot([], [], lw=2)
 
-connected = []
+max_points = 50
+line, = ax.plot(np.arange(max_points), 
+                np.ones(max_points, dtype=np.float)*np.nan, lw=2)
 
-## PC 연결된 COM Port 정보를 list에 넣어 확인한다.
+def init():
+    return line,
 
+def animate(i):
+    y = arduino.readline()
+    y = y.decode("ISO-8859-1").encode("utf-8")
+    y = y[1]
+    y = float(y)
 
-for i in list:
+    old_y = line.get_ydata()
+    new_y = np.r_[old_y[1:], y]
+    line.set_ydata(new_y)
+    return line,
 
-    connected.append(i.device)
+anim = animation.FuncAnimation(fig, animate, init_func=init, frames=200, interval=20, blit=False)
 
-print("Connected COM ports: " + str(connected))
-
- 
-
-# ser = serial.Serial("COM5", 9600,timeout=1)
-
-# if ser.readable():
-
-#     res = ser.readline()
-
-#     print(res.decode()[:len(res)-1])
-
-
-# baudrate 정보와 연결할 COM Port 이름을 입력한다.
-
-select_comport = input('select:')
-s_port = input()
-
-ser = serial.Serial(select_comport, s_port, timeout = 1)
-
-
-# 내가 연결할 Device의 명령어 delimiter가 Carrige return + Line Feed라고 하길래 delimeter를 설정해주었다.
-
-
-while True:
-
-    print("insert op :", end='')
-
-    op = input()
-
-    delimiter = '\r\n'
-
-    op = op+delimiter
-
-    print(op)
-
-    ser.write(op.encode())
-
-    res = ser.readline()
-
-    res_packet = res.decode()[:len(res)-1]
-
-    print(res_packet)
-
-    print('\n')
-
-    if op is 'q':
-
-        ser.close()
+plt.show()
