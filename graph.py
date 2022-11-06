@@ -28,8 +28,8 @@ def animate(i):
     #plt.legend(loc = 'upper left')
     #plt.tight_layout()
 
-    axes[0, 0].cla()
-    axes[0, 1].cla()
+    #axes[0, 0].cla()
+    #axes[0, 1].cla()
     axes[0, 0].plot(gyro_x, label='Gyro_x')
     axes[0, 0].plot(gyro_y, label='Gyro_y')
     axes[0, 0].plot(gyro_z, label='Gyro_z')
