@@ -23,6 +23,8 @@ class SensorData(NamedTuple):
     value: float
 
 def _parse_message(topic, data):
+    if data == '100-1':
+        return None
     match = re.match(BYTE_REGEX, topic)
     if match:
         location = match.group(1)
