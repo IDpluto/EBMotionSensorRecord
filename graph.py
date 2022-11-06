@@ -9,7 +9,7 @@ from pandas.core.indexes import interval
 fig, (gx, gy, gz, ax, ay, az) = plt.subplots(6,1)
 
 fig.set_size_inches((10, 5))
-plt.subplots_adjust(wspace = 0.8, hspace = 0.8)
+#plt.subplots_adjust(wspace = 0.8, hspace = 0.8)
 
 line1, = gx.plot([], [], lw =2)
 line2, = gy.plot([], [], lw =2) 
