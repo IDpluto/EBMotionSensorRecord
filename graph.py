@@ -6,12 +6,12 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from pandas.core.indexes import interval
 
-fig, (gx, gy, gz, ax, ay, az) = plt.subplots(6,6)
-#fig, (ax1, ax2) = plt.subplots(2,1)
+fig, (gx, gy, gz, ax, ay, az) = plt.subplots(6,1)
+
 fig.set_size_inches((10, 5))
-plt.subplots_adjust(wspace = 0.3, hspace = 0.3)
-#line1, = ax1.plot([], [], lw=2)
-line1, = gx.plot([], [], lw=2)
+plt.subplots_adjust(wspace = 0.8, hspace = 0.8)
+
+line1, = gx.plot([], [], lw =2)
 line2, = gy.plot([], [], lw =2) 
 line3, = gz.plot([], [], lw =2) 
 line4, = ax.plot([], [], lw =2) 
