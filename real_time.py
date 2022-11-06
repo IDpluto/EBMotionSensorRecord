@@ -17,11 +17,13 @@ line2, = ax.plot([], [], lw=2, color='r')
 line = [line1, line2]
 
 
+def init():
+    return line1, line2,
 
 def animate(i):
     tmp = ser.readline()
-    tmp = tmp.decode("ISO-8859-1").encode("utf-8")
-    tmp = tmp.split(b',')
+    tmp = tmp.decode("ISO-8859-1")
+    tmp = tmp.split(',')
     gyro_x = tmp[1]
     gyro_y = tmp[2]
     #gx.clear()
