@@ -19,6 +19,19 @@ line5, = ay.plot([], [], lw =2)
 line6, = az.plot([], [], lw =2)
 line = [line1, line2, line3, line4, line5, line6]
 
+def data_gen():
+    t = data_gen.t
+    cnt = 0
+    while cnt < 1000:
+        cnt+=1
+        t += 0.05
+        y1 = np.sin(2*np.pi*t) * np.exp(-t/10.)
+        y2 = np.cos(2*np.pi*t) * np.exp(-t/10.)
+        # adapted the data generator to yield both sin and cos
+        yield t, y1, y2
+
+data_gen.t = 0
+
  
 def animate(i):
     
@@ -30,25 +43,6 @@ def animate(i):
     acc_x = data['acc_x']
     acc_y = data['acc_y']
     acc_z = data['acc_z']
- 
-    #plt.cla()
-    #plt.plot(gyro_x, label='Gyro_x')
-    #plt.plot(gyro_y, label='Gyro_y')
-    #plt.plot(gyro_z, label='Gyro_z')
-    #plt.plot(acc_x, label='acc_x')
-    #plt.plot(acc_y, label='acc_y')
-    #plt.plot(acc_z, label='acc_z')
-    #plt.legend(loc = 'upper left')
-    #plt.tight_layout()
-
-    #axes[0, 0].cla()
-    #axes[0, 1].cla()
-    #gx[0, 0].plot(gyro_x)#, label='Gyro_x')
-    #gy[0, 1].plot(gyro_y)#, label='Gyro_y')
-    #gz[0, 2].plot(gyro_z)#, label='Gyro_z')
-    #ax[1, 0].plot(acc_x)#, label='acc_x')
-    #ay[1, 1].plot(acc_y)#, label='acc_y')
-    #az[1, 2].plot(acc_z)#, label='acc_z')
 
     line[0].set_data(x_value, gyro_x)
     line[1].set_data(x_value, gyro_y)
@@ -58,7 +52,7 @@ def animate(i):
     line[5].set_data(x_value, acc_z)
     return line
 
-ani = FuncAnimation(plt.gcf(), animate, blit = True,frames= 500, interval = 10)
+ani = FuncAnimation(fig , animate, data_gen, frames= 500, interval = 10)
  
 #plt.tight_layout()
 plt.show()
