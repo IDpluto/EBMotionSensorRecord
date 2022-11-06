@@ -3,8 +3,16 @@ import time
 import signal
 import threading
 import csv
-import time
+from itertools import count
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from pandas.core.indexes import interval
 
+fig, (gx, ax) = plt.subplots(2,1)
+fig.set_size_inches((10, 5))
+fig.subplots_adjust(wspace = 0.9, hspace = 0.9)
 
 line = [] #라인 단위로 데이터 가져올 리스트 변수
 
@@ -18,15 +26,20 @@ def parsing_data(data):
     # 작업하기 편하게 스트링으로 합침
     tmp = ''.join(data)
     tmp = tmp.split(',')
-    "gyro_x":tmp[1]
-    "gyro_y":tmp[2]
-    "gyro_z":tmp[3]
-    "acc_x":tmp[4]
-    "acc_y":tmp[5]
-    "acc_z":tmp[6]
 
+    return tmp
 
-        
+def animate(data):
+    gx.plot(data[1], lw =2, color = 'r')
+    gx.plot(data[2], lw =2, color = 'y') 
+    gx.plot(data[3], lw =2, color = 'g') 
+    ax.plot(data[4], lw =2, color = 'r') 
+    ax.plot(data[5], lw =2, color = 'y') 
+    ax.plot(data[6], lw =2, color = 'g')
+
+def graph():
+    ani = FuncAnimation(fig , animate, blit=False, frames= 200, interval = 100)
+    plt.show()
 
 #본 쓰레드
 def read_data(ser):
@@ -40,11 +53,13 @@ def read_data(ser):
 
             if c == 10: #라인의 끝을 만나면..
                 #데이터 처리 함수로 호출
-                parsing_data(line)
-
+                tmp = parsing_data(line)
+                animate(tmp)
+                graph()
                 #line 변수 초기화
                 del line[:]                
 
 if __name__ == "__main__":
     ser = serial.Serial(port, baud)
     read_data(ser)
+
