@@ -22,7 +22,6 @@ line = [line1, line2, line3, line4, line5, line6]
 def animate(i):
     # axis limits checking. Same as before, just for both axes
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-    ax.figure.canvas.draw()
     x_value = data['x_value']
     gyro_x = data['gyro_x']
     gyro_y = data['gyro_y']
@@ -37,6 +36,7 @@ def animate(i):
     line[3].set_data(x_value, acc_x)
     line[4].set_data(x_value, acc_y)
     line[5].set_data(x_value, acc_z)
+    ax.figure.canvas.draw()
     
     return line
 
