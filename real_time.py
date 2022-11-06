@@ -40,6 +40,7 @@ def animate(i):
 
     line[0].set_data(gyro_x, gyro_x)
     line[1].set_data(gyro_y, gyro_y)
+    return line
 
 if __name__ == "__main__":
     
