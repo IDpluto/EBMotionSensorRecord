@@ -18,7 +18,6 @@ line4, = ax.plot([], [], lw =2)
 line5, = ay.plot([], [], lw =2) 
 line6, = az.plot([], [], lw =2)
 line = [line1, line2, line3, line4, line5, line6]
-i = 0
 
 def animate(i):
     # axis limits checking. Same as before, just for both axes
@@ -31,14 +30,18 @@ def animate(i):
     acc_y = data['acc_y']
     acc_z = data['acc_z']
 
-    gx.plot(i, gyro_x, lw =2)
-    gy.plot(i, gyro_y, lw =2) 
-    gz.plot(i, gyro_z, lw =2) 
-    ax.plot(i, acc_x, lw =2) 
-    ay.plot(i, acc_y, lw =2) 
-    az.plot(i, acc_z, lw =2)
-    i += 1
-    print(i)
+    for ax in [gx, gy]:
+        xmin, xmax = ax.get_xlim()
+        if t >= xmax:
+            ax.set_xlim(xmin, 2*xmax)
+            ax.figure.canvas.draw()
+    gx.plot(x_value, gyro_x, lw =2)
+    gy.plot(x_value, gyro_y, lw =2) 
+    gz.plot(x_value, gyro_z, lw =2) 
+    ax.plot(x_value, acc_x, lw =2) 
+    ay.plot(x_value, acc_y, lw =2) 
+    az.plot(x_value, acc_z, lw =2)
+    print(x_value)
     
     #line[0].set_data(x_value, gyro_x)
     #line[1].set_data(x_value, gyro_y)
