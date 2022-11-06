@@ -26,7 +26,7 @@ def animate(i):
     plt.legend(loc = 'upper left')
     plt.tight_layout()
  
-ani = FuncAnimation(plt.gcf(),animate, interval = 1000)
+ani = FuncAnimation(plt.gcf(),animate, interval = 10)
  
 plt.tight_layout()
 plt.show()

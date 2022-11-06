@@ -37,7 +37,7 @@ def parsing_data(data):
             "acc_z":tmp[6]
         }
         csv_writer.writerow(info)
-        time.sleep(1)
+        #time.sleep(1)
 
 #본 쓰레드
 def readThread(ser):
