@@ -28,8 +28,8 @@ def animate(i):
     gyro_y = tmp[2]
     #gx.clear()
     #ax.clear()
-    gx.plot(0,gyro_x, lw=2, color='r')
-    ax.plot(0, gyro_y, lw=2, color='r')
+    gx.plot(gyro_x,0, lw=2, color='r', label = "gyro_x")
+    ax.plot(gyro_y,0, lw=2, color='r', label = "gyro_y")
     #line[0].set_data(gyro_x)
     #line[1].set_data(gyro_y)
     
