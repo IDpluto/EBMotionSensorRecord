@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from pandas.core.indexes import interval
 
-f, (gx, gy, gz, ax, ay, az) = plt.subplots(2, 3)
+f, (gx, gy, gz, ax, ay, az) = plt.subplots(6, 3)
 f.set_size_inches((10, 5))
 plt.subplots_adjust(wspace = 0.3, hspace = 0.3)
 line1, = gx.plot([], [], lw =2)
