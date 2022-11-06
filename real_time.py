@@ -35,8 +35,8 @@ def animate(i):
     tmp = ser.readline()
     tmp = tmp.decode("ISO-8859-1")
     tmp = tmp.split(',')
-    gyro_x = tmp[1]
-    gyro_y = tmp[2]
+    gyro_x = float(tmp[1])
+    gyro_y = float(tmp[2])
 
     line[0].set_data(gyro_x, gyro_x)
     line[1].set_data(gyro_y, gyro_y)
