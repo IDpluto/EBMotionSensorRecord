@@ -40,7 +40,7 @@ def parsing_data(data, x_value):
             "acc_z":tmp[6]
         }
         csv_writer.writerow(info)
-        x_value += 1
+        
         #time.sleep(1)
         
 
