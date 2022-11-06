@@ -6,7 +6,7 @@ from pandas.core.indexes import interval
  
 f, axes = plt.subplot(0,2)
 f.set_size_inches((20, 15))
-plt.subplots_adjust(wspace = 0.3, hspace = 0.3)
+#plt.subplots_adjust(wspace = 0.3, hspace = 0.3)
  
 def animate(i):
     
