@@ -34,7 +34,7 @@ data_gen.t = 0
 
 xdata, y1data, y2data = [], [], []
 def animate(i):
-    t, y1, y2 = data
+    t, y1, y2 = i
     xdata.append(t)
     y1data.append(y1)
     y2data.append(y2)
