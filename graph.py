@@ -40,12 +40,7 @@ def animate(i):
     
     return line
 
-gx.clear()
-gy.clear()
-gz.clear()
-ax.clear()
-ay.clear()
-az.clear()
+
 ani = FuncAnimation(fig , animate,  frames= 200, interval = 10)
  
 #plt.tight_layout()
