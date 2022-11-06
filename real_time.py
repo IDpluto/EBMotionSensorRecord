@@ -20,7 +20,7 @@ line = [line1, line2]
 def init():
     return line1, line2,
 
-def read_data():
+def animate(i):
     for c in ser.read():
         #line 변수에 차곡차곡 추가하여 넣는다.
         line.append(chr(c))
@@ -28,18 +28,13 @@ def read_data():
         if c == 10: #라인의 끝을 만나면..
             tmp = ''.join(line)
             tmp = tmp.split(',')
-            #line 변수 초기화
-            del line[:] 
-            return tmp
 
-def animate(i):
-       
+            #line 변수 초기화
+            del line[:]     
     #gx.clear()
     #ax.clear()
-    tmp = read_data()
-    print(tmp[1])
-    gx.plot(tmp[1], lw=2, color='r')
-    ax.plot(tmp[2], lw=2, color='r')
+            gx.plot(tmp[1], lw=2, color='r')
+            ax.plot(tmp[2], lw=2, color='r')
     #line[0].set_data(gyro_x)
     #line[1].set_data(gyro_y)
     
