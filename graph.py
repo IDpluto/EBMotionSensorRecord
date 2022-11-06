@@ -19,19 +19,6 @@ line5, = ay.plot([], [], lw =2)
 line6, = az.plot([], [], lw =2)
 line = [line1, line2, line3, line4, line5, line6]
 
-def data_gen():
-    t = data_gen.t
-    cnt = 0
-    while cnt < 1000:
-        cnt+=1
-        t += 0.05
-        y1 = np.sin(2*np.pi*t) * np.exp(-t/10.)
-        y2 = np.cos(2*np.pi*t) * np.exp(-t/10.)
-        # adapted the data generator to yield both sin and cos
-        yield t, y1, y2
-
-data_gen.t = 0
-
 def animate(i):
     # axis limits checking. Same as before, just for both axes
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
@@ -50,10 +37,10 @@ def animate(i):
     line[3].set_data(x_value, acc_x)
     line[4].set_data(x_value, acc_y)
     line[5].set_data(x_value, acc_z)
-    plt.legend(loc = 'upper left')
+    
     return line
 
-ani = FuncAnimation(fig , animate, data_gen,  interval = 10)
+ani = FuncAnimation(fig , animate,  frames= 200, interval = 10)
  
 #plt.tight_layout()
 plt.show()
