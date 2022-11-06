@@ -28,15 +28,18 @@ def animate(i):
     #plt.legend(loc = 'upper left')
     #plt.tight_layout()
 
-    plt.cla()
+    axes[0, 0].cla()
+    axes[0, 1].cla()
     axes[0, 0].plot(gyro_x, label='Gyro_x')
     axes[0, 0].plot(gyro_y, label='Gyro_y')
     axes[0, 0].plot(gyro_z, label='Gyro_z')
     axes[0, 1].plot(acc_x, label='acc_x')
     axes[0, 1].plot(acc_y, label='acc_y')
     axes[0, 1].plot(acc_z, label='acc_z')
-    plt.legend(loc = 'upper left')
-    plt.tight_layout()
+    axes[0, 0].legend(loc = 'upper left')
+    axes[0, 1].legend(loc = 'upper left')
+    axes[0, 0].tight_layout()
+    axes[0, 1].tight_layout()
 
 
 
