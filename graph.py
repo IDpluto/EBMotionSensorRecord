@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from pandas.core.indexes import interval
  
-f, axes = plt.subplots(3, 4)
+f, axes = plt.subplots(0, 1)
 f.set_size_inches((20, 15))
 plt.subplots_adjust(wspace = 0.3, hspace = 0.3)
  
