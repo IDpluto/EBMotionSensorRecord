@@ -41,7 +41,7 @@ def animate(i):
     return line
 
 
-ani = FuncAnimation(fig , animate, blit=false, frames= 200, interval = 10, repeat=False)
+ani = FuncAnimation(fig , animate, blit=False, frames= 200, interval = 10, repeat=False)
  
 #plt.tight_layout()
 plt.show()
