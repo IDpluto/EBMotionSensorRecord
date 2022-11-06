@@ -32,20 +32,10 @@ def data_gen():
 
 data_gen.t = 0
 
-xdata, y1data, y2data = [], [], []
 def animate(i):
-    t, y1, y2 = i
-    xdata.append(t)
-    y1data.append(y1)
-    y2data.append(y2)
-
     # axis limits checking. Same as before, just for both axes
-    for ax in [gx, gy]:
-        xmin, xmax = ax.get_xlim()
-        if t >= xmax:
-            ax.set_xlim(xmin, 2*xmax)
-            ax.figure.canvas.draw()
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
+    ax.figure.canvas.draw()
     x_value = data['x_value']
     gyro_x = data['gyro_x']
     gyro_y = data['gyro_y']
@@ -54,12 +44,13 @@ def animate(i):
     acc_y = data['acc_y']
     acc_z = data['acc_z']
 
-    line[0].set_data(xdata, gyro_x)
-    line[1].set_data(xdata, gyro_y)
+    line[0].set_data(x_value, gyro_x)
+    line[1].set_data(x_value, gyro_y)
     line[2].set_data(x_value, gyro_z)
     line[3].set_data(x_value, acc_x)
     line[4].set_data(x_value, acc_y)
     line[5].set_data(x_value, acc_z)
+    plt.legend(loc = 'upper left')
     return line
 
 ani = FuncAnimation(fig , animate, data_gen,  interval = 10)
