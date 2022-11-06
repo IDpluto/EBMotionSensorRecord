@@ -24,8 +24,8 @@ def animate(i):
     tmp = ser.readline()
     tmp = tmp.decode("ISO-8859-1")
     tmp = tmp.split(',')
-    gyro_x = tmp[1]
-    gyro_y = tmp[2]
+    gyro_x = float(tmp[1])
+    gyro_y = float(tmp[2])
     #gx.clear()
     #ax.clear()
     gx.plot(gyro_x, lw=2, color='r')
