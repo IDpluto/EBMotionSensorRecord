@@ -29,12 +29,7 @@ def animate(i):
     acc_x = data['acc_x']
     acc_y = data['acc_y']
     acc_z = data['acc_z']
-
-    for ax in [gx, gy]:
-        xmin, xmax = ax.get_xlim()
-        if t >= xmax:
-            ax.set_xlim(xmin, 2*xmax)
-            ax.figure.canvas.draw()
+    
     gx.plot(x_value, gyro_x, lw =2)
     gy.plot(x_value, gyro_y, lw =2) 
     gz.plot(x_value, gyro_z, lw =2) 
