@@ -52,7 +52,7 @@ def animate(i):
 
 
 
-ani = FuncAnimation(plt.gcf(),animate, frames= 500, interval = 50)
+ani = FuncAnimation(f,animate, frames= 500, interval = 50)
  
 plt.tight_layout()
 plt.show()
