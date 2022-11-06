@@ -9,7 +9,7 @@ from pandas.core.indexes import interval
 fig, (gx, gy, gz, ax, ay, az) = plt.subplots(6,1)
 
 fig.set_size_inches((10, 5))
-#plt.subplots_adjust(wspace = 0.8, hspace = 0.8)
+fig.subplots_adjust(wspace = 0.8, hspace = 0.8)
 
 line1, = gx.plot([], [], lw =2)
 line2, = gy.plot([], [], lw =2) 
@@ -41,7 +41,7 @@ def animate(i):
     return line
 
 
-ani = FuncAnimation(fig , animate, blit=True, frames= 200, interval = 10, repeat=False)
+ani = FuncAnimation(fig , animate, blit=false, frames= 200, interval = 10, repeat=False)
  
 #plt.tight_layout()
 plt.show()
