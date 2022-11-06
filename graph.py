@@ -58,7 +58,7 @@ def animate(i):
     line[5].set_data(x_value, acc_z)
     return line
 
-ani = FuncAnimation(fig, animate, blit = True,frames= 500, interval = 10)
+ani = FuncAnimation(plt.gcf(), animate, blit = True,frames= 500, interval = 10)
  
-plt.tight_layout()
+#plt.tight_layout()
 plt.show()
