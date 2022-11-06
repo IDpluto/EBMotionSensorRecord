@@ -28,13 +28,16 @@ def animate(i):
     gyro_y = tmp[2]
     #gx.clear()
     #ax.clear()
-    gx.plot(gyro_x,0, lw=2, color='r', label = "gyro_x")
-    ax.plot(gyro_y,0, lw=2, color='r', label = "gyro_y")
-    #line[0].set_data(gyro_x)
-    #line[1].set_data(gyro_y)
+    plt.cla()
+    plt.plot(gyro_x, label='블로그')
+    plt.plot(gyro_y,label='유튜브')
     
-
-ani = FuncAnimation(fig , animate, blit=False, frames= 200, interval = 100)
+    plt.legend(loc = 'upper left')
+    plt.tight_layout()
+ 
+ani = FuncAnimation(plt.gcf(),animate, interval = 1000)
+ 
+plt.tight_layout()
 plt.show()
     
 
