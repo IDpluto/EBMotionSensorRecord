@@ -32,9 +32,7 @@ def animate(i):
     line[1].set_data(gyro_y, gyro_y)
     return line
 
-if __name__ == "__main__":
-    
-    ani = FuncAnimation(fig , animate, init_func=init, blit=False, frames= 200, interval = 100)
-    plt.show()
+ani = FuncAnimation(fig , animate, init_func=init, blit=False, frames= 200, interval = 100)
+plt.show()
     
 
