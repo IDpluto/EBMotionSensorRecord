@@ -28,6 +28,7 @@ def animate(i):
     acc_x = data['acc_x']
     acc_y = data['acc_y']
     acc_z = data['acc_z']
+    print(type(acc_z))
     gx.clear()
     gy.clear()
     gz.clear()

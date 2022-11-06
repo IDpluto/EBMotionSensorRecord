@@ -21,21 +21,15 @@ def init():
     return line1, line2,
 
 def animate(i):
-    for c in ser.read():
-        #line 변수에 차곡차곡 추가하여 넣는다.
-        line.append(chr(c))
-
-        if c == 10: #라인의 끝을 만나면..
-            tmp = ''.join(line)
-            tmp = tmp.split(',')
-
-            #line 변수 초기화
-            del line[:]     
+    tmp = ser.readline()
+    tmp = tmp.decode("ISO-8859-1")
+    tmp = tmp.split(',')
+    gyro_x = tmp[1]
+    gyro_y = tmp[2]
     #gx.clear()
     #ax.clear()
-            print (tmp[1])
-            gx.plot(tmp[1], lw=2, color='r')
-            ax.plot(tmp[2], lw=2, color='r')
+    gx.plot(gyro_x, lw=2, color='r')
+    ax.plot(gyro_y, lw=2, color='r')
     #line[0].set_data(gyro_x)
     #line[1].set_data(gyro_y)
     
