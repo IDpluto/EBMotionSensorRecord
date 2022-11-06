@@ -54,12 +54,12 @@ def animate(i):
     acc_y = data['acc_y']
     acc_z = data['acc_z']
 
-    line[0].set_data(x_value, gyro_x)
-    line[1].set_data(x_value, gyro_y)
-    line[2].set_data(x_value, gyro_z)
-    line[3].set_data(x_value, acc_x)
-    line[4].set_data(x_value, acc_y)
-    line[5].set_data(x_value, acc_z)
+    line[0].set_data(xdata, gyro_x)
+    line[1].set_data(xdata, gyro_y)
+    line[2].set_data(xdata, gyro_z)
+    line[3].set_data(xdata, acc_x)
+    line[4].set_data(xdata, acc_y)
+    line[5].set_data(xdata, acc_z)
     return line
 
 ani = FuncAnimation(fig , animate, data_gen,  interval = 10)
