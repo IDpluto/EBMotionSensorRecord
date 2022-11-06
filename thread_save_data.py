@@ -3,7 +3,7 @@ import time
 import signal
 import threading
 import csv
-import time
+
 
 
 line = [] #라인 단위로 데이터 가져올 리스트 변수
