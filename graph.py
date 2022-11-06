@@ -30,7 +30,7 @@ def animate(i):
     acc_y = data['acc_y']
     acc_z = data['acc_z']
     
-    line[0].set_data(1, gyro_x)
+    line[0].set_data(gyro_x, x_value)
     line[1].set_data(x_value, gyro_y)
     line[2].set_data(x_value, gyro_z)
     line[3].set_data(x_value, acc_x)
