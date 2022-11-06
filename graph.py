@@ -47,8 +47,6 @@ def animate(i):
     #line[3].set_data(x_value, acc_x)
     #line[4].set_data(x_value, acc_y)
     #line[5].set_data(x_value, acc_z)
-    
-    return line
 
 
 ani = FuncAnimation(fig , animate, blit=False, frames= 200, interval = 100)
