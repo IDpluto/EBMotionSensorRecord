@@ -18,7 +18,7 @@ def init():
 
 def animate(i):
     y = arduino.readline()
-    y = y.decode("ISO-8859-1").encode("utf-8")
+    y = y.decode("ISO-8859-1")#.encode("utf-8")
     y = y[1]
     y = float(y)
 
