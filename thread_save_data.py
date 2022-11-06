@@ -26,7 +26,7 @@ def parsing_data(data):
     tmp = ''.join(data)
     tmp = tmp.split(',')
     
-    with open('/home/dohlee/crc_project/data/data1','a') as csv_file:
+    with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
             "gyro_x":tmp[1],
@@ -44,7 +44,7 @@ def readThread(ser):
     global line
     global exitThread
     
-    with open('/home/dohlee/crc_project/data/data1','w') as csv_file:
+    with open('/home/dohlee/crc_project/data/data1.csv','w') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
         csv_writer.writeheader()
     # 쓰레드 종료될때까지 계속 돌림

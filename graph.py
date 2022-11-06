@@ -8,7 +8,7 @@ from pandas.core.indexes import interval
  
  
 def animate(i):
-    data =pd.read_csv('data1.csv')
+    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
     gyro_x = data['gyro_x']
     gyro_y = data['gyro_y']
     gyro_z = data['gyro_z']
