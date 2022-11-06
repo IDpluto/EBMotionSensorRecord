@@ -26,14 +26,13 @@ def animate(i):
         line.append(chr(c))
 
         if c == 10: #라인의 끝을 만나면..
-            tmp = ''.join(data)
+            tmp = ''.join(line)
             tmp = tmp.split(',')
 
             #line 변수 초기화
             del line[:]     
     #gx.clear()
     #ax.clear()
-    print(tmp[1])
     gx.plot(tmp[1], lw=2, color='r')
     ax.plot(tmp[2], lw=2, color='r')
     #line[0].set_data(gyro_x)
