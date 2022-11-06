@@ -37,8 +37,9 @@ def animate(i):
     #gx.clear()
     #ax.clear()
     tmp = read_data()
-    gx.plot(float(tmp[1]), lw=2, color='r')
-    ax.plot(float(tmp[2]), lw=2, color='r')
+    print(tmp[1])
+    gx.plot(tmp[1], lw=2, color='r')
+    ax.plot(tmp[2], lw=2, color='r')
     #line[0].set_data(gyro_x)
     #line[1].set_data(gyro_y)
     
