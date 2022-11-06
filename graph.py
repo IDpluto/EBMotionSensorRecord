@@ -6,6 +6,7 @@ from pandas.core.indexes import interval
  
 f, axes = plt.subplot(0,2)
 f.set_size_inches((20, 15))
+plt.subplots_adjust(wspace = 0.3, hspace = 0.3)
  
 def animate(i):
     
@@ -38,7 +39,7 @@ def animate(i):
     plt.tight_layout()
 
 
-plt.subplots_adjust(wspace = 0.3, hspace = 0.3)
+
 ani = FuncAnimation(plt.gcf(),animate, frames= 500, interval = 50)
  
 plt.tight_layout()
