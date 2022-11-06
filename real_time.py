@@ -1,5 +1,4 @@
 import serial
-import struct
 import time
 import signal
 from itertools import count
@@ -25,11 +24,11 @@ def animate(i):
     tmp = ser.readline()
     tmp = tmp.decode("ISO-8859-1").encode("utf-8")
     tmp = tmp.split(b',')
-    gyro_x = struct.unpack('f', tmp[1])
-    gyro_y = float(tmp[2])
+    gyro_x = tmp[1]
+    gyro_y = tmp[2]
     #gx.clear()
     #ax.clear()
-    gx.plot(gyro_y ,gyro_x, lw=2)
+    gx.plot(gyro_x, lw=2)
     ax.plot(gyro_y, lw=2, color='r')
     #line[0].set_data(gyro_x)
     #line[1].set_data(gyro_y)
