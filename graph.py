@@ -35,11 +35,11 @@ def animate(i):
     ay.clear()
     az.clear()
     gx.plot(gyro_x, lw =2)
-    gy.plot(gyro_y, lw =2) 
-    gz.plot(gyro_z, lw =2) 
-    ax.plot(acc_x, lw =2) 
-    ay.plot(acc_y, lw =2) 
-    az.plot(acc_z, lw =2)
+    gy.plot(gyro_y, lw =2, color = 'r') 
+    gz.plot(gyro_z, lw =2, color = 'o') 
+    ax.plot(acc_x, lw =2, color = 'p') 
+    ay.plot(acc_y, lw =2, color = 'y') 
+    az.plot(acc_z, lw =2, color = 'g')
     
     #line[0].set_data(x_value, gyro_x)
     #line[1].set_data(x_value, gyro_y)
@@ -51,7 +51,7 @@ def animate(i):
     return line
 
 
-ani = FuncAnimation(fig , animate, blit=False, frames= 200, interval = 10, repeat=False)
+ani = FuncAnimation(fig , animate, blit=False, frames= 200, interval = 100)
  
 #plt.tight_layout()
 plt.show()
