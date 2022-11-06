@@ -24,12 +24,15 @@ def animate(i):
     tmp = ser.readline()
     tmp = tmp.decode("ISO-8859-1")
     tmp = tmp.split(',')
-    gyro_x = float(tmp[1])
-    gyro_y = float(tmp[2])
+    gyro_x = tmp[1]
+    gyro_y = tmp[2]
     print (gyro_x)
-
-    line[0].set_data(gyro_x, gyro_x)
-    line[1].set_data(gyro_y, gyro_y)
+    gx.clear()
+    ax.clear()
+    gx.plot(gyro_x, lw=2)
+    ax.plot(gyro_y, lw=2, color='r')
+    #line[0].set_data(gyro_x)
+    #line[1].set_data(gyro_y)
     return line
 
 ani = FuncAnimation(fig , animate, init_func=init, blit=False, frames= 200, interval = 100)
