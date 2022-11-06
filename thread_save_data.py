@@ -12,7 +12,8 @@ port = '/dev/ttyUSB0' # 시리얼 포트
 baud = 921600 # 시리얼 보드레이트(통신속도)
 
 exitThread = False   # 쓰레드 종료용 변수
-fieldnames = ["gyro_x","gyro_y","gyro_z", "acc_x", "acc_y", "acc_z"]
+fieldnames = ["x_value","gyro_x","gyro_y","gyro_z", "acc_x", "acc_y", "acc_z"]
+x_value = 0
 
 #쓰레드 종료용 시그널 함수
 def handler(signum, frame):
@@ -29,6 +30,7 @@ def parsing_data(data):
     with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
+            "x_value":x_value,
             "gyro_x":tmp[1],
             "gyro_y":tmp[2],
             "gyro_z":tmp[3],
@@ -38,6 +40,7 @@ def parsing_data(data):
         }
         csv_writer.writerow(info)
         #time.sleep(1)
+        x_value += 1
 
 #본 쓰레드
 def readThread(ser):
