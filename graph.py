@@ -36,6 +36,7 @@ def animate(i):
     ax.plot(x_value, acc_x, lw =2) 
     ay.plot(x_value, acc_y, lw =2) 
     az.plot(x_value, acc_z, lw =2)
+    print(x_value)
     
     #line[0].set_data(x_value, gyro_x)
     #line[1].set_data(x_value, gyro_y)
