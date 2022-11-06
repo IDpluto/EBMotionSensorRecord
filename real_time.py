@@ -28,9 +28,9 @@ def read_data():
         if c == 10: #라인의 끝을 만나면..
             tmp = ''.join(line)
             tmp = tmp.split(',')
-            return tmp
             #line 변수 초기화
             del line[:] 
+            return tmp
 
 def animate(i):
        
