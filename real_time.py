@@ -27,15 +27,15 @@ def animate(i):
     gyro_x = float(tmp[1])
     gyro_y = float(tmp[2])
     print (gyro_x)
-    gx.clear()
-    ax.clear()
+    #gx.clear()
+    #ax.clear()
     gx.plot(gyro_y ,gyro_x, lw=2)
     ax.plot(gyro_y, lw=2, color='r')
     #line[0].set_data(gyro_x)
     #line[1].set_data(gyro_y)
     return line
 
-ani = FuncAnimation(fig , animate, init_func=init, blit=False, frames= 200, interval = 100)
+ani = FuncAnimation(fig , animate, blit=False, frames= 200, interval = 100)
 plt.show()
     
 
