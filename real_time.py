@@ -4,9 +4,8 @@ import signal
 from itertools import count
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-from pandas.core.indexes import interval
+from matplotlib import pyplot as plt
+from matplotlib import animation
 
 ser = serial.Serial('/dev/ttyUSB0', 921600)
 fig, (gx, ax) = plt.subplots(2,1)
@@ -34,7 +33,7 @@ def animate(i):
     #line[1].set_data(gyro_y)
     
 
-ani = FuncAnimation(fig , animate, blit=False, frames= 200, interval = 100)
+ani = animation.FuncAnimation(fig , animate, blit=False, frames= 200, interval = 100)
 plt.show()
     
 
