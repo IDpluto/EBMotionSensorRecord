@@ -37,29 +37,29 @@ def animate(data):
     ax.plot(data[5], lw =2, color = 'y') 
     ax.plot(data[6], lw =2, color = 'g')
 
-def graph():
-    ani = FuncAnimation(fig , animate, blit=False, frames= 200, interval = 100)
-    plt.show()
+    
 
 #본 쓰레드
 def read_data(ser):
     global line
     # 쓰레드 종료될때까지 계속 돌림
-    while True:
-        #데이터가 있있다면
-        for c in ser.read():
-            #line 변수에 차곡차곡 추가하여 넣는다.
-            line.append(chr(c))
+    for c in ser.read():
+        #line 변수에 차곡차곡 추가하여 넣는다.
+        line.append(chr(c))
 
-            if c == 10: #라인의 끝을 만나면..
-                #데이터 처리 함수로 호출
-                tmp = parsing_data(line)
-                animate(tmp)
-                graph()
+        if c == 10: #라인의 끝을 만나면..
+               
+            tmp = parsing_data(line)
+            animate(tmp)
+            
+
                 #line 변수 초기화
-                del line[:]                
+            del line[:]                
 
 if __name__ == "__main__":
     ser = serial.Serial(port, baud)
     read_data(ser)
+    ani = FuncAnimation(fig , animate, blit=False, frames= 200, interval = 100)
+    plt.show()
+    
 
