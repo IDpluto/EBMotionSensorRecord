@@ -9,7 +9,7 @@ from pandas.core.indexes import interval
 fig, (gx, gy, gz, ax, ay, az) = plt.subplots(6,1)
 
 fig.set_size_inches((10, 5))
-fig.subplots_adjust(wspace = 0.8, hspace = 0.8)
+fig.subplots_adjust(wspace = 0.9, hspace = 0.9)
 
 line1, = gx.plot([], [], lw =2)
 line2, = gy.plot([], [], lw =2) 
@@ -30,13 +30,12 @@ def animate(i):
     acc_y = data['acc_y']
     acc_z = data['acc_z']
     
-    line[0].set_data(gyro_x, x_value)
+    line[0].set_data(x_value, gyro_x)
     line[1].set_data(x_value, gyro_y)
     line[2].set_data(x_value, gyro_z)
     line[3].set_data(x_value, acc_x)
     line[4].set_data(x_value, acc_y)
     line[5].set_data(x_value, acc_z)
-    ax.figure.canvas.draw()
     
     return line
 
