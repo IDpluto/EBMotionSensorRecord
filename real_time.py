@@ -33,6 +33,7 @@ def animate(i):
             del line[:]     
     #gx.clear()
     #ax.clear()
+    print(tmp[1])
     gx.plot(tmp[1], lw=2, color='r')
     ax.plot(tmp[2], lw=2, color='r')
     #line[0].set_data(gyro_x)
