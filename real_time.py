@@ -33,7 +33,7 @@ def animate(i):
     ax.plot(gyro_y, lw=2, color='r')
     #line[0].set_data(gyro_x)
     #line[1].set_data(gyro_y)
-    return line
+    
 
 ani = FuncAnimation(fig , animate, blit=False, frames= 200, interval = 100)
 plt.show()
