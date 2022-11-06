@@ -43,12 +43,12 @@ def animate(i):
     axes[1, 0].legend(loc = 'upper left')
     axes[1, 1].legend(loc = 'upper left')
     axes[1, 2].legend(loc = 'upper left')
-    axes[0, 0].tight_layout()
-    axes[0, 1].tight_layout()
-    axes[0, 2].tight_layout()
-    axes[1, 0].tight_layout()
-    axes[1, 1].tight_layout()
-    axes[1, 2].tight_layout()
+    #axes[0, 0].tight_layout()
+    #axes[0, 1].tight_layout()
+    #axes[0, 2].tight_layout()
+    #axes[1, 0].tight_layout()
+    #axes[1, 1].tight_layout()
+    #axes[1, 2].tight_layout()
 
 
 
