@@ -21,6 +21,7 @@ fig, (ax1, ax2) = plt.subplots(2,1)
 # intialize two line objects (one in each axes)
 line1, = ax1.plot([], [], lw=2)
 line2, = ax2.plot([], [], lw=2, color='r')
+
 line = [line1, line2]
 
 # the same axes initalizations as before (just now we do it for both of them)
