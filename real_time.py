@@ -15,7 +15,6 @@ fig.set_size_inches((10, 5))
 fig.subplots_adjust(wspace = 0.9, hspace = 0.9)
 
 line = [] #라인 단위로 데이터 가져올 리스트 변수
-
 port = '/dev/ttyUSB0' # 시리얼 포트
 baud = 921600 # 시리얼 보드레이트(통신속도)
 
@@ -29,18 +28,17 @@ def parsing_data(data):
 
     return tmp
 
-def animate(data):
-    gx.plot(data[1], lw =2, color = 'r')
-    gx.plot(data[2], lw =2, color = 'y') 
-    gx.plot(data[3], lw =2, color = 'g') 
-    ax.plot(data[4], lw =2, color = 'r') 
-    ax.plot(data[5], lw =2, color = 'y') 
-    ax.plot(data[6], lw =2, color = 'g')
+def animate(i):
+    tmp = read_data()
+    gx.plot(tmp[1], lw =2, color = 'r')
+    gx.plot(tmp[2], lw =2, color = 'y') 
+    gx.plot(tmp[3], lw =2, color = 'g') 
+    ax.plot(tmp[4], lw =2, color = 'r') 
+    ax.plot(tmp[5], lw =2, color = 'y') 
+    ax.plot(tmp[6], lw =2, color = 'g')
 
-    
 
-#본 쓰레드
-def read_data(ser):
+def read_data():
     global line
     # 쓰레드 종료될때까지 계속 돌림
     for c in ser.read():
@@ -50,15 +48,14 @@ def read_data(ser):
         if c == 10: #라인의 끝을 만나면..
                
             tmp = parsing_data(line)
-            animate(tmp)
-            
+            del line[:]
+            return tmp
 
-                #line 변수 초기화
-            del line[:]                
+
+            
 
 if __name__ == "__main__":
     ser = serial.Serial(port, baud)
-    read_data(ser)
     ani = FuncAnimation(fig , animate, blit=False, frames= 200, interval = 100)
     plt.show()
     
