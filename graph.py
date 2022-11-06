@@ -29,12 +29,12 @@ def animate(i):
     acc_y = data['acc_y']
     acc_z = data['acc_z']
 
-    gx.plot(0, gyro_x, lw =2)
-    gy.plot(0, gyro_y, lw =2) 
-    gz.plot(0, gyro_z, lw =2) 
-    ax.plot(0, acc_x, lw =2) 
-    ay.plot(0, acc_y, lw =2) 
-    az.plot(0, acc_z, lw =2)
+    gx.plot(gyro_x, lw =2)
+    gy.plot(gyro_y, lw =2) 
+    gz.plot(gyro_z, lw =2) 
+    ax.plot(acc_x, lw =2) 
+    ay.plot(acc_y, lw =2) 
+    az.plot(acc_z, lw =2)
     
     #line[0].set_data(x_value, gyro_x)
     #line[1].set_data(x_value, gyro_y)
