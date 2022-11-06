@@ -21,7 +21,8 @@ def handler(signum, frame):
 
 
 #데이터 처리할 함수
-def parsing_data(data):
+def parsing_data(data, x_value):
+    
     # 리스트 구조로 들어 왔기 때문에
     # 작업하기 편하게 스트링으로 합침
     tmp = ''.join(data)
@@ -39,8 +40,9 @@ def parsing_data(data):
             "acc_z":tmp[6]
         }
         csv_writer.writerow(info)
-        #time.sleep(1)
         x_value += 1
+        #time.sleep(1)
+        
 
 #본 쓰레드
 def readThread(ser):
@@ -59,7 +61,7 @@ def readThread(ser):
 
             if c == 10: #라인의 끝을 만나면..
                 #데이터 처리 함수로 호출
-                parsing_data(line)
+                parsing_data(line, x_value)
 
                 #line 변수 초기화
                 del line[:]                
