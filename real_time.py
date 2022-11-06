@@ -21,23 +21,25 @@ def init():
     return line1, line2,
 
 def animate(i):
-    tmp = ser.readline()
-    tmp = tmp.decode("ISO-8859-1")
-    tmp = tmp.split(',')
-    gyro_x = tmp[1]
-    gyro_y = tmp[2]
+    for c in ser.read():
+        #line 변수에 차곡차곡 추가하여 넣는다.
+        line.append(chr(c))
+
+        if c == 10: #라인의 끝을 만나면..
+            tmp = ''.join(data)
+            tmp = tmp.split(',')
+
+            #line 변수 초기화
+            del line[:]     
     #gx.clear()
     #ax.clear()
-    plt.cla()
-    plt.plot(gyro_x, label='블로그')
-    plt.plot(gyro_y,label='유튜브')
+    gx.plot(tmp[1], lw=2, color='r')
+    ax.plot(tmp[2], lw=2, color='r')
+    #line[0].set_data(gyro_x)
+    #line[1].set_data(gyro_y)
     
-    plt.legend(loc = 'upper left')
-    plt.tight_layout()
- 
-ani = FuncAnimation(plt.gcf(),animate, interval = 1000)
- 
-plt.tight_layout()
+
+ani = FuncAnimation(fig , animate, blit=False, frames= 200, interval = 100)
 plt.show()
     
 
