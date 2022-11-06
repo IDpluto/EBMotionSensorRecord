@@ -6,7 +6,7 @@ import numpy as np
 arduino = serial.Serial('/dev/ttyUSB0', 921600)
 
 fig = plt.figure()
-ax = plt.axes(xlim=(0, 50), ylim=(-20, 20))
+ax = plt.axes(xlim=(0, 50), ylim=(-100, 100))
 line, = ax.plot([], [], lw=2)
 
 max_points = 50
