@@ -4,9 +4,17 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from pandas.core.indexes import interval
 
-f, axes = plt.subplots(2, 3)
+f, (gx, gy, gz, ax, ay, az) = plt.subplots(2, 3)
 f.set_size_inches((10, 5))
 plt.subplots_adjust(wspace = 0.3, hspace = 0.3)
+line1, = gx.plot([], [], lw =2)
+line2, = gy.plot([], [], lw =2) 
+line3, = gz.plot([], [], lw =2) 
+line4, = ax.plot([], [], lw =2) 
+line5, = ay.plot([], [], lw =2) 
+line6, = az.plot([], [], lw =2)
+line = [line1, line2, line3, line4, line5, line6]
+
  
 def animate(i):
     
@@ -31,28 +39,22 @@ def animate(i):
 
     #axes[0, 0].cla()
     #axes[0, 1].cla()
-    axes[0, 0].plot(gyro_x)#, label='Gyro_x')
-    axes[0, 1].plot(gyro_y)#, label='Gyro_y')
-    axes[0, 2].plot(gyro_z)#, label='Gyro_z')
-    axes[1, 0].plot(acc_x)#, label='acc_x')
-    axes[1, 1].plot(acc_y)#, label='acc_y')
-    axes[1, 2].plot(acc_z)#, label='acc_z')
-    #axes[0, 0].legend(loc = 'upper left')
-    #axes[0, 1].legend(loc = 'upper left')
-    #axes[0, 2].legend(loc = 'upper left')
-    #axes[1, 0].legend(loc = 'upper left')
-    #axes[1, 1].legend(loc = 'upper left')
-    #axes[1, 2].legend(loc = 'upper left')
-    #axes[0, 0].tight_layout()
-    #axes[0, 1].tight_layout()
-    #axes[0, 2].tight_layout()
-    #axes[1, 0].tight_layout()
-    #axes[1, 1].tight_layout()
-    #axes[1, 2].tight_layout()
+    #gx[0, 0].plot(gyro_x)#, label='Gyro_x')
+    #gy[0, 1].plot(gyro_y)#, label='Gyro_y')
+    #gz[0, 2].plot(gyro_z)#, label='Gyro_z')
+    #ax[1, 0].plot(acc_x)#, label='acc_x')
+    #ay[1, 1].plot(acc_y)#, label='acc_y')
+    #az[1, 2].plot(acc_z)#, label='acc_z')
 
+    line[0].set_data(x_value, gyro_x)
+    line[1].set_data(x_value, gyro_y)
+    line[2].set_data(x_value, gyro_z)
+    line[3].set_data(x_value, acc_x)
+    line[4].set_data(x_value, acc_y)
+    line[5].set_data(x_value, acc_z)
+    return line
 
-
-ani = FuncAnimation(f,animate, frames= 500, interval = 50)
+ani = FuncAnimation(f, animate, blit = True,frames= 500, interval = 10)
  
 plt.tight_layout()
 plt.show()
