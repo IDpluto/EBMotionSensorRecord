@@ -29,7 +29,7 @@ def animate(i):
     acc_y = data['acc_y']
     acc_z = data['acc_z']
 
-    gx.plot(i, gyro_x, lw =2)
+    gx.plot(gyro_x, lw =2)
     gy.plot(gyro_y, lw =2) 
     gz.plot(gyro_z, lw =2) 
     ax.plot(acc_x, lw =2) 
