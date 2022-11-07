@@ -25,7 +25,7 @@ def init():
 
 def animate(i):
     tmp = ser.readline()
-    tmp = tmp.decode("ISO-8859-1")
+    tmp = tmp.decode("ISO-8859-1").encode("utf-8")
     tmp = tmp.split(',')
     gyro_x = float(tmp[1])
     gyro_y = float(tmp[2])
@@ -53,8 +53,9 @@ def quat_to_euler(x,y,z,w):
     
 while 1:
     line = ser.readline()
+    line = line.decode("ISO-8859-1").
     words = str.split(line,",")    # Fields split
-
+    
     if(-1 < words[0].find('*')) :
         data_from=1     # sensor data
         data_index=0
