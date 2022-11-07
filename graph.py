@@ -29,13 +29,10 @@ def animate(i):
     plt.legend(loc = 'upper left')
     plt.tight_layout()
    
-data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-sensor_id = data['sensor_id']
-if (str(sensor_id) == 'ID:100-1'):
-    plt.figure(figsize=(10, 5))
-    ani = FuncAnimation(plt.gcf() , animate, blit=False, frames= 200, interval = 100)
-    plt.show()
-else:
-    print(sensor_id)
+plt.figure(figsize=(10, 5))
+ani = FuncAnimation(plt.gcf() , animate, blit=False, frames= 200, interval = 100)
+plt.show()
+
+    
  
 
