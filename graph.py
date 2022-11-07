@@ -36,6 +36,6 @@ if (str(sensor_id) == 'ID:100-0'):
     ani = FuncAnimation(plt.gcf() , animate, blit=False, frames= 200, interval = 100)
     plt.show()
 else:
-    None
+    print(type(sensor_id))
  
 
