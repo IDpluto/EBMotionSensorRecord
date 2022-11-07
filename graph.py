@@ -20,7 +20,7 @@ def animate(i):
     acc_z = data['acc_z'] * 1000
     plt.ylim([-20, 20])
     plt.cla()
-    plt.plot(x_num, roll, label = 'roll', color = 'black')
+    plt.plot(roll, x_num, label = 'roll', color = 'black')
     plt.plot(x_num, pitch, label = 'pitch', color = 'limegreen')
     plt.plot(x_num, yaw, label = 'yaw', color = 'violet')
     plt.plot(x_num, acc_x, label = 'acc_x', color = 'dodgerblue')
