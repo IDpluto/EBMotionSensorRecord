@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from pandas.core.indexes import interval
 import math
-import strings import string
+from strings import string
 
 ser = serial.Serial('/dev/ttyUSB0', 921600)
 fig, (gx, ax) = plt.subplots(2,1)
