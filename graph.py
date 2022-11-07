@@ -19,7 +19,7 @@ def animate(i):
     acc_x = data['acc_x'] * 1000
     acc_y = data['acc_y'] * 1000
     acc_z = data['acc_z'] * 1000
-
+    plt.ylim([-20, 20])
     plt.cla()
     plt.plot(x_num, roll, label = 'roll', color = 'black')
     plt.plot(x_num, pitch, label = 'pitch', color = 'limegreen')
@@ -31,7 +31,7 @@ def animate(i):
     plt.tight_layout()
    
 
-plt.ylim([-20, 20])
+
 plt.figure(figsize=(10, 5))
 ani = FuncAnimation(plt.gcf() , animate, blit=False, frames= 200, interval = 100)
  
