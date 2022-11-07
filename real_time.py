@@ -24,15 +24,16 @@ def save_data(roll, pitch, yaw):
     pitch_r = "%.2f" %(pitch*rad2grad)
     yaw_r = "%.2f" %(yaw*rad2grad)
     #print (roll_r)
-    with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
+    with open('/home/dohlee/crc_project/data/data2.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
+        
         info = {
             "roll":roll_r,
             "pitch":pitch_r,
             "yaw":yaw_r
         }
         csv_writer.writerow(info)
-        time.sleep(1)
+        #time.sleep(1)
 
 def quat_to_euler(x,y,z,w):
     euler = [0.0,0.0,0.0]
@@ -101,7 +102,7 @@ while 1:
                 yaw   = Euler[2]
             except:
                 print (".")
-    save_data(roll,pitch,yaw)
+        save_data(roll,pitch,yaw)
    
 
 ser.close
