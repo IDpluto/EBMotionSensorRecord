@@ -26,7 +26,13 @@ def animate(i):
     plt.plot(x_num, acc_x, label = 'acc_x', color = 'dodgerblue')
     plt.plot(x_num, acc_y, label = 'acc_Y', color = 'red')
     plt.plot(x_num, acc_z, label = 'acc_z', color = 'deepskyblue')
+
+    plt.xticks(rotation=45, ha='right')
+    plt.subplots_adjust(bottom=0.30)
+    plt.title('This is how I roll...')
+    plt.ylabel('Relative frequency')
     plt.legend(loc = 'upper left')
+    plt.axis([1, None, 0, 1.1]) #Use for arbitrary number of trials
     plt.tight_layout()
    
 plt.figure(figsize=(10, 5))
