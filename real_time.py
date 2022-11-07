@@ -102,6 +102,7 @@ while 1:
                 yaw   = Euler[2]
             except:
                 print (".")
+        print(float(words[data_index+3]))
         save_data(roll,pitch,yaw)
    
 
