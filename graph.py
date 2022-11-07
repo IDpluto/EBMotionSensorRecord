@@ -28,7 +28,7 @@ def animate(i):
     plt.plot(x_num, acc_z, label = 'acc_z', color = 'deepskyblue')
 
     plt.xticks(rotation=45, ha='right')
-    plt.subplots_adjust(bottom=0.90)
+    #plt.subplots_adjust(bottom=0.30)
     plt.title('This is how I roll...')
     plt.ylabel('Relative frequency')
     plt.legend(loc = 'upper left')
