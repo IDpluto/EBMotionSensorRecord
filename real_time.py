@@ -23,7 +23,7 @@ def save_data(roll, pitch, yaw):
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
     yaw_r = "%.2f" %(yaw*rad2grad)
-    
+    print (roll_r)
     with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
