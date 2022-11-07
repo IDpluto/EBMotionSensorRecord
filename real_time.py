@@ -53,7 +53,7 @@ def quat_to_euler(x,y,z,w):
     
 while 1:
     line = ser.readline()
-    words = string.split(line,",")    # Fields split
+    words = str.split(line,",")    # Fields split
 
     if(-1 < words[0].find('*')) :
         data_from=1     # sensor data
