@@ -6,9 +6,9 @@ import signal
 from itertools import count
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-from pandas.core.indexes import interval
+import csv
+
+
 
 
 grad2rad = 3.141592/180.0
@@ -16,30 +16,23 @@ rad2grad = 180.0/3.141592
 cos = math.cos
 
 ser = serial.Serial('/dev/ttyUSB0', 921600)
-fig, (gx, ax) = plt.subplots(2,1)
-fig.set_size_inches((10, 5))
-fig.subplots_adjust(wspace = 0.9, hspace = 0.9)
-line1, = gx.plot([], [], lw=2)
-line2, = ax.plot([], [], lw=2, color='r')
-line = [line1, line2]
+fieldnames = ["roll", "pitch", "yaw"]
 
+def save_data(roll, pitch, yaw):
 
-def init():
-    return line1, line2,
-
-def animate(i):
-    tmp = ser.readline()
-    tmp = tmp.decode("ISO-8859-1")
-    tmp = tmp.split(',')
-    gyro_x = float(tmp[1])
-    gyro_y = float(tmp[2])
-    #gx.clear()
-    #ax.clear()
-    gx.plot(gyro_x, lw=2, color='r')
-    ax.plot(gyro_y, lw=2, color='r')
-    #line[0].set_data(gyro_x)
-    #line[1].set_data(gyro_y)
-    return line
+    roll_r = "%.2f" %(roll*rad2grad)
+    pitch_r = "%.2f" %(pitch*rad2grad)
+    yaw_r = "%.2f" %(yaw*rad2grad)
+    
+    with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
+        csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
+        info = {
+            "roll":roll_r,
+            "pitch":pitch_r,
+            "yaw":yaw_r
+        }
+        csv_writer.writerow(info)
+        time.sleep(1)
 
 def quat_to_euler(x,y,z,w):
     euler = [0.0,0.0,0.0]
@@ -54,7 +47,10 @@ def quat_to_euler(x,y,z,w):
     euler[2] = math.atan2(2.0*(y*z+x*w),(-sqx-sqy+sqz+sqw)) 
 
     return euler
-    
+
+with open('/home/dohlee/crc_project/data/data2.csv','w') as csv_file:
+        csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
+        csv_writer.writeheader()
 while 1:
     line = ser.readline()
     line = line.decode("ISO-8859-1")
@@ -86,9 +82,9 @@ while 1:
 
         if(data_format==1): #euler
             try:
-                roll = float(words[data_index]) *grad2rad
-                pitch = float(words[data_index+1]) *grad2rad
-                yaw = float(words[data_index+2]) *grad2rad
+                roll = float(words[data_index])*grad2rad
+                pitch = float(words[data_index+1])*grad2rad
+                yaw = float(words[data_index+2])*grad2rad
                 print(roll)
             except:
                 print (".")
@@ -105,9 +101,10 @@ while 1:
                 yaw   = Euler[2]
             except:
                 print (".")
+        save_data(roll,pitch,yaw)
+   
 
 ser.close
-#ani = FuncAnimation(fig , animate, blit=False, frames= 200, interval = 100)
-#plt.show()
+
     
 
