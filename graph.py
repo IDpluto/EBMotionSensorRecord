@@ -26,7 +26,7 @@ def animate(i):
     plt.plot(x_num, yaw, label = 'yaw', color = 'violet')
     plt.plot(x_num, acc_x, label = 'acc_x', color = 'dodgerblue')
     plt.plot(x_num, acc_y, label = 'acc_Y', color = 'red')
-    plt.plot(x_num, acc_z, label = 'acc_z', color = 'darkslateblue')
+    plt.plot(x_num, acc_z, label = 'acc_z', color = 'deepskyblue')
     plt.legend(loc = 'upper left')
     plt.tight_layout()
    
