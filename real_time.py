@@ -7,37 +7,32 @@ from itertools import count
 import pandas as pd
 import numpy as np
 import csv
-
-
-
+import matplotlib.pyplot as plt
 
 grad2rad = 3.141592/180.0
 rad2grad = 180.0/3.141592
 cos = math.cos
-
 ser = serial.Serial('/dev/ttyUSB0', 921600)
-fieldnames = ["sensor_id","roll", "pitch", "yaw", "acc_x", "acc_y", "acc_z"]
+
+lstX=[]
+lstY=[]
+
+plt.ion()
+fig = plt.figure()
+sf = fig.add_subplot(111)
+plt.xlim([0, 60])
+plt.ylim([300, 1000])
+line1, = sf.plot([], [], 'r-')
 
 def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z):
 
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
     yaw_r = "%.2f" %(yaw*rad2grad)
-    #print (roll_r)
-    with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
-        csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
-        
-        info = {
-            "sensor_id":sensor_id,
-            "roll":roll_r,
-            "pitch":pitch_r,
-            "yaw":yaw_r,
-            "acc_x":acc_x,
-            "acc_y":acc_y,
-            "acc_z":acc_z
-        }
-        csv_writer.writerow(info)
-        #time.sleep(1)
+
+    lstX.append(roll_r)
+    
+    
 
 def quat_to_euler(x,y,z,w):
     euler = [0.0,0.0,0.0]
@@ -53,9 +48,6 @@ def quat_to_euler(x,y,z,w):
 
     return euler
 
-with open('/home/dohlee/crc_project/data/data1.csv','w') as csv_file:
-        csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
-        csv_writer.writeheader()
 while 1:
     line = ser.readline()
     line = line.decode("ISO-8859-1")

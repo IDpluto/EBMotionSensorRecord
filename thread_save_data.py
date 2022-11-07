@@ -1,77 +1,121 @@
 import serial
+import math
+import string
 import time
 import signal
-import threading
+from itertools import count
+import pandas as pd
+import numpy as np
 import csv
 
+grad2rad = 3.141592/180.0
+rad2grad = 180.0/3.141592
+cos = math.cos
 
 
-line = [] #라인 단위로 데이터 가져올 리스트 변수
+ser = serial.Serial('/dev/ttyUSB0', 921600)
+fieldnames = ["x_num","sensor_id","roll", "pitch", "yaw", "acc_x", "acc_y", "acc_z"]
 
-port = '/dev/ttyUSB0' # 시리얼 포트
-baud = 921600 # 시리얼 보드레이트(통신속도)
+def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
 
-exitThread = False   # 쓰레드 종료용 변수
-fieldnames = ["gyro_x","gyro_y","gyro_z", "acc_x", "acc_y", "acc_z"]
-
-#쓰레드 종료용 시그널 함수
-def handler(signum, frame):
-     exitThread = True
-
-
-#데이터 처리할 함수
-def parsing_data(data):
-    
-    # 리스트 구조로 들어 왔기 때문에
-    # 작업하기 편하게 스트링으로 합침
-    tmp = ''.join(data)
-    tmp = tmp.split(',')
-    
+    roll_r = "%.2f" %(roll*rad2grad)
+    pitch_r = "%.2f" %(pitch*rad2grad)
+    yaw_r = "%.2f" %(yaw*rad2grad)
+    #print (roll_r)
     with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
+        
         info = {
-            "gyro_x":tmp[1],
-            "gyro_y":tmp[2],
-            "gyro_z":tmp[3],
-            "acc_x":tmp[4],
-            "acc_y":tmp[5],
-            "acc_z":tmp[6]
+            "x_num":x_count,
+            "sensor_id":sensor_id,
+            "roll":roll_r,
+            "pitch":pitch_r,
+            "yaw":yaw_r,
+            "acc_x":acc_x,
+            "acc_y":acc_y,
+            "acc_z":acc_z
         }
         csv_writer.writerow(info)
-        time.sleep(1)
-        
+        #time.sleep(1)
 
-#본 쓰레드
-def readThread(ser):
-    global line
-    global exitThread
+def quat_to_euler(x,y,z,w):
+    euler = [0.0,0.0,0.0]
     
-    with open('/home/dohlee/crc_project/data/data1.csv','w') as csv_file:
+    sqx=x*x
+    sqy=y*y
+    sqz=z*z
+    sqw=w*w
+  
+    euler[0] = math.asin(-2.0*(x*z-y*w)) 
+    euler[1] = math.atan2(2.0*(x*y+z*w),(sqx-sqy-sqz+sqw))
+    euler[2] = math.atan2(2.0*(y*z+x*w),(-sqx-sqy+sqz+sqw)) 
+
+    return euler
+x_count = 0
+with open('/home/dohlee/crc_project/data/data1.csv','w') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
         csv_writer.writeheader()
-    # 쓰레드 종료될때까지 계속 돌림
-    while True:
-        #데이터가 있있다면
-        for c in ser.read():
-            #line 변수에 차곡차곡 추가하여 넣는다.
-            line.append(chr(c))
+while 1:
+    line = ser.readline()
+    line = line.decode("ISO-8859-1")
+    words = line.split(",")    # Fields split
+    
+    if(-1 < words[0].find('*')) :
+        data_from=1     # sensor data
+        data_index=0
+        text = "ID:"+'*'
+        words[0]=words[0].replace('*','')
+        #print ("first:", text)
+    else :
+        if(-1 < words[0].find('-')) :
+            data_from=2  # rf_receiver data
+            data_index=1
+            text = "ID:"+words[0]
+            #print ("seconds:",text)
+        else :
+            data_from=0  # unknown format
 
-            if c == 10: #라인의 끝을 만나면..
-                #데이터 처리 함수로 호출
-                parsing_data(line)
 
-                #line 변수 초기화
-                del line[:]                
+    if(data_from!=0):
+        commoma = words[data_index].find('.') 
+        if(len(words[data_index][commoma:-1])==4): # �Ҽ��� 4�ڸ� �Ǻ�
+            data_format = 2  # quaternion
+        else :
+            data_format = 1 # euler
 
-if __name__ == "__main__":
-    #종료 시그널 등록
-    signal.signal(signal.SIGINT, handler)
 
-    #시리얼 열기
-    ser = serial.Serial(port, baud, timeout=0)
+        if(data_format==1): #euler
+            try:
+                roll = float(words[data_index])*grad2rad
+                pitch = float(words[data_index+1])*grad2rad
+                yaw = float(words[data_index+2])*grad2rad
+                acc_x = float(words[data_index+3])
+                acc_y = float(words[data_index+4])
+                acc_z = float(words[data_index+5])
+                #print(roll)
+            except:
+                print (".")
+        else: #(data_format==2)quaternion
+            try:
+                q0 = float(words[data_index])
+                q1 = float(words[data_index+1])
+                q2 = float(words[data_index+2])
+                q3 = float(words[data_index+3])
+                acc_x = float(words[data_index+4])
+                acc_y = float(words[data_index+5])
+                acc_z = float(words[data_index+6])
+                Euler = quat_to_euler(q0,q1,q2,q3)
 
-    #시리얼 읽을 쓰레드 생성
-    thread = threading.Thread(target=readThread, args=(ser,))
+                roll  = Euler[1]
+                pitch = Euler[0]
+                yaw   = Euler[2]
+            except:
+                print (".")
+        x_count +=1
+        save_data(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
+   
 
-    #시작!
-    thread.start()
+ser.close
+
+    
+
