@@ -31,7 +31,7 @@ def animate(i):
     plt.tight_layout()
    
 
-plt.figure(figsize=(5, 1))
+plt.figure(figsize=(1, 5))
 ani = FuncAnimation(plt.gcf() , animate, blit=False, frames= 200, interval = 100)
  
 plt.show()
