@@ -14,7 +14,7 @@ import math
 grad2rad = 3.141592/180.0
 rad2grad = 180.0/3.141592
 
-comport_num = raw_input("COM Port : ")
+comport_num = input("COM Port : ")
 comport_num = 'COM' + comport_num
 comport_baudrate = input("Baudrate : ")
 ser = serial.Serial(port=comport_num,baudrate=comport_baudrate)
