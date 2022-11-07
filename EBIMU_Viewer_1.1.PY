@@ -106,7 +106,7 @@ while 1:
 
     if(data_from!=0):
         commoma = words[data_index].find('.') 
-        if(len(words[data_index][commoma:-1])==4): # ¼Ò¼öºÎ 4ÀÚ¸® ÆÇº°
+        if(len(words[data_index][commoma:-1])==4): # ï¿½Ò¼ï¿½ï¿½ï¿½ 4ï¿½Ú¸ï¿½ ï¿½Çºï¿½
             data_format = 2  # quaternion
         else :
             data_format = 1 # euler
@@ -118,7 +118,7 @@ while 1:
                 pitch = float(words[data_index+1])*grad2rad
                 yaw = float(words[data_index+2])*grad2rad
             except:
-                print "."
+                print (".")
         else: #(data_format==2)quaternion
             try:
                 q0 = float(words[data_index])
