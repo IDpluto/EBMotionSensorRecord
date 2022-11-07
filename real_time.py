@@ -65,11 +65,13 @@ while 1:
         data_index=0
         text = "ID:"+'*'
         words[0]=words[0].replace('*','')
+        print ("first:", text)
     else :
         if(-1 < words[0].find('-')) :
             data_from=2  # rf_receiver data
             data_index=1
             text = "ID:"+words[0]
+            print ("seconds:",text)
         else :
             data_from=0  # unknown format
 
