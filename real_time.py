@@ -53,7 +53,7 @@ def quat_to_euler(x,y,z,w):
     
 while 1:
     line = ser.readline()
-    line = line.decode("ISO-8859-1").encode("utf-8")
+    line = line.decode("ISO-8859-1")
     words = line.split(",")    # Fields split
     
     if(-1 < words[0].find('*')) :
