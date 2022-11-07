@@ -32,7 +32,7 @@ def animate(i):
     plt.title('This is how I roll...')
     plt.ylabel('Relative frequency')
     plt.legend(loc = 'upper left')
-    plt.axis([1, None, 0, 6.0]) #Use for arbitrary number of trials
+    plt.axis([1, None, -10, 10]) #Use for arbitrary number of trials
     plt.tight_layout()
    
 plt.figure(figsize=(10, 5))
