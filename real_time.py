@@ -84,9 +84,9 @@ while 1:
 
         if(data_format==1): #euler
             try:
-                roll = float(words[data_index])*grad2rad
-                pitch = float(words[data_index+1])*grad2rad
-                yaw = float(words[data_index+2])*grad2rad
+                roll = float(words[data_index])#*grad2rad
+                pitch = float(words[data_index+1])#*grad2rad
+                yaw = float(words[data_index+2])#*grad2rad
                 print(roll)
             except:
                 print (".")
