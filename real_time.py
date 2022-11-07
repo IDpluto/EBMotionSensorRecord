@@ -10,6 +10,8 @@ from matplotlib.animation import FuncAnimation
 from pandas.core.indexes import interval
 import math
 
+grad2rad = 3.141592/180.0
+rad2grad = 180.0/3.141592
 
 ser = serial.Serial('/dev/ttyUSB0', 921600)
 fig, (gx, ax) = plt.subplots(2,1)
@@ -59,13 +61,13 @@ while 1:
     if(-1 < words[0].find('*')) :
         data_from=1     # sensor data
         data_index=0
-        L_id.text = "ID:"+'*'
+        text = "ID:"+'*'
         words[0]=words[0].replace('*','')
     else :
         if(-1 < words[0].find('-')) :
             data_from=2  # rf_receiver data
             data_index=1
-            L_id.text = "ID:"+words[0]
+            text = "ID:"+words[0]
         else :
             data_from=0  # unknown format
 
