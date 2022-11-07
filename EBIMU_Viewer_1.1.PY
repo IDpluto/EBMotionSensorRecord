@@ -131,7 +131,7 @@ while 1:
                 pitch = Euler[0]
                 yaw   = Euler[2]
             except:
-                print "."
+                print (".")
         
             
         axis=(cos(pitch)*cos(yaw),-cos(pitch)*sin(yaw),sin(pitch)) 
