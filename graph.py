@@ -12,7 +12,6 @@ def animate(i):
     # axis limits checking. Same as before, just for both axes
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
     x_num = data['x_num']
-    sensor_id = ['sensor_id']
     roll = data['roll']
     pitch = data['pitch']
     yaw = data['yaw']
@@ -30,9 +29,13 @@ def animate(i):
     plt.legend(loc = 'upper left')
     plt.tight_layout()
    
-
-
-plt.figure(figsize=(10, 5))
-ani = FuncAnimation(plt.gcf() , animate, blit=False, frames= 200, interval = 100)
+data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
+sensor_id = data['sensor_id']
+if (sensor_id == 'ID:100-0'):
+    plt.figure(figsize=(10, 5))
+    ani = FuncAnimation(plt.gcf() , animate, blit=False, frames= 200, interval = 100)
+    plt.show()
+else:
+    None
  
-plt.show()
+
