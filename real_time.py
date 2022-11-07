@@ -16,9 +16,9 @@ rad2grad = 180.0/3.141592
 cos = math.cos
 
 ser = serial.Serial('/dev/ttyUSB0', 921600)
-fieldnames = ["roll", "pitch", "yaw"]
+fieldnames = ["sensor_id","roll", "pitch", "yaw", "acc_x", "acc_y", "acc_z"]
 
-def save_data(roll, pitch, yaw):
+def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z):
 
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
@@ -28,9 +28,13 @@ def save_data(roll, pitch, yaw):
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         
         info = {
+            "sensor_id":sensor_id,
             "roll":roll_r,
             "pitch":pitch_r,
-            "yaw":yaw_r
+            "yaw":yaw_r,
+            "acc_x":acc_x,
+            "acc_y":acc_y,
+            "acc_z":acc_z
         }
         csv_writer.writerow(info)
         #time.sleep(1)
@@ -86,6 +90,9 @@ while 1:
                 roll = float(words[data_index])*grad2rad
                 pitch = float(words[data_index+1])*grad2rad
                 yaw = float(words[data_index+2])*grad2rad
+                acc_x = float(words[data_index+3])
+                acc_y = float(words[data_index+4])
+                acc_z = float(words[data_index+5])
                 #print(roll)
             except:
                 print (".")
@@ -95,6 +102,9 @@ while 1:
                 q1 = float(words[data_index+1])
                 q2 = float(words[data_index+2])
                 q3 = float(words[data_index+3])
+                acc_x = float(words[data_index+4])
+                acc_y = float(words[data_index+5])
+                acc_z = float(words[data_index+6])
                 Euler = quat_to_euler(q0,q1,q2,q3)
 
                 roll  = Euler[1]
@@ -102,8 +112,8 @@ while 1:
                 yaw   = Euler[2]
             except:
                 print (".")
-        print(float(words[data_index+3]))
-        save_data(roll,pitch,yaw)
+        
+        save_data(text, roll, pitch, yaw,acc_x, acc_y, acc_z)
    
 
 ser.close
