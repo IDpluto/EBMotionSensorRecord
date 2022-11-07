@@ -1,4 +1,5 @@
 import serial
+import math
 import string
 import time
 import signal
@@ -8,10 +9,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from pandas.core.indexes import interval
-import math
+
 
 grad2rad = 3.141592/180.0
 rad2grad = 180.0/3.141592
+cos = math.cos
 
 ser = serial.Serial('/dev/ttyUSB0', 921600)
 fig, (gx, ax) = plt.subplots(2,1)
@@ -47,9 +49,9 @@ def quat_to_euler(x,y,z,w):
     sqz=z*z
     sqw=w*w
   
-    euler[0] = asin(-2.0*(x*z-y*w)) 
-    euler[1] = atan2(2.0*(x*y+z*w),(sqx-sqy-sqz+sqw))
-    euler[2] = atan2(2.0*(y*z+x*w),(-sqx-sqy+sqz+sqw)) 
+    euler[0] = math.asin(-2.0*(x*z-y*w)) 
+    euler[1] = math.atan2(2.0*(x*y+z*w),(sqx-sqy-sqz+sqw))
+    euler[2] = math.atan2(2.0*(y*z+x*w),(-sqx-sqy+sqz+sqw)) 
 
     return euler
     
@@ -101,27 +103,7 @@ while 1:
                 yaw   = Euler[2]
             except:
                 print (".")
-        
-            
-        axis=(cos(pitch)*cos(yaw),-cos(pitch)*sin(yaw),sin(pitch)) 
-        up=(sin(roll)*sin(yaw)+cos(roll)*sin(pitch)*cos(yaw),sin(roll)*cos(yaw)-cos(roll)*sin(pitch)*sin(yaw),-cos(roll)*cos(pitch))
-        platform.axis=axis
-        platform.up=up
-        platform.length=0.6
-        platform.width=1
 
-        pitch_stick.rotate( axis=(0,1,0), angle = old_pitch-pitch)
-        old_pitch = pitch
-
-        roll_stick.rotate( axis=(-1,0,0), angle = old_roll-roll )
-        old_roll = roll
-
-        yaw_stick.rotate( axis=(0,0,1), angle = old_yaw-yaw )
-        old_yaw = yaw
-
-        L1.text = "%.2f" %(roll*rad2grad)
-        L2.text = "%.2f" %(pitch*rad2grad)
-        L3.text = "%.2f" %(yaw*rad2grad)
 ser.close
 #ani = FuncAnimation(fig , animate, blit=False, frames= 200, interval = 100)
 #plt.show()
