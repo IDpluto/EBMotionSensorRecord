@@ -4,7 +4,7 @@ import sys
 if hasattr(sys, "setdefaultencoding"): 
     sys.setdefaultencoding(sys.getfilesystemencoding()) 
 
-from visual import *
+#from visual import *
 from vpython import *
 import serial
 import string
