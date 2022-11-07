@@ -85,7 +85,7 @@ while 1:
                 roll = float(words[data_index])*grad2rad
                 pitch = float(words[data_index+1])*grad2rad
                 yaw = float(words[data_index+2])*grad2rad
-                print(roll)
+                #print(roll)
             except:
                 print (".")
         else: #(data_format==2)quaternion
