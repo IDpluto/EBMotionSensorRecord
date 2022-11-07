@@ -16,9 +16,9 @@ def animate(i):
     roll = data['roll']
     pitch = data['pitch']
     yaw = data['yaw']
-    acc_x = data['acc_x']
-    acc_y = data['acc_y']
-    acc_z = data['acc_z']
+    acc_x = data['acc_x'] * 1000
+    acc_y = data['acc_y'] * 1000
+    acc_z = data['acc_z'] * 1000
 
     plt.cla()
     plt.plot(x_num, roll, label = 'roll', color = 'black')
