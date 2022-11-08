@@ -52,14 +52,16 @@ def data_gen():
     #i = 0
     #counter = itertools.count()
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-    data = pd.DataFrame()
-    xnum = 1#data['x_num']
+    
+    xnum = data['x_num']
     roll = data['roll']
     pitch = data['pitch']
     yaw = data['yaw']
     acc_x = data['acc_x']
     acc_y = data['acc_y']
     acc_z = data['acc_z']
+    data = pd.DataFrame()
+    
     print(type(roll))
     
 
