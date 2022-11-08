@@ -12,23 +12,22 @@ from pandas.core.indexes import interval
 
 def animate(data):
     
-    hand_data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-    head_data =pd.read_csv('/home/dohlee/crc_project/data/data2.csv')
+    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
     
     
-    xnum = hand_data['x_num']
-    roll1 = hand_data['hand_roll']
-    pitch1 = hand_data['hand_pitch']
-    yaw1 = hand_data['hand_yaw']
-    acc_x1 = hand_data['hand_acc_x']
-    acc_y1 = hand_data['hand_acc_y']
-    acc_z1 = hand_data['hand_acc_z']
-    roll2 = head_data['head_roll']
-    pitch2 = head_data['head_pitch']
-    yaw2 = head_data['head_yaw']
-    acc_x2 = head_data['head_acc_x']
-    acc_y2 = head_data['head_acc_y']
-    acc_z2 = head_data['head_acc_z']
+    xnum = data['x_num']
+    roll1 = data['hand_roll']
+    pitch1 = data['hand_pitch']
+    yaw1 = data['hand_yaw']
+    acc_x1 = data['hand_acc_x']
+    acc_y1 = data['hand_acc_y']
+    acc_z1 = data['hand_acc_z']
+    roll2 = data['head_roll']
+    pitch2 = data['head_pitch']
+    yaw2 = data['head_yaw']
+    acc_x2 = data['head_acc_x']
+    acc_y2 = data['head_acc_y']
+    acc_z2 = data['head_acc_z']
     ax1.clear()
     ax2.clear()
     ax3.clear()

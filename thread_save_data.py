@@ -34,7 +34,7 @@ def save_data_hand(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
             "hand_acc_z":acc_z
         }
         csv_writer.writerow(info)
-        #time.sleep(1)
+        time.sleep(1)
 def save_data_head(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
 
     roll_r = "%.2f" %(roll*rad2grad)
@@ -53,7 +53,7 @@ def save_data_head(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
             "head_acc_z": acc_z
         }
         csv_writer.writerow(info)
-        #time.sleep(1)
+        time.sleep(1)
 
 def quat_to_euler(x,y,z,w):
     euler = [0.0,0.0,0.0]
@@ -88,7 +88,7 @@ while 1:
             data_from=2  # rf_receiver data
             data_index=1
             text = "ID:"+words[0]
-            #print ("seconds:",text)
+            print ("seconds:",words[0])
         else :
             data_from=0  # unknown format
 
@@ -100,7 +100,7 @@ while 1:
         else :
             data_format = 1 # euler
 
-
+        
         if(data_format==1): #euler
             try:
                 roll = float(words[data_index])*grad2rad
