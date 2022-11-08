@@ -50,20 +50,21 @@ def quat_to_euler(x,y,z,w):
 
 def data_gen():
     i = 0
-    counter = itertools.count()
-    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
+    while True:
+        counter = itertools.count()
+        data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
     
-    #xnum = data['x_num'].astype(int)
-    roll = data['roll'].astype(float)
-    pitch = data['pitch'].astype(float)
-    yaw = data['yaw'].astype(float)
-    acc_x = data['acc_x'].astype(float)
-    acc_y = data['acc_y'].astype(float)
-    acc_z = data['acc_z'].astype(float)
+        #xnum = data['x_num'].astype(int)
+        roll = data['roll'].astype(float)
+        pitch = data['pitch'].astype(float)
+        yaw = data['yaw'].astype(float)
+        acc_x = data['acc_x'].astype(float)
+        acc_y = data['acc_y'].astype(float)
+        acc_z = data['acc_z'].astype(float)
     
     
-    t = next(counter)
-    yield t, roll, pitch, yaw, acc_x, acc_y, acc_z
+        t = next(counter)
+        yield t, roll, pitch, yaw, acc_x, acc_y, acc_z
 
 
 
