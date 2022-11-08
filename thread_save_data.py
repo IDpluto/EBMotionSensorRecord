@@ -31,7 +31,14 @@ def save_data_hand(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
             "hand_yaw":yaw_r,
             "hand_acc_x":acc_x,
             "hand_acc_y":acc_y,
-            "hand_acc_z":acc_z
+            "hand_acc_z":acc_z,
+            "head_sensor_id": None,
+            "head_roll": None,
+            "head_pitch": None,
+            "head_yaw": None,
+            "head_acc_x": None,
+            "head_acc_y": None,
+            "head_acc_z": None
         }
         csv_writer.writerow(info)
         time.sleep(1)
@@ -44,6 +51,13 @@ def save_data_head(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
             "x_num":x_count,
+            "hand_sensor_id":None,
+            "hand_roll": None,
+            "hand_pitch": None,
+            "hand_yaw": None,
+            "hand_acc_x":None,
+            "hand_acc_y":None,
+            "hand_acc_z":None,
             "head_sensor_id": sensor_id,
             "head_roll": roll_r,
             "head_pitch": pitch_r,
