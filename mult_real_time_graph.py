@@ -46,7 +46,7 @@ if __name__ == '__main__':
     rad2grad = 180.0/3.141592
     cos = math.cos
     ser = serial.Serial('/dev/ttyUSB0', 921600)
-    fig, (ax1, ax2, ax3, ax4) = plt.subplots(4,1)
+    fig, (ax1, ax2) =plt.subplots(2,1) #ax3, ax4) = plt.subplots(4,1)
     
     ax1.set_ylim(-300, 300)
     ax1.grid()
