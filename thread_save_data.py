@@ -31,14 +31,7 @@ def save_data_hand(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
             "hand_yaw":yaw_r,
             "hand_acc_x":acc_x,
             "hand_acc_y":acc_y,
-            "hand_acc_z":acc_z,
-            "head_sensor_id": 0,
-            "head_roll": 0,
-            "head_pitch": 0,
-            "head_yaw": 0,
-            "head_acc_x": 0,
-            "head_acc_y": 0,
-            "head_acc_z": 0
+            "hand_acc_z":acc_z
         }
         csv_writer.writerow(info)
         #time.sleep(1)
@@ -50,14 +43,6 @@ def save_data_head(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
     with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
-            "x_num":x_count,
-            "hand_sensor_id":0,
-            "hand_roll":0,
-            "hand_pitch":0,
-            "hand_yaw":0,
-            "hand_acc_x":0,
-            "hand_acc_y":0,
-            "hand_acc_z":0,
             "head_sensor_id": sensor_id,
             "head_roll": roll_r,
             "head_pitch": pitch_r,
