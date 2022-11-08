@@ -31,6 +31,7 @@ def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
             "yaw":yaw_r,
             "acc_x":acc_x,
             "acc_y":acc_y,
+            "acc_z":acc_z,
             
         }
         csv_writer.writerow(info)
