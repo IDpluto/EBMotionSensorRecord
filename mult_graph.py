@@ -38,12 +38,16 @@ def animate(i):
     acc_y = data['acc_y']
     acc_z = data['acc_z']
     
-    line[0] .set_data(x_num, roll)
-    line[1] .set_data(x_num, pitch)
-    line[2] .set_data(x_num, yaw)
-    line[3] .set_data(x_num, acc_x)
-    line[4] .set_data(x_num, acc_y)
-    line[5] .set_data(x_num, acc_z)
+    ax1.plot(x_num,roll, lw=2, color = 'red')
+    ax1.plot(x_num, pitch, lw = 2, color = 'blue')
+    ax1.plot(x_num, yaw, lw = 2, color = 'orange')
+    ax2.plot(x_num, acc_x, lw = 2, color = 'red')
+    ax2.plot(x_num, acc_y, lw = 2, color = 'blue')
+    ax2.plot(x_num, acc_z, lw = 2, color = 'orange')
+
+
+
+ 
 
     return line
    
