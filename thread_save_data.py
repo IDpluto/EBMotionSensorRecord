@@ -82,7 +82,7 @@ while 1:
         data_index=0
         text = "ID:"+'*'
         words[0]=words[0].replace('*','')
-        print ("first:", text)
+        #print ("first:", text)
     else :
         if(-1 < words[0].find('-')) :
             data_from=2  # rf_receiver data
