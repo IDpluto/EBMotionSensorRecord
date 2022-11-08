@@ -74,7 +74,8 @@ def animate(data):
     acc_x = data['acc_x']
     acc_y = data['acc_y']
     acc_z = data['acc_z']
-
+    ax1.clear()
+    ax2.clear()
     ax1.plot(xnum, roll, lw=2, color = 'red')
     ax1.plot(xnum, pitch, lw=2, color = 'blue')
     ax1.plot(xnum, yaw, lw=2, color = 'orange')
