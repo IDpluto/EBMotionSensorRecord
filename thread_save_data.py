@@ -102,7 +102,7 @@ while 1:
             data_from=2  # rf_receiver data
             data_index=1
             text = "ID:"+words[0]
-            print ("seconds:",words[0][-3:])
+            print ("seconds:",words[0][-1:])
         else :
             data_from=0  # unknown format
 
