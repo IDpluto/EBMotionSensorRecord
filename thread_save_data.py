@@ -14,7 +14,7 @@ cos = math.cos
 
 
 ser = serial.Serial('/dev/ttyUSB0', 921600)
-fieldnames = ["x_num","sensor_id","roll", "pitch", "yaw", "acc_x", "acc_y", "acc_z"]
+fieldnames = ["x_num","hand_sensor_id","hand_roll", "hand_pitch", "hand_yaw", "hand_acc_x", "hand_acc_y", "hand_acc_z", "head_sensor_id","head_roll", "head_pitch", "head_yaw", "head_acc_x", "head_acc_y", "head_acc_z" ]
 
 def save_data_hand(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
 
