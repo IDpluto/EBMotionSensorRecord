@@ -148,7 +148,7 @@ if __name__ == '__main__':
 
     xdata, r_data, p_data, z_data, ax_data, ay_data, az_data = [], [], [], [], [], [], []
 
-    ani = animation.FuncAnimation(fig, animate, frames = data_gen, blit=False, interval=10,
+    ani = animation.FuncAnimation(fig, animate, frames = data_gen, blit=True, interval=10,
         repeat=False)
     plt.show()
 
