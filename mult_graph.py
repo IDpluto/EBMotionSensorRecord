@@ -8,7 +8,8 @@ import matplotlib.animation as animation
 from pandas.core.indexes import interval
 
 fig, (ax1, ax2) = plt.subplots(2,1) #, ax3, ax4) = plt.subplots(4,1)
-
+ax1.clear()
+ax2.clear()
 roll_line1, = ax1.plot([],[], lw=2, color = 'red')
 pitch_line1, = ax1.plot([], [], lw = 2, color = 'blue')
 yaw_line1, = ax1.plot([], [], lw = 2, color = 'orange')
