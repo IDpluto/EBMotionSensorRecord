@@ -59,6 +59,7 @@ def data_gen():
     acc_x = data['acc_x']
     acc_y = data['acc_y']
     acc_z = data['acc_z']
+    print(type(roll))
     
 
     yield x_num, float(roll), float(pitch), float(yaw), float(acc_x), float(acc_y), float(acc_z)
