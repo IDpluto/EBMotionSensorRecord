@@ -110,7 +110,8 @@ while 1:
             except:
                 print (".")
         x_count += 0.1
-        save_data_head(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
+        if words[0] == "100-0":
+            save_data_head(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
    
 
 ser.close
