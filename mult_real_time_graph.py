@@ -23,31 +23,6 @@ def quat_to_euler(x,y,z,w):
 
     return euler
 
-
-
-
-
-def data_gen():
-    #i = 0
-    #counter = itertools.count()
-    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-    
-    xnum = data['x_num']
-    roll = data['roll']
-    pitch = data['pitch']
-    yaw = data['yaw']
-    acc_x = data['acc_x']
-    acc_y = data['acc_y']
-    acc_z = data['acc_z']
-    
-    
-
-    yield xnum, roll, pitch, yaw, acc_x, acc_y, acc_z
-
-
-
-
-
 def animate(data):
     #x_num, roll, pitch, yaw, acc_x, acc_y, acc_z = data
     #xdata.append(x_num)
