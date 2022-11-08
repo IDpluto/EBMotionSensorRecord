@@ -22,7 +22,7 @@ acz_line1, = ax2.plot([], [], lw = 2, color = 'orange')
 #acy_line2, = ax4.plot([], [], lw = 2, color = 'blue')
 #acz_line2, = ax4.plot([], [], lw = 2, color = 'orange')
 
-line = [roll_line1, pitch_line1, yaw_line1, acx_line1, acy_line1]#, acz_line1, roll_line2, pitch_line2, yaw_line2, acx_line2, acy_line2, acz_line2]
+line = [roll_line1, pitch_line1, yaw_line1, acx_line1, acy_line1, acz_line1]#, roll_line2, pitch_line2, yaw_line2, acx_line2, acy_line2, acz_line2]
 
 
 
