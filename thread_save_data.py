@@ -131,9 +131,8 @@ while 1:
         x_count += 0.1
         if text == "ID:100-1":
          save_data_hand(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
-        else:
-            if text == "ID:100-0":
-                save_data_head(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
+        if text == "ID:100-0":
+            save_data_head(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
    
 
 ser.close
