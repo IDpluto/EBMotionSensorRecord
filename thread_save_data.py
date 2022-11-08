@@ -111,7 +111,7 @@ while 1:
                 print (".")
         x_count += 0.1
         
-        save_data_hand(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
+        save_data(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
 
    
 
