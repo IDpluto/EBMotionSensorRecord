@@ -10,44 +10,6 @@ import matplotlib.animation as animation
 from pandas.core.indexes import interval
 
 
-
-def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
-
-    roll_r = "%.2f" %(roll*rad2grad)
-    pitch_r = "%.2f" %(pitch*rad2grad)
-    yaw_r = "%.2f" %(yaw*rad2grad)
-    with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
-        csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
-        info = {
-            "x_num":x_count,
-            "sensor_id":sensor_id,
-            "roll":roll_r,
-            "pitch":pitch_r,
-            "yaw":yaw_r,
-            "acc_x":acc_x,
-            "acc_y":acc_y,
-            "acc_z":acc_z
-        }
-        csv_writer.writerow(info)
-        #time.sleep(1)
-def quat_to_euler(x,y,z,w):
-    euler = [0.0,0.0,0.0]
-    
-    sqx=x*x
-    sqy=y*y
-    sqz=z*z
-    sqw=w*w
-  
-    euler[0] = math.asin(-2.0*(x*z-y*w)) 
-    euler[1] = math.atan2(2.0*(x*y+z*w),(sqx-sqy-sqz+sqw))
-    euler[2] = math.atan2(2.0*(y*z+x*w),(-sqx-sqy+sqz+sqw)) 
-
-    return euler
-
-
-
-
-
 def data_gen():
     #i = 0
     counter = itertools.count()
@@ -60,7 +22,6 @@ def data_gen():
     acc_x = data['acc_x'].astype(float)
     acc_y = data['acc_y'].astype(float)
     acc_z = data['acc_z'].astype(float)
-    roll = 1
     
 
     yield xnum, roll, pitch, yaw, acc_x, acc_y, acc_z
