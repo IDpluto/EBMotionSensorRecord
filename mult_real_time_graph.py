@@ -32,19 +32,21 @@ def data_gen():
 
 def animate(data):
     x_num, roll, pitch, yaw, acc_x, acc_y, acc_z = data
-    xdata.append(x_num)
-    r_data.append(roll)
-    p_data.append(pitch)
-    z_data.append(yaw)
-    ax_data.append(acc_x)
-    ay_data.append(acc_y)
-    az_data.append(acc_z)
-    line[0].set_data(xdata, r_data)
-    line[1].set_data(xdata, p_data)
-    line[2].set_data(xdata, z_data)
-    line[3].set_data(xdata, ax_data)
-    line[4].set_data(xdata, ay_data)
-    line[5].set_data(xdata, az_data)
+    #xdata.append(x_num)
+    #r_data.append(roll)
+    #p_data.append(pitch)
+    #z_data.append(yaw)
+    #ax_data.append(acc_x)
+    #ay_data.append(acc_y)
+    #az_data.append(acc_z)
+    line[0].set_data(xdata, roll)
+    line[1].set_data(xdata, pitch)
+    line[2].set_data(xdata, yaw)
+    line[3].set_data(xdata, acc_x)
+    line[4].set_data(xdata, acc_y)
+    line[5].set_data(xdata, acc_z)
+    
+   
 
     return line,
 
