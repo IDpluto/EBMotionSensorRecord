@@ -34,8 +34,8 @@ def quat_to_euler(x,y,z,w):
 
 def data_gen():
     #i = 0
-    counter = itertools.count()
-    while 1:
+        counter = itertools.count()
+    #while 1:
         line = ser.readline()
         line = line.decode("ISO-8859-1")
         words = line.split(",")    # Fields split
@@ -95,7 +95,7 @@ def data_gen():
         yaw_r = "%.2f" %(yaw*rad2grad)
     
 
-    yield t, roll_r, pitch_r, yaw_r, acc_x, acc_y, acc_z
+        yield t, roll_r, pitch_r, yaw_r, acc_x, acc_y, acc_z
 
 
 
@@ -148,8 +148,7 @@ if __name__ == '__main__':
 
     xdata, r_data, p_data, z_data, ax_data, ay_data, az_data = [], [], [], [], [], [], []
 
-    ani = animation.FuncAnimation(fig, animate, frames = data_gen, blit=False, interval=10,
-        repeat=False)
+    ani = animation.FuncAnimation(fig, animate, frames = data_gen, blit=False, interval=10)
     plt.show()
 
     
