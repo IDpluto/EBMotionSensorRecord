@@ -78,6 +78,7 @@ def animate(data):
     ax_data.append(acc_x)
     ay_data.append(acc_y)
     az_data.append(acc_z)
+    print(type(x_num))
     line[0].set_data(xdata, r_data)
     line[1].set_data(xdata, p_data)
     line[2].set_data(xdata, z_data)
@@ -116,7 +117,7 @@ if __name__ == '__main__':
 
     xdata, r_data, p_data, z_data, ax_data, ay_data, az_data = [], [], [], [], [], [], []
 
-    ani = animation.FuncAnimation(fig, animate, frames = data_gen, blit=True, interval=10,
+    ani = animation.FuncAnimation(fig, animate, frames = data_gen, blit=False, interval=10,
         repeat=False)
     plt.show()
 
