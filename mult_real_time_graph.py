@@ -50,9 +50,10 @@ def quat_to_euler(x,y,z,w):
 
 def data_gen():
     i = 0
+    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
     while True:
         counter = itertools.count()
-        data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
+
     
         #xnum = data['x_num'].astype(int)
         roll = data['roll'].astype(float)
