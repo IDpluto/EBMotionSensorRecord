@@ -39,12 +39,7 @@ def animate(data):
     #ax_data.append(acc_x)
     #ay_data.append(acc_y)
     #az_data.append(acc_z)
-    line[0].set_data(x_num, roll)
-    line[1].set_data(x_num, pitch)
-    line[2].set_data(x_num, yaw)
-    line[3].set_data(x_num, acc_x)
-    line[4].set_data(x_num, acc_y)
-    line[5].set_data(x_num, acc_z)
+    ax1.plot(x_num, roll, lw=2, color = 'red')
     
    
 
