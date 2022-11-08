@@ -15,8 +15,8 @@ def animate(data):
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
     
     
-    sensor_id = data['sensor_id']
-    if (sensor_id == "ID:100-0"):
+    sensor = data['sensor_id']
+    if (sensor == "ID:100-0"):
         xnum = data['x_num']
         roll1 = data['roll']
         pitch1 = data['pitch']
@@ -25,7 +25,7 @@ def animate(data):
         acc_y1 = data['acc_y']
         acc_z1 = data['acc_z']
     else:
-        if (sensor_id == "ID:100-0"):
+        if (sensor == "ID:100-0"):
             xnum = data['x_num']
             roll2 = data['roll']
             pitch2 = data['pitch']
