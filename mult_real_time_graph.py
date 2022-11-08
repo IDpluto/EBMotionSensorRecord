@@ -16,18 +16,12 @@ def animate(data):
     
     
     xnum = data['x_num']
-    roll1 = data['hand_roll']
-    pitch1 = data['hand_pitch']
-    yaw1 = data['hand_yaw']
-    acc_x1 = data['hand_acc_x']
-    acc_y1 = data['hand_acc_y']
-    acc_z1 = data['hand_acc_z']
-    roll2 = data['head_roll']
-    pitch2 = data['head_pitch']
-    yaw2 = data['head_yaw']
-    acc_x2 = data['head_acc_x']
-    acc_y2 = data['head_acc_y']
-    acc_z2 = data['head_acc_z']
+    roll1 = data['roll']
+    pitch1 = data['pitch']
+    yaw1 = data['yaw']
+    acc_x1 = data['acc_x']
+    acc_y1 = data['acc_y']
+    acc_z1 = data['acc_z']
     ax1.clear()
     ax2.clear()
     ax3.clear()
@@ -45,10 +39,6 @@ def animate(data):
     ax4.plot(xnum, acc_y2, lw=2, color = 'blue')
     ax4.plot(xnum, acc_z2, lw=2, color = 'orange')
 
-
-
-
-    
 
 if __name__ == '__main__':
     

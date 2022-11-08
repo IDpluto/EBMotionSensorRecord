@@ -16,7 +16,7 @@ cos = math.cos
 ser = serial.Serial('/dev/ttyUSB0', 921600)
 fieldnames = ["x_num","hand_sensor_id","hand_roll", "hand_pitch", "hand_yaw", "hand_acc_x", "hand_acc_y", "hand_acc_z", "head_sensor_id","head_roll", "head_pitch", "head_yaw", "head_acc_x", "head_acc_y", "head_acc_z" ]
 
-def save_data_hand(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
+def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
 
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
@@ -25,46 +25,13 @@ def save_data_hand(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
             "x_num":x_count,
-            "hand_sensor_id":sensor_id,
-            "hand_roll":roll_r,
-            "hand_pitch":pitch_r,
-            "hand_yaw":yaw_r,
-            "hand_acc_x":acc_x,
-            "hand_acc_y":acc_y,
-            "hand_acc_z":acc_z,
-            "head_sensor_id": None,
-            "head_roll": None,
-            "head_pitch": None,
-            "head_yaw": None,
-            "head_acc_x": None,
-            "head_acc_y": None,
-            "head_acc_z": None
-        }
-        csv_writer.writerow(info)
-        time.sleep(1)
-def save_data_head(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
-
-    roll_r = "%.2f" %(roll*rad2grad)
-    pitch_r = "%.2f" %(pitch*rad2grad)
-    yaw_r = "%.2f" %(yaw*rad2grad)
-    with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
-        csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
-        info = {
-            "x_num":x_count,
-            "hand_sensor_id":None,
-            "hand_roll": None,
-            "hand_pitch": None,
-            "hand_yaw": None,
-            "hand_acc_x":None,
-            "hand_acc_y":None,
-            "hand_acc_z":None,
-            "head_sensor_id": sensor_id,
-            "head_roll": roll_r,
-            "head_pitch": pitch_r,
-            "head_yaw": yaw_r,
-            "head_acc_x": acc_x,
-            "head_acc_y": acc_y,
-            "head_acc_z": acc_z
+            "sensor_id":sensor_id,
+            "roll":roll_r,
+            "pitch":pitch_r,
+            "yaw":yaw_r,
+            "acc_x":acc_x,
+            "acc_y":acc_y,
+            
         }
         csv_writer.writerow(info)
         time.sleep(1)
