@@ -24,20 +24,20 @@ def animate(data):
     acc_z1 = data['acc_z']
     ax1.clear()
     ax2.clear()
-    ax3.clear()
-    ax4.clear()
+    #ax3.clear()
+    #ax4.clear()
     ax1.plot(xnum, roll1, lw=2, color = 'red')
     ax1.plot(xnum, pitch1, lw=2, color = 'blue')
     ax1.plot(xnum, yaw1, lw=2, color = 'orange')
     ax2.plot(xnum, acc_x1, lw=2, color = 'red')
     ax2.plot(xnum, acc_y1, lw=2, color = 'blue')
     ax2.plot(xnum, acc_z1, lw=2, color = 'orange')
-    ax3.plot(xnum, roll1, lw=2, color = 'red')
-    ax3.plot(xnum, pitch1, lw=2, color = 'blue')
-    ax3.plot(xnum, yaw1, lw=2, color = 'orange')
-    ax4.plot(xnum, acc_x1, lw=2, color = 'red')
-    ax4.plot(xnum, acc_y1, lw=2, color = 'blue')
-    ax4.plot(xnum, acc_z1, lw=2, color = 'orange')
+    #ax3.plot(xnum, roll1, lw=2, color = 'red')
+    #ax3.plot(xnum, pitch1, lw=2, color = 'blue')
+    #ax3.plot(xnum, yaw1, lw=2, color = 'orange')
+    #ax4.plot(xnum, acc_x1, lw=2, color = 'red')
+    #ax4.plot(xnum, acc_y1, lw=2, color = 'blue')
+    #ax4.plot(xnum, acc_z1, lw=2, color = 'orange')
 
 
 if __name__ == '__main__':
@@ -52,10 +52,10 @@ if __name__ == '__main__':
     ax1.grid()
     ax2.set_ylim(-3, 3)
     ax2.grid()
-    ax3.set_ylim(-300, 300)
-    ax3.grid()
-    ax4.set_ylim(-3, 3)
-    ax4.grid()
+    #ax3.set_ylim(-300, 300)
+    #ax3.grid()
+    #ax4.set_ylim(-3, 3)
+    #ax4.grid()
 
     #xdata, r_data, p_data, z_data, ax_data, ay_data, az_data = [], [], [], [], [], [], []
 
