@@ -32,12 +32,12 @@ def animate(data):
     ax2.plot(xnum, acc_x1, lw=2, color = 'red')
     ax2.plot(xnum, acc_y1, lw=2, color = 'blue')
     ax2.plot(xnum, acc_z1, lw=2, color = 'orange')
-    ax3.plot(xnum, roll2, lw=2, color = 'red')
-    ax3.plot(xnum, pitch2, lw=2, color = 'blue')
-    ax3.plot(xnum, yaw2, lw=2, color = 'orange')
-    ax4.plot(xnum, acc_x2, lw=2, color = 'red')
-    ax4.plot(xnum, acc_y2, lw=2, color = 'blue')
-    ax4.plot(xnum, acc_z2, lw=2, color = 'orange')
+    ax3.plot(xnum, roll1, lw=2, color = 'red')
+    ax3.plot(xnum, pitch1, lw=2, color = 'blue')
+    ax3.plot(xnum, yaw1, lw=2, color = 'orange')
+    ax4.plot(xnum, acc_x1, lw=2, color = 'red')
+    ax4.plot(xnum, acc_y1, lw=2, color = 'blue')
+    ax4.plot(xnum, acc_z1, lw=2, color = 'orange')
 
 
 if __name__ == '__main__':
