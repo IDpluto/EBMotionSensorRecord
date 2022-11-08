@@ -109,7 +109,7 @@ while 1:
                 yaw   = Euler[2]
             except:
                 print (".")
-        x_count +=1
+        x_count += 0.1
         save_data(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
    
 
