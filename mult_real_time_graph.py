@@ -22,6 +22,7 @@ def animate(data):
     acc_x1 = data['acc_x']
     acc_y1 = data['acc_y']
     acc_z1 = data['acc_z']
+
     ax1.clear()
     ax2.clear()
     #ax3.clear()
@@ -56,8 +57,6 @@ if __name__ == '__main__':
     #ax3.grid()
     #ax4.set_ylim(-3, 3)
     #ax4.grid()
-
-    #xdata, r_data, p_data, z_data, ax_data, ay_data, az_data = [], [], [], [], [], [], []
 
     ani = animation.FuncAnimation(plt.gcf(), animate, frames = 200, blit=False, interval=10,
         repeat=False)
