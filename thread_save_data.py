@@ -43,6 +43,7 @@ def save_data_head(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
     with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
+            "x_num":x_count,
             "head_sensor_id": sensor_id,
             "head_roll": roll_r,
             "head_pitch": pitch_r,
