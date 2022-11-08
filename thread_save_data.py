@@ -16,7 +16,7 @@ cos = math.cos
 ser = serial.Serial('/dev/ttyUSB0', 921600)
 fieldnames = ["x_num","sensor_id","roll", "pitch", "yaw", "acc_x", "acc_y", "acc_z"]
 
-def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
+def save_data_hand(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
 
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
@@ -25,13 +25,46 @@ def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
             "x_num":x_count,
-            "sensor_id":sensor_id,
-            "roll":roll_r,
-            "pitch":pitch_r,
-            "yaw":yaw_r,
-            "acc_x":acc_x,
-            "acc_y":acc_y,
-            "acc_z":acc_z
+            "hand_sensor_id":sensor_id,
+            "hand_roll":roll_r,
+            "hand_pitch":pitch_r,
+            "hand_yaw":yaw_r,
+            "hand_acc_x":acc_x,
+            "hand_acc_y":acc_y,
+            "hand_acc_z":acc_z,
+            "head_sensor_id": 0,
+            "head_roll": 0,
+            "head_pitch": 0,
+            "head_yaw": 0,
+            "head_acc_x": 0,
+            "head_acc_y": 0,
+            "head_acc_z": 0
+        }
+        csv_writer.writerow(info)
+        #time.sleep(1)
+def save_data_head(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
+
+    roll_r = "%.2f" %(roll*rad2grad)
+    pitch_r = "%.2f" %(pitch*rad2grad)
+    yaw_r = "%.2f" %(yaw*rad2grad)
+    with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
+        csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
+        info = {
+            "x_num":x_count,
+            "hand_sensor_id":0,
+            "hand_roll":0,
+            "hand_pitch":0,
+            "hand_yaw":0,
+            "hand_acc_x":0,
+            "hand_acc_y":0,
+            "hand_acc_z":0,
+            "head_sensor_id": sensor_id,
+            "head_roll": roll_r,
+            "head_pitch": pitch_r,
+            "head_yaw": yaw_r,
+            "head_acc_x": acc_x,
+            "head_acc_y": acc_y,
+            "head_acc_z": acc_z
         }
         csv_writer.writerow(info)
         #time.sleep(1)
@@ -110,7 +143,11 @@ while 1:
             except:
                 print (".")
         x_count += 0.1
-        save_data(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
+        if text == "ID:100-0":
+            save_data_hand(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
+        else:
+            save_data_head(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
+
    
 
 ser.close
