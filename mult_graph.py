@@ -53,7 +53,7 @@ def animate(i):
     return line
    
 
-ani = FuncAnimation(plt.gcf(), animate, frames = 200, blit=True, interval=10,
+ani = FuncAnimation(fig, animate, frames = 200, blit=True, interval=10,
     repeat=False)
 plt.show()
 
