@@ -10,9 +10,13 @@ import matplotlib.animation as animation
 from pandas.core.indexes import interval
 
 
-def data_gen():
-    #i = 0
-    counter = itertools.count()
+
+
+
+
+
+
+def animate(data):
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
     
     xnum = data['x_num'].astype(int)
@@ -22,16 +26,6 @@ def data_gen():
     acc_x = data['acc_x'].astype(float)
     acc_y = data['acc_y'].astype(float)
     acc_z = data['acc_z'].astype(float)
-    
-
-    yield xnum, roll, pitch, yaw, acc_x, acc_y, acc_z
-
-
-
-
-
-def animate(data):
-    x_num, roll, pitch, yaw, acc_x, acc_y, acc_z = data
     #xdata.append(x_num)
     #r_data.append(roll)
     #p_data.append(pitch)
@@ -39,7 +33,7 @@ def animate(data):
     #ax_data.append(acc_x)
     #ay_data.append(acc_y)
     #az_data.append(acc_z)
-    ax1.plot(x_num, roll, lw=2, color = 'red')
+    ax1.plot(xnum, roll, lw=2, color = 'red')
     
    
 
@@ -74,7 +68,7 @@ if __name__ == '__main__':
 
     xdata, r_data, p_data, z_data, ax_data, ay_data, az_data = [], [], [], [], [], [], []
 
-    ani = animation.FuncAnimation(fig, animate, frames = 1000, blit=False, interval=10,
+    ani = animation.FuncAnimation(fig, animate, frames = 200, blit=False, interval=10,
         repeat=False)
     plt.show()
 
