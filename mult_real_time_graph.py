@@ -63,7 +63,7 @@ def data_gen():
     print(type(roll))
     
 
-    yield xnum, float(roll), float(pitch), float(yaw), float(acc_x), float(acc_y), float(acc_z)
+    yield int(xnum), float(roll), float(pitch), float(yaw), float(acc_x), float(acc_y), float(acc_z)
 
 
 
@@ -78,12 +78,12 @@ def animate(data):
     ax_data.append(acc_x)
     ay_data.append(acc_y)
     az_data.append(acc_z)
-    line[0].set_data(xdata,r_data)
-    line[1].set_data(xdata ,p_data)
-    line[2].set_data(xdata ,z_data)
-    line[3].set_data(xdata ,ax_data)
-    line[4].set_data(xdata ,ay_data)
-    line[5].set_data(xdata ,az_data)
+    line[0].set_data(xdata, r_data)
+    line[1].set_data(xdata, p_data)
+    line[2].set_data(xdata, z_data)
+    line[3].set_data(xdata, ax_data)
+    line[4].set_data(xdata, ay_data)
+    line[5].set_data(xdata, az_data)
     return line,
 
 if __name__ == '__main__':
