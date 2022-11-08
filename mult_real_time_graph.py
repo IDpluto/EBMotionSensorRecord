@@ -117,7 +117,7 @@ if __name__ == '__main__':
     
     ax1.set_ylim(-300, 300)
     ax1.grid()
-    ax2.set_ylim(0, 3)
+    ax2.set_ylim(-3, 3)
     ax2.grid()
     ax3.set_ylim(-300, 300)
     ax3.grid()
