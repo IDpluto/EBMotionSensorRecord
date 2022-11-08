@@ -52,7 +52,7 @@ def data_gen():
     #i = 0
     #counter = itertools.count()
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-    data = pd.DataFrame()
+    #data = pd.DataFrame()
     xnum = data['x_num']
     roll = data['roll']
     pitch = data['pitch']
