@@ -52,7 +52,7 @@ def data_gen():
     #i = 0
     #counter = itertools.count()
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-    data = data.to_numpy()
+    
     xnum = data['x_num']
     roll = data['roll']
     pitch = data['pitch']
@@ -60,6 +60,14 @@ def data_gen():
     acc_x = data['acc_x']
     acc_y = data['acc_y']
     acc_z = data['acc_z']
+
+    xnum = xnum.to_numpy()
+    roll = roll.to_numpy()
+    pitch = pitch.to_numpy()
+    yaw = yaw.to_numpy()
+    acc_x = acc_x.to_numpy()
+    acc_y = acc_y.to_numpy()
+    acc_z = acc_z.to_numpy()
     
 
     yield int(xnum), float(roll), float(pitch), float(yaw), float(acc_x), float(acc_y), float(acc_z)
