@@ -3,7 +3,8 @@ from itertools import count
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
+#from matplotlib.animation import FuncAnimation
+import matplotlib.animation as animation
 from pandas.core.indexes import interval
 
 fig, (ax1, ax2, ax3, ax4) = plt.subplots(4,1)
@@ -46,8 +47,9 @@ def animate(i):
 
     return line
    
-plt.figure(figsize=(10, 5))
-ani = FuncAnimation(fig , animate, blit=False, frames= 200, interval = 100)
+
+ani = animation.FuncAnimation(fig, animate, frames = 200, blit=True, interval=10,
+    repeat=False)
 plt.show()
 
     
