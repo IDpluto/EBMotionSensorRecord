@@ -15,7 +15,7 @@ def animate(data):
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
     
     
-    sensor = data['sensor_id']
+    sensor = data['sensor_id'].astype(str)
     if (sensor == "ID:100-0"):
         xnum = data['x_num']
         roll1 = data['roll']
