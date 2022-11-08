@@ -60,7 +60,7 @@ def data_gen():
     acc_x = data['acc_x'].astype(float)
     acc_y = data['acc_y'].astype(float)
     acc_z = data['acc_z'].astype(float)
-    roll = counter
+    roll = 1
     
 
     yield xnum, roll, pitch, yaw, acc_x, acc_y, acc_z
