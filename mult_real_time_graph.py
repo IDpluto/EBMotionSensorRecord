@@ -43,7 +43,7 @@ def data_gen():
     
     
 
-    yield xnum, roll, pitch, yaw, acc_x, acc_y, acc_z
+    yield int(xnum), float(roll), float(pitch), float(yaw), float(acc_x), float(acc_y), float(acc_z)
 
 
 
