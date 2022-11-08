@@ -102,7 +102,7 @@ while 1:
             data_from=2  # rf_receiver data
             data_index=1
             text = "ID:"+words[0]
-            print ("seconds:",words[0][-1:])
+            
         else :
             data_from=0  # unknown format
 
@@ -143,10 +143,10 @@ while 1:
             except:
                 print (".")
         x_count += 0.1
-        if text == "ID:100-1":
+        if 0 == words[0][-1:]:
          save_data_hand(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
         else:
-            if text == "ID:100-0":
+            if 1 == words[0][-1:]:
                 save_data_head(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
    
 
