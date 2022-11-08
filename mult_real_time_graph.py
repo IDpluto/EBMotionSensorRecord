@@ -121,7 +121,7 @@ if __name__ == '__main__':
     ax2.grid()
     ax3.set_ylim(-300, 300)
     ax3.grid()
-    ax4.set_ylim(0, 3)
+    ax4.set_ylim(-3, 3)
     ax4.grid()
 
     #xdata, r_data, p_data, z_data, ax_data, ay_data, az_data = [], [], [], [], [], [], []
