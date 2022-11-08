@@ -40,7 +40,7 @@ def save_data_head(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
     yaw_r = "%.2f" %(yaw*rad2grad)
-    with open('/home/dohlee/crc_project/data/data2.csv','a') as csv_file:
+    with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
             "x_num":x_count,
@@ -70,9 +70,6 @@ def quat_to_euler(x,y,z,w):
     return euler
 x_count = 0
 with open('/home/dohlee/crc_project/data/data1.csv','w') as csv_file:
-        csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
-        csv_writer.writeheader()
-with open('/home/dohlee/crc_project/data/data2.csv','w') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
         csv_writer.writeheader()
 while 1:
@@ -132,11 +129,7 @@ while 1:
             except:
                 print (".")
         x_count += 0.1
-        if words[0] == "100-0":
-            save_data_hand(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
-        if words[0] == "100-1":
-            save_data_head(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
-
+        save_data_hand(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
    
 
 ser.close
