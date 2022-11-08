@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from pandas.core.indexes import interval
 
-fig, (ax1, ax2, ax3, ax4) = plt.subplots(4,1)
+fig, (ax1, ax2) = plt.subplots(2,1) #, ax3, ax4) = plt.subplots(4,1)
 
 roll_line1, = ax1.plot([],[], lw=2, color = 'red')
 pitch_line1, = ax1.plot([], [], lw = 2, color = 'blue')
@@ -15,12 +15,12 @@ yaw_line1, = ax1.plot([], [], lw = 2, color = 'orange')
 acx_line1, = ax2.plot([], [], lw = 2, color = 'red')
 acy_line1, = ax2.plot([], [], lw = 2, color = 'blue')
 acz_line1, = ax2.plot([], [], lw = 2, color = 'orange')
-roll_line2, = ax3.plot([], [], lw = 2, color = 'red')
-pitch_line2, = ax3.plot([], [], lw = 2, color = 'blue')
-yaw_line2, = ax3.plot([], [], lw = 2, color = 'orange')
-acx_line2, = ax4.plot([], [], lw = 2, color = 'red')
-acy_line2, = ax4.plot([], [], lw = 2, color = 'blue')
-acz_line2, = ax4.plot([], [], lw = 2, color = 'orange')
+#roll_line2, = ax3.plot([], [], lw = 2, color = 'red')
+#pitch_line2, = ax3.plot([], [], lw = 2, color = 'blue')
+#yaw_line2, = ax3.plot([], [], lw = 2, color = 'orange')
+#acx_line2, = ax4.plot([], [], lw = 2, color = 'red')
+#acy_line2, = ax4.plot([], [], lw = 2, color = 'blue')
+#acz_line2, = ax4.plot([], [], lw = 2, color = 'orange')
 
 line = [roll_line1, pitch_line1, yaw_line1, acx_line1, acy_line1]#, acz_line1, roll_line2, pitch_line2, yaw_line2, acx_line2, acy_line2, acz_line2]
 
