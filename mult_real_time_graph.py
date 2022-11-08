@@ -49,11 +49,11 @@ def quat_to_euler(x,y,z,w):
 
 
 def data_gen():
-    #i = 0
-    #counter = itertools.count()
+    i = 0
+    counter = itertools.count()
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
     
-    xnum = data['x_num'].astype(int)
+    #xnum = data['x_num'].astype(int)
     roll = data['roll'].astype(float)
     pitch = data['pitch'].astype(float)
     yaw = data['yaw'].astype(float)
@@ -62,8 +62,8 @@ def data_gen():
     acc_z = data['acc_z'].astype(float)
     
     
-
-    yield xnum, roll, pitch, yaw, acc_x, acc_y, acc_z
+    t = next(counter)
+    yield t, roll, pitch, yaw, acc_x, acc_y, acc_z
 
 
 
@@ -84,6 +84,7 @@ def animate(data):
     line[3].set_data(xdata, ax_data)
     line[4].set_data(xdata, ay_data)
     line[5].set_data(xdata, az_data)
+
     return line,
 
 if __name__ == '__main__':
@@ -105,8 +106,8 @@ if __name__ == '__main__':
     #acx_line2, = ax4.plot([], [], lw = 2, color = 'red')
     #acy_line2, = ax4.plot([], [], lw = 2, color = 'blue')
     #acz_line2, = ax4.plot([], [], lw = 2, color = 'orange')
-
     line = [roll_line1, pitch_line1, yaw_line1, acx_line1, acy_line1, acz_line1]#, roll_line2, pitch_line2, yaw_line2, acx_line2, acy_line2, acz_line2]   
+    
     ax1.set_ylim(-300, 300)
     ax1.grid()
     ax2.set_ylim(0, 3)
