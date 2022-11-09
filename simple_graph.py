@@ -24,7 +24,7 @@ def animate(data):
     acc_y = data['acc_y']
     acc_z = data['acc_z']
 
-    if (sensor == 1):
+    if (sensor.all() == 1):
         try:
             roll1 = roll
             pitch1 = pitch
