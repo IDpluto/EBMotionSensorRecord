@@ -34,8 +34,6 @@ def data_gen():
 def animate(data):
     xnum, roll1, pitch1, yaw1, acc_x1, acc_y1, acc_z1 = data
     
-
-
     ax1.clear()
     ax2.clear()
     #ax3.clear()
@@ -78,7 +76,7 @@ if __name__ == '__main__':
 
     #ani = animation.FuncAnimation(fig, animate, frames = 500, blit=True, interval=10,
     #    init_func=init, repeat=False)
-    ani = animation.FuncAnimation(fig, animate, data_gen(), init_func=init,
+    ani = animation.FuncAnimation(fig, animate, data_gen(),
                               interval=25, blit=True)
 
     plt.show()
