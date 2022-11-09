@@ -18,13 +18,9 @@ def init():
     l_acc_z1.set_data([], [])
     return l_roll1, l_pitch1, l_yaw1, l_acc_x1, l_acc_y1, l_acc_z1,
 
-
-def animate(data):
-    
+def data_gen():
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-    
-    
-  
+
     xnum = data['x_num']
     roll1 = data['roll']
     pitch1 = data['pitch']
@@ -32,6 +28,11 @@ def animate(data):
     acc_x1 = data['acc_x']
     acc_y1 = data['acc_y']
     acc_z1 = data['acc_z']
+    yield xnum, roll1, pitch1, yaw1, acc_x1, acc_y1, acc_z1,
+
+def animate(data):
+    xnum, roll1, pitch1, yaw1, acc_x1, acc_y1, acc_z1 = data
+    
 
 
     ax1.clear()
