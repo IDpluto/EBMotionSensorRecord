@@ -19,9 +19,8 @@ def init():
     return l_roll1, l_pitch1, l_yaw1, l_acc_x1, l_acc_y1, l_acc_z1,
 
 def data_gen():
+    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
     while True:
-        data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-
         xnum = data['x_num']
         roll1 = data['roll']
         pitch1 = data['pitch']
