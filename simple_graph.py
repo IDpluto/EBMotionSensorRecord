@@ -95,7 +95,7 @@ if __name__ == '__main__':
 
     ani = animation.FuncAnimation(fig, animate, frames = 200, blit=False, interval=10,
         repeat=False)
-    fig.show()
+    plt.show()
 
     
  

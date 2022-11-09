@@ -15,42 +15,32 @@ def animate(data):
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
     
     
-    sensor = data['sensor_id'].astype(str)
-    if (sensor == "ID:100-0"):
-        xnum = data['x_num']
-        roll1 = data['roll']
-        pitch1 = data['pitch']
-        yaw1 = data['yaw']
-        acc_x1 = data['acc_x']
-        acc_y1 = data['acc_y']
-        acc_z1 = data['acc_z']
-    else:
-        if (sensor == "ID:100-0"):
-            xnum = data['x_num']
-            roll2 = data['roll']
-            pitch2 = data['pitch']
-            yaw2 = data['yaw']
-            acc_x2 = data['acc_x']
-            acc_y2 = data['acc_y']
-            acc_z2 = data['acc_z']
+  
+    xnum = data['x_num']
+    roll1 = data['roll']
+    pitch1 = data['pitch']
+    yaw1 = data['yaw']
+    acc_x1 = data['acc_x']
+    acc_y1 = data['acc_y']
+    acc_z1 = data['acc_z']
 
 
     ax1.clear()
     ax2.clear()
-    ax3.clear()
-    ax4.clear()
+    #ax3.clear()
+    #ax4.clear()
     ax1.plot(xnum, roll1, lw=2, color = 'red')
     ax1.plot(xnum, pitch1, lw=2, color = 'blue')
     ax1.plot(xnum, yaw1, lw=2, color = 'orange')
     ax2.plot(xnum, acc_x1, lw=2, color = 'red')
     ax2.plot(xnum, acc_y1, lw=2, color = 'blue')
     ax2.plot(xnum, acc_z1, lw=2, color = 'orange')
-    ax3.plot(xnum, roll2, lw=2, color = 'red')
-    ax3.plot(xnum, pitch2, lw=2, color = 'blue')
-    ax3.plot(xnum, yaw2, lw=2, color = 'orange')
-    ax4.plot(xnum, acc_x2, lw=2, color = 'red')
-    ax4.plot(xnum, acc_y2, lw=2, color = 'blue')
-    ax4.plot(xnum, acc_z2, lw=2, color = 'orange')
+    #ax3.plot(xnum, roll2, lw=2, color = 'red')
+    #ax3.plot(xnum, pitch2, lw=2, color = 'blue')
+    #ax3.plot(xnum, yaw2, lw=2, color = 'orange')
+    #ax4.plot(xnum, acc_x2, lw=2, color = 'red')
+    #ax4.plot(xnum, acc_y2, lw=2, color = 'blue')
+    #ax4.plot(xnum, acc_z2, lw=2, color = 'orange')
 
 
 if __name__ == '__main__':
