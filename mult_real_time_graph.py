@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
     #ani = animation.FuncAnimation(fig, animate, frames = 500, blit=True, interval=10,
     #    init_func=init, repeat=False)
-    ani = animation.FuncAnimation(fig, animate, np.arange(1, 200), init_func=init,
+    ani = animation.FuncAnimation(fig, animate, data_gen(), init_func=init,
                               interval=25, blit=True)
 
     plt.show()
