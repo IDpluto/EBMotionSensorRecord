@@ -41,6 +41,7 @@ def animate(data):
     #ax4.plot(xnum, acc_x2, lw=2, color = 'red')
     #ax4.plot(xnum, acc_y2, lw=2, color = 'blue')
     #ax4.plot(xnum, acc_z2, lw=2, color = 'orange')
+    return line,
 
 
 if __name__ == '__main__':
