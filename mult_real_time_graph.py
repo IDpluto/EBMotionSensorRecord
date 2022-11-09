@@ -10,13 +10,13 @@ import matplotlib.animation as animation
 from pandas.core.indexes import interval
 
 def init():
-    line[0].set_data([], [])
-    line[1].set_data([], [])
-    line[2].set_data([], [])
-    line[3].set_data([], [])
-    line[4].set_data([], [])
-    line[5].set_data([], [])
-    return line,
+    l_roll1.set_data([], [])
+    l_pitch1.set_data([], [])
+    l_yaw1.set_data([], [])
+    l_acc_x1.set_data([], [])
+    l_acc_y1.set_data([], [])
+    l_acc_z1.set_data([], [])
+    return l_roll1, l_pitch1, l_yaw1, l_acc_x1, l_acc_y1, l_acc_z1
 
 
 def animate(data):
@@ -38,19 +38,19 @@ def animate(data):
     ax2.clear()
     #ax3.clear()
     #ax4.clear()
-    line[0].set_data(xnum, roll1)
-    line[1].set_data(xnum, pitch1)
-    line[2].set_data(xnum, yaw1)
-    line[3].set_data(xnum, acc_x1)
-    line[4].set_data(xnum, acc_y1)
-    line[5].set_data(xnum, acc_z1)
+    l_roll1.set_data(xnum, roll1)
+    l_pitch1.set_data(xnum, pitch1)
+    l_yaw1.set_data(xnum, yaw1)
+    l_acc_x1.set_data(xnum, acc_x1)
+    l_acc_y1.set_data(xnum, acc_y1)
+    l_acc_z1.set_data(xnum, acc_z1)
     #ax3.plot(xnum, roll2, lw=2, color = 'red')
     #ax3.plot(xnum, pitch2, lw=2, color = 'blue')
     #ax3.plot(xnum, yaw2, lw=2, color = 'orange')
     #ax4.plot(xnum, acc_x2, lw=2, color = 'red')
     #ax4.plot(xnum, acc_y2, lw=2, color = 'blue')
     #ax4.plot(xnum, acc_z2, lw=2, color = 'orange')
-    return line[0], line[1], line[2], line[3], line[4], line[5]
+    return 
 
 
 if __name__ == '__main__':
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     l_acc_y1, = ax2.plot([], [], lw=2, color = 'blue')
     l_acc_z1, = ax2.plot([], [], lw=2, color = 'orange')
 
-    line = [l_roll1, l_pitch1, l_yaw1, l_acc_x1, l_acc_y1, l_acc_z1]
+
     
     ax1.set_ylim(-300, 300)
     ax1.grid()
