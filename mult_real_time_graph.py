@@ -16,7 +16,7 @@ def init():
     l_acc_x1.set_data([], [])
     l_acc_y1.set_data([], [])
     l_acc_z1.set_data([], [])
-    return l_roll1, l_pitch1, l_yaw1, l_acc_x1, l_acc_y1, l_acc_z1
+    return l_roll1, l_pitch1, l_yaw1, l_acc_x1, l_acc_y1, l_acc_z1,
 
 
 def animate(data):
