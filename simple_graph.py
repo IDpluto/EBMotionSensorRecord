@@ -14,27 +14,31 @@ from pandas.core.indexes import interval
 def animate(data):
     
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-    
-    
-    sensor = data['sensor_id']
 
-    if (sensor == True):
-        xnum = data['x_num']
-        roll1 = data['roll']
-        pitch1 = data['pitch']
-        yaw1 = data['yaw']
-        acc_x1 = data['acc_x']
-        acc_y1 = data['acc_y']
-        acc_z1 = data['acc_z']
+    sensor = data['sensor_id']
+    xnum = data['x_num']
+    roll = data['roll']
+    pitch = data['pitch']
+    yaw = data['yaw']
+    acc_x = data['acc_x']
+    acc_y = data['acc_y']
+    acc_z = data['acc_z']
+
+    if (sensor == 1):
+        roll1 = roll
+        pitch1 = pitch
+        yaw1 = yaw
+        acc_x1 = acc_x
+        acc_y1 = acc_y
+        acc_z1 = acc_z
     else:
-        if (sensor == False):
-            xnum = data['x_num']
-            roll2 = data['roll']
-            pitch2 = data['pitch']
-            yaw2 = data['yaw']
-            acc_x2 = data['acc_x']
-            acc_y2 = data['acc_y']
-            acc_z2 = data['acc_z']
+        if (sensor == 0):
+            roll2 = roll
+            pitch2 = pitch
+            yaw2 = yaw
+            acc_x2 = acc_x
+            acc_y2 = acc_y
+            acc_z2 = acc_z
 
     line[0].set_data(xnum, roll1)
     line[1].set_data(xnum, pitch1)
