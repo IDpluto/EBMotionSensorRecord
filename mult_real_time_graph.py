@@ -29,8 +29,7 @@ def data_gen():
         acc_x1 = data['acc_x']
         acc_y1 = data['acc_y']
         acc_z1 = data['acc_z']
-    
-    yield xnum, roll1, pitch1, yaw1, acc_x1, acc_y1, acc_z1,
+        yield xnum, roll1, pitch1, yaw1, acc_x1, acc_y1, acc_z1,
 
 def animate(data):
     xnum, roll1, pitch1, yaw1, acc_x1, acc_y1, acc_z1 = data
