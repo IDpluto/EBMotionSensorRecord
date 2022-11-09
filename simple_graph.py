@@ -32,6 +32,12 @@ def animate(data):
             acc_x1 = acc_x
             acc_y1 = acc_y
             acc_z1 = acc_z
+            line[0].set_data(xnum, roll1)
+            line[1].set_data(xnum, pitch1)
+            line[2].set_data(xnum, yaw1)
+            line[3].set_data(xnum, acc_x1)
+            line[4].set_data(xnum, acc_y1)
+            line[5].set_data(xnum, acc_z1)
         except:
             print ("false")
     else:
@@ -42,21 +48,14 @@ def animate(data):
             acc_x2 = acc_x
             acc_y2 = acc_y
             acc_z2 = acc_z
+            line[6].set_data(xnum, roll2)
+            line[7].set_data(xnum, pitch2)
+            line[8].set_data(xnum, yaw2)
+            line[9].set_data(xnum, acc_x2)
+            line[10].set_data(xnum, acc_y2)
+            line[11].set_data(xnum, acc_z2)
         except:
             print ("false")
-
-    line[0].set_data(xnum, roll1)
-    line[1].set_data(xnum, pitch1)
-    line[2].set_data(xnum, yaw1)
-    line[3].set_data(xnum, acc_x1)
-    line[4].set_data(xnum, acc_y1)
-    line[5].set_data(xnum, acc_z1)
-    line[6].set_data(xnum, roll2)
-    line[7].set_data(xnum, pitch2)
-    line[8].set_data(xnum, yaw2)
-    line[9].set_data(xnum, acc_x2)
-    line[10].set_data(xnum, acc_y2)
-    line[11].set_data(xnum, acc_z2)
 
     return line,
 
