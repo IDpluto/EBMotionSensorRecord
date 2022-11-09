@@ -74,10 +74,10 @@ if __name__ == '__main__':
     ax2.set_ylim(-3, 3)
     ax2.grid()
 
-    #ani = animation.FuncAnimation(fig, animate, frames = 500, blit=True, interval=10,
-    #    init_func=init, repeat=False)
-    ani = animation.FuncAnimation(fig, animate, data_gen,
-                              interval=25, blit=True)
+    ani = animation.FuncAnimation(fig, animate, data_gen, blit=True, interval=10,
+        init_func=init, repeat=False)
+    #ani = animation.FuncAnimation(fig, animate, data_gen,
+    #                          interval=25, blit=True)
 
     plt.show()
 
