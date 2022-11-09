@@ -10,6 +10,7 @@ import matplotlib.animation as animation
 from pandas.core.indexes import interval
 
 
+
 def animate(data):
     
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
@@ -34,23 +35,22 @@ def animate(data):
             acc_y2 = data['acc_y']
             acc_z2 = data['acc_z']
 
+    line[0].set_data(xnum, roll1)
+    line[1].set_data(xnum, pitch1)
+    line[2].set_data(xnum, yaw1)
+    line[3].set_data(xnum, acc_x1)
+    line[4].set_data(xnum, acc_y1)
+    line[5].set_data(xnum, acc_z1)
+    line[6].set_data(xnum, roll2)
+    line[7].set_data(xnum, pitch2)
+    line[8].set_data(xnum, yaw2)
+    line[9].set_data(xnum, acc_x2)
+    line[10].set_data(xnum, acc_y2)
+    line[11].set_data(xnum, acc_z2)
 
-    ax1.clear()
-    ax2.clear()
-    ax3.clear()
-    ax4.clear()
-    ax1.plot(xnum, roll1, lw=2, color = 'red')
-    ax1.plot(xnum, pitch1, lw=2, color = 'blue')
-    ax1.plot(xnum, yaw1, lw=2, color = 'orange')
-    ax2.plot(xnum, acc_x1, lw=2, color = 'red')
-    ax2.plot(xnum, acc_y1, lw=2, color = 'blue')
-    ax2.plot(xnum, acc_z1, lw=2, color = 'orange')
-    ax3.plot(xnum, roll2, lw=2, color = 'red')
-    ax3.plot(xnum, pitch2, lw=2, color = 'blue')
-    ax3.plot(xnum, yaw2, lw=2, color = 'orange')
-    ax4.plot(xnum, acc_x2, lw=2, color = 'red')
-    ax4.plot(xnum, acc_y2, lw=2, color = 'blue')
-    ax4.plot(xnum, acc_z2, lw=2, color = 'orange')
+    return line,
+
+
 
 
 if __name__ == '__main__':
@@ -60,6 +60,20 @@ if __name__ == '__main__':
     cos = math.cos
     ser = serial.Serial('/dev/ttyUSB0', 921600)
     fig, (ax1, ax2 , ax3, ax4) = plt.subplots(4,1)
+    l_roll1, = ax1.plot([], [], lw=2, color = 'red')
+    l_pitch1, = ax1.plot([], [], lw=2, color = 'blue')
+    l_yaw1, = ax1.plot([], [], lw=2, color = 'orange')
+    l_acc_x1, = ax2.plot([], [], lw=2, color = 'red')
+    l_acc_y1, = ax2.plot([], [], lw=2, color = 'blue')
+    l_acc_z1, = ax2.plot([], [], lw=2, color = 'orange')
+    l_roll2, = ax3.plot([], [], lw=2, color = 'red')
+    l_pitch2, = ax3.plot([], [], lw=2, color = 'blue')
+    l_yaw2, = ax3.plot([], [], lw=2, color = 'orange')
+    l_acc_x2, = ax4.plot([], [], lw=2, color = 'red')
+    l_acc_y2, = ax4.plot([], [], lw=2, color = 'blue')
+    l_acc_z2, = ax4.plot([], [], lw=2, color = 'orange')
+
+    line = [l_roll1, l_pitch1, l_yaw1, l_acc_x1, l_acc_y1, l_acc_z1, l_roll2, l_pitch2, l_yaw2, l_acc_x2, l_acc_y2, l_acc_z2] 
     
     ax1.set_ylim(-300, 300)
     ax1.grid()
@@ -70,7 +84,7 @@ if __name__ == '__main__':
     ax4.set_ylim(-3, 3)
     ax4.grid()
 
-    ani = animation.FuncAnimation(fig, animate, frames = 200, blit=False, interval=10,
+    ani = animation.FuncAnimation(fig, animate, frames = 200, blit=True, interval=10,
         repeat=False)
     plt.show()
 
