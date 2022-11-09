@@ -17,7 +17,8 @@ def animate(data):
     
     
     sensor = data['sensor_id']
-    if (sensor == '1'):
+
+    if (sensor == True):
         xnum = data['x_num']
         roll1 = data['roll']
         pitch1 = data['pitch']
@@ -26,7 +27,7 @@ def animate(data):
         acc_y1 = data['acc_y']
         acc_z1 = data['acc_z']
     else:
-        if (sensor == '0'):
+        if (sensor == False):
             xnum = data['x_num']
             roll2 = data['roll']
             pitch2 = data['pitch']
