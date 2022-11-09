@@ -65,7 +65,7 @@ if __name__ == '__main__':
     ax2.set_ylim(-3, 3)
     ax2.grid()
 
-    ani = animation.FuncAnimation(plt.gcf(), animate, frames = 200, blit=True, interval=10,
+    ani = animation.FuncAnimation(fig, animate, frames = 200, blit=True, interval=10,
         repeat=False)
     plt.show()
 
