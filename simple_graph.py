@@ -31,14 +31,13 @@ def animate(data):
         acc_x1 = acc_x
         acc_y1 = acc_y
         acc_z1 = acc_z
-    else:
-        if (sensor == 0):
-            roll2 = roll
-            pitch2 = pitch
-            yaw2 = yaw
-            acc_x2 = acc_x
-            acc_y2 = acc_y
-            acc_z2 = acc_z
+    if (sensor == 0):
+        roll2 = roll
+        pitch2 = pitch
+        yaw2 = yaw
+        acc_x2 = acc_x
+        acc_y2 = acc_y
+        acc_z2 = acc_z
 
     line[0].set_data(xnum, roll1)
     line[1].set_data(xnum, pitch1)
