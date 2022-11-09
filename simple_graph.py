@@ -94,7 +94,7 @@ if __name__ == '__main__':
     ax4.set_ylim(-3, 3)
     ax4.grid()
 
-    ani = animation.FuncAnimation(fig, animate, frames = 200, blit=True, interval=10,
+    ani = animation.FuncAnimation(fig, animate, frames = 200, blit=False, interval=10,
         repeat=False)
     plt.show()
 
