@@ -29,12 +29,12 @@ def animate(data):
     ax2.clear()
     #ax3.clear()
     #ax4.clear()
-    ax1.plot(xnum, roll1, lw=2, color = 'red')
-    ax1.plot(xnum, pitch1, lw=2, color = 'blue')
-    ax1.plot(xnum, yaw1, lw=2, color = 'orange')
-    ax2.plot(xnum, acc_x1, lw=2, color = 'red')
-    ax2.plot(xnum, acc_y1, lw=2, color = 'blue')
-    ax2.plot(xnum, acc_z1, lw=2, color = 'orange')
+    line[0].set_data(xnum, roll1)
+    line[1].set_data(xnum, pitch1)
+    line[2].set_data(xnum, yaw1)
+    line[3].set_data(xnum, acc_x1)
+    line[4].set_data(xnum, acc_y1)
+    line[5].set_data(xnum, acc_z1)
     #ax3.plot(xnum, roll2, lw=2, color = 'red')
     #ax3.plot(xnum, pitch2, lw=2, color = 'blue')
     #ax3.plot(xnum, yaw2, lw=2, color = 'orange')
@@ -49,18 +49,22 @@ if __name__ == '__main__':
     rad2grad = 180.0/3.141592
     cos = math.cos
     ser = serial.Serial('/dev/ttyUSB0', 921600)
-    fig, (ax1, ax2 , ax3, ax4) = plt.subplots(4,1)
+    fig, (ax1, ax2) =  plt.subplots(2,1)
+    l_roll1, = ax1.plot([], [], lw=2, color = 'red')
+    l_pitch1, = ax1.plot([], [], lw=2, color = 'blue')
+    l_yaw1, = ax1.plot([], [], lw=2, color = 'orange')
+    l_acc_x1, = ax2.plot([], [], lw=2, color = 'red')
+    l_acc_y1, = ax2.plot([], [], lw=2, color = 'blue')
+    l_acc_z1, = ax2.plot([], [], lw=2, color = 'orange')
+
+    line = [l_roll1, l_pitch1, l_yaw1, l_acc_x1, l_acc_y1, l_acc_z1]
     
     ax1.set_ylim(-300, 300)
     ax1.grid()
     ax2.set_ylim(-3, 3)
     ax2.grid()
-    ax3.set_ylim(-300, 300)
-    ax3.grid()
-    ax4.set_ylim(-3, 3)
-    ax4.grid()
 
-    ani = animation.FuncAnimation(plt.gcf(), animate, frames = 200, blit=False, interval=10,
+    ani = animation.FuncAnimation(plt.gcf(), animate, frames = 200, blit=True, interval=10,
         repeat=False)
     plt.show()
 
