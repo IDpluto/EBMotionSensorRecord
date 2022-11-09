@@ -20,21 +20,22 @@ def init():
 
 def data_gen():
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-    while True:
-        xnum = data['x_num']
-        roll1 = data['roll']
-        pitch1 = data['pitch']
-        yaw1 = data['yaw']
-        acc_x1 = data['acc_x']
-        acc_y1 = data['acc_y']
-        acc_z1 = data['acc_z']
-        yield xnum, roll1, pitch1, yaw1, acc_x1, acc_y1, acc_z1,
+
+    xnum = data['x_num']
+    roll1 = data['roll']
+    pitch1 = data['pitch']
+    yaw1 = data['yaw']
+    acc_x1 = data['acc_x']
+    acc_y1 = data['acc_y']
+    acc_z1 = data['acc_z']
+    
+    yield xnum, roll1, pitch1, yaw1, acc_x1, acc_y1, acc_z1,
 
 def animate(data):
     xnum, roll1, pitch1, yaw1, acc_x1, acc_y1, acc_z1 = data
     
-    ax1.clear()
-    ax2.clear()
+    #ax1.clear()
+    #ax2.clear()
     #ax3.clear()
     #ax4.clear()
     l_roll1.set_data(xnum, roll1)
