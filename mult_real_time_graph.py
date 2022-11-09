@@ -9,6 +9,15 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from pandas.core.indexes import interval
 
+def init():
+    line[0].set_data([], [])
+    line[1].set_data([], [])
+    line[2].set_data([], [])
+    line[3].set_data([], [])
+    line[4].set_data([], [])
+    line[5].set_data([], [])
+    return line,
+
 
 def animate(data):
     
@@ -66,7 +75,7 @@ if __name__ == '__main__':
     ax2.grid()
 
     ani = animation.FuncAnimation(fig, animate, frames = 200, blit=True, interval=10,
-        repeat=False)
+        init_func=init, repeat=False)
     plt.show()
 
     
