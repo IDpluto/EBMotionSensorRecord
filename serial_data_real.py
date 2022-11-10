@@ -61,17 +61,17 @@ max_points = 1000
 max_points_2 = 1000
 
 line, = ax.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1, color='blue',ms=1)
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='b',ms=1)
 line_2, = ax.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1, color='green',ms=1)
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='g',ms=1)
 line_3, = ax.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1, color='red',ms=1)
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='r',ms=1)
 line_4, = ax_2.plot(np.arange(max_points_2), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, color = 'blue')
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c= 'b')
 line_5, = ax_2.plot(np.arange(max_points_2), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, color = 'green')
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'g')
 line_6, = ax_2.plot(np.arange(max_points_2), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, color = 'red')
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'r')
 
 def animate(i):
     y = ReadChannel()
