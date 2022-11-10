@@ -92,7 +92,7 @@ def ReadChannel():
         yaw_r = "%.2f" %(yaw*rad2grad)
         
         text = words[0][-1:]
-        data = roll_r
+        data = acc_x
     return data
 
 
