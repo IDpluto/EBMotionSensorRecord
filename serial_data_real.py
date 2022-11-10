@@ -39,7 +39,6 @@ def ReadChannel():
     acc_x1 = data['acc_x'][1]
     acc_y1 = data['acc_y'][1]
     acc_z1 = data['acc_z'][1]
-    print(type(roll1))
     data = [roll1, pitch1, yaw1, acc_x1, acc_y1, acc_z1]
     return data
 
@@ -54,7 +53,7 @@ def ReadChannel():
 
 mcp3008_channel=0
 fig = plt.figure()    
-ax = plt.subplot(211, xlim=(0, 50), ylim=(-3, 3))
+ax = plt.subplot(211, xlim=(0, 50), ylim=(-300, 300))
 ax_2 = plt.subplot(212, xlim=(0, 50), ylim=(-3, 3))
 
 max_points = 50
