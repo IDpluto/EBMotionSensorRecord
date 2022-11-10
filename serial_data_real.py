@@ -39,7 +39,7 @@ def ReadChannel():
     acc_x1 = data['acc_x'][1]
     acc_y1 = data['acc_y'][1]
     acc_z1 = data['acc_z'][1]
-    data = [roll1, pitch1, yaw1, acc_x1, acc_y1, acc_z1]
+    data = [float(roll1), float(pitch1), float(yaw1), float(acc_x1), float(acc_y1), float(acc_z1)]
     return data
 
 
