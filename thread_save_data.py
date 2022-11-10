@@ -33,7 +33,7 @@ def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z):
             "acc_z":acc_z
         }
         csv_writer.writerow(info)
-        #time.sleep(1)
+        time.sleep(1)
 
 def quat_to_euler(x,y,z,w):
     euler = [0.0,0.0,0.0]
