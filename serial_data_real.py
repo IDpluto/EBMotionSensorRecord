@@ -4,10 +4,31 @@ from matplotlib import animation
 import numpy as np
 import random, time, spidev
 
+
+grad2rad = 3.141592/180.0
+rad2grad = 180.0/3.141592
+cos = math.cos
+
+
 spi=spidev.SpiDev()
 spi.open(0, 0)
 spi.max_speed_hz=1000000
 ser = serial.Serial('/dev/ttyUSB0', 115200)
+
+def quat_to_euler(x,y,z,w):
+    euler = [0.0,0.0,0.0]
+    
+    sqx=x*x
+    sqy=y*y
+    sqz=z*z
+    sqw=w*w
+  
+    euler[0] = math.asin(-2.0*(x*z-y*w)) 
+    euler[1] = math.atan2(2.0*(x*y+z*w),(sqx-sqy-sqz+sqw))
+    euler[2] = math.atan2(2.0*(y*z+x*w),(-sqx-sqy+sqz+sqw)) 
+
+    return euler
+
 def ReadChannel():
     line = ser.readline()
     line = line.decode("ISO-8859-1")
