@@ -86,9 +86,13 @@ def ReadChannel():
                 yaw   = Euler[2]
             except:
                 print (".")
+            
+        roll_r = "%.2f" %(roll*rad2grad)
+        pitch_r = "%.2f" %(pitch*rad2grad)
+        yaw_r = "%.2f" %(yaw*rad2grad)
         
         text = words[0][-1:]
-        data = [text, roll, pitch, yaw,acc_x, acc_y, acc_z]
+        data = roll_r
     return data
 
 
