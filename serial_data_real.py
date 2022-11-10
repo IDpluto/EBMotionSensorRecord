@@ -103,8 +103,8 @@ def ReadChannel():
 
 mcp3008_channel=0
 fig = plt.figure()    
-ax = plt.subplot(211, xlim=(0, 50), ylim=(0, 3))
-ax_2 = plt.subplot(212, xlim=(0, 50), ylim=(0, 3))
+ax = plt.subplot(211, xlim=(0, 50), ylim=(-3, 3))
+ax_2 = plt.subplot(212, xlim=(0, 50), ylim=(-3, 3))
 
 max_points = 50
 max_points_2 = 50
