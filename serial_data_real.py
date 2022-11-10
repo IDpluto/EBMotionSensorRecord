@@ -29,6 +29,12 @@ def quat_to_euler(x,y,z,w):
 
     return euler
 
+def x_read():
+    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
+
+    x_count = data['x_num'][1]
+    return x_count
+
 def roll_ReadChannel():
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
 
@@ -67,26 +73,29 @@ ax_2 = plt.subplot(212, xlim=(0, 50), ylim=(-3, 3))
 max_points = 30
 max_points_2 = 30
 
-line, = ax.plot(np.arange(max_points), 
+line, = ax.plot(np.ones(max_points, dtype=np.float)*np.nan, 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='blue',ms=1)
-line_2, = ax.plot(np.arange(max_points), 
+line_2, = ax.plot(np.ones(max_points, dtype=np.float)*np.nan, 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='green',ms=1)
-line_3, = ax.plot(np.arange(max_points), 
+line_3, = ax.plot(np.ones(max_points, dtype=np.float)*np.nan, 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='red',ms=1)
-line_4, = ax_2.plot(np.arange(max_points_2), 
+line_4, = ax_2.plot(np.ones(max_points, dtype=np.float)*np.nan, 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'blue')
-line_5, = ax_2.plot(np.arange(max_points_2), 
+line_5, = ax_2.plot(np.ones(max_points, dtype=np.float)*np.nan, 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'green')
-line_6, = ax_2.plot(np.arange(max_points_2), 
+line_6, = ax_2.plot(np.ones(max_points, dtype=np.float)*np.nan, 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'red')
 
 def animate(i):
     y = roll_ReadChannel()
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
-    print(old_y[:])
     new_y = np.r_[old_y[1:], y]
     line.set_ydata(new_y)
+    x = x_read()
+    old_x = line.get_ydata()
+    new_x = np.r_[old_x[1:], x]
+    line.set_xdata(new_x)
     #print(new_y)
     return line
     

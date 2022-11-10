@@ -14,9 +14,9 @@ cos = math.cos
 
 
 ser = serial.Serial('/dev/ttyUSB0', 115200)
-fieldnames = ["sensor_id","roll", "pitch", "yaw", "acc_x", "acc_y", "acc_z"]
+fieldnames = ["x_num","sensor_id","roll", "pitch", "yaw", "acc_x", "acc_y", "acc_z"]
 
-def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z):
+def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
 
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
@@ -24,6 +24,7 @@ def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z):
     with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
+            "x_num":x_count,
             "sensor_id":sensor_id,
             "roll":roll_r,
             "pitch":pitch_r,
@@ -33,7 +34,7 @@ def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z):
             "acc_z":acc_z
         }
         csv_writer.writerow(info)
-        time.sleep(1)
+        #time.sleep(1)
 
 def quat_to_euler(x,y,z,w):
     euler = [0.0,0.0,0.0]
@@ -48,7 +49,7 @@ def quat_to_euler(x,y,z,w):
     euler[2] = math.atan2(2.0*(y*z+x*w),(-sqx-sqy+sqz+sqw)) 
 
     return euler
-
+x_count = 0
 with open('/home/dohlee/crc_project/data/data1.csv','w') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
         csv_writer.writeheader()
@@ -108,8 +109,9 @@ while 1:
                 yaw   = Euler[2]
             except:
                 print (".")
+        x_count += 0.1
         text = words[0][-1:]
-        save_data(text, roll, pitch, yaw,acc_x, acc_y, acc_z)
+        save_data(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
    
 
 ser.close
