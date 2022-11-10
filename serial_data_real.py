@@ -30,17 +30,18 @@ def quat_to_euler(x,y,z,w):
     return euler
 
 def ReadChannel():
-    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
+    while True:
+        data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
 
     
-    roll1 = data['roll'][1]
-    pitch1 = data['pitch'][1]
-    yaw1 = data['yaw'][1]
-    acc_x1 = data['acc_x'][1]
-    acc_y1 = data['acc_y'][1]
-    acc_z1 = data['acc_z'][1]
-    data = [float(roll1), float(pitch1), float(yaw1), float(acc_x1), float(acc_y1), float(acc_z1)]
-    return data
+        roll1 = data['roll'][1]
+        pitch1 = data['pitch'][1]
+        yaw1 = data['yaw'][1]
+        acc_x1 = data['acc_x'][1]
+        acc_y1 = data['acc_y'][1]
+        acc_z1 = data['acc_z'][1]
+        data = [float(roll1), float(pitch1), float(yaw1), float(acc_x1), float(acc_y1), float(acc_z1)]
+        return data
 
 
 
