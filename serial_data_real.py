@@ -11,9 +11,6 @@ rad2grad = 180.0/3.141592
 cos = math.cos
 
 
-spi=spidev.SpiDev()
-spi.open(0, 0)
-spi.max_speed_hz=1000000
 ser = serial.Serial('/dev/ttyUSB0', 115200)
 
 def quat_to_euler(x,y,z,w):
