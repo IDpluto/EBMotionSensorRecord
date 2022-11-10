@@ -31,12 +31,12 @@ def quat_to_euler(x,y,z,w):
 def ReadChannel():
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
     xnum = data['x_num']
-    roll1 = data['roll'].astpye(float)
-    pitch1 = data['pitch'].astpye(float)
-    yaw1 = data['yaw'].astpye(float)
-    acc_x1 = data['acc_x'].astpye(float)
-    acc_y1 = data['acc_y'].astpye(float)
-    acc_z1 = data['acc_z'].astpye(float)
+    roll1 = data['roll']
+    pitch1 = data['pitch']
+    yaw1 = data['yaw']
+    acc_x1 = data['acc_x']
+    acc_y1 = data['acc_y']
+    acc_z1 = data['acc_z']
     data = [float(roll1), float(pitch1), float(yaw1), float(acc_x1), float(acc_y1), float(acc_z1)]#, acc_z]
     return data
 
