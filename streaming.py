@@ -62,7 +62,6 @@ def quat_to_euler(x,y,z,w):
     return euler
 
 def update_graph_scatter(n):
-    while 1:
         line = ser.readline()
         line = line.decode("ISO-8859-1")
         words = line.split(",")    # Fields split
@@ -118,25 +117,25 @@ def update_graph_scatter(n):
                 print (".")
         
             text = words[0][-1:]
-            if (sensor_id == 1 ): 
+            if (text == 1 ): 
                 roll_r = "%.2f" %(roll*rad2grad)
                 pitch_r = "%.2f" %(pitch*rad2grad)
                 yaw_r = "%.2f" %(yaw*rad2grad)
             else:
-                if (sensor_id == 0):
+                if (text == 0):
                     roll_l = "%.2f" %(roll*rad2grad)
                     pitch_l = "%.2f" %(pitch*rad2grad)
                     yaw_l = "%.2f" %(yaw*rad2grad)
-    X.append(roll_r)
-    Y.append(pitch_r)
-    data = plotly.graph_objs.Scatter(
-			x=list(X),
-			y=list(Y),
-			name='Scatter',
-			mode= 'lines+markers'
-	    )
-    return {'data': [data],
-			'layout' : go.Layout(xaxis=dict(range=[min(X),max(X)]),yaxis = dict(range = [min(Y),max(Y)]),)}
+        X.append(roll_r)
+        Y.append(pitch_r)
+        data = plotly.graph_objs.Scatter(
+			    x=list(X),
+			    y=list(Y),
+			    name='Scatter',
+			    mode= 'lines+markers'
+	        )
+        return {'data': [data],
+			    'layout' : go.Layout(xaxis=dict(range=[min(X),max(X)]),yaxis = dict(range = [min(Y),max(Y)]),)}
 
 
 
