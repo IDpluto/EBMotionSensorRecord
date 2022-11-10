@@ -89,7 +89,7 @@ def ReadChannel():
         yaw_r = "%.2f" %(yaw*rad2grad)
         
         text = words[0][-1:]
-        data = acc_x
+        data = [roll_r, pitch_r, yaw_r, acc_x, acc_y, acc_z]
     return data
 
 
@@ -111,11 +111,14 @@ max_points_2 = 50
 
 line, = ax.plot(np.arange(max_points), 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='blue',ms=1)
+line_3, = ax.plot(np.arange(max_points), 
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='red',ms=1)
 line_2, = ax_2.plot(np.arange(max_points_2), 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1)
 
 def animate(i):
     y = ReadChannel()
+    y = y[0]
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
     new_y = np.r_[old_y[1:], y]
@@ -124,14 +127,25 @@ def animate(i):
     return line
     
 def animate_2(i):
-    y_2 =0
+    y_2 = ReadChannel()
+    y_2 = y_2[1]
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
     line_2.set_ydata(new_y_2)
-    print(new_y_2)
+    #print(new_y_2)
     return line_2
+
+def animate_3(i):
+    y_3 = ReadChannel()
+    y_3 = y_3[2]
+    old_y_3= line_3.get_ydata()
+    new_y_3 = np.r_[old_y_3[1:], y_3]
+    line_3.set_ydata(new_y_3)
+    #print(new_y_3)
+    return line_3
 
 
 anim = animation.FuncAnimation(fig, animate ,interval = 10)
 anim_2 = animation.FuncAnimation(fig, animate_2  , interval=10)
+anim_3 = animation.FuncAnimation(fig, animate_3  , interval=10)
 plt.show()
