@@ -87,10 +87,10 @@ line_6, = ax_2.plot(np.arange(max_points),
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'red')
 
 def animate(i):
-    x = x_read()
-    old_x = line.get_xdata()
-    new_x = np.r_[old_x[1:], x]
-    line.set_xdata(new_x)
+    #x = x_read()
+    #old_x = line.get_xdata()
+    #new_x = np.r_[old_x[1:], x]
+    #line.set_xdata(new_x)
     y = roll_ReadChannel()
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
@@ -101,10 +101,10 @@ def animate(i):
     return line
     
 def animate_2(i):
-    x_2 = x_read()
-    old_x_2 = line_2.get_xdata()
-    new_x_2 = np.r_[old_x_2[1:], x_2]
-    line_2.set_xdata(new_x_2)
+    #x_2 = x_read()
+    #old_x_2 = line_2.get_xdata()
+    #new_x_2 = np.r_[old_x_2[1:], x_2]
+    #line_2.set_xdata(new_x_2)
     y_2 = pitch_ReadChannel()
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
@@ -113,10 +113,10 @@ def animate_2(i):
     return line_2
 
 def animate_3(i):
-    x_3 = x_read()
-    old_x_3 = line_3.get_xdata()
-    new_x_3 = np.r_[old_x_3[1:], x_3]
-    line_3.set_xdata(new_x_3)
+    #x_3 = x_read()
+    #old_x_3 = line_3.get_xdata()
+    #new_x_3 = np.r_[old_x_3[1:], x_3]
+    #line_3.set_xdata(new_x_3)
     y_3 = yaw_ReadChannel()
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
@@ -124,10 +124,10 @@ def animate_3(i):
     #print(new_y_3)
     return line_3
 def animate_4(i):
-    x_4 = x_read()
-    old_x_4 = line_4.get_xdata()
-    new_x_4 = np.r_[old_x_4[1:], x_4]
-    line_4.set_xdata(new_x_4)
+    #x_4 = x_read()
+    #old_x_4 = line_4.get_xdata()
+    #new_x_4 = np.r_[old_x_4[1:], x_4]
+    #line_4.set_xdata(new_x_4)
     y_4 = ax_ReadChannel()
     old_y_4= line_4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
@@ -136,10 +136,10 @@ def animate_4(i):
     return line_4
 
 def animate_5(i):
-    x_5 = x_read()
-    old_x_5 = line_5.get_xdata()
-    new_x_5 = np.r_[old_x_5[1:], x_5]
-    line_5.set_xdata(new_x_5)
+    #x_5 = x_read()
+    #old_x_5 = line_5.get_xdata()
+    #new_x_5 = np.r_[old_x_5[1:], x_5]
+    #line_5.set_xdata(new_x_5)
     y_5 =ay_ReadChannel()
     old_y_5= line_5.get_ydata()
     new_y_5 = np.r_[old_y_5[1:], y_5]
@@ -148,10 +148,10 @@ def animate_5(i):
     return line_5
 
 def animate_6(i):
-    x_6 = x_read()
-    old_x_6 = line_6.get_ydata()
-    new_x_6 = np.r_[old_x_6[1:], x_6]
-    line_6.set_xdata(new_x_6)
+    #x_6 = x_read()
+    #old_x_6 = line_6.get_ydata()
+    #new_x_6 = np.r_[old_x_6[1:], x_6]
+    #line_6.set_xdata(new_x_6)
     y_6 = az_ReadChannel()
     old_y_6= line_6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
