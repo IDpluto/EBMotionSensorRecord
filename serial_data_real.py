@@ -29,7 +29,7 @@ def quat_to_euler(x,y,z,w):
     return euler
 
 def ReadChannel():
-    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv', quoting=csv.QUOTE_NONNUMERIC)
+    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv', quoting=read_csv.QUOTE_NONNUMERIC)
     xnum = data['x_num']
     roll1 = data['roll']
     pitch1 = data['pitch']
