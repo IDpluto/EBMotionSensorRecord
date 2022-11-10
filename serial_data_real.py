@@ -69,7 +69,7 @@ line_3, = ax.plot(np.arange(max_points),
 line_4, = ax_2.plot(np.arange(max_points_2), 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'blue')
 line_5, = ax_2.plot(np.arange(max_points_2), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, o = 'green')
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'green')
 line_6, = ax_2.plot(np.arange(max_points_2), 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'red')
 
