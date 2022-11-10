@@ -73,8 +73,8 @@ ax_2 = plt.subplot(212, xlim=(0, 5), ylim=(-3, 3))
 max_points = 40
 max_points_2 = 40
 
-line, = ax.plot(np.ones(max_points, dtype=np.float)*np.nan, 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='blue',ms=1)
+line, = ax.plot([], 
+                [], lw=1, c='blue',ms=1)
 line_2, = ax.plot(np.ones(max_points, dtype=np.float)*np.nan, 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='green',ms=1)
 line_3, = ax.plot(np.ones(max_points, dtype=np.float)*np.nan, 
