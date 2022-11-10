@@ -70,8 +70,8 @@ fig = plt.figure()
 ax = plt.subplot(211, xlim=(0, 5), ylim=(-500, 500))
 ax_2 = plt.subplot(212, xlim=(0, 5), ylim=(-3, 3))
 
-max_points = 4000
-max_points_2 = 4000
+max_points = 40
+max_points_2 = 40
 
 line, = ax.plot(np.ones(max_points, dtype=np.float)*np.nan, 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='blue',ms=1)
