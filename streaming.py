@@ -1,91 +1,49 @@
-import datetime
-
 import dash
-from dash import dcc, html
+from dash.dependencies import Output, Input
+import dash_core_components as dcc
+import dash_html_components as html
 import plotly
-from dash.dependencies import Input, Output
+import random
+import plotly.graph_objs as go
+from collections import deque
 
-# pip install pyorbital
-from pyorbital.orbital import Orbital
-satellite = Orbital('TERRA')
+X = deque(maxlen = 20)
+X.append(1)
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+Y = deque(maxlen = 20)
+Y.append(1)
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__)
+
 app.layout = html.Div(
-    html.Div([
-        html.H4('TERRA Satellite Live Feed'),
-        html.Div(id='live-update-text'),
-        dcc.Graph(id='live-update-graph'),
-        dcc.Interval(
-            id='interval-component',
-            interval=1*1000, # in milliseconds
-            n_intervals=0
-        )
-    ])
+	[
+		dcc.Graph(id = 'live-graph', animate = True),
+		dcc.Interval(
+			id = 'graph-update',
+			interval = 1000,
+			n_intervals = 0
+		),
+	]
 )
 
+@app.callback(
+	Output('live-graph', 'figure'),
+	[ Input('graph-update', 'n_intervals') ]
+)
 
-@app.callback(Output('live-update-text', 'children'),
-              Input('interval-component', 'n_intervals'))
-def update_metrics(n):
-    lon, lat, alt = satellite.get_lonlatalt(datetime.datetime.now())
-    style = {'padding': '5px', 'fontSize': '16px'}
-    return [
-        html.Span('Longitude: {0:.2f}'.format(lon), style=style),
-        html.Span('Latitude: {0:.2f}'.format(lat), style=style),
-        html.Span('Altitude: {0:0.2f}'.format(alt), style=style)
-    ]
+def update_graph_scatter(n):
+	X.append(X[-1]+1)
+	Y.append(Y[-1]+Y[-1] * random.uniform(-0.1,0.1))
 
+	data = plotly.graph_objs.Scatter(
+			x=list(X),
+			y=list(Y),
+			name='Scatter',
+			mode= 'lines+markers'
+	)
 
-# Multiple components can update everytime interval gets fired.
-@app.callback(Output('live-update-graph', 'figure'),
-              Input('interval-component', 'n_intervals'))
-def update_graph_live(n):
-    satellite = Orbital('TERRA')
-    data = {
-        'time': [],
-        'Latitude': [],
-        'Longitude': [],
-        'Altitude': []
-    }
-
-    # Collect some data
-    for i in range(180):
-        time = datetime.datetime.now() - datetime.timedelta(seconds=i*20)
-        lon, lat, alt = satellite.get_lonlatalt(
-            time
-        )
-        data['Longitude'].append(lon)
-        data['Latitude'].append(lat)
-        data['Altitude'].append(alt)
-        data['time'].append(time)
-
-    # Create the graph with subplots
-    fig = plotly.tools.make_subplots(rows=2, cols=1, vertical_spacing=0.2)
-    fig['layout']['margin'] = {
-        'l': 30, 'r': 10, 'b': 30, 't': 10
-    }
-    fig['layout']['legend'] = {'x': 0, 'y': 1, 'xanchor': 'left'}
-
-    fig.append_trace({
-        'x': data['time'],
-        'y': data['Altitude'],
-        'name': 'Altitude',
-        'mode': 'lines+markers',
-        'type': 'scatter'
-    }, 1, 1)
-    fig.append_trace({
-        'x': data['Longitude'],
-        'y': data['Latitude'],
-        'text': data['time'],
-        'name': 'Longitude vs Latitude',
-        'mode': 'lines+markers',
-        'type': 'scatter'
-    }, 2, 1)
-
-    return fig
-
+	return {'data': [data],
+			'layout' : go.Layout(xaxis=dict(range=[min(X),max(X)]),yaxis = dict(range = [min(Y),max(Y)]),)}
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+	app.run_server()
