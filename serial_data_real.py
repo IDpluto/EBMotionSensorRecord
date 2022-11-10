@@ -78,7 +78,7 @@ def animate(i):
     y = y[0]
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
-    print(old_y[1:])
+    print(old_y[1])
     new_y = np.r_[old_y[1:], y]
     line.set_ydata(new_y)
     #print(new_y)
