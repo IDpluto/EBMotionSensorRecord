@@ -40,7 +40,7 @@ def ReadChannel():
         acc_x1 = data['acc_x'][1]
         acc_y1 = data['acc_y'][1]
         acc_z1 = data['acc_z'][1]
-        data = [float(roll1), float(pitch1), float(yaw1), float(acc_x1), float(acc_y1), float(acc_z1)]
+        data = [roll1, pitch1, yaw1, acc_x1, acc_y1, acc_z1]
         return data
 
 
@@ -108,7 +108,7 @@ def animate_4(i):
     new_y_4 = np.r_[old_y_4[1:], y_4]
     line_4.set_ydata(new_y_4)
     #print(new_y_3)
-    return line_5
+    return line_4
 
 def animate_5(i):
     y_5 = ReadChannel()
