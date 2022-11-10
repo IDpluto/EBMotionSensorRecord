@@ -116,16 +116,12 @@ def update_graph_scatter(n):
             except:
                 print (".")
         
-            text = words[0][-1:]
-            if (text == 1 ): 
-                roll_r = "%.2f" %(roll*rad2grad)
-                pitch_r = "%.2f" %(pitch*rad2grad)
-                yaw_r = "%.2f" %(yaw*rad2grad)
-            else:
-                if (text == 0):
-                    roll_l = "%.2f" %(roll*rad2grad)
-                    pitch_l = "%.2f" %(pitch*rad2grad)
-                    yaw_l = "%.2f" %(yaw*rad2grad)
+        text = words[0][-1:]
+           
+        roll_r = "%.2f" %(roll*rad2grad)
+        pitch_r = "%.2f" %(pitch*rad2grad)
+        yaw_r = "%.2f" %(yaw*rad2grad)
+          
         X.append(roll_r)
         Y.append(pitch_r)
         data = plotly.graph_objs.Scatter(
