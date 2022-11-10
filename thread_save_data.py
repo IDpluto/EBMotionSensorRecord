@@ -14,9 +14,9 @@ cos = math.cos
 
 
 ser = serial.Serial('/dev/ttyUSB0', 115200)
-fieldnames = ["x_num","sensor_id","roll", "pitch", "yaw", "acc_x", "acc_y", "acc_z"]
+fieldnames = ["sensor_id","roll", "pitch", "yaw", "acc_x", "acc_y", "acc_z"]
 
-def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
+def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z):
 
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
@@ -109,7 +109,7 @@ while 1:
             except:
                 print (".")
         text = words[0][-1:]
-        save_data(text, roll, pitch, yaw,acc_x, acc_y, acc_z, x_count)
+        save_data(text, roll, pitch, yaw,acc_x, acc_y, acc_z)
    
 
 ser.close
