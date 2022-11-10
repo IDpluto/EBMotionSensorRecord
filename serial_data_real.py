@@ -74,17 +74,17 @@ max_points = 5000
 max_points_2 = 5000
 
 line, = ax.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='blue',ms=1)
+                np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
 line_2, = ax.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='green',ms=1)
+                np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='green',ms=1)
 line_3, = ax.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='red',ms=1)
+                np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='red',ms=1)
 line_4, = ax_2.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'blue')
+                np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'blue')
 line_5, = ax_2.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'green')
+                np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'green')
 line_6, = ax_2.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'red')
+                np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
 
 def animate(i):
     #x = x_read()
