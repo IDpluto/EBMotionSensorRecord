@@ -118,7 +118,7 @@ line_2, = ax_2.plot(np.arange(max_points_2),
 
 def animate(i):
     y = ReadChannel()
-    y = y[3]
+    y = y[0]
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
     new_y = np.r_[old_y[1:], y]
@@ -128,7 +128,7 @@ def animate(i):
     
 def animate_2(i):
     y_2 = ReadChannel()
-    y_2 = y_2[4]
+    y_2 = y_2[1]
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
     line_2.set_ydata(new_y_2)
@@ -137,7 +137,7 @@ def animate_2(i):
 
 def animate_3(i):
     y_3 = ReadChannel()
-    y_3 = y_3[5]
+    y_3 = y_3[2]
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
     line_3.set_ydata(new_y_3)
