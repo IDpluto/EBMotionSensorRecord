@@ -38,7 +38,6 @@ def animate(data):
     #ax2.clear()
     #ax3.clear()
     #ax4.clear()
-    print(roll1)
     l_roll1.set_data(xnum, roll1)
     l_pitch1.set_data(xnum, pitch1)
     l_yaw1.set_data(xnum, yaw1)
