@@ -110,10 +110,16 @@ max_points_2 = 50
 
 line, = ax.plot(np.arange(max_points), 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='blue',ms=1)
+line_2, = ax.plot(np.arange(max_points), 
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='green',ms=1)
 line_3, = ax.plot(np.arange(max_points), 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='red',ms=1)
-line_2, = ax_2.plot(np.arange(max_points_2), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1)
+line_4, = ax_2.plot(np.arange(max_points_2), 
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'blue')
+line_5, = ax_2.plot(np.arange(max_points_2), 
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'green')
+line_6, = ax_2.plot(np.arange(max_points_2), 
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'red')
 
 def animate(i):
     y = ReadChannel()
@@ -143,9 +149,37 @@ def animate_3(i):
     line_3.set_ydata(new_y_3)
     #print(new_y_3)
     return line_3
+def animate_4(i):
+    y_4 = ReadChannel()
+    y_4 = y_4[3]
+    old_y_4= line_4.get_ydata()
+    new_y_4 = np.r_[old_y_4[1:], y_4]
+    line_4.set_ydata(new_y_4)
+    #print(new_y_3)
+    return line_5
 
+def animate_5(i):
+    y_5 = ReadChannel()
+    y_5 = y_5[4]
+    old_y_5= line_3.get_ydata()
+    new_y_5 = np.r_[old_y_5[1:], y_5]
+    line_5.set_ydata(new_y_5)
+    #print(new_y_3)
+    return line_5
+
+def animate_6(i):
+    y_6 = ReadChannel()
+    y_6 = y_6[5]
+    old_y_6= line_6.get_ydata()
+    new_y_6 = np.r_[old_y_6[1:], y_6]
+    line_6.set_ydata(new_y_6)
+    #print(new_y_3)
+    return line_6
 
 anim = animation.FuncAnimation(fig, animate ,interval = 10)
 anim_2 = animation.FuncAnimation(fig, animate_2  , interval=10)
 anim_3 = animation.FuncAnimation(fig, animate_3  , interval=10)
+anim_4 = animation.FuncAnimation(fig, animate_4  , interval=10)
+anim_5 = animation.FuncAnimation(fig, animate_5  , interval=10)
+anim_6 = animation.FuncAnimation(fig, animate_6  , interval=10)
 plt.show()
