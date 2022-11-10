@@ -70,20 +70,20 @@ fig = plt.figure()
 ax = plt.subplot(211, xlim=(0, 5), ylim=(-500, 500))
 ax_2 = plt.subplot(212, xlim=(0, 5), ylim=(-3, 3))
 
-max_points = 40
-max_points_2 = 40
+max_points = 5000
+max_points_2 = 5000
 
-line, = ax.plot(np.arange(5000), 
+line, = ax.plot(np.arange(max_points), 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='blue',ms=1)
-line_2, = ax.plot(np.ones(max_points, dtype=np.float)*np.nan, 
+line_2, = ax.plot(np.arange(max_points), 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='green',ms=1)
-line_3, = ax.plot(np.ones(max_points, dtype=np.float)*np.nan, 
+line_3, = ax.plot(np.arange(max_points), 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='red',ms=1)
-line_4, = ax_2.plot(np.ones(max_points, dtype=np.float)*np.nan, 
+line_4, = ax_2.plot(np.arange(max_points), 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'blue')
-line_5, = ax_2.plot(np.ones(max_points, dtype=np.float)*np.nan, 
+line_5, = ax_2.plot(np.arange(max_points), 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'green')
-line_6, = ax_2.plot(np.ones(max_points, dtype=np.float)*np.nan, 
+line_6, = ax_2.plot(np.arange(max_points), 
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'red')
 
 def animate(i):
