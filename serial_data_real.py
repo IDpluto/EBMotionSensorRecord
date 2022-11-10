@@ -33,17 +33,17 @@ def ReadChannel():
     data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
 
     data['roll'] = data['roll'].fillna(-1)
-    roll1 = data['roll']
+    roll1 = data['roll'].astpye(float)
     data['pitch'] = data['pitch'].fillna(-1)
-    pitch1 = data['pitch']
+    pitch1 = data['pitch'].astpye(float)
     data['yaw'] = data['yaw'].fillna(-1)
-    yaw1 = data['yaw']
+    yaw1 = data['yaw'].astpye(float)
     data['acc_x'] = data['acc_x'].fillna(-1)
-    acc_x1 = data['acc_x']
+    acc_x1 = data['acc_x'].astpye(float)
     data['acc_y'] = data['acc_y'].fillna(-1)
-    acc_y1 = data['acc_y']
+    acc_y1 = data['acc_y'].astpye(float)
     data['acc_z'] = data['acc_z'].fillna(-1)
-    acc_z1 = data['acc_z']
+    acc_z1 = data['acc_z'].astpye(float)
     print(type(roll1))
     data = [roll1, pitch1, yaw1, acc_x1, acc_y1, acc_z1]
     return data
