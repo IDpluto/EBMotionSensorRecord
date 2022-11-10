@@ -54,24 +54,24 @@ def ReadChannel():
 
 mcp3008_channel=0
 fig = plt.figure()    
-ax = plt.subplot(211, xlim=(0, 50), ylim=(-300, 300))
+ax = plt.subplot(211, xlim=(0, 50), ylim=(-500, 500))
 ax_2 = plt.subplot(212, xlim=(0, 50), ylim=(-3, 3))
 
-max_points = 50
-max_points_2 = 50
+max_points = 1000
+max_points_2 = 1000
 
 line, = ax.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='blue',ms=1)
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1, color='blue',ms=1)
 line_2, = ax.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='green',ms=1)
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1, color='green',ms=1)
 line_3, = ax.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1, c='red',ms=1)
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1, color='red',ms=1)
 line_4, = ax_2.plot(np.arange(max_points_2), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'blue')
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, color = 'blue')
 line_5, = ax_2.plot(np.arange(max_points_2), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'green')
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, color = 'green')
 line_6, = ax_2.plot(np.arange(max_points_2), 
-                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'red')
+                np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, color = 'red')
 
 def animate(i):
     y = ReadChannel()
