@@ -9,7 +9,7 @@ rad2grad = 180.0/3.141592
 cos = math.cos
 
 
-ser = serial.Serial('/dev/ttyUSB0', 921600)
+ser = serial.Serial('/dev/ttyUSB0', 115200)
 
 def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z):
 
