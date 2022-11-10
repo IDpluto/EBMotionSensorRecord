@@ -88,7 +88,7 @@ def ReadChannel():
     yaw_r = "%.2f" %(yaw*rad2grad)
         
     text = words[0][-1:]
-    data = [acc_x, acc_y]#, acc_z]
+    data = [roll_r, pitch_r, yaw_r, acc_x, acc_y, acc_z]#, acc_z]
     return data
 
 
@@ -136,7 +136,7 @@ def animate_2(i):
 
 def animate_3(i):
     y_3 = ReadChannel()
-    y_3 = y_3[0]
+    y_3 = y_3[2]
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
     line_3.set_ydata(new_y_3)
