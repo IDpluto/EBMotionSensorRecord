@@ -54,8 +54,8 @@ def ReadChannel():
 
 mcp3008_channel=0
 fig = plt.figure()    
-ax = plt.subplot(211, xlim=(0, 5000), ylim=(-500, 500))
-ax_2 = plt.subplot(212, xlim=(0, 5000), ylim=(-3, 3))
+ax = plt.subplot(211, xlim=(0, 50), ylim=(-500, 500))
+ax_2 = plt.subplot(212, xlim=(0, 50), ylim=(-3, 3))
 
 max_points = 30
 max_points_2 = 30
@@ -78,7 +78,7 @@ def animate(i):
     y = y[0]
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
-    #print(old_y[1:])
+    print(old_y[1:])
     new_y = np.r_[old_y[1:], y]
     line.set_ydata(new_y)
     #print(new_y)
