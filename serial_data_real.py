@@ -29,30 +29,37 @@ def quat_to_euler(x,y,z,w):
 
     return euler
 
-def ReadChannel():
-    while True:
-        data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
+def roll_ReadChannel():
+    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
 
     
-        roll1 = data['roll'][1]
-        pitch1 = data['pitch'][1]
-        yaw1 = data['yaw'][1]
-        acc_x1 = data['acc_x'][1]
-        acc_y1 = data['acc_y'][1]
-        acc_z1 = data['acc_z'][1]
-        data = [roll1, pitch1, yaw1, acc_x1, acc_y1, acc_z1]
-        return data
+    roll1 = data['roll'][1]
+    return roll1
+def pitch_ReadChannel():
+    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
+    pitch1 = data['pitch'][1]
+    return (pitch1)
+        
+def yaw_ReadChannel():
+    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
+    yaw1 = data['yaw'][1]
+    return (yaw1)
 
+def ax_ReadChannel():
+    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
+    acc_x1 = data['acc_x'][1]
+    return (acc_x1)
 
+def ay_ReadChannel():
+    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
+    acc_y1 = data['acc_y'][1]
+    return (acc_y1)
 
+def az_ReadChannel():
+    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
+    acc_z1 = data['acc_z'][1]
+    return (acc_z1)
 
-
-
-
-
-
-
-mcp3008_channel=0
 fig = plt.figure()    
 ax = plt.subplot(211, xlim=(0, 50), ylim=(-500, 500))
 ax_2 = plt.subplot(212, xlim=(0, 50), ylim=(-3, 3))
@@ -74,18 +81,18 @@ line_6, = ax_2.plot(np.arange(max_points_2),
                 np.ones(max_points, dtype=np.float)*np.nan, lw=1,ms=1, c = 'red')
 
 def animate(i):
-    y = ReadChannel()
+    y = roll_ReadChannel()
     y = y[0]
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
-    print(old_y[1])
+    print(old_y[:])
     new_y = np.r_[old_y[1:], y]
     line.set_ydata(new_y)
     #print(new_y)
     return line
     
 def animate_2(i):
-    y_2 = ReadChannel()
+    y_2 = pitch_ReadChannel()
     y_2 = y_2[1]
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
@@ -94,7 +101,7 @@ def animate_2(i):
     return line_2
 
 def animate_3(i):
-    y_3 = ReadChannel()
+    y_3 = yaw_ReadChannel()
     y_3 = y_3[2]
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
@@ -102,7 +109,7 @@ def animate_3(i):
     #print(new_y_3)
     return line_3
 def animate_4(i):
-    y_4 = ReadChannel()
+    y_4 = ax_ReadChannel()
     y_4 = y_4[3]
     old_y_4= line_4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
@@ -111,7 +118,7 @@ def animate_4(i):
     return line_4
 
 def animate_5(i):
-    y_5 = ReadChannel()
+    y_5 =ay_ReadChannel()
     y_5 = y_5[4]
     old_y_5= line_3.get_ydata()
     new_y_5 = np.r_[old_y_5[1:], y_5]
@@ -120,7 +127,7 @@ def animate_5(i):
     return line_5
 
 def animate_6(i):
-    y_6 = ReadChannel()
+    y_6 = az_ReadChannel()
     y_6 = y_6[5]
     old_y_6= line_6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
