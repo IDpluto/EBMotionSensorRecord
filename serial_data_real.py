@@ -127,7 +127,7 @@ def animate(i):
     return line
     
 def animate_2(i):
-    y_2 = ReadChannel()
+    y_2 =0
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
     line_2.set_ydata(new_y_2)
