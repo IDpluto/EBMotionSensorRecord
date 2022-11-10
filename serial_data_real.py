@@ -1,5 +1,6 @@
 import serial
 import math
+import pandas as pd
 from matplotlib import pyplot as plt
 from matplotlib import animation
 import numpy as np
@@ -28,67 +29,15 @@ def quat_to_euler(x,y,z,w):
     return euler
 
 def ReadChannel():
-    line = ser.readline()
-    line = line.decode("ISO-8859-1")
-    words = line.split(",")    # Fields split
-    
-    if(-1 < words[0].find('*')) :
-        data_from=1     # sensor data
-        data_index=0
-        text = "ID:"+'*'
-        words[0]=words[0].replace('*','')
-        #print ("first:", text)
-    else :
-        if(-1 < words[0].find('-')) :
-            data_from=2  # rf_receiver data
-            data_index=1
-            text = "ID:"+words[0]
-            #print ("seconds:",text)
-        else :
-            data_from=0  # unknown format
-
-
-    if(data_from!=0):
-        commoma = words[data_index].find('.') 
-        if(len(words[data_index][commoma:-1])==4): # �Ҽ��� 4�ڸ� �Ǻ�
-            data_format = 2  # quaternion
-        else :
-            data_format = 1 # euler
-
-    if(data_format==1): #euler
-        try:
-            roll = float(words[data_index])*grad2rad
-            pitch = float(words[data_index+1])*grad2rad
-            yaw = float(words[data_index+2])*grad2rad
-            acc_x = float(words[data_index+3])
-            acc_y = float(words[data_index+4])
-            acc_z = float(words[data_index+5])
-            #print(roll)
-        except:
-            print (".")
-    else: #(data_format==2)quaternion
-        try:
-            q0 = float(words[data_index])
-            q1 = float(words[data_index+1])
-            q2 = float(words[data_index+2])
-            q3 = float(words[data_index+3])
-            acc_x = float(words[data_index+4])
-            acc_y = float(words[data_index+5])
-            acc_z = float(words[data_index+6])
-            Euler = quat_to_euler(q0,q1,q2,q3)
-
-            roll  = Euler[1]
-            pitch = Euler[0]
-            yaw   = Euler[2]
-        except:
-            print (".")
-            
-    roll_r = "%.2f" %(roll*rad2grad)
-    pitch_r = "%.2f" %(pitch*rad2grad)
-    yaw_r = "%.2f" %(yaw*rad2grad)
-        
-    text = words[0][-1:]
-    data = [float(roll_r), float(pitch_r), float(yaw_r), acc_x, acc_y, acc_z]#, acc_z]
+    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
+    xnum = data['x_num']
+    roll1 = data['roll'].astpye(float)
+    pitch1 = data['pitch'].astpye(float)
+    yaw1 = data['yaw'].astpye(float)
+    acc_x1 = data['acc_x'].astpye(float)
+    acc_y1 = data['acc_y'].astpye(float)
+    acc_z1 = data['acc_z'].astpye(float)
+    data = [float(roll1), float(pitch1), float(yaw1), float(acc_x1), float(acc_y1), float(acc_z1)]#, acc_z]
     return data
 
 
