@@ -44,25 +44,7 @@ app.layout = html.Div(
 )
 def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z):
 
-    if (sensor_id == 1 ): 
-        roll_r = "%.2f" %(roll*rad2grad)
-        pitch_r = "%.2f" %(pitch*rad2grad)
-        yaw_r = "%.2f" %(yaw*rad2grad)
-    else:
-        if (sensor_id == 0):
-            roll_l = "%.2f" %(roll*rad2grad)
-            pitch_l = "%.2f" %(pitch*rad2grad)
-            yaw_l = "%.2f" %(yaw*rad2grad)
-    X.append(roll_r)
-    Y.append(pitch_r)
-    data = plotly.graph_objs.Scatter(
-			x=list(X),
-			y=list(Y),
-			name='Scatter',
-			mode= 'lines+markers'
-	    )
-    return {'data': [data],
-			'layout' : go.Layout(xaxis=dict(range=[min(X),max(X)]),yaxis = dict(range = [min(Y),max(Y)]),)}
+   
             
 
 def quat_to_euler(x,y,z,w):
@@ -136,7 +118,25 @@ def update_graph_scatter(n):
                 print (".")
         
             text = words[0][-1:]
-            save_data(text, roll, pitch, yaw,acc_x, acc_y, acc_z)
+            if (sensor_id == 1 ): 
+                roll_r = "%.2f" %(roll*rad2grad)
+                pitch_r = "%.2f" %(pitch*rad2grad)
+                yaw_r = "%.2f" %(yaw*rad2grad)
+            else:
+                if (sensor_id == 0):
+                    roll_l = "%.2f" %(roll*rad2grad)
+                    pitch_l = "%.2f" %(pitch*rad2grad)
+                    yaw_l = "%.2f" %(yaw*rad2grad)
+    X.append(roll_r)
+    Y.append(pitch_r)
+    data = plotly.graph_objs.Scatter(
+			x=list(X),
+			y=list(Y),
+			name='Scatter',
+			mode= 'lines+markers'
+	    )
+    return {'data': [data],
+			'layout' : go.Layout(xaxis=dict(range=[min(X),max(X)]),yaxis = dict(range = [min(Y),max(Y)]),)}
 
 
 
