@@ -42,7 +42,7 @@ app.layout = html.Div(
 	Output('live-graph', 'figure'),
 	[ Input('graph-update', 'n_intervals') ]
 )
-def save_data(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z):
+
 
    
             
