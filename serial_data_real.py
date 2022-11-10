@@ -82,7 +82,6 @@ line_6, = ax_2.plot(np.arange(max_points_2),
 
 def animate(i):
     y = roll_ReadChannel()
-    y = y[0]
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
     print(old_y[:])
@@ -93,7 +92,6 @@ def animate(i):
     
 def animate_2(i):
     y_2 = pitch_ReadChannel()
-    y_2 = y_2[1]
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
     line_2.set_ydata(new_y_2)
@@ -102,7 +100,6 @@ def animate_2(i):
 
 def animate_3(i):
     y_3 = yaw_ReadChannel()
-    y_3 = y_3[2]
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
     line_3.set_ydata(new_y_3)
@@ -110,7 +107,6 @@ def animate_3(i):
     return line_3
 def animate_4(i):
     y_4 = ax_ReadChannel()
-    y_4 = y_4[3]
     old_y_4= line_4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
     line_4.set_ydata(new_y_4)
@@ -119,7 +115,6 @@ def animate_4(i):
 
 def animate_5(i):
     y_5 =ay_ReadChannel()
-    y_5 = y_5[4]
     old_y_5= line_3.get_ydata()
     new_y_5 = np.r_[old_y_5[1:], y_5]
     line_5.set_ydata(new_y_5)
@@ -128,7 +123,6 @@ def animate_5(i):
 
 def animate_6(i):
     y_6 = az_ReadChannel()
-    y_6 = y_6[5]
     old_y_6= line_6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
     line_6.set_ydata(new_y_6)
