@@ -29,6 +29,33 @@ def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z, count):
     else:
         return (az_r)
 '''
+grad2rad = 3.141592/180.0
+rad2grad = 180.0/3.141592
+cos = math.cos
+    
+ser = serial.Serial('/dev/ttyUSB0', 115200)
+
+fig = plt.figure()    
+ax = plt.subplot(211, xlim=(0, 5), ylim=(-500, 500))
+ax_2 = plt.subplot(212, xlim=(0, 5), ylim=(-3, 3))
+
+max_points = 50
+max_points_2 = 50
+count = 0
+
+line, = ax.plot(np.arange(max_points), 
+            np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
+line_2, = ax.plot(np.arange(max_points), 
+            np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='green',ms=1)
+line_3, = ax.plot(np.arange(max_points), 
+            np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='red',ms=1)
+line_4, = ax_2.plot(np.arange(max_points), 
+            np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'blue')
+line_5, = ax_2.plot(np.arange(max_points), 
+            np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'green')
+line_6, = ax_2.plot(np.arange(max_points), 
+            np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
+    
 
 def check_val(roll, pitch, yaw, acc_x, acc_y, acc_z, count):
     roll_r = "%.2f" %(roll*rad2grad)
@@ -214,34 +241,6 @@ def animate_6(i):
     #print(new_y_3)
     return line_6
 
-if __name__ == "__main__":
-
-    grad2rad = 3.141592/180.0
-    rad2grad = 180.0/3.141592
-    cos = math.cos
-    
-    ser = serial.Serial('/dev/ttyUSB0', 115200)
-
-    fig = plt.figure()    
-    ax = plt.subplot(211, xlim=(0, 5), ylim=(-500, 500))
-    ax_2 = plt.subplot(212, xlim=(0, 5), ylim=(-3, 3))
-
-    max_points = 50
-    max_points_2 = 50
-    count = 0
-
-    line, = ax.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
-    line_2, = ax.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='green',ms=1)
-    line_3, = ax.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='red',ms=1)
-    line_4, = ax_2.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'blue')
-    line_5, = ax_2.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'green')
-    line_6, = ax_2.plot(np.arange(max_points), 
-                np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
     
     anim = animation.FuncAnimation(fig, animate ,interval = 10)
     anim_2 = animation.FuncAnimation(fig, animate_2  , interval=10)
