@@ -111,8 +111,7 @@ def serial_read(count):
                     print (".")
 
         #text = words[0][-1:]
-            d_d = save_data(roll, pitch, yaw,acc_x, acc_y, acc_z, count)
-            return d_d
+            return roll
         
    
 
