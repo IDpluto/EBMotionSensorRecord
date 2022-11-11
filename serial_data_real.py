@@ -69,7 +69,7 @@ def quat_to_euler(x,y,z,w):
 def serial_read():
   
     line = ser.readline()
-    line = line.decode("ISO-8859-1")
+    #line = line.decode("ISO-8859-1")
     words = line.split(",")    # Fields split
     
     if(-1 < words[0].find('*')) :
