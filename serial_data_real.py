@@ -11,8 +11,8 @@ import random, time, spidev
 
 def save_data(data_list):
     roll_r = "%.2f" %(data_list[0] * rad2grad)
-    pitch_r = "%.2f" %(data_list[1] *r ad2grad)
-    yaw_r = "%.2f" %(data_list[2]*rad2grad)
+    pitch_r = "%.2f" %(data_list[1] * rad2grad)
+    yaw_r = "%.2f" %(data_list[2] * rad2grad)
     ax_r = data_list[3]
     ay_r = data_list[4]
     az_r = data_list[5]
