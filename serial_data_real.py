@@ -119,7 +119,7 @@ def serial_read():
                 yaw   = Euler[2]
             except:
                 print (".")
-        if (data_format != 0):
+        if (data_format == 1):
             save_data(roll, pitch, yaw,acc_x, acc_y, acc_z)
     
 def animate(i):
