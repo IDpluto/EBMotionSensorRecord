@@ -113,7 +113,7 @@ def serial_read():
             except:
                 print (".")
     #text = words[0][-1:]
-    save_data(roll, pitch, yaw,acc_x, acc_y, acc_z)
+        save_data(roll, pitch, yaw,acc_x, acc_y, acc_z)
    
 
 fig = plt.figure()    
