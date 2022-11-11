@@ -140,6 +140,7 @@ def animate_3(i):
     #new_x_3 = np.r_[old_x_3[1:], x_3]
     #line_3.set_xdata(new_x_3)
     y_3 = save_t(data)
+    print(y_3)
     y_3 = y_3[2]
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
@@ -189,17 +190,7 @@ if __name__ == "__main__":
     grad2rad = 3.141592/180.0
     rad2grad = 180.0/3.141592
     cos = math.cos
-    roll_g = 0.000
-    pitch_g = 0.000
-    yaw_g = 0.000
-    ax_g = 0.000
-    ay_g = 0.000
-    az_g = 0.000
-
-
-
-
-
+    
     ser = serial.Serial('/dev/ttyUSB0', 115200)
 
     fig = plt.figure()    
