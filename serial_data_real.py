@@ -12,13 +12,7 @@ grad2rad = 3.141592/180.0
 rad2grad = 180.0/3.141592
 cos = math.cos
 
-roll_g = 0.000
-pitch_g = 0.000
-yaw_g = 0.000
-
-ax_g = 0.000
-ay_g = 0.000
-az_g = 0.000
+sensor_data = [roll_g, pitch_g, yaw_g, ax_g, ay_g, az_g]
 
 
 ser = serial.Serial('/dev/ttyUSB0', 115200)
