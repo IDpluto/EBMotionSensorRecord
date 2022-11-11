@@ -8,7 +8,7 @@ from scipy import stats
 import random, time, spidev
 
 
-
+'''
 def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z, count):
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
@@ -28,7 +28,24 @@ def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z, count):
         return (ay_r)
     else:
         return (az_r)
-    
+'''
+
+def check_val(roll, pitch, yaw, acc_x, acc_y, acc_z):
+    roll_r = "%.2f" %(roll*rad2grad)
+    pitch_r = "%.2f" %(pitch*rad2grad)
+    yaw_r = "%.2f" %(yaw*rad2grad)
+    if (count == 0):
+        return (roll_r)
+    elif (count == 1):
+        return (pitch_r)
+    elif (count == 2):
+        return (yaw_r)
+    elif (count == 3):
+        return (acc_x)
+    elif (count == 4):
+        return (acc_y)
+    else:
+        return (acc_z)
 
     
     
@@ -82,9 +99,7 @@ def serial_read(count):
                 roll = float(words[data_index])*grad2rad
                 pitch = float(words[data_index+1])*grad2rad
                 yaw = float(words[data_index+2])*grad2rad
-                roll_r = "%.2f" %(roll*rad2grad)
-                pitch_r = "%.2f" %(pitch*rad2grad)
-                yaw_r = "%.2f" %(yaw*rad2grad)
+               
                 acc_x = float(words[data_index+3])
                 acc_y = float(words[data_index+4])
                 acc_z = float(words[data_index+5])
@@ -107,19 +122,9 @@ def serial_read(count):
                 yaw   = Euler[2]
             except:
                 print (".")
-
-    elif (count == 0):
-        return (roll_r)
-    elif (count == 1):
-        return (pitch_r)
-    elif (count == 2):
-        return (yaw_r)
-    elif (count == 3):
-        return (acc_x)
-    elif (count == 4):
-        return (acc_y)
-    else:
-        return (acc_z)
+        result = check_val(roll, pitch, yaw, acc_x, acc_y, acc_z)
+    
+    
         
    
 
