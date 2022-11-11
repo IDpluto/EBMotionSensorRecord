@@ -18,8 +18,8 @@ def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z):
     ax_r = acc_x
     ay_r = acc_y
     az_r = acc_z
-    
-    return roll_r, pitch_r, yaw_r, ax_r, ay_r, az_r
+    data = [roll_r, pitch_r, yaw_r, ax_r, ay_r, az_r]
+    return data
 
     
     
