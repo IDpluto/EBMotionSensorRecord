@@ -10,8 +10,6 @@ import random, time, spidev
 
 
 def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z):
-
-    
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
     yaw_r = "%.2f" %(yaw*rad2grad)
@@ -19,8 +17,8 @@ def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z):
     ay_r = acc_y
     az_r = acc_z
     data_list = float(roll_r), float(pitch_r), float(yaw_r), float(ax_r), float(ay_r), float(az_r)
-    data_list.sort()
     return data_list
+    
 
     
     
@@ -140,7 +138,6 @@ def animate_3(i):
     #new_x_3 = np.r_[old_x_3[1:], x_3]
     #line_3.set_xdata(new_x_3)
     y_3 = serial_read(2)
-    print(y_3)
     y_3 = y_3[2]
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
