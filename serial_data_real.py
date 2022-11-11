@@ -164,7 +164,7 @@ def animate(i):
     #line.set_xdata(new_x)
     y =  serial_read(0)
     y = next(y)
-    print(y)
+    #print(y)
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
     new_y = np.r_[old_y[1:], y]
