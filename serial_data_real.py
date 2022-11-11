@@ -112,42 +112,27 @@ def serial_read(count):
             #print ("seconds:",text)
         else :
             data_from=0  # unknown format
-
-
     if(data_from!=0):
         commoma = words[data_index].find('.') 
         if(len(words[data_index][commoma:-1])==4): # �Ҽ��� 4�ڸ� �Ǻ�
-                data_format = 2  # quaternion
+             data_format = 2  # quaternion
         else :
             data_format = 1 # euler
-
-
     if(data_format==1): #euler
         try:
             roll = float(words[data_index])*grad2rad
             pitch = float(words[data_index+1])*grad2rad
             yaw = float(words[data_index+2])*grad2rad
-            roll_r = "%.2f" %(roll*rad2grad)
-            pitch_r = "%.2f" %(pitch*rad2grad)
-            yaw_r = "%.2f" %(yaw*rad2grad)
+            #roll_r = "%.2f" %(roll*rad2grad)
+            #pitch_r = "%.2f" %(pitch*rad2grad)
+            #yaw_r = "%.2f" %(yaw*rad2grad)
                
             acc_x = float(words[data_index+3])
             acc_y = float(words[data_index+4])
             acc_z = float(words[data_index+5])
-            
-           
-                
-                #print(roll)
-        except:
-               
-            roll_r = 0
-            pitch_r = 0
-            yaw_r = 0
-               
-            acc_x = 0
-            acc_y = 0
-            acc_z = 0
-            
+            #print(roll)
+        except: 
+           print (".")
     else: #(data_format==2)quaternion
         try:
             q0 = float(words[data_index])
@@ -164,7 +149,7 @@ def serial_read(count):
             yaw   = Euler[2]
         except:
              print (".")
-    return roll
+    return acc_x
 def animate(i):
     
     #x = x_read()
