@@ -135,7 +135,7 @@ def serial_read(count):
             acc_y = float(words[data_index+4])
             acc_z = float(words[data_index+5])
             
-            return roll_r
+           
                 
                 #print(roll)
         except:
@@ -147,7 +147,7 @@ def serial_read(count):
             acc_x = 0
             acc_y = 0
             acc_z = 0
-            return roll_r
+            
     else: #(data_format==2)quaternion
         try:
             q0 = float(words[data_index])
@@ -164,7 +164,7 @@ def serial_read(count):
             yaw   = Euler[2]
         except:
              print (".")
-    
+    return roll_r
 def animate(i):
     
     #x = x_read()
