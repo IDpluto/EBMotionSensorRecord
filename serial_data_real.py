@@ -122,8 +122,8 @@ def serial_read(count):
                 yaw   = Euler[2]
             except:
                 print (".")
-        result = check_val(roll, pitch, yaw, acc_x, acc_y, acc_z, count)
-        return result
+    result = check_val(roll, pitch, yaw, acc_x, acc_y, acc_z, count)
+    return result
     
     
         
