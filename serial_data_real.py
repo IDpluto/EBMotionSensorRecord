@@ -108,7 +108,7 @@ def serial_read(count):
             except:
                 print (".")
 
-    if (count == 0):
+    elif (count == 0):
         return (roll_r)
     elif (count == 1):
         return (pitch_r)
