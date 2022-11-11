@@ -130,8 +130,7 @@ def serial_read(count):
                 acc_x = float(words[data_index+3])
                 acc_y = float(words[data_index+4])
                 acc_z = float(words[data_index+5])
-                result = check_val(roll, pitch, yaw, acc_x, acc_y, acc_z, count)
-                return result
+                
                 #print(roll)
             except:
                 print (".")
@@ -151,6 +150,8 @@ def serial_read(count):
                 yaw   = Euler[2]
             except:
                 print (".")
+        result = check_val(roll, pitch, yaw, acc_x, acc_y, acc_z, count)
+        return result
     
 def animate(i):
     
@@ -159,6 +160,7 @@ def animate(i):
     #new_x = np.r_[old_x[1:], x]
     #line.set_xdata(new_x)
     y =  serial_read(0)
+    print(y)
     #y = y[0]
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
