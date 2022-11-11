@@ -171,8 +171,8 @@ def animate(i):
     #old_x = line.get_xdata()
     #new_x = np.r_[old_x[1:], x]
     #line.set_xdata(new_x)
-    data =  serial_read(0)
-    y = data[0]
+    y =  serial_read(0)
+    #y = data[0]
     #print(y)
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
@@ -187,8 +187,8 @@ def animate_2(i):
     #old_x_2 = line_2.get_xdata()
     #new_x_2 = np.r_[old_x_2[1:], x_2]
     #line_2.set_xdata(new_x_2)
-    data = serial_read(1)
-    y_2 = data[1]
+    y_2 = serial_read(1)
+    #y_2 = data[1]
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
     line_2.set_ydata(new_y_2)
@@ -200,8 +200,8 @@ def animate_3(i):
     #old_x_3 = line_3.get_xdata()
     #new_x_3 = np.r_[old_x_3[1:], x_3]
     #line_3.set_xdata(new_x_3)
-    data = serial_read(2)
-    y_3 = data[2]
+    y_3 = serial_read(2)
+    #y_3 = data[2]
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
     line_3.set_ydata(new_y_3)
@@ -212,8 +212,8 @@ def animate_4(i):
     #old_x_4 = line_4.get_xdata()
     #new_x_4 = np.r_[old_x_4[1:], x_4]
     #line_4.set_xdata(new_x_4)
-    data = serial_read(3)
-    y_4 = data[3]
+    y_4 = serial_read(3)
+    #y_4 = data[3]
     old_y_4= line_4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
     line_4.set_ydata(new_y_4)
@@ -225,8 +225,8 @@ def animate_5(i):
     #old_x_5 = line_5.get_xdata()
     #new_x_5 = np.r_[old_x_5[1:], x_5]
     #line_5.set_xdata(new_x_5)
-    data = serial_read(4)
-    y_5 = data[4]
+    y_5 = serial_read(4)
+    #y_5 = data[4]
     old_y_5= line_5.get_ydata(4)
     new_y_5 = np.r_[old_y_5[1:], y_5]
     line_5.set_ydata(new_y_5)
@@ -238,8 +238,8 @@ def animate_6(i):
     #old_x_6 = line_6.get_ydata()
     #new_x_6 = np.r_[old_x_6[1:], x_6]
     #line_6.set_xdata(new_x_6)
-    data = serial_read(5)
-    y_6 = data[5]
+    y_6 = serial_read(5)
+    #y_6 = data[5]
     old_y_6= line_6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
     line_6.set_ydata(new_y_6)
