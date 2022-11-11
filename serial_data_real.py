@@ -122,51 +122,49 @@ def serial_read(count):
             data_format = 1 # euler
 
 
-        if(data_format==1): #euler
-            try:
-                roll = float(words[data_index])*grad2rad
-                pitch = float(words[data_index+1])*grad2rad
-                yaw = float(words[data_index+2])*grad2rad
-                roll_r = "%.2f" %(roll*rad2grad)
-                pitch_r = "%.2f" %(pitch*rad2grad)
-                yaw_r = "%.2f" %(yaw*rad2grad)
+    if(data_format==1): #euler
+        try:
+            roll = float(words[data_index])*grad2rad
+            pitch = float(words[data_index+1])*grad2rad
+            yaw = float(words[data_index+2])*grad2rad
+            roll_r = "%.2f" %(roll*rad2grad)
+            pitch_r = "%.2f" %(pitch*rad2grad)
+            yaw_r = "%.2f" %(yaw*rad2grad)
                
-                acc_x = float(words[data_index+3])
-                acc_y = float(words[data_index+4])
-                acc_z = float(words[data_index+5])
-                result_list = [roll, pitch, yaw, acc_x, acc_y, acc_z, count]
-                result = check_val(result_list)
+            acc_x = float(words[data_index+3])
+            acc_y = float(words[data_index+4])
+            acc_z = float(words[data_index+5])
+            result_list = [roll, pitch, yaw, acc_x, acc_y, acc_z, count]
+            return result_list
                 
                 #print(roll)
-            except:
+        except:
                
-                roll_r = 0
-                pitch_r = 0
-                yaw_r = 0
+            roll_r = 0
+            pitch_r = 0
+            yaw_r = 0
                
-                acc_x = 0
-                acc_y = 0
-                acc_z = 0
-                result_list = [roll, pitch, yaw, acc_x, acc_y, acc_z, count]
-                result = check_val(result_list)
-        else: #(data_format==2)quaternion
-            try:
-                q0 = float(words[data_index])
-                q1 = float(words[data_index+1])
-                q2 = float(words[data_index+2])
-                q3 = float(words[data_index+3])
-                acc_x = float(words[data_index+4])
-                acc_y = float(words[data_index+5])
-                acc_z = float(words[data_index+6])
-                Euler = quat_to_euler(q0,q1,q2,q3)
+            acc_x = 0
+            acc_y = 0
+            acc_z = 0
+            result_list = [roll, pitch, yaw, acc_x, acc_y, acc_z, count]
+            return result_list
+    else: #(data_format==2)quaternion
+        try:
+            q0 = float(words[data_index])
+            q1 = float(words[data_index+1])
+            q2 = float(words[data_index+2])
+            q3 = float(words[data_index+3])
+            acc_x = float(words[data_index+4])
+            acc_y = float(words[data_index+5])
+            acc_z = float(words[data_index+6])
+            Euler = quat_to_euler(q0,q1,q2,q3)
 
-                roll  = Euler[1]
-                pitch = Euler[0]
-                yaw   = Euler[2]
-            except:
-                print (".")
-        
-        return result
+            roll  = Euler[1]
+            pitch = Euler[0]
+            yaw   = Euler[2]
+        except:
+             print (".")
     
 def animate(i):
     
@@ -174,8 +172,8 @@ def animate(i):
     #old_x = line.get_xdata()
     #new_x = np.r_[old_x[1:], x]
     #line.set_xdata(new_x)
-    y =  serial_read(0)
-    #y = next(y)
+    data =  serial_read(0)
+    y = data[0]
     #print(y)
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
@@ -190,8 +188,8 @@ def animate_2(i):
     #old_x_2 = line_2.get_xdata()
     #new_x_2 = np.r_[old_x_2[1:], x_2]
     #line_2.set_xdata(new_x_2)
-    y_2 = serial_read(1)
-    #y_2 = next(y_2)
+    data = serial_read(1)
+    y_2 = data[1]
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
     line_2.set_ydata(new_y_2)
@@ -203,8 +201,8 @@ def animate_3(i):
     #old_x_3 = line_3.get_xdata()
     #new_x_3 = np.r_[old_x_3[1:], x_3]
     #line_3.set_xdata(new_x_3)
-    y_3 = serial_read(2)
-    #y_3 = next(y_3)
+    data = serial_read(2)
+    y_3 = data[2]
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
     line_3.set_ydata(new_y_3)
@@ -215,8 +213,8 @@ def animate_4(i):
     #old_x_4 = line_4.get_xdata()
     #new_x_4 = np.r_[old_x_4[1:], x_4]
     #line_4.set_xdata(new_x_4)
-    y_4 = serial_read(3)
-    #y_4 = next(y_4)
+    data = serial_read(3)
+    y_4 = data[3]
     old_y_4= line_4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
     line_4.set_ydata(new_y_4)
@@ -228,8 +226,8 @@ def animate_5(i):
     #old_x_5 = line_5.get_xdata()
     #new_x_5 = np.r_[old_x_5[1:], x_5]
     #line_5.set_xdata(new_x_5)
-    y_5 = serial_read(4)
-    #y_5 = next(y_5)
+    data = serial_read(4)
+    y_5 = data[4]
     old_y_5= line_5.get_ydata(4)
     new_y_5 = np.r_[old_y_5[1:], y_5]
     line_5.set_ydata(new_y_5)
@@ -241,8 +239,8 @@ def animate_6(i):
     #old_x_6 = line_6.get_ydata()
     #new_x_6 = np.r_[old_x_6[1:], x_6]
     #line_6.set_xdata(new_x_6)
-    y_6 = serial_read(5)
-    #y_6 = next(y_6)
+    data = serial_read(5)
+    y_6 = data[5]
     old_y_6= line_6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
     line_6.set_ydata(new_y_6)
