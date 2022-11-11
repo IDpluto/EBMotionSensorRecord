@@ -87,6 +87,9 @@ def serial_read(count):
                     roll = float(words[data_index])*grad2rad
                     pitch = float(words[data_index+1])*grad2rad
                     yaw = float(words[data_index+2])*grad2rad
+                    roll_r = "%.2f" %(roll*rad2grad)
+                    pitch_r = "%.2f" %(pitch*rad2grad)
+                    yaw_r = "%.2f" %(yaw*rad2grad)
                     acc_x = float(words[data_index+3])
                     acc_y = float(words[data_index+4])
                     acc_z = float(words[data_index+5])
@@ -111,24 +114,19 @@ def serial_read(count):
                     print (".")
 
         #text = words[0][-1:]
-        roll_r = "%.2f" %(roll*rad2grad)
-        pitch_r = "%.2f" %(pitch*rad2grad)
-        yaw_r = "%.2f" %(yaw*rad2grad)
-        ax_r = acc_x
-        ay_r = acc_y
-        az_r = acc_z
-        if (count == 0):
-            return (roll_r)
-        elif (count == 1):
-            return (pitch_r)
-        elif (count == 2):
-            return (yaw_r)
-        elif (count == 3):
-            return (ax_r)
-        elif (count == 4):
-            return (ay_r)
-        else:
-            return (az_r)
+        
+            if (count == 0):
+                return (roll_r)
+            elif (count == 1):
+                return (pitch_r)
+            elif (count == 2):
+                return (yaw_r)
+            elif (count == 3):
+                return (acc_x)
+            elif (count == 4):
+                return (acc_y)
+            else:
+                return (acc_z)
         
    
 
