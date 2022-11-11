@@ -213,7 +213,6 @@ if __name__ == "__main__":
     line_6, = ax_2.plot(np.arange(max_points), 
                 np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
     
-    data = serial_read()
     anim = animation.FuncAnimation(fig, animate ,interval = 10)
     anim_2 = animation.FuncAnimation(fig, animate_2  , interval=10)
     anim_3 = animation.FuncAnimation(fig, animate_3  , interval=10)
