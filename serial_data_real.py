@@ -11,6 +11,13 @@ import random, time, spidev
 grad2rad = 3.141592/180.0
 rad2grad = 180.0/3.141592
 cos = math.cos
+roll_g = 0.000
+pitch_g = 0.000
+yaw_g = 0.000
+ax_g = 0.000
+ay_g = 0.000
+az_g = 0.000
+
 
 sensor_data = [roll_g, pitch_g, yaw_g, ax_g, ay_g, az_g]
 
@@ -19,18 +26,13 @@ ser = serial.Serial('/dev/ttyUSB0', 115200)
 
 def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z):
 
-    global roll_g
-    global pitch_g
-    global yaw_g
-    global ax_g
-    global ay_g
-    global az_g
-    roll_g = "%.2f" %(roll*rad2grad)
-    pitch_g = "%.2f" %(pitch*rad2grad)
-    yaw_g = "%.2f" %(yaw*rad2grad)
-    ax_g = acc_x
-    ay_g = acc_y
-    az_g = acc_z
+    global sensor_data
+    sensor_data[0] = "%.2f" %(roll*rad2grad)
+    sensor_data[1] = "%.2f" %(pitch*rad2grad)
+    sensor_data[2] = "%.2f" %(yaw*rad2grad)
+    sensor_data[3] = acc_x
+    sensor_data[4] = acc_y
+    sensor_data[5] = acc_z
 
     
     
