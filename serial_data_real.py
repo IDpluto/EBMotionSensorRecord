@@ -136,7 +136,14 @@ def serial_read(count):
                 
                 #print(roll)
             except:
-                print (".")
+               
+                roll_r = 0
+                pitch_r = 0
+                yaw_r = 0
+               
+                acc_x = 0
+                acc_y = 0
+                acc_z = 0
         else: #(data_format==2)quaternion
             try:
                 q0 = float(words[data_index])
