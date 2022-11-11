@@ -147,7 +147,7 @@ def serial_read(count):
             acc_x = 0
             acc_y = 0
             acc_z = 0
-            result_list = [roll_r, pitch_r, yaw_r, acc_x, acc_y, acc_z, count]
+            result_list = [roll, pitch, yaw, acc_x, acc_y, acc_z, count]
             return result_list
     else: #(data_format==2)quaternion
         try:
