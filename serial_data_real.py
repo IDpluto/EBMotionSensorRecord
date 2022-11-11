@@ -127,7 +127,7 @@ def animate(i):
     #old_x = line.get_xdata()
     #new_x = np.r_[old_x[1:], x]
     #line.set_xdata(new_x)
-    serial_read()
+ 
     y = r_q.popleft()
     #print(y)
     # y = random.randint(0,1000)
@@ -206,12 +206,12 @@ def animate_6(i):
     line_6.set_ydata(new_y_6)
     #print(new_y_3)
     return line_6
-
-    
-anim = animation.FuncAnimation(fig, animate ,interval = 10)
-anim_2 = animation.FuncAnimation(fig, animate_2  , interval=10)
-anim_3 = animation.FuncAnimation(fig, animate_3  , interval=10)
-anim_4 = animation.FuncAnimation(fig, animate_4  , interval=10)
-anim_5 = animation.FuncAnimation(fig, animate_5  , interval=10)
-anim_6 = animation.FuncAnimation(fig, animate_6  , interval=10)
-plt.show()
+while True:
+    serial_read()
+    anim = animation.FuncAnimation(fig, animate ,interval = 10)
+    anim_2 = animation.FuncAnimation(fig, animate_2  , interval=10)
+    anim_3 = animation.FuncAnimation(fig, animate_3  , interval=10)
+    anim_4 = animation.FuncAnimation(fig, animate_4  , interval=10)
+    anim_5 = animation.FuncAnimation(fig, animate_5  , interval=10)
+    anim_6 = animation.FuncAnimation(fig, animate_6  , interval=10)
+    plt.show()
