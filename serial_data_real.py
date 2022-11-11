@@ -39,6 +39,7 @@ def quat_to_euler(x,y,z,w):
     return euler
 
 def serial_read():
+    global count
     if (count == 0):
         count += 1
         line = ser.readline()
