@@ -161,7 +161,7 @@ def serial_read(count):
             except:
                 print (".")
         #result = check_val(roll, pitch, yaw, acc_x, acc_y, acc_z, count)
-        yield  roll_r, pitch_r, yaw_r, acc_x, acc_y, acc_z
+        return [roll_r, pitch_r, yaw_r, acc_x, acc_y, acc_z]
     
 def animate(i):
     
@@ -169,8 +169,8 @@ def animate(i):
     #old_x = line.get_xdata()
     #new_x = np.r_[old_x[1:], x]
     #line.set_xdata(new_x)
-    y =  serial_read(0)
-    y = next(y)
+    r, p, y_r, ax, ay, az =  serial_read(0)
+    y = r
     #print(y)
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
@@ -185,8 +185,8 @@ def animate_2(i):
     #old_x_2 = line_2.get_xdata()
     #new_x_2 = np.r_[old_x_2[1:], x_2]
     #line_2.set_xdata(new_x_2)
-    y_2 = serial_read(1)
-    y_2 = next(y_2)
+    r, p, y_r, ax, ay, az =  serial_read(0)
+    y_2 = p
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
     line_2.set_ydata(new_y_2)
@@ -198,8 +198,8 @@ def animate_3(i):
     #old_x_3 = line_3.get_xdata()
     #new_x_3 = np.r_[old_x_3[1:], x_3]
     #line_3.set_xdata(new_x_3)
-    y_3 = serial_read(2)
-    y_3 = next(y_3)
+    r, p, y_r, ax, ay, az =  serial_read(0)
+    y_3 = y_r
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
     line_3.set_ydata(new_y_3)
@@ -210,8 +210,8 @@ def animate_4(i):
     #old_x_4 = line_4.get_xdata()
     #new_x_4 = np.r_[old_x_4[1:], x_4]
     #line_4.set_xdata(new_x_4)
-    y_4 = serial_read(3)
-    y_4 = next(y_4)
+    r, p, y_r, ax, ay, az =  serial_read(0)
+    y_4 = ax
     old_y_4= line_4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
     line_4.set_ydata(new_y_4)
@@ -223,8 +223,8 @@ def animate_5(i):
     #old_x_5 = line_5.get_xdata()
     #new_x_5 = np.r_[old_x_5[1:], x_5]
     #line_5.set_xdata(new_x_5)
-    y_5 = serial_read(4)
-    y_5 = next(y_5)
+    r, p, y_r, ax, ay, az =  serial_read(0)
+    y_5 = ay
     old_y_5= line_5.get_ydata(4)
     new_y_5 = np.r_[old_y_5[1:], y_5]
     line_5.set_ydata(new_y_5)
@@ -236,8 +236,8 @@ def animate_6(i):
     #old_x_6 = line_6.get_ydata()
     #new_x_6 = np.r_[old_x_6[1:], x_6]
     #line_6.set_xdata(new_x_6)
-    y_6 = serial_read(5)
-    y_6 = next(y_6)
+    r, p, y_r, ax, ay, az =  serial_read(0)
+    y_6 = az
     old_y_6= line_6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
     line_6.set_ydata(new_y_6)
