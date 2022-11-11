@@ -171,6 +171,7 @@ def animate_6(i):
     #old_x_6 = line_6.get_ydata()
     #new_x_6 = np.r_[old_x_6[1:], x_6]
     #line_6.set_xdata(new_x_6)
+    print(data[0])
     y_6 = data[5]
     old_y_6= line_6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
@@ -216,7 +217,7 @@ if __name__ == "__main__":
                 np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
     while True:
         data = serial_read()
-        print(data[0])
+       
         anim = animation.FuncAnimation(fig, animate ,interval = 10)
         anim_2 = animation.FuncAnimation(fig, animate_2  , interval=10)
         anim_3 = animation.FuncAnimation(fig, animate_3  , interval=10)
