@@ -8,21 +8,6 @@ from scipy import stats
 import random, time, spidev
 
 
-grad2rad = 3.141592/180.0
-rad2grad = 180.0/3.141592
-cos = math.cos
-roll_g = 0.000
-pitch_g = 0.000
-yaw_g = 0.000
-ax_g = 0.000
-ay_g = 0.000
-az_g = 0.000
-
-
-sensor_data = [roll_g, pitch_g, yaw_g, ax_g, ay_g, az_g]
-
-
-ser = serial.Serial('/dev/ttyUSB0', 115200)
 
 def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z):
 
@@ -135,7 +120,7 @@ line_6, = ax_2.plot(np.arange(max_points),
 
 
 def animate(i):
-    serial_read()
+    
     #x = x_read()
     #old_x = line.get_xdata()
     #new_x = np.r_[old_x[1:], x]
@@ -207,11 +192,29 @@ def animate_6(i):
     line_6.set_ydata(new_y_6)
     #print(new_y_3)
     return line_6
+if __name__ == "__main__":
 
-anim = animation.FuncAnimation(fig, animate ,interval = 10)
-anim_2 = animation.FuncAnimation(fig, animate_2  , interval=10)
-anim_3 = animation.FuncAnimation(fig, animate_3  , interval=10)
-anim_4 = animation.FuncAnimation(fig, animate_4  , interval=10)
-anim_5 = animation.FuncAnimation(fig, animate_5  , interval=10)
-anim_6 = animation.FuncAnimation(fig, animate_6  , interval=10)
-plt.show()
+    grad2rad = 3.141592/180.0
+    rad2grad = 180.0/3.141592
+    cos = math.cos
+    roll_g = 0.000
+    pitch_g = 0.000
+    yaw_g = 0.000
+    ax_g = 0.000
+    ay_g = 0.000
+    az_g = 0.000
+
+
+    sensor_data = [roll_g, pitch_g, yaw_g, ax_g, ay_g, az_g]
+
+
+    ser = serial.Serial('/dev/ttyUSB0', 115200)
+    while True:
+        serial_read()
+        anim = animation.FuncAnimation(fig, animate ,interval = 10)
+        anim_2 = animation.FuncAnimation(fig, animate_2  , interval=10)
+        anim_3 = animation.FuncAnimation(fig, animate_3  , interval=10)
+        anim_4 = animation.FuncAnimation(fig, animate_4  , interval=10)
+        anim_5 = animation.FuncAnimation(fig, animate_5  , interval=10)
+        anim_6 = animation.FuncAnimation(fig, animate_6  , interval=10)
+        plt.show()
