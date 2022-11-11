@@ -211,12 +211,12 @@ if __name__ == "__main__":
                 np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'green')
     line_6, = ax_2.plot(np.arange(max_points), 
                 np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
-    while True:
-        data = serial_read()
-        anim = animation.FuncAnimation(fig, animate ,interval = 10)
-        anim_2 = animation.FuncAnimation(fig, animate_2  , interval=10)
-        anim_3 = animation.FuncAnimation(fig, animate_3  , interval=10)
-        anim_4 = animation.FuncAnimation(fig, animate_4  , interval=10)
-        anim_5 = animation.FuncAnimation(fig, animate_5  , interval=10)
-        anim_6 = animation.FuncAnimation(fig, animate_6  , interval=10)
-        plt.show()
+    
+    data = serial_read()
+    anim = animation.FuncAnimation(fig, animate ,interval = 10)
+    anim_2 = animation.FuncAnimation(fig, animate_2  , interval=10)
+    anim_3 = animation.FuncAnimation(fig, animate_3  , interval=10)
+    anim_4 = animation.FuncAnimation(fig, animate_4  , interval=10)
+    anim_5 = animation.FuncAnimation(fig, animate_5  , interval=10)
+    anim_6 = animation.FuncAnimation(fig, animate_6  , interval=10)
+    plt.show()
