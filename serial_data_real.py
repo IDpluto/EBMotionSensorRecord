@@ -96,8 +96,8 @@ def serial_read(count):
                 except:
                     print (".")
         #text = words[0][-1:]
-    data = save_data(roll, pitch, yaw,acc_x, acc_y, acc_z)
-    return data
+        data = save_data(roll, pitch, yaw,acc_x, acc_y, acc_z)
+        return data
    
 
 
