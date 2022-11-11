@@ -12,8 +12,34 @@ grad2rad = 3.141592/180.0
 rad2grad = 180.0/3.141592
 cos = math.cos
 
+roll_g = 0.000
+pitch_g = 0.000
+yaw_g = 0.000
+
+ax_g = 0.000
+ay_g = 0.000
+az_g = 0.000
+
 
 ser = serial.Serial('/dev/ttyUSB0', 115200)
+
+def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z):
+
+    global roll_g
+    global pitch_g
+    global yaw_g
+    global ax_g
+    global ay_g
+    global az_g
+    roll_g = "%.2f" %(roll*rad2grad)
+    pitch_g = "%.2f" %(pitch*rad2grad)
+    yaw_g = "%.2f" %(yaw*rad2grad)
+    ax_g = acc_x
+    ay_g = acc_y
+    az_g = acc_z
+
+    
+    
 
 def quat_to_euler(x,y,z,w):
     euler = [0.0,0.0,0.0]
@@ -29,42 +55,66 @@ def quat_to_euler(x,y,z,w):
 
     return euler
 
-def x_read():
-    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
+def serial_read():
 
-    x_count = data['x_num'][1]
-    return x_count
-
-def roll_ReadChannel():
-    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-
+    line = ser.readline()
+    line = line.decode("ISO-8859-1")
+    words = line.split(",")    # Fields split
     
-    roll1 = data['roll'][1]
-    return roll1
-def pitch_ReadChannel():
-    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-    pitch1 = data['pitch'][1]
-    return (pitch1)
-        
-def yaw_ReadChannel():
-    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-    yaw1 = data['yaw'][1]
-    return (yaw1)
+    if(-1 < words[0].find('*')) :
+        data_from=1     # sensor data
+        data_index=0
+        text = "ID:"+'*'
+        words[0]=words[0].replace('*','')
+        #print ("first:", text)
+    else :
+        if(-1 < words[0].find('-')) :
+            data_from=2  # rf_receiver data
+            data_index=1
+            text = "ID:"+words[0]
+            #print ("seconds:",text)
+        else :
+            data_from=0  # unknown format
 
-def ax_ReadChannel():
-    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-    acc_x1 = data['acc_x'][1]
-    return (acc_x1)
 
-def ay_ReadChannel():
-    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-    acc_y1 = data['acc_y'][1]
-    return (acc_y1)
+    if(data_from!=0):
+        commoma = words[data_index].find('.') 
+        if(len(words[data_index][commoma:-1])==4): # �Ҽ��� 4�ڸ� �Ǻ�
+            data_format = 2  # quaternion
+        else :
+            data_format = 1 # euler
 
-def az_ReadChannel():
-    data =pd.read_csv('/home/dohlee/crc_project/data/data1.csv')
-    acc_z1 = data['acc_z'][1]
-    return (acc_z1)
+
+        if(data_format==1): #euler
+            try:
+                roll = float(words[data_index])*grad2rad
+                pitch = float(words[data_index+1])*grad2rad
+                yaw = float(words[data_index+2])*grad2rad
+                acc_x = float(words[data_index+3])
+                acc_y = float(words[data_index+4])
+                acc_z = float(words[data_index+5])
+                #print(roll)
+            except:
+                print (".")
+        else: #(data_format==2)quaternion
+            try:
+                q0 = float(words[data_index])
+                q1 = float(words[data_index+1])
+                q2 = float(words[data_index+2])
+                q3 = float(words[data_index+3])
+                acc_x = float(words[data_index+4])
+                acc_y = float(words[data_index+5])
+                acc_z = float(words[data_index+6])
+                Euler = quat_to_euler(q0,q1,q2,q3)
+
+                roll  = Euler[1]
+                pitch = Euler[0]
+                yaw   = Euler[2]
+            except:
+                print (".")
+    #text = words[0][-1:]
+    save_data(roll, pitch, yaw,acc_x, acc_y, acc_z)
+   
 
 fig = plt.figure()    
 ax = plt.subplot(211, xlim=(0, 5), ylim=(-500, 500))
@@ -86,12 +136,15 @@ line_5, = ax_2.plot(np.arange(max_points),
 line_6, = ax_2.plot(np.arange(max_points), 
                 np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
 
+
+
 def animate(i):
+    serial_read()
     #x = x_read()
     #old_x = line.get_xdata()
     #new_x = np.r_[old_x[1:], x]
     #line.set_xdata(new_x)
-    y = roll_ReadChannel()
+    y = roll_g
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
     new_y = np.r_[old_y[1:], y]
@@ -105,7 +158,7 @@ def animate_2(i):
     #old_x_2 = line_2.get_xdata()
     #new_x_2 = np.r_[old_x_2[1:], x_2]
     #line_2.set_xdata(new_x_2)
-    y_2 = pitch_ReadChannel()
+    y_2 = pitch_g
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
     line_2.set_ydata(new_y_2)
@@ -117,7 +170,7 @@ def animate_3(i):
     #old_x_3 = line_3.get_xdata()
     #new_x_3 = np.r_[old_x_3[1:], x_3]
     #line_3.set_xdata(new_x_3)
-    y_3 = yaw_ReadChannel()
+    y_3 = yaw_g
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
     line_3.set_ydata(new_y_3)
@@ -128,7 +181,7 @@ def animate_4(i):
     #old_x_4 = line_4.get_xdata()
     #new_x_4 = np.r_[old_x_4[1:], x_4]
     #line_4.set_xdata(new_x_4)
-    y_4 = ax_ReadChannel()
+    y_4 = ax_g
     old_y_4= line_4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
     line_4.set_ydata(new_y_4)
@@ -140,7 +193,7 @@ def animate_5(i):
     #old_x_5 = line_5.get_xdata()
     #new_x_5 = np.r_[old_x_5[1:], x_5]
     #line_5.set_xdata(new_x_5)
-    y_5 =ay_ReadChannel()
+    y_5 =ay_g
     old_y_5= line_5.get_ydata()
     new_y_5 = np.r_[old_y_5[1:], y_5]
     line_5.set_ydata(new_y_5)
@@ -152,7 +205,7 @@ def animate_6(i):
     #old_x_6 = line_6.get_ydata()
     #new_x_6 = np.r_[old_x_6[1:], x_6]
     #line_6.set_xdata(new_x_6)
-    y_6 = az_ReadChannel()
+    y_6 = az_g
     old_y_6= line_6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
     line_6.set_ydata(new_y_6)
