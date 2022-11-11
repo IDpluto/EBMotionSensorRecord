@@ -173,7 +173,7 @@ def animate_5(i):
     #old_x_5 = line_5.get_xdata()
     #new_x_5 = np.r_[old_x_5[1:], x_5]
     #line_5.set_xdata(new_x_5)
-    y_5 = serial_read()
+    y_5 = serial_read(4)
     #y_5 = y_5[4]
     old_y_5= line_5.get_ydata(4)
     new_y_5 = np.r_[old_y_5[1:], y_5]
