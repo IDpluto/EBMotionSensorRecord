@@ -26,7 +26,7 @@ def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z, count):
         return (ax_r)
     elif (count == 4):
         return (ay_r)
-    else
+    else:
         return (az_r)
     
 
