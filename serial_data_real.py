@@ -10,24 +10,7 @@ import random, time, spidev
 
 
 def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z, count):
-    roll_r = "%.2f" %(roll*rad2grad)
-    pitch_r = "%.2f" %(pitch*rad2grad)
-    yaw_r = "%.2f" %(yaw*rad2grad)
-    ax_r = acc_x
-    ay_r = acc_y
-    az_r = acc_z
-    if (count == 0):
-        return (roll_r)
-    elif (count == 1):
-        return (pitch_r)
-    elif (count == 2):
-        return (yaw_r)
-    elif (count == 3):
-        return (ax_r)
-    elif (count == 4):
-        return (ay_r)
-    else:
-        return (az_r)
+    
     
 
     
@@ -67,16 +50,12 @@ def serial_read(count):
                 #print ("seconds:",text)
             else :
                 data_from=0  # unknown format
-
-
         if(data_from!=0):
             commoma = words[data_index].find('.') 
             if(len(words[data_index][commoma:-1])==4): # �Ҽ��� 4�ڸ� �Ǻ�
                 data_format = 2  # quaternion
             else :
                 data_format = 1 # euler
-
-
             if(data_format==1): #euler
                 try:
                     roll = float(words[data_index])*grad2rad
@@ -105,9 +84,24 @@ def serial_read(count):
                 except:
                     print (".")
     else:
-        #text = words[0][-1:]
-        data = save_data(roll, pitch, yaw,acc_x, acc_y, acc_z, count)
-        return data
+        roll_r = "%.2f" %(roll*rad2grad)
+        pitch_r = "%.2f" %(pitch*rad2grad)
+        yaw_r = "%.2f" %(yaw*rad2grad)
+        ax_r = acc_x
+        ay_r = acc_y
+        az_r = acc_z
+        if (count == 0):
+            return (roll_r)
+        elif (count == 1):
+            return (pitch_r)
+        elif (count == 2):
+            return (yaw_r)
+        elif (count == 3):
+            return (ax_r)
+        elif (count == 4):
+            return (ay_r)
+        else:
+            return (az_r)
    
 
 
