@@ -201,6 +201,7 @@ if __name__ == "__main__":
 
     max_points = 50
     max_points_2 = 50
+    count = 0
 
     line, = ax.plot(np.arange(max_points), 
                 np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
