@@ -129,6 +129,7 @@ def animate(i):
     #line.set_xdata(new_x)
  
     y = r_q.popleft()
+    print (y)
     #print(y)
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
