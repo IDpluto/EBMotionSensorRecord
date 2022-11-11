@@ -9,13 +9,13 @@ import random, time, spidev
 
 
 
-def save_data(data_list):
-    roll_r = "%.2f" %(data_list[0] * rad2grad)
-    pitch_r = "%.2f" %(data_list[1] * rad2grad)
-    yaw_r = "%.2f" %(data_list[2] * rad2grad)
-    ax_r = data_list[3]
-    ay_r = data_list[4]
-    az_r = data_list[5]
+def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z, count):
+    roll_r = "%.2f" %(roll*rad2grad)
+    pitch_r = "%.2f" %(pitch*rad2grad)
+    yaw_r = "%.2f" %(yaw*rad2grad)
+    ax_r = acc_x
+    ay_r = acc_y
+    az_r = acc_z
     if (count == 0):
         return (roll_r)
     elif (count == 1):
@@ -104,10 +104,10 @@ def serial_read(count):
                     yaw   = Euler[2]
                 except:
                     print (".")
-        data_list = roll, pitch, yaw,acc_x, acc_y, acc_z, count
+
         #text = words[0][-1:]
-        data = save_data(data_list)
-        return data
+        save_data(roll, pitch, yaw,acc_x, acc_y, acc_z, count)
+        
    
 
 
