@@ -103,6 +103,8 @@ def serial_read(count):
                 acc_x = float(words[data_index+3])
                 acc_y = float(words[data_index+4])
                 acc_z = float(words[data_index+5])
+                result = check_val(roll, pitch, yaw, acc_x, acc_y, acc_z, count)
+                return result
                 #print(roll)
             except:
                 print (".")
@@ -122,8 +124,7 @@ def serial_read(count):
                 yaw   = Euler[2]
             except:
                 print (".")
-    result = check_val(roll, pitch, yaw, acc_x, acc_y, acc_z, count)
-    return result
+    
     
     
         
@@ -212,6 +213,7 @@ def animate_6(i):
     line_6.set_ydata(new_y_6)
     #print(new_y_3)
     return line_6
+
 if __name__ == "__main__":
 
     grad2rad = 3.141592/180.0
