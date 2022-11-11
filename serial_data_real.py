@@ -97,9 +97,7 @@ def serial_read():
                 roll = float(words[data_index])*grad2rad
                 pitch = float(words[data_index+1])*grad2rad
                 yaw = float(words[data_index+2])*grad2rad
-                acc_x = float(words[data_index+3])
-                acc_y = float(words[data_index+4])
-                acc_z = float(words[data_index+5])
+                
             except: 
                 print (".")
         else: #(data_format==2)quaternion
@@ -108,9 +106,7 @@ def serial_read():
                 q1 = float(words[data_index+1])
                 q2 = float(words[data_index+2])
                 q3 = float(words[data_index+3])
-                acc_x = float(words[data_index+4])
-                acc_y = float(words[data_index+5])
-                acc_z = float(words[data_index+6])
+                
                 Euler = quat_to_euler(q0,q1,q2,q3)
 
                 roll  = Euler[1]
@@ -118,7 +114,10 @@ def serial_read():
                 yaw   = Euler[2]
             except:
                 print (".")
-    save_data(roll, pitch, yaw,acc_x, acc_y, acc_z)
+        acc_x = float(words[data_index+3])
+        acc_y = float(words[data_index+4])
+        acc_z = float(words[data_index+5])
+        save_data(roll, pitch, yaw,acc_x, acc_y, acc_z)
     
 def animate(i):
     
