@@ -14,27 +14,7 @@ ax_q = deque([])
 ay_q = deque([])
 az_q = deque([])
 
-'''
-def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z, count):
-    roll_r = "%.2f" %(roll*rad2grad)
-    pitch_r = "%.2f" %(pitch*rad2grad)
-    yaw_r = "%.2f" %(yaw*rad2grad)
-    ax_r = acc_x
-    ay_r = acc_y
-    az_r = acc_z
-    if (count == 0):
-        return (roll_r)
-    elif (count == 1):
-        return (pitch_r)
-    elif (count == 2):
-        return (yaw_r)
-    elif (count == 3):
-        return (ax_r)
-    elif (count == 4):
-        return (ay_r)
-    else:
-        return (az_r)
-'''
+
 grad2rad = 3.141592/180.0
 rad2grad = 180.0/3.141592
 cos = math.cos
@@ -138,7 +118,7 @@ def serial_read():
                 yaw   = Euler[2]
             except:
                 print (".")
-        save_data(roll, pitch, yaw,acc_x, acc_y, acc_z)
+    save_data(roll, pitch, yaw,acc_x, acc_y, acc_z)
     
 def animate(i):
     
