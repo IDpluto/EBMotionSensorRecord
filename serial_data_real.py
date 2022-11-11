@@ -48,7 +48,12 @@ def quat_to_euler(x,y,z,w):
     return euler
 
 def serial_read(count):
-
+        roll = 0.000
+        pitch = 0.000
+        yaw = 0.000
+        acc_x = 0.000
+        acc_y = 0.000
+        acc_z = 0.000
         line = ser.readline()
         line = line.decode("ISO-8859-1")
         words = line.split(",")    # Fields split
@@ -106,8 +111,8 @@ def serial_read(count):
                     print (".")
 
         #text = words[0][-1:]
-            d_d = save_data(roll, pitch, yaw,acc_x, acc_y, acc_z, count)
-            return d_d
+        d_d = save_data(roll, pitch, yaw,acc_x, acc_y, acc_z, count)
+        return d_d
         
    
 
