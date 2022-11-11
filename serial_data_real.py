@@ -18,7 +18,13 @@ def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z):
     ax_r = acc_x
     ay_r = acc_y
     az_r = acc_z
-    data = float(roll_r), float(pitch_r), float(yaw_r), float(ax_r), float(ay_r), float(az_r)
+    data = []
+    data.append(roll_r)
+    data.append(pitch_r)
+    data.append(yaw_r)
+    data.append(ax_r)
+    data.append(ay_r)
+    data.append(az_r)
     return data
 
     
