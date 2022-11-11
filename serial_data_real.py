@@ -111,7 +111,24 @@ def serial_read(count):
                     print (".")
 
         #text = words[0][-1:]
-            return roll
+        roll_r = "%.2f" %(roll*rad2grad)
+        pitch_r = "%.2f" %(pitch*rad2grad)
+        yaw_r = "%.2f" %(yaw*rad2grad)
+        ax_r = acc_x
+        ay_r = acc_y
+        az_r = acc_z
+        if (count == 0):
+            return (roll_r)
+        elif (count == 1):
+            return (pitch_r)
+        elif (count == 2):
+            return (yaw_r)
+        elif (count == 3):
+            return (ax_r)
+        elif (count == 4):
+            return (ay_r)
+        else:
+            return (az_r)
         
    
 
