@@ -102,8 +102,7 @@ def serial_read():
 
 
 
-def save_t(data):
-    return data
+
 
 def animate(i):
     
@@ -111,7 +110,7 @@ def animate(i):
     #old_x = line.get_xdata()
     #new_x = np.r_[old_x[1:], x]
     #line.set_xdata(new_x)
-    y =  save_t(data)
+    y =  serial_read()
     y = y[0]
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
@@ -126,7 +125,7 @@ def animate_2(i):
     #old_x_2 = line_2.get_xdata()
     #new_x_2 = np.r_[old_x_2[1:], x_2]
     #line_2.set_xdata(new_x_2)
-    y_2 = save_t(data)
+    y_2 = serial_read()
     y_2 = y_2[1]
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
@@ -139,7 +138,7 @@ def animate_3(i):
     #old_x_3 = line_3.get_xdata()
     #new_x_3 = np.r_[old_x_3[1:], x_3]
     #line_3.set_xdata(new_x_3)
-    y_3 = save_t(data)
+    y_3 = serial_read()
     print(y_3)
     y_3 = y_3[2]
     old_y_3= line_3.get_ydata()
@@ -152,7 +151,7 @@ def animate_4(i):
     #old_x_4 = line_4.get_xdata()
     #new_x_4 = np.r_[old_x_4[1:], x_4]
     #line_4.set_xdata(new_x_4)
-    y_4 = save_t(data)
+    y_4 = serial_read()
     y_4 = y_4[3]
     old_y_4= line_4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
@@ -165,7 +164,7 @@ def animate_5(i):
     #old_x_5 = line_5.get_xdata()
     #new_x_5 = np.r_[old_x_5[1:], x_5]
     #line_5.set_xdata(new_x_5)
-    y_5 = save_t(data)
+    y_5 = serial_read()
     y_5 = y_5[4]
     old_y_5= line_5.get_ydata()
     new_y_5 = np.r_[old_y_5[1:], y_5]
@@ -178,7 +177,7 @@ def animate_6(i):
     #old_x_6 = line_6.get_ydata()
     #new_x_6 = np.r_[old_x_6[1:], x_6]
     #line_6.set_xdata(new_x_6)
-    y_6 = save_t(data)
+    y_6 = serial_read()
     y_6 = y_6[5]
     old_y_6= line_6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
@@ -214,8 +213,6 @@ if __name__ == "__main__":
                 np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
     while True:
         data = serial_read()
-        data = save_t(data)
-       
         anim = animation.FuncAnimation(fig, animate ,interval = 10)
         anim_2 = animation.FuncAnimation(fig, animate_2  , interval=10)
         anim_3 = animation.FuncAnimation(fig, animate_3  , interval=10)
