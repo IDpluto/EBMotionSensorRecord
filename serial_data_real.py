@@ -12,12 +12,12 @@ import random, time, spidev
 def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z):
 
     global sensor_data
-    sensor_data[0] = "%.2f" %(roll*rad2grad)
-    sensor_data[1] = "%.2f" %(pitch*rad2grad)
-    sensor_data[2] = "%.2f" %(yaw*rad2grad)
-    sensor_data[3] = acc_x
-    sensor_data[4] = acc_y
-    sensor_data[5] = acc_z
+    roll_r = "%.2f" %(roll*rad2grad)
+    pitch_r = "%.2f" %(pitch*rad2grad)
+    yaw_r = "%.2f" %(yaw*rad2grad)
+    ax_r = acc_x
+    ay_r = acc_y
+    az_r = acc_z
 
     
     
