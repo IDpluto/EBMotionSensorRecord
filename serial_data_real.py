@@ -159,25 +159,25 @@ def animate_4(i):
     #print(new_y_3)
     return line_4
 
-def animate_5(4):
+def animate_5(i):
     #x_5 = x_read()
     #old_x_5 = line_5.get_xdata()
     #new_x_5 = np.r_[old_x_5[1:], x_5]
     #line_5.set_xdata(new_x_5)
     y_5 = serial_read()
     y_5 = y_5[4]
-    old_y_5= line_5.get_ydata()
+    old_y_5= line_5.get_ydata(4)
     new_y_5 = np.r_[old_y_5[1:], y_5]
     line_5.set_ydata(new_y_5)
     #print(new_y_3)
     return line_5
 
-def animate_6(5):
+def animate_6(i):
     #x_6 = x_read()
     #old_x_6 = line_6.get_ydata()
     #new_x_6 = np.r_[old_x_6[1:], x_6]
     #line_6.set_xdata(new_x_6)
-    y_6 = serial_read()
+    y_6 = serial_read(5)
     y_6 = y_6[5]
     old_y_6= line_6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
