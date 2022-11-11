@@ -38,10 +38,8 @@ def quat_to_euler(x,y,z,w):
 
     return euler
 
-def serial_read():
-    global count
+def serial_read(count):
     if (count == 0):
-        count += 1
         line = ser.readline()
         line = line.decode("ISO-8859-1")
         words = line.split(",")    # Fields split
@@ -99,8 +97,6 @@ def serial_read():
                     print (".")
         #text = words[0][-1:]
     data = save_data(roll, pitch, yaw,acc_x, acc_y, acc_z)
-    if (count == 6):
-        count = 0
     return data
    
 
@@ -114,7 +110,7 @@ def animate(i):
     #old_x = line.get_xdata()
     #new_x = np.r_[old_x[1:], x]
     #line.set_xdata(new_x)
-    y =  serial_read()
+    y =  serial_read(0)
     y = y[0]
     # y = random.randint(0,1000)
     old_y = line.get_ydata()
@@ -129,7 +125,7 @@ def animate_2(i):
     #old_x_2 = line_2.get_xdata()
     #new_x_2 = np.r_[old_x_2[1:], x_2]
     #line_2.set_xdata(new_x_2)
-    y_2 = serial_read()
+    y_2 = serial_read(1)
     y_2 = y_2[1]
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
@@ -142,7 +138,7 @@ def animate_3(i):
     #old_x_3 = line_3.get_xdata()
     #new_x_3 = np.r_[old_x_3[1:], x_3]
     #line_3.set_xdata(new_x_3)
-    y_3 = serial_read()
+    y_3 = serial_read(2)
     print(y_3)
     y_3 = y_3[2]
     old_y_3= line_3.get_ydata()
@@ -155,7 +151,7 @@ def animate_4(i):
     #old_x_4 = line_4.get_xdata()
     #new_x_4 = np.r_[old_x_4[1:], x_4]
     #line_4.set_xdata(new_x_4)
-    y_4 = serial_read()
+    y_4 = serial_read(3)
     y_4 = y_4[3]
     old_y_4= line_4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
@@ -163,7 +159,7 @@ def animate_4(i):
     #print(new_y_3)
     return line_4
 
-def animate_5(i):
+def animate_5(4):
     #x_5 = x_read()
     #old_x_5 = line_5.get_xdata()
     #new_x_5 = np.r_[old_x_5[1:], x_5]
@@ -176,7 +172,7 @@ def animate_5(i):
     #print(new_y_3)
     return line_5
 
-def animate_6(i):
+def animate_6(5):
     #x_6 = x_read()
     #old_x_6 = line_6.get_ydata()
     #new_x_6 = np.r_[old_x_6[1:], x_6]
