@@ -19,7 +19,7 @@ def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z):
     ay_r = acc_y
     az_r = acc_z
     data_list = float(roll_r), float(pitch_r), float(yaw_r), float(ax_r), float(ay_r), float(az_r)
-    data_reserved = data_reserved.reserve()
+    data_reserved = data_list.reserve()
     return data_reserved
 
     
