@@ -152,15 +152,6 @@ def serial_read(count):
             except:
                 print (".")
     
-    
-    
-        
-   
-
-
-
-
-
 def animate(i):
     
     #x = x_read()
@@ -242,10 +233,10 @@ def animate_6(i):
     return line_6
 
     
-    anim = animation.FuncAnimation(fig, animate ,interval = 10)
-    anim_2 = animation.FuncAnimation(fig, animate_2  , interval=10)
-    anim_3 = animation.FuncAnimation(fig, animate_3  , interval=10)
-    anim_4 = animation.FuncAnimation(fig, animate_4  , interval=10)
-    anim_5 = animation.FuncAnimation(fig, animate_5  , interval=10)
-    anim_6 = animation.FuncAnimation(fig, animate_6  , interval=10)
-    plt.show()
+anim = animation.FuncAnimation(fig, animate ,interval = 10)
+anim_2 = animation.FuncAnimation(fig, animate_2  , interval=10)
+anim_3 = animation.FuncAnimation(fig, animate_3  , interval=10)
+anim_4 = animation.FuncAnimation(fig, animate_4  , interval=10)
+anim_5 = animation.FuncAnimation(fig, animate_5  , interval=10)
+anim_6 = animation.FuncAnimation(fig, animate_6  , interval=10)
+plt.show()
