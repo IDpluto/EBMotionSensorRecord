@@ -164,7 +164,7 @@ def serial_read(count):
             yaw   = Euler[2]
         except:
              print (".")
-    return roll_r
+    return roll
 def animate(i):
     
     #x = x_read()
