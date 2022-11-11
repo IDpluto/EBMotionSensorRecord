@@ -108,20 +108,18 @@ def serial_read(count):
             except:
                 print (".")
 
-        #text = words[0][-1:]
-        
-        if (count == 0):
-            return (roll_r)
-        elif (count == 1):
-            return (pitch_r)
-        elif (count == 2):
-            return (yaw_r)
-        elif (count == 3):
-            return (acc_x)
-        elif (count == 4):
-            return (acc_y)
-        else:
-            return (acc_z)
+    if (count == 0):
+        return (roll_r)
+    elif (count == 1):
+        return (pitch_r)
+    elif (count == 2):
+        return (yaw_r)
+    elif (count == 3):
+        return (acc_x)
+    elif (count == 4):
+        return (acc_y)
+    else:
+        return (acc_z)
         
    
 
