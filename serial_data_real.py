@@ -30,7 +30,7 @@ def save_data(roll, pitch, yaw, acc_x, acc_y, acc_z, count):
         return (az_r)
 '''
 
-def check_val(roll, pitch, yaw, acc_x, acc_y, acc_z):
+def check_val(roll, pitch, yaw, acc_x, acc_y, acc_z, count):
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
     yaw_r = "%.2f" %(yaw*rad2grad)
@@ -122,7 +122,8 @@ def serial_read(count):
                 yaw   = Euler[2]
             except:
                 print (".")
-        result = check_val(roll, pitch, yaw, acc_x, acc_y, acc_z)
+        result = check_val(roll, pitch, yaw, acc_x, acc_y, acc_z, count)
+        return result
     
     
         
