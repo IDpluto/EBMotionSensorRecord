@@ -173,7 +173,7 @@ if __name__ == '__main__':
 
 
     max_points = 100
-    max_points_2 = 30
+    max_points_2 = 100
     count = 0
     
     line, = ax.plot(np.arange(max_points), 
@@ -190,11 +190,11 @@ if __name__ == '__main__':
         np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
 
    
-    anim = animation.FuncAnimation(fig, animate, fargs = (roll_s),interval = 10)
-    anim_2 = animation.FuncAnimation(fig, animate_2, fargs = (pitch_s), interval=10)
-    anim_3 = animation.FuncAnimation(fig, animate_3, fargs = (yaw_s), interval=10)
-    anim_4 = animation.FuncAnimation(fig, animate_4, fargs = (ax_s), interval=10)
-    anim_5 = animation.FuncAnimation(fig, animate_5, fargs = (ay_s), interval=10)
-    anim_6 = animation.FuncAnimation(fig, animate_6, fargs = (az_s), interval=10)
+    anim = animation.FuncAnimation(fig, animate, fargs = (roll_s), frames= 200, interval = 10)
+    anim_2 = animation.FuncAnimation(fig, animate_2, fargs = (pitch_s), frames= 200, interval=10)
+    anim_3 = animation.FuncAnimation(fig, animate_3, fargs = (yaw_s), frames= 200, interval=10)
+    anim_4 = animation.FuncAnimation(fig, animate_4, fargs = (ax_s), frames= 200, interval=10)
+    anim_5 = animation.FuncAnimation(fig, animate_5, fargs = (ay_s), frames= 200, interval=10)
+    anim_6 = animation.FuncAnimation(fig, animate_6, fargs = (az_s), frames= 200, interval=10)
 
     plt.show()
