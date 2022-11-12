@@ -121,6 +121,9 @@ def serial_read():
                 acc_y = float(words[data_index+4])
                 acc_z = float(words[data_index+5])
                 save_data(roll, pitch, yaw)
+                ax_s.append(acc_x)
+                ay_s.append(acc_y)
+                az_s.append(acc_z)
             except: 
                 print (".")
         else: #(data_format==2)quaternion
@@ -140,9 +143,7 @@ def serial_read():
             except:
                 print (".")
         
-        ax_s.append(acc_x)
-        ay_s.append(acc_y)
-        az_s.append(acc_z)
+        
 
 
 
