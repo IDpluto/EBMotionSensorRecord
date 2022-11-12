@@ -90,7 +90,7 @@ def animate_6(i):
 def serial_read():
   
     line = ser.readline()
-    line = line.decode("ISO-8859-1")
+    line = line.decode("ISO-8859-1")# .encode("utf-8")
     words = line.split(",")    # Fields split
     
     if(-1 < words[0].find('*')) :
