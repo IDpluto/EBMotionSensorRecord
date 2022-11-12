@@ -142,6 +142,9 @@ def save_data_hand(roll, pitch, yaw):
     roll_s.append(roll_r)
     pitch_s.append(pitch_r)
     yaw_s.append(yaw_r)
+    roll_chand.append(roll_r)
+    pitch_chand.append(pitch_r)
+    yaw_chand.append(yaw_r)
 
 def save_data_head(roll, pitch, yaw):
     roll_r = "%.2f" %(roll*rad2grad)
@@ -150,22 +153,27 @@ def save_data_head(roll, pitch, yaw):
     roll_h.append(roll_r)
     pitch_h.append(pitch_r)
     yaw_h.append(yaw_r)
+    roll_chead.append(roll_r)
+    pitch_chead.append(pitch_r)
+    yaw_chead.append(yaw_r)
 
-def save_csv(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
-    roll_r = "%.2f" %(roll*rad2grad)
-    pitch_r = "%.2f" %(pitch*rad2grad)
-    yaw_r = "%.2f" %(yaw*rad2grad)
+def save_csv():
+    
     with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
-            "x_num":x_count,
-            "sensor_id":sensor_id,
-            "roll":roll_r,
-            "pitch":pitch_r,
-            "yaw":yaw_r,
-            "acc_x":acc_x,
-            "acc_y":acc_y,
-            "acc_z":acc_z
+            "roll_hand":roll_chand.pop(),
+            "pitch_hand":pitch_chand.pop(),
+            "yaw_hand":yaw_chand.pop(),
+            "acc_x_hand":ax_chand.pop(),
+            "acc_y_hand":ay_chand.pop(),
+            "acc_z_hand":az_chand.pop(),
+            "roll_head":roll_chead.pop(),
+            "pitch_head":pitch_chead.pop(),
+            "yaw_head":yaw_chead.pop(),
+            "acc_x_head":ax_chead.pop(),
+            "acc_y_head":ay_chead.pop(),
+            "acc_z_head":az_chead.pop()
         }
         csv_writer.writerow(info)
 
@@ -203,27 +211,30 @@ def serial_read():
                         roll = float(words[data_index])*grad2rad
                         pitch = float(words[data_index+1])*grad2rad
                         yaw = float(words[data_index+2])*grad2rad
-                        acc_x = float(words[data_index+3]) * 100
-                        acc_y = float(words[data_index+4]) * 100
-                        acc_z = float(words[data_index+5]) * 100
+                        acc_x = float(words[data_index+3]) * 10
+                        acc_y = float(words[data_index+4]) * 10
+                        acc_z = float(words[data_index+5]) * 10
                         save_data_hand(roll, pitch, yaw)
                         ax_s.append(acc_x)
                         ay_s.append(acc_y)
                         az_s.append(acc_z)
-                        save_csv(text, roll, pitch, yaw, acc_x, acc_y, acc_z)
+                        ax_chand.append(acc_x)
+                        ay_chand.append(acc_y)
+                        az_chand.append(acc_z)
+                        
+                        
                     if(text == "ID:100-1"):
                         roll_t = float(words[data_index])*grad2rad
                         pitch_t = float(words[data_index+1])*grad2rad
                         yaw_t = float(words[data_index+2])*grad2rad
-                        acc_x_t = float(words[data_index+3]) * 100
-                        acc_y_t = float(words[data_index+4]) * 100
-                        acc_z_t = float(words[data_index+5]) * 100
+                        acc_x_t = float(words[data_index+3]) * 10
+                        acc_y_t = float(words[data_index+4]) * 10
+                        acc_z_t = float(words[data_index+5]) * 10
                         save_data_head(roll_t, pitch_t, yaw_t)
                         ax_h.append(acc_x_t)
                         ay_h.append(acc_y_t)
                         az_h.append(acc_z_t)
-                        save_csv(text, roll, pitch, yaw, acc_x, acc_y, acc_z, count)
-                    count += 1
+                    save_csv()
                 except: 
                     print ("miss_data")
             else: #(data_format==2)quaternion
@@ -267,6 +278,20 @@ if __name__ == '__main__':
     ax_h = deque()
     ay_h = deque()
     az_h = deque()
+
+    roll_chand = deque()
+    pitch_chand = deque()
+    yaw_chand = deque()
+    ax_chand = deque()
+    ay_chand = deque()
+    az_chand = deque()
+
+    roll_chead = deque()
+    pitch_chead = deque()
+    yaw_chead = deque()
+    ax_chead = deque()
+    ay_chead = deque()
+    az_chead = deque()
     
 
     fig = plt.figure()
@@ -281,7 +306,7 @@ if __name__ == '__main__':
     max_points = 40
     max_points_2 = 40
     count = 0
-    fieldnames = ["x_num","sensor_id","roll", "pitch", "yaw", "acc_x", "acc_y", "acc_z"]
+    fieldnames = ["roll_hand", "pitch_hand", "yaw_hand", "acc_x_hand", "acc_y_hand", "acc_z_hand", "roll_head", "pitch_head", "yaw_head", "acc_x_head", "acc_y_head", "acc_z_head"]
 
     with open('/home/dohlee/crc_project/data/data1.csv','w') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
