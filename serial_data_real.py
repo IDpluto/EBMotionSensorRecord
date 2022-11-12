@@ -114,39 +114,39 @@ def serial_read():
             else :
                 data_format = 1 # euler
 
-        if(data_format==1): #euler
-            try:
+            if(data_format==1): #euler
+                try:
                 
-                roll = float(words[data_index])*grad2rad
-                pitch = float(words[data_index+1])*grad2rad
-                yaw = float(words[data_index+2])*grad2rad
-                acc_x = float(words[data_index+3])
-                acc_y = float(words[data_index+4])
-                acc_z = float(words[data_index+5])
-                save_data(roll, pitch, yaw)
-                ax_s.append(acc_x)
-                ay_s.append(acc_y)
-                az_s.append(acc_z)
-                xs.append(count)
-                count += 1
-            except: 
-                print (".")
-        else: #(data_format==2)quaternion
-            try:
-                q0 = float(words[data_index])
-                q1 = float(words[data_index+1])
-                q2 = float(words[data_index+2])
-                q3 = float(words[data_index+3])
-                acc_x = float(words[data_index+4])
-                acc_y = float(words[data_index+5])
-                acc_z = float(words[data_index+6])
-                Euler = quat_to_euler(q0,q1,q2,q3)
+                    roll = float(words[data_index])*grad2rad
+                    pitch = float(words[data_index+1])*grad2rad
+                    yaw = float(words[data_index+2])*grad2rad
+                    acc_x = float(words[data_index+3])
+                    acc_y = float(words[data_index+4])
+                    acc_z = float(words[data_index+5])
+                    save_data(roll, pitch, yaw)
+                    ax_s.append(acc_x)
+                    ay_s.append(acc_y)
+                    az_s.append(acc_z)
+                    xs.append(count)
+                    count += 1
+                except: 
+                    print (".")
+            else: #(data_format==2)quaternion
+                try:
+                    q0 = float(words[data_index])
+                    q1 = float(words[data_index+1])
+                    q2 = float(words[data_index+2])
+                    q3 = float(words[data_index+3])
+                    acc_x = float(words[data_index+4])
+                    acc_y = float(words[data_index+5])
+                    acc_z = float(words[data_index+6])
+                    Euler = quat_to_euler(q0,q1,q2,q3)
 
-                roll  = Euler[1]
-                pitch = Euler[0]
-                yaw   = Euler[2]
-            except:
-                print (".")
+                    roll  = Euler[1]
+                    pitch = Euler[0]
+                    yaw   = Euler[2]
+                except:
+                    print (".")
         
         
 
