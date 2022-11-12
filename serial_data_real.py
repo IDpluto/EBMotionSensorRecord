@@ -241,8 +241,9 @@ def serial_read():
                         #az_s.append(0)
                         ax_chead.append(acc_x)
                         ay_chead.append(acc_y)
+                    
                         az_chead.append(acc_z)
-                    save_csv()
+                    #save_csv()
                 except: 
                     print ("miss_data")
             else: #(data_format==2)quaternion
@@ -312,7 +313,7 @@ if __name__ == '__main__':
     ax_2 = plt.subplot(212, xlim=(0, 40), ylim=(-300, 300))
     ax_2.set_title("hand")
     ax_2.set_ylabel("val")
-    plt.tight_layout()
+    #plt.tight_layout()
 
 
     max_points = 40
