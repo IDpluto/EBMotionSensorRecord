@@ -251,7 +251,7 @@ if __name__ == '__main__':
     
 
     fig = plt.figure()    
-    ax = plt.subplot(211, xlim=(0, 40), ylim=(-700, 700))
+    ax = plt.subplot(211, 1, ylim=(-700, 700))
     #ax = plt.title("test")
     ax_2 = plt.subplot(212, xlim=(0, 40), ylim=(-700, 700))
 
@@ -287,7 +287,7 @@ if __name__ == '__main__':
         np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkorange')
 
    
-    anim = animation.FuncAnimation(fig, animate, fargs = (roll_s), frames= 200, interval = 10, blit=True)
+    anim = animation.FuncAnimation(fig, animate, fargs = (roll_s), frames= 200, interval = 10, blit=False)
     anim_2 = animation.FuncAnimation(fig, animate_2, fargs = (pitch_s), frames= 200, interval=10, blit=False)
     anim_3 = animation.FuncAnimation(fig, animate_3, fargs = (yaw_s), frames= 200, interval=10, blit=False)
     anim_4 = animation.FuncAnimation(fig, animate_4, fargs = (ax_s), frames= 200, interval=10, blit=False)
