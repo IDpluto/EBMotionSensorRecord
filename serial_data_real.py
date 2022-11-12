@@ -305,19 +305,19 @@ if __name__ == '__main__':
     
 
     fig = plt.figure()
-    ax = plt.subplot(211, xlim=(0, 10), ylim=(-300, 300))
+    ax = plt.subplot(211, xlim=(0, 5), ylim=(-300, 300))
     
     ax.set_title("head")
     ax.set_ylabel("val")
     #ax = plt.title("test")
-    ax_2 = plt.subplot(212, xlim=(0, 10), ylim=(-300, 300))
+    ax_2 = plt.subplot(212, xlim=(0, 5), ylim=(-300, 300))
     ax_2.set_title("hand")
     ax_2.set_ylabel("val")
     #plt.tight_layout()
 
 
-    max_points = 10
-    max_points_2 = 10
+    max_points = 5
+    max_points_2 = 5
     count = 0
     fieldnames = ["roll_hand", "pitch_hand", "yaw_hand", "acc_x_hand", "acc_y_hand", "acc_z_hand", "roll_head", "pitch_head", "yaw_head", "acc_x_head", "acc_y_head", "acc_z_head"]
 
