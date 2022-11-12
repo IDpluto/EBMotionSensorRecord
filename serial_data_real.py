@@ -145,10 +145,6 @@ def save_data_hand(roll, pitch, yaw):
     roll_chand.append(roll_r)
     pitch_chand.append(pitch_r)
     yaw_chand.append(yaw_r)
-    #yaw_h.append(0)
-    #roll_h.append(0)
-    #pitch_h.append(0)
-
 
 def save_data_head(roll, pitch, yaw):
     roll_r = "%.2f" %(roll*rad2grad)
@@ -157,9 +153,9 @@ def save_data_head(roll, pitch, yaw):
     roll_h.append(roll_r)
     pitch_h.append(pitch_r)
     yaw_h.append(yaw_r)
-    #roll_s.append(0)
-    #pitch_s.append(0)
-    #yaw_s.append(0)
+    roll_chead.append(roll_r)
+    pitch_chead.append(pitch_r)
+    yaw_chead.append(yaw_r)
 
 def save_csv():
     
@@ -226,9 +222,15 @@ def serial_read():
                         ax_chand.append(acc_x)
                         ay_chand.append(acc_y)
                         az_chand.append(acc_z)
+                        
                         ax_h.append(0)
                         ay_h.append(0)
                         az_h.append(0)
+
+                        roll_h.append(0)
+                        pitch_h.append(0)
+                        yaw_h.append(0)
+                        
                     if(text == "ID:100-1"):
                         roll_t = float(words[data_index])*grad2rad
                         pitch_t = float(words[data_index+1])*grad2rad
@@ -243,6 +245,9 @@ def serial_read():
                         ax_h.append(acc_x_t)
                         ay_h.append(acc_y_t)
                         az_h.append(acc_z_t)
+                        roll_s.append(0)
+                        pitch_s.append(0)
+                        yaw_s.append(0)
                     #save_csv()
                 except: 
                     print ("miss_data")
