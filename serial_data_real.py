@@ -7,6 +7,7 @@ import numpy as np
 from scipy import stats
 from collections import deque
 import time
+import csv
 
 def animate(i):
     
@@ -150,6 +151,23 @@ def save_data_head(roll, pitch, yaw):
     pitch_h.append(pitch_r)
     yaw_h.append(yaw_r)
 
+def save_csv(sensor_id, roll, pitch, yaw, acc_x, acc_y, acc_z, x_count):
+    roll_r = "%.2f" %(roll*rad2grad)
+    pitch_r = "%.2f" %(pitch*rad2grad)
+    yaw_r = "%.2f" %(yaw*rad2grad)
+    with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
+        csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
+        info = {
+            "x_num":x_count,
+            "sensor_id":sensor_id,
+            "roll":roll_r,
+            "pitch":pitch_r,
+            "yaw":yaw_r,
+            "acc_x":acc_x,
+            "acc_y":acc_y,
+            "acc_z":acc_z
+        }
+        csv_writer.writerow(info)
 
 
 def serial_read():
@@ -169,7 +187,6 @@ def serial_read():
             data_from=2  # rf_receiver data
             data_index=1
             text = "ID:"+words[0]
-            print(text)
             #print ("seconds:",text)
         else :
             data_from=0  # unknown format
@@ -193,6 +210,7 @@ def serial_read():
                         ax_s.append(acc_x)
                         ay_s.append(acc_y)
                         az_s.append(acc_z)
+                        save_csv(text, roll, pitch, yaw, acc_x, acc_y, acc_z)
                     elif(text == "ID:100-1"):
                         roll_t = float(words[data_index])*grad2rad
                         pitch_t = float(words[data_index+1])*grad2rad
@@ -204,9 +222,10 @@ def serial_read():
                         ax_h.append(acc_x_t)
                         ay_h.append(acc_y_t)
                         az_h.append(acc_z_t)
+                        save_csv(text, roll, pitch, yaw, acc_x, acc_y, acc_z)
                     count += 1
                 except: 
-                    print ("miss")
+                    print ("miss_data")
             else: #(data_format==2)quaternion
                 try:
                     q0 = float(words[data_index])
@@ -262,6 +281,11 @@ if __name__ == '__main__':
     max_points = 40
     max_points_2 = 40
     count = 0
+    fieldnames = ["x_num","sensor_id","roll", "pitch", "yaw", "acc_x", "acc_y", "acc_z"]
+
+    with open('/home/dohlee/crc_project/data/data1.csv','w') as csv_file:
+        csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
+        csv_writer.writeheader()
     
     line, = ax.plot(np.arange(max_points), 
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
