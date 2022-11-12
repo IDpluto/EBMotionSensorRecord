@@ -11,7 +11,7 @@ import time
 def animate(i):
     
     serial_read()
-    y = float(roll_s)
+    y = float(roll_s.popleft())
     print(y)
     old_y = line.get_ydata()
     new_y = np.r_[old_y[1:], y]
@@ -22,7 +22,7 @@ def animate(i):
     
 def animate_2(i):
     serial_read()
-    y_2 = float(i)
+    y_2 = float(pitch_s.popleft())
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
     line_2.set_ydata(new_y_2)
@@ -31,7 +31,7 @@ def animate_2(i):
 
 def animate_3(i):
     serial_read()
-    y_3 = float(i)
+    y_3 = float(yaw_s.popleft())
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
     line_3.set_ydata(new_y_3)
@@ -40,7 +40,7 @@ def animate_3(i):
 
 def animate_4(i):
     serial_read()
-    y_4 = float(i)
+    y_4 = float(ax_s.popleft())
     old_y_4= line_4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
     line_4.set_ydata(new_y_4)
@@ -49,7 +49,7 @@ def animate_4(i):
 
 def animate_5(i):
     serial_read()
-    y_5 = float(i)
+    y_5 = float(ay_s.popleft())
     old_y_5= line_5.get_ydata(4)
     new_y_5 = np.r_[old_y_5[1:], y_5]
     line_5.set_ydata(new_y_5)
@@ -58,7 +58,7 @@ def animate_5(i):
 
 def animate_6(i):
     serial_read()
-    y_6 = float(i)
+    y_6 = float(az_s.popleft())
     old_y_6= line_6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
     line_6.set_ydata(new_y_6)
@@ -127,7 +127,6 @@ def serial_read():
                     ax_s.append(acc_x)
                     ay_s.append(acc_y)
                     az_s.append(acc_z)
-                    xs.append(count)
                     count += 1
                 except: 
                     print (".")
@@ -159,13 +158,13 @@ if __name__ == '__main__':
     cos = math.cos
     
     ser = serial.Serial('/dev/ttyUSB0', 115200)
-    xs = []
-    roll_s= []
-    pitch_s = []
-    yaw_s = []
-    ax_s = []
-    ay_s = []
-    az_s = []
+  
+    roll_s = deque()
+    pitch_s = deque()
+    yaw_s =  deque()
+    ax_s = deque()
+    ay_s = deque()
+    az_s = deque()
     
 
     fig = plt.figure()    
