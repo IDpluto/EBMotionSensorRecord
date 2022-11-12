@@ -305,12 +305,12 @@ if __name__ == '__main__':
     
 
     fig = plt.figure()
-    ax = plt.subplot(211, xlim=(0, 4), ylim=(-100, 100))
+    ax = plt.subplot(211, xlim=(0, 4), ylim=(-1000, 1000))
     
     ax.set_title("head")
     ax.set_ylabel("val")
     #ax = plt.title("test")
-    ax_2 = plt.subplot(212, xlim=(0, 4), ylim=(-100, 100))
+    ax_2 = plt.subplot(212, xlim=(0, 4), ylim=(-1000, 1000))
     ax_2.set_title("hand")
     ax_2.set_ylabel("val")
     #plt.tight_layout()
