@@ -185,10 +185,10 @@ if __name__ == '__main__':
     
 
     fig = plt.figure()    
-    ax = plt.subplot(211, xlim=(0, 50), ylim=(-1000, 1000))
-    ax_2 = plt.subplot(212, xlim=(0, 50), ylim=(-30, 30))
-    ax_3 = plt.subplot(213, xlim=(0, 50), ylim=(-1000, 1000))
-    ax_4 = plt.subplot(214, xlim=(0, 50), ylim=(-30, 30))
+    ax = plt.subplots(211, xlim=(0, 50), ylim=(-1000, 1000))
+    ax_2 = plt.subplots(212, xlim=(0, 50), ylim=(-30, 30))
+    ax_3 = plt.subplots(213, xlim=(0, 50), ylim=(-1000, 1000))
+    ax_4 = plt.subplots(214, xlim=(0, 50), ylim=(-30, 30))
 
     max_points = 50
     max_points_2 = 50
