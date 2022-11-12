@@ -31,7 +31,7 @@ def save_data(roll, pitch, yaw):
 def animate(i):
     
    
-    y = i
+    y = float(i)
     print (y)
    
     old_y = line.get_ydata()
