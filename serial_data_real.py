@@ -222,7 +222,7 @@ def serial_read():
                         ax_h.append(acc_x_t)
                         ay_h.append(acc_y_t)
                         az_h.append(acc_z_t)
-                        save_csv(text, roll, pitch, yaw, acc_x, acc_y, acc_z)
+                        save_csv(text, roll, pitch, yaw, acc_x, acc_y, acc_z, count)
                     count += 1
                 except: 
                     print ("miss_data")
