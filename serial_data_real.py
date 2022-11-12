@@ -169,11 +169,11 @@ if __name__ == '__main__':
 
     fig = plt.figure()    
     ax = plt.subplot(211, xlim=(0, 100), ylim=(-1000, 1000))
-    ax_2 = plt.subplot(212, xlim=(0, 100), ylim=(-30, 30))
+    ax_2 = plt.subplot(212, xlim=(0, 50), ylim=(-20, 20))
 
 
     max_points = 100
-    max_points_2 = 100
+    max_points_2 = 50
     count = 0
     
     line, = ax.plot(np.arange(max_points), 
@@ -182,12 +182,12 @@ if __name__ == '__main__':
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='green',ms=1)
     line_3, = ax.plot(np.arange(max_points), 
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='red',ms=1)
-    line_4, = ax_2.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'blue')
+    line_4, = ax_2.plot(np.arange(max_points_2), 
+        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'blue')
     line_5, = ax_2.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'green')
+        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'green')
     line_6, = ax_2.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
+        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
 
    
     anim = animation.FuncAnimation(fig, animate, fargs = (roll_s),interval = 10)
