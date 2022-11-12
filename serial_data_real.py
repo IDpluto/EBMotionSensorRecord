@@ -305,12 +305,12 @@ if __name__ == '__main__':
     
 
     fig = plt.figure()
-    ax = plt.subplot(211, xlim=(0, 4), ylim=(-300, 300))
+    ax = plt.subplot(211, xlim=(0, 4), ylim=(-250, 250))
     
     ax.set_title("hand")
     ax.set_ylabel("val")
     #ax = plt.title("test")
-    ax_2 = plt.subplot(212, xlim=(0, 4), ylim=(-300, 300))
+    ax_2 = plt.subplot(212, xlim=(0, 4), ylim=(-250, 250))
     ax_2.set_title("head")
     ax_2.set_ylabel("val")
     #plt.tight_layout()
@@ -339,17 +339,17 @@ if __name__ == '__main__':
         np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=1, c = 'darkorange')
     
     line_h1, = ax_2.plot(np.arange(max_points_2), 
-        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
+        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1, c='blue',ms=1)
     line_h2, = ax_2.plot(np.arange(max_points_2), 
-        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1, c='green',ms=1)
+        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1, c='green',ms=1)
     line_h3, = ax_2.plot(np.arange(max_points_2), 
-        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1, c='red',ms=1)
+        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1, c='red',ms=1)
     line_h4, = ax_2.plot(np.arange(max_points_2), 
-        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkturquoise')
+        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1,ms=1, c = 'darkturquoise')
     line_h5, = ax_2.plot(np.arange(max_points_2), 
-        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkviolet')
+        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1,ms=1, c = 'darkviolet')
     line_h6, = ax_2.plot(np.arange(max_points_2), 
-        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkorange')
+        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1,ms=1, c = 'darkorange')
 
    
     anim = animation.FuncAnimation(fig, animate, frames= None, interval = 10,blit=False, repeat = False)
