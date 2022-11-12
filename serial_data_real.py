@@ -162,18 +162,18 @@ def save_csv():
     with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
-            "roll_hand":roll_chand.pop(),
-            "pitch_hand":pitch_chand.pop(),
-            "yaw_hand":yaw_chand.pop(),
-            "acc_x_hand":ax_chand.pop(),
-            "acc_y_hand":ay_chand.pop(),
-            "acc_z_hand":az_chand.pop(),
-            "roll_head":roll_chead.pop(),
-            "pitch_head":pitch_chead.pop(),
-            "yaw_head":yaw_chead.pop(),
-            "acc_x_head":ax_chead.pop(),
-            "acc_y_head":ay_chead.pop(),
-            "acc_z_head":az_chead.pop()
+            "roll_hand":float(roll_chand.pop()),
+            "pitch_hand":float(pitch_chand.pop()),
+            "yaw_hand":float(yaw_chand.pop()),
+            "acc_x_hand":float(ax_chand.pop()),
+            "acc_y_hand":float(ay_chand.pop()),
+            "acc_z_hand":float(az_chand.pop()),
+            "roll_head":float(roll_chead.pop()),
+            "pitch_head":float(pitch_chead.pop()),
+            "yaw_head":float(yaw_chead.pop()),
+            "acc_x_head":float(ax_chead.pop()),
+            "acc_y_head":float(ay_chead.pop()),
+            "acc_z_head":float(az_chead.pop())
         }
         csv_writer.writerow(info)
         #time.sleep(1)
@@ -243,7 +243,7 @@ def serial_read():
                         ay_chead.append(acc_y)
                     
                         az_chead.append(acc_z)
-                    #save_csv()
+                    save_csv()
                 except: 
                     print ("miss_data")
             else: #(data_format==2)quaternion
@@ -305,19 +305,19 @@ if __name__ == '__main__':
     
 
     fig = plt.figure()
-    ax = plt.subplot(211, xlim=(0, 40), ylim=(-500, 500))
+    ax = plt.subplot(211, xlim=(0, 4), ylim=(-30, 30))
     
     ax.set_title("head")
     ax.set_ylabel("val")
     #ax = plt.title("test")
-    ax_2 = plt.subplot(212, xlim=(0, 40), ylim=(-1000, 1000))
+    ax_2 = plt.subplot(212, xlim=(0, 4), ylim=(-30, 30))
     ax_2.set_title("hand")
     ax_2.set_ylabel("val")
     #plt.tight_layout()
 
 
-    max_points = 40
-    max_points_2 = 40
+    max_points = 4
+    max_points_2 = 4
     count = 0
     fieldnames = ["roll_hand", "pitch_hand", "yaw_hand", "acc_x_hand", "acc_y_hand", "acc_z_hand", "roll_head", "pitch_head", "yaw_head", "acc_x_head", "acc_y_head", "acc_z_head"]
 
