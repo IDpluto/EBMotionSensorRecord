@@ -313,8 +313,8 @@ if __name__ == '__main__':
     ax_2.set_title("hand")
     ax_2.set_ylabel("val")
     plt.tight_layout()
-    ax.legend(loc='best')
-    ax_2.legend(loc='best')
+    #ax.legend(loc='best')
+    #ax_2.legend(loc='best')
     #plt.legend(loc = 'upper left')
 
 
