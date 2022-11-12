@@ -81,9 +81,9 @@ def save_data(roll, pitch, yaw):
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
     yaw_r = "%.2f" %(yaw*rad2grad)
-    roll_s.append(roll_r)
-    pitch_s.append(pitch_r)
-    yaw_s.append(yaw_r)
+    roll_s.appendleft(roll_r)
+    pitch_s.appendleft(pitch_r)
+    yaw_s.appendleft(yaw_r)
 
 
 
