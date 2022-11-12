@@ -229,9 +229,9 @@ def serial_read():
                         roll_t = float(words[data_index])*grad2rad
                         pitch_t = float(words[data_index+1])*grad2rad
                         yaw_t = float(words[data_index+2])*grad2rad
-                        acc_x_t = float(words[data_index+3]) * 10
-                        acc_y_t = float(words[data_index+4]) * 10
-                        acc_z_t = float(words[data_index+5]) * 10
+                        acc_x_t = float(words[data_index+3])
+                        acc_y_t = float(words[data_index+4])
+                        acc_z_t = float(words[data_index+5])
                         save_data_head(roll_t, pitch_t, yaw_t)
                         ax_h.append(acc_x_t)
                         ay_h.append(acc_y_t)
