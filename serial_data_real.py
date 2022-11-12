@@ -8,6 +8,62 @@ from scipy import stats
 from collections import deque
 import time
 
+def animate(i):
+    
+    serial_read()
+    y = float(i)
+    old_y = line.get_ydata()
+    new_y = np.r_[old_y[1:], y]
+    line.set_ydata(new_y)
+    
+    #print(new_y)
+    return line
+    
+def animate_2(i):
+    serial_read()
+    y_2 = float(i)
+    old_y_2 = line_2.get_ydata()
+    new_y_2 = np.r_[old_y_2[1:], y_2]
+    line_2.set_ydata(new_y_2)
+    #print(new_y_2)
+    return line_2
+
+def animate_3(i):
+    serial_read()
+    y_3 = float(i)
+    old_y_3= line_3.get_ydata()
+    new_y_3 = np.r_[old_y_3[1:], y_3]
+    line_3.set_ydata(new_y_3)
+    
+    return line_3
+
+def animate_4(i):
+    serial_read()
+    y_4 = float(i)
+    old_y_4= line_4.get_ydata()
+    new_y_4 = np.r_[old_y_4[1:], y_4]
+    line_4.set_ydata(new_y_4)
+    
+    return line_4
+
+def animate_5(i):
+    serial_read()
+    y_5 = float(i)
+    old_y_5= line_5.get_ydata(4)
+    new_y_5 = np.r_[old_y_5[1:], y_5]
+    line_5.set_ydata(new_y_5)
+    #print(new_y_3)
+    return line_5
+
+def animate_6(i):
+    serial_read()
+    y_6 = float(i)
+    old_y_6= line_6.get_ydata()
+    new_y_6 = np.r_[old_y_6[1:], y_6]
+    line_6.set_ydata(new_y_6)
+    #print(new_y_3)
+    return line_6
+
 def quat_to_euler(x,y,z,w):
     euler = [0.0,0.0,0.0]
     sqx=x*x
@@ -28,61 +84,6 @@ def save_data(roll, pitch, yaw):
     pitch_s.append(pitch_r)
     yaw_s.append(yaw_r)
 
-def animate(i):
-    
-    serial_read()
-    y = float(i)
-    old_y = line.get_ydata()
-    new_y = np.r_[old_y[1:], y]
-    line.set_ydata(new_y)
-    
-    #print(new_y)
-    return line
-    
-def animate_2(i):
-    serial_read()
-    y_2 = i
-    old_y_2 = line_2.get_ydata()
-    new_y_2 = np.r_[old_y_2[1:], y_2]
-    line_2.set_ydata(new_y_2)
-    #print(new_y_2)
-    return line_2
-
-def animate_3(i):
-    serial_read()
-    y_3 = i
-    old_y_3= line_3.get_ydata()
-    new_y_3 = np.r_[old_y_3[1:], y_3]
-    line_3.set_ydata(new_y_3)
-    
-    return line_3
-
-def animate_4(i):
-    serial_read()
-    y_4 = i
-    old_y_4= line_4.get_ydata()
-    new_y_4 = np.r_[old_y_4[1:], y_4]
-    line_4.set_ydata(new_y_4)
-    
-    return line_4
-
-def animate_5(i):
-    serial_read()
-    y_5 = i
-    old_y_5= line_5.get_ydata(4)
-    new_y_5 = np.r_[old_y_5[1:], y_5]
-    line_5.set_ydata(new_y_5)
-    #print(new_y_3)
-    return line_5
-
-def animate_6(i):
-    serial_read()
-    y_6 = i
-    old_y_6= line_6.get_ydata()
-    new_y_6 = np.r_[old_y_6[1:], y_6]
-    line_6.set_ydata(new_y_6)
-    #print(new_y_3)
-    return line_6
 
 
 def serial_read():
@@ -114,6 +115,7 @@ def serial_read():
 
         if(data_format==1): #euler
             try:
+                
                 roll = float(words[data_index])*grad2rad
                 pitch = float(words[data_index+1])*grad2rad
                 yaw = float(words[data_index+2])*grad2rad
@@ -124,6 +126,8 @@ def serial_read():
                 ax_s.append(acc_x)
                 ay_s.append(acc_y)
                 az_s.append(acc_z)
+                xs.append(count)
+                count += 1
             except: 
                 print (".")
         else: #(data_format==2)quaternion
@@ -154,7 +158,7 @@ if __name__ == '__main__':
     cos = math.cos
     
     ser = serial.Serial('/dev/ttyUSB0', 115200)
-
+    xs = []
     roll_s= []
     pitch_s = []
     yaw_s = []
@@ -171,17 +175,17 @@ if __name__ == '__main__':
     max_points_2 = 50
     count = 0
     
-    line, = ax.plot(np.arange(max_points), 
+    line, = ax.plot(xs, 
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
-    line_2, = ax.plot(np.arange(max_points), 
+    line_2, = ax.plot(xs, 
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='green',ms=1)
-    line_3, = ax.plot(np.arange(max_points), 
+    line_3, = ax.plot(xs, 
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='red',ms=1)
-    line_4, = ax_2.plot(np.arange(max_points), 
+    line_4, = ax_2.plot(xs, 
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'blue')
-    line_5, = ax_2.plot(np.arange(max_points), 
+    line_5, = ax_2.plot(xs, 
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'green')
-    line_6, = ax_2.plot(np.arange(max_points), 
+    line_6, = ax_2.plot(xs, 
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
    
     anim = animation.FuncAnimation(fig, animate, fargs = (roll_s),interval = 10)
