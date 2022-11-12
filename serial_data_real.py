@@ -146,10 +146,6 @@ def save_data_hand(roll, pitch, yaw):
     pitch_chand.append(pitch_r)
     yaw_chand.append(yaw_r)
 
-    roll_h.append(0)
-    pitch_h.append(0)
-    yaw_h.append(0)
-
 def save_data_head(roll, pitch, yaw):
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
@@ -160,10 +156,6 @@ def save_data_head(roll, pitch, yaw):
     roll_chead.append(roll_r)
     pitch_chead.append(pitch_r)
     yaw_chead.append(yaw_r)
-
-    roll_s.append(0)
-    pitch_s.append(0)
-    yaw_s.append(0)
 
 def save_csv():
     
@@ -227,14 +219,12 @@ def serial_read():
                         ax_s.append(acc_x)
                         ay_s.append(acc_y)
                         az_s.append(acc_z)
-                        
-                        ax_chand.append(acc_x)
-                        ay_chand.append(acc_y)
-                        az_chand.append(acc_z)
-
                         ax_h.append(0)
                         ay_h.append(0)
                         az_h.append(0)
+                        ax_chand.append(acc_x)
+                        ay_chand.append(acc_y)
+                        az_chand.append(acc_z)
                     if(text == "ID:100-1"):
                         roll_t = float(words[data_index])*grad2rad
                         pitch_t = float(words[data_index+1])*grad2rad
@@ -246,14 +236,12 @@ def serial_read():
                         ax_h.append(acc_x_t)
                         ay_h.append(acc_y_t)
                         az_h.append(acc_z_t)
-                        
-                        ax_chead.append(acc_x)
-                        ay_chead.append(acc_y)
-                        az_chead.append(acc_z)
-
                         ax_s.append(0)
                         ay_s.append(0)
                         az_s.append(0)
+                        ax_chead.append(acc_x)
+                        ay_chead.append(acc_y)
+                        az_chead.append(acc_z)
                     save_csv()
                 except: 
                     print ("miss_data")
