@@ -327,17 +327,17 @@ if __name__ == '__main__':
 
     
     line, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, lw=2, c='blue',ms=1)
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
     line_2, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, lw=2, c='green',ms=1)
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='green',ms=1)
     line_3, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, lw=2, c='red',ms=1)
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='red',ms=1)
     line_4, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, lw=2,ms=1, c = 'darkturquoise')
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1, ms=1, c = 'darkturquoise')
     line_5, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, lw=2,ms=1, c = 'darkviolet')
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1, ms=1, c = 'darkviolet')
     line_6, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, 'o-',lw=2,ms=1, c = 'darkorange')
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-',lw=1, ms=1, c = 'darkorange')
     
     line_h1, = ax_2.plot(np.arange(max_points_2), 
         np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
