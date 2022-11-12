@@ -21,7 +21,7 @@ def animate(i):
     
 def animate_2(i):
     serial_read()
-    y_2 = float(pitch_s.popleft())
+    y_2 = float(pitch_s.pop())
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
     line_2.set_ydata(new_y_2)
@@ -30,7 +30,7 @@ def animate_2(i):
 
 def animate_3(i):
     serial_read()
-    y_3 = float(yaw_s.popleft())
+    y_3 = float(yaw_s.pop())
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
     line_3.set_ydata(new_y_3)
@@ -39,7 +39,7 @@ def animate_3(i):
 
 def animate_4(i):
     serial_read()
-    y_4 = float(ax_s.popleft())
+    y_4 = float(ax_s.pop())
     old_y_4= line_4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
     line_4.set_ydata(new_y_4)
@@ -48,7 +48,7 @@ def animate_4(i):
 
 def animate_5(i):
     serial_read()
-    y_5 = float(ay_s.popleft())
+    y_5 = float(ay_s.pop())
     old_y_5= line_5.get_ydata(4)
     new_y_5 = np.r_[old_y_5[1:], y_5]
     line_5.set_ydata(new_y_5)
@@ -57,7 +57,7 @@ def animate_5(i):
 
 def animate_6(i):
     serial_read()
-    y_6 = float(az_s.popleft())
+    y_6 = float(az_s.pop())
     old_y_6= line_6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
     line_6.set_ydata(new_y_6)
