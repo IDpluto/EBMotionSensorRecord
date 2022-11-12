@@ -251,9 +251,9 @@ if __name__ == '__main__':
     
 
     fig = plt.figure()    
-    ax = plt.subplot(211, xlim=(0, 40), ylim=(-500, 500))
+    ax = plt.subplot(211, xlim=(0, 40), ylim=(-700, 700))
     #ax = plt.title("test")
-    ax_2 = plt.subplot(212, xlim=(0, 40), ylim=(-500, 500))
+    ax_2 = plt.subplot(212, xlim=(0, 40), ylim=(-700, 700))
 
 
     max_points = 40
