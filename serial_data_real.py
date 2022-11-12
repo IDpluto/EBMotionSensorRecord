@@ -168,8 +168,8 @@ if __name__ == '__main__':
     
 
     fig = plt.figure()    
-    ax = plt.subplot(211, xlim=(0, 5), ylim=(-500, 500))
-    ax_2 = plt.subplot(212, xlim=(0, 5), ylim=(-3, 3))
+    ax = plt.subplot(211, xlim=(0, 50), ylim=(-500, 500))
+    ax_2 = plt.subplot(212, xlim=(0, 50), ylim=(-3, 3))
 
     max_points = 50
     max_points_2 = 50
