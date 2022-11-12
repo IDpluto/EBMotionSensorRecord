@@ -234,7 +234,6 @@ def serial_read():
                         ax_h.append(acc_x_t)
                         ay_h.append(acc_y_t)
                         az_h.append(acc_z_t)
-                    save_csv()
                 except: 
                     print ("miss_data")
             else: #(data_format==2)quaternion
@@ -253,6 +252,7 @@ def serial_read():
                     yaw   = Euler[2]
                 except:
                     print (".")
+    save_csv()
         
         
 
@@ -296,10 +296,13 @@ if __name__ == '__main__':
 
     fig = plt.figure()
     ax = plt.subplot(211, xlim=(0, 40), ylim=(-300, 300))
-
-    ax.set_ylabel("Test")
+    
+    ax.set_title("head")
+    ax.set_ylabel("val")
     #ax = plt.title("test")
     ax_2 = plt.subplot(212, xlim=(0, 40), ylim=(-300, 300))
+    ax_2.set_title("hand")
+    ax_2.set_ylabel("val")
     plt.tight_layout()
 
 
@@ -339,18 +342,18 @@ if __name__ == '__main__':
         np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkorange')
 
    
-    anim = animation.FuncAnimation(fig, animate, fargs = (roll_s), frames= 1000, interval = 10, blit=False)
-    anim_2 = animation.FuncAnimation(fig, animate_2, fargs = (pitch_s), frames= 1000, interval=10, blit=False)
-    anim_3 = animation.FuncAnimation(fig, animate_3, fargs = (yaw_s), frames= 1000, interval=10, blit=False)
-    anim_4 = animation.FuncAnimation(fig, animate_4, fargs = (ax_s), frames= 1000, interval=10, blit=False)
-    anim_5 = animation.FuncAnimation(fig, animate_5, fargs = (ay_s), frames= 1000, interval=10, blit=False)
-    anim_6 = animation.FuncAnimation(fig, animate_6, fargs = (az_s), frames= 1000, interval=10, blit=False)
+    anim = animation.FuncAnimation(fig, animate, frames= 1000, interval = 10,blit=False, repeat = False)
+    anim_2 = animation.FuncAnimation(fig, animate_2,  frames= 1000, interval=10, blit=False, repeat = False)
+    anim_3 = animation.FuncAnimation(fig, animate_3, frames= 1000, interval=10, blit=False, repeat = False)
+    anim_4 = animation.FuncAnimation(fig, animate_4, frames= 1000, interval=10, blit=False, repeat = False)
+    anim_5 = animation.FuncAnimation(fig, animate_5,  frames= 1000, interval=10, blit=False, repeat = False)
+    anim_6 = animation.FuncAnimation(fig, animate_6, frames= 1000, interval=10, blit=False, repeat = False)
 
-    ani7 = animation.FuncAnimation(fig, animate_h1, fargs = (roll_h),  interval = 10, blit=False)
-    anim_8 = animation.FuncAnimation(fig, animate_h2, fargs = (pitch_h), frames= 400, interval=10, blit=False)
-    anim_9 = animation.FuncAnimation(fig, animate_h3, fargs = (yaw_h), frames= 400, interval=10, blit=False)
-    anim_10 = animation.FuncAnimation(fig, animate_h4, fargs = (ax_h), frames= 400, interval=10, blit=False)
-    anim_11 = animation.FuncAnimation(fig, animate_h5, fargs = (ay_h), frames= 400, interval=10, blit=False)
-    anim_12 = animation.FuncAnimation(fig, animate_h6, fargs = (az_h), frames= 400, interval=10, blit=False)
+    ani7 = animation.FuncAnimation(fig, animate_h1,   frames= 1000, interval = 10, blit=False, repeat = False)
+    anim_8 = animation.FuncAnimation(fig, animate_h2,  frames= 1000, interval=10, blit=False, repeat = False)
+    anim_9 = animation.FuncAnimation(fig, animate_h3,  frames= 1000, interval=10, blit=False, repeat = False)
+    anim_10 = animation.FuncAnimation(fig, animate_h4,  frames= 1000, interval=10, blit=False, repeat = False)
+    anim_11 = animation.FuncAnimation(fig, animate_h5,  frames= 1000, interval=10, blit=False, repeat = False)
+    anim_12 = animation.FuncAnimation(fig, animate_h6, frames= 1000, interval=10, blit=False, repeat = False)
 
     plt.show()
