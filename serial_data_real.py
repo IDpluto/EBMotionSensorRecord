@@ -185,12 +185,12 @@ if __name__ == '__main__':
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='green',ms=1)
     line_3, = ax.plot(np.arange(max_points), 
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='red',ms=1)
-    line_4, = ax.plot(np.arange(max_points_2), 
-        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'blue')
-    line_5, = ax.plot(np.arange(max_points_2), 
-        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'green')
-    line_6, = ax.plot(np.arange(max_points_2), 
-        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
+    line_4, = ax.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkturquoise')
+    line_5, = ax.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkviolet')
+    line_6, = ax.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkorange')
 
    
     anim = animation.FuncAnimation(fig, animate, fargs = (roll_s), frames= 200, interval = 10, blit=False)
