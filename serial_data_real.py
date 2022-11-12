@@ -222,15 +222,6 @@ def serial_read():
                         ax_chand.append(acc_x)
                         ay_chand.append(acc_y)
                         az_chand.append(acc_z)
-                        
-                        #ax_h.append(0)
-                        #ay_h.append(0)
-                        #az_h.append(0)
-
-                        #roll_h.append(0)
-                        #pitch_h.append(0)
-                        #yaw_h.append(0)
-                        
                     if(text == "ID:100-1"):
                         roll_t = float(words[data_index])*grad2rad
                         pitch_t = float(words[data_index+1])*grad2rad
@@ -239,16 +230,10 @@ def serial_read():
                         acc_y_t = float(words[data_index+4]) * 100
                         acc_z_t = float(words[data_index+5]) * 100
                         save_data_head(roll_t, pitch_t, yaw_t)
-                        #ax_s.append(0)
-                        #ay_s.append(0)
-                        #az_s.append(0)
                         ax_h.append(acc_x_t)
                         ay_h.append(acc_y_t)
                         az_h.append(acc_z_t)
-                        #roll_s.append(0)
-                        #pitch_s.append(0)
-                        #yaw_s.append(0)
-                    #save_csv()
+                    save_csv()
                 except: 
                     print ("miss_data")
             else: #(data_format==2)quaternion
