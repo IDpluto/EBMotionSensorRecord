@@ -215,7 +215,7 @@ def serial_read():
                         acc_x = float(words[data_index+3]) * 100
                         acc_y = float(words[data_index+4]) * 100
                         acc_z = float(words[data_index+5]) * 100
-                        #save_data_hand(roll, pitch, yaw)
+                        save_data_hand(roll, pitch, yaw)
                         ax_s.append(acc_x)
                         ay_s.append(acc_y)
                         az_s.append(acc_z)
@@ -229,7 +229,7 @@ def serial_read():
                         acc_x_t = float(words[data_index+3]) * 100
                         acc_y_t = float(words[data_index+4]) * 100
                         acc_z_t = float(words[data_index+5]) * 100
-                        #save_data_head(roll_t, pitch_t, yaw_t)
+                        save_data_head(roll_t, pitch_t, yaw_t)
                         ax_h.append(acc_x_t)
                         ay_h.append(acc_y_t)
                         az_h.append(acc_z_t)
