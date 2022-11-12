@@ -12,7 +12,7 @@ import csv
 def animate(i):
     
     serial_read()
-    y = roll_s.pop()
+    y = float(roll_s.pop())
     old_y = line.get_ydata()
     new_y = np.r_[old_y[1:], y]
     line.set_ydata(new_y)
