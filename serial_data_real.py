@@ -49,7 +49,7 @@ def animate_4(i):
 def animate_5(i):
     serial_read()
     y_5 = float(ay_s.pop())
-    old_y_5= line_5.get_ydata(4)
+    old_y_5= line_5.get_ydata()
     new_y_5 = np.r_[old_y_5[1:], y_5]
     line_5.set_ydata(new_y_5)
     #print(new_y_3)
@@ -107,7 +107,7 @@ def animate_h4(i):
 def animate_h5(i):
     serial_read()
     y_5 = float(ay_h.pop())
-    old_y_5= line_h5.get_ydata(4)
+    old_y_5= line_h5.get_ydata()
     new_y_5 = np.r_[old_y_5[1:], y_5]
     line_h5.set_ydata(new_y_5)
     #print(new_y_3)
@@ -206,7 +206,7 @@ def serial_read():
                         az_h.append(acc_z)
                     count += 1
                 except: 
-                    print (".")
+                    print ("miss")
             else: #(data_format==2)quaternion
                 try:
                     q0 = float(words[data_index])
@@ -273,18 +273,18 @@ if __name__ == '__main__':
     line_6, = ax.plot(np.arange(max_points), 
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkorange')
     
-    line_h1, = ax_2.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
-    line_h2, = ax_2.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='green',ms=1)
-    line_h3, = ax_2.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='red',ms=1)
-    line_h4, = ax_2.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkturquoise')
-    line_h5, = ax_2.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkviolet')
-    line_h6, = ax_2.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkorange')
+    line_h1, = ax_2.plot(np.arange(max_points_2), 
+        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
+    line_h2, = ax_2.plot(np.arange(max_points_2), 
+        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1, c='green',ms=1)
+    line_h3, = ax_2.plot(np.arange(max_points_2), 
+        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1, c='red',ms=1)
+    line_h4, = ax_2.plot(np.arange(max_points_2), 
+        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkturquoise')
+    line_h5, = ax_2.plot(np.arange(max_points_2), 
+        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkviolet')
+    line_h6, = ax_2.plot(np.arange(max_points_2), 
+        np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkorange')
 
    
     anim = animation.FuncAnimation(fig, animate, fargs = (roll_s), frames= 200, interval = 10, blit=False)
