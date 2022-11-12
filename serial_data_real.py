@@ -321,6 +321,7 @@ if __name__ == '__main__':
     count = 0
     fieldnames = ["roll_hand", "pitch_hand", "yaw_hand", "acc_x_hand", "acc_y_hand", "acc_z_hand", "roll_head", "pitch_head", "yaw_head", "acc_x_head", "acc_y_head", "acc_z_head"]
     ser.write(b"<??cg>")
+    print("test")
     with open('/home/dohlee/crc_project/data/data1.csv','w') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
         csv_writer.writeheader()
