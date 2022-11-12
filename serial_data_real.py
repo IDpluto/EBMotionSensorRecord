@@ -12,7 +12,7 @@ import csv
 def animate(i):
     
     serial_read()
-    y = float(roll_s.popleft())
+    y = float(roll_s.pop())
     old_y = line.get_ydata()
     new_y = np.r_[old_y[1:], y]
     line.set_ydata(new_y)
@@ -22,7 +22,7 @@ def animate(i):
     
 def animate_2(i):
     serial_read()
-    y_2 = float(pitch_s.popleft())
+    y_2 = float(pitch_s.pop())
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
     line_2.set_ydata(new_y_2)
@@ -31,7 +31,7 @@ def animate_2(i):
 
 def animate_3(i):
     serial_read()
-    y_3 = float(yaw_s.popleft())
+    y_3 = float(yaw_s.pop())
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
     line_3.set_ydata(new_y_3)
@@ -40,7 +40,7 @@ def animate_3(i):
 
 def animate_4(i):
     serial_read()
-    y_4 = float(ax_s.popleft())
+    y_4 = float(ax_s.pop())
     old_y_4= line_4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
     line_4.set_ydata(new_y_4)
@@ -49,7 +49,7 @@ def animate_4(i):
 
 def animate_5(i):
     serial_read()
-    y_5 = float(ay_s.popleft())
+    y_5 = float(ay_s.pop())
     old_y_5= line_5.get_ydata()
     new_y_5 = np.r_[old_y_5[1:], y_5]
     line_5.set_ydata(new_y_5)
@@ -58,7 +58,7 @@ def animate_5(i):
 
 def animate_6(i):
     serial_read()
-    y_6 = float(az_s.popleft())
+    y_6 = float(az_s.pop())
     old_y_6= line_6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
     line_6.set_ydata(new_y_6)
@@ -70,7 +70,7 @@ def animate_6(i):
 def animate_h1(i):
     
     #serial_read()
-    y = float(roll_h.popleft())
+    y = float(roll_h.pop())
     old_y = line_h1.get_ydata()
     new_y = np.r_[old_y[1:], y]
     line_h1.set_ydata(new_y)
@@ -80,7 +80,7 @@ def animate_h1(i):
     
 def animate_h2(i):
     #serial_read()
-    y_2 = float(pitch_h.popleft())
+    y_2 = float(pitch_h.pop())
     old_y_2 = line_h2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
     line_h2.set_ydata(new_y_2)
@@ -89,7 +89,7 @@ def animate_h2(i):
 
 def animate_h3(i):
     #serial_read()
-    y_3 = float(yaw_h.popleft())
+    y_3 = float(yaw_h.pop())
     old_y_3= line_h3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
     line_h3.set_ydata(new_y_3)
@@ -98,7 +98,7 @@ def animate_h3(i):
 
 def animate_h4(i):
     #serial_read()
-    y_4 = float(ax_h.popleft())
+    y_4 = float(ax_h.pop())
     old_y_4= line_h4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
     line_h4.set_ydata(new_y_4)
@@ -107,7 +107,7 @@ def animate_h4(i):
 
 def animate_h5(i):
     #serial_read()
-    y_5 = float(ay_h.popleft())
+    y_5 = float(ay_h.pop())
     old_y_5= line_h5.get_ydata()
     new_y_5 = np.r_[old_y_5[1:], y_5]
     line_h5.set_ydata(new_y_5)
@@ -116,7 +116,7 @@ def animate_h5(i):
 
 def animate_h6(i):
     #serial_read()
-    y_6 = float(az_h.popleft())
+    y_6 = float(az_h.pop())
     old_y_6= line_h6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
     line_h6.set_ydata(new_y_6)
@@ -162,18 +162,18 @@ def save_csv():
     with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
-            "roll_hand":roll_chand.popleft(),
-            "pitch_hand":pitch_chand.popleft(),
-            "yaw_hand":yaw_chand.popleft(),
-            "acc_x_hand":ax_chand.popleft(),
-            "acc_y_hand":ay_chand.popleft(),
-            "acc_z_hand":az_chand.popleft(),
-            "roll_head":roll_chead.popleft(),
-            "pitch_head":pitch_chead.popleft(),
-            "yaw_head":yaw_chead.popleft(),
-            "acc_x_head":ax_chead.popleft(),
-            "acc_y_head":ay_chead.popleft(),
-            "acc_z_head":az_chead.popleft()
+            "roll_hand":roll_chand.pop(),
+            "pitch_hand":pitch_chand.pop(),
+            "yaw_hand":yaw_chand.pop(),
+            "acc_x_hand":ax_chand.pop(),
+            "acc_y_hand":ay_chand.pop(),
+            "acc_z_hand":az_chand.pop(),
+            "roll_head":roll_chead.pop(),
+            "pitch_head":pitch_chead.pop(),
+            "yaw_head":yaw_chead.pop(),
+            "acc_x_head":ax_chead.pop(),
+            "acc_y_head":ay_chead.pop(),
+            "acc_z_head":az_chead.pop()
         }
         csv_writer.writerow(info)
 
