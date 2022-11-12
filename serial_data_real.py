@@ -313,6 +313,7 @@ if __name__ == '__main__':
     ax_2.set_title("hand")
     ax_2.set_ylabel("val")
     plt.tight_layout()
+    plt.legend(loc = 'upper left')
 
 
     max_points = 40
