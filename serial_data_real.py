@@ -194,7 +194,7 @@ def serial_read():
                         ax_s.append(acc_x)
                         ay_s.append(acc_y)
                         az_s.append(acc_z)
-                    elif(text == "ID:100-1"):
+                    if(text == "ID:100-1"):
                         save_data_head(roll, pitch, yaw)
                         ax_h.append(acc_x)
                         ay_h.append(acc_y)
