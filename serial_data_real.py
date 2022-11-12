@@ -170,24 +170,24 @@ if __name__ == '__main__':
     max_points = 50
     max_points_2 = 50
     count = 0
-    while True:
-        line, = ax.plot(np.arange(max_points), 
-            np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
-        line_2, = ax.plot(np.arange(max_points), 
-            np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='green',ms=1)
-        line_3, = ax.plot(np.arange(max_points), 
-            np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='red',ms=1)
-        line_4, = ax_2.plot(np.arange(max_points), 
-            np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'blue')
-        line_5, = ax_2.plot(np.arange(max_points), 
-            np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'green')
-        line_6, = ax_2.plot(np.arange(max_points), 
-            np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
-        serial_read()
-        anim = animation.FuncAnimation(fig, animate ,interval = 10)
-        anim_2 = animation.FuncAnimation(fig, animate_2  , interval=10)
-        anim_3 = animation.FuncAnimation(fig, animate_3  , interval=10)
-        anim_4 = animation.FuncAnimation(fig, animate_4  , interval=10)
-        anim_5 = animation.FuncAnimation(fig, animate_5  , interval=10)
-        anim_6 = animation.FuncAnimation(fig, animate_6  , interval=10)
-        plt.show()
+    
+    line, = ax.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
+    line_2, = ax.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='green',ms=1)
+    line_3, = ax.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='red',ms=1)
+    line_4, = ax_2.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'blue')
+    line_5, = ax_2.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'green')
+    line_6, = ax_2.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
+    serial_read()
+    anim = animation.FuncAnimation(fig, animate ,interval = 10)
+    anim_2 = animation.FuncAnimation(fig, animate_2  , interval=10)
+    anim_3 = animation.FuncAnimation(fig, animate_3  , interval=10)
+    anim_4 = animation.FuncAnimation(fig, animate_4  , interval=10)
+    anim_5 = animation.FuncAnimation(fig, animate_5  , interval=10)
+    anim_6 = animation.FuncAnimation(fig, animate_6  , interval=10)
+    plt.show()
