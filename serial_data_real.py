@@ -212,9 +212,9 @@ def serial_read():
                         roll = float(words[data_index])*grad2rad
                         pitch = float(words[data_index+1])*grad2rad
                         yaw = float(words[data_index+2])*grad2rad
-                        acc_x = float(words[data_index+3]) 
-                        acc_y = float(words[data_index+4]) 
-                        acc_z = float(words[data_index+5]) 
+                        acc_x = float(words[data_index+3]) * 100
+                        acc_y = float(words[data_index+4]) * 100
+                        acc_z = float(words[data_index+5]) * 100
                         save_data_hand(roll, pitch, yaw)
                         ax_s.append(acc_x)
                         ay_s.append(acc_y)
@@ -229,9 +229,9 @@ def serial_read():
                         roll_t = float(words[data_index])*grad2rad
                         pitch_t = float(words[data_index+1])*grad2rad
                         yaw_t = float(words[data_index+2])*grad2rad
-                        acc_x_t = float(words[data_index+3])
-                        acc_y_t = float(words[data_index+4])
-                        acc_z_t = float(words[data_index+5])
+                        acc_x_t = float(words[data_index+3]) * 100
+                        acc_y_t = float(words[data_index+4]) * 100
+                        acc_z_t = float(words[data_index+5]) * 100
                         save_data_head(roll_t, pitch_t, yaw_t)
                         ax_h.append(acc_x_t)
                         ay_h.append(acc_y_t)
@@ -305,12 +305,12 @@ if __name__ == '__main__':
     
 
     fig = plt.figure()
-    ax = plt.subplot(211, xlim=(0, 3), ylim=(-3, 3))
+    ax = plt.subplot(211, xlim=(0, 3), ylim=(-500, 500))
     
     ax.set_title("hand")
     ax.set_ylabel("val")
     #ax = plt.title("test")
-    ax_2 = plt.subplot(212, xlim=(0, 3), ylim=(-3, 3))
+    ax_2 = plt.subplot(212, xlim=(0, 3), ylim=(-500, 500))
     ax_2.set_title("head")
     ax_2.set_ylabel("val")
     plt.tight_layout()
