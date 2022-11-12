@@ -176,6 +176,7 @@ def save_csv():
             "acc_z_head":az_chead.pop()
         }
         csv_writer.writerow(info)
+        time.sleep(1)
 
 
 def serial_read():
