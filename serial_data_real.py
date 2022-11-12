@@ -304,7 +304,7 @@ if __name__ == '__main__':
     
 
     fig = plt.figure()
-    ax = plt.subplot(211, xlim=(0, 40), ylim=(-300, 300))
+    ax = plt.subplot(2, 1 , 1)
     
     ax.set_title("head")
     ax.set_ylabel("val")
@@ -313,7 +313,6 @@ if __name__ == '__main__':
     ax_2.set_title("hand")
     ax_2.set_ylabel("val")
     plt.tight_layout()
-    plt.legend('test', 'test1')
 
 
     max_points = 40
