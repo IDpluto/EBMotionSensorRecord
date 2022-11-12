@@ -157,7 +157,7 @@ if __name__ == '__main__':
     rad2grad = 180.0/3.141592
     cos = math.cos
     
-    ser = serial.Serial('/dev/ttyUSB0', 115200)
+    ser = serial.Serial('/dev/ttyUSB0', 921600)
   
     roll_s = deque()
     pitch_s = deque()
