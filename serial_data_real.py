@@ -305,12 +305,12 @@ if __name__ == '__main__':
     
 
     fig = plt.figure()
-    ax = plt.subplot(211, xlim=(0, 4), ylim=(-300, 300))
+    ax = plt.subplot(211, xlim=(0, 4), ylim=(-100, 100))
     
     ax.set_title("head")
     ax.set_ylabel("val")
     #ax = plt.title("test")
-    ax_2 = plt.subplot(212, xlim=(0, 4), ylim=(-300, 300))
+    ax_2 = plt.subplot(212, xlim=(0, 4), ylim=(-100, 100))
     ax_2.set_title("hand")
     ax_2.set_ylabel("val")
     #plt.tight_layout()
@@ -333,11 +333,11 @@ if __name__ == '__main__':
     line_3, = ax.plot(np.arange(max_points), 
         np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, c='red',ms=1)
     line_4, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=2, c = 'darkturquoise')
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=1, c = 'darkturquoise')
     line_5, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=2, c = 'darkviolet')
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=1, c = 'darkviolet')
     line_6, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=2, c = 'darkorange')
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=1, c = 'darkorange')
     
     line_h1, = ax_2.plot(np.arange(max_points_2), 
         np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
