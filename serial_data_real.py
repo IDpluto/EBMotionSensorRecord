@@ -63,6 +63,8 @@ def animate_6(i):
     line_6.set_ydata(new_y_6)
     #print(new_y_3)
     return line_6
+#----------------------------------------------------
+
 
 
 def quat_to_euler(x,y,z,w):
@@ -182,11 +184,11 @@ if __name__ == '__main__':
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='green',ms=1)
     line_3, = ax.plot(np.arange(max_points), 
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='red',ms=1)
-    line_4, = ax_2.plot(np.arange(max_points_2), 
+    line_4, = ax.plot(np.arange(max_points_2), 
         np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'blue')
-    line_5, = ax_2.plot(np.arange(max_points_2), 
+    line_5, = ax.plot(np.arange(max_points_2), 
         np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'green')
-    line_6, = ax_2.plot(np.arange(max_points_2), 
+    line_6, = ax.plot(np.arange(max_points_2), 
         np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
 
    
