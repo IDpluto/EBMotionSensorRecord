@@ -169,11 +169,11 @@ if __name__ == '__main__':
 
     fig = plt.figure()    
     ax = plt.subplot(211, xlim=(0, 100), ylim=(-1000, 1000))
-    ax_2 = plt.subplot(212, xlim=(0, 50), ylim=(-20, 20))
+    ax_2 = plt.subplot(212, xlim=(0, 100), ylim=(-20, 20))
 
 
     max_points = 100
-    max_points_2 = 50
+    max_points_2 = 30
     count = 0
     
     line, = ax.plot(np.arange(max_points), 
