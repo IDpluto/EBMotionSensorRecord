@@ -30,10 +30,8 @@ def save_data(roll, pitch, yaw):
 
 def animate(i):
     
-   
+    serial_read()
     y = float(i)
-    print (y)
-   
     old_y = line.get_ydata()
     new_y = np.r_[old_y[1:], y]
     line.set_ydata(new_y)
@@ -42,8 +40,8 @@ def animate(i):
     return line
     
 def animate_2(i):
-   
-    y_2 = pitch_s
+    serial_read()
+    y_2 = i
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
     line_2.set_ydata(new_y_2)
@@ -51,8 +49,8 @@ def animate_2(i):
     return line_2
 
 def animate_3(i):
-    
-    y_3 = yaw_s
+    serial_read()
+    y_3 = i
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
     line_3.set_ydata(new_y_3)
@@ -60,8 +58,8 @@ def animate_3(i):
     return line_3
 
 def animate_4(i):
-    
-    y_4 = ax_s
+    serial_read()
+    y_4 = i
     old_y_4= line_4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
     line_4.set_ydata(new_y_4)
@@ -69,8 +67,8 @@ def animate_4(i):
     return line_4
 
 def animate_5(i):
-    
-    y_5 = ay_s
+    serial_read()
+    y_5 = i
     old_y_5= line_5.get_ydata(4)
     new_y_5 = np.r_[old_y_5[1:], y_5]
     line_5.set_ydata(new_y_5)
@@ -78,8 +76,8 @@ def animate_5(i):
     return line_5
 
 def animate_6(i):
-    
-    y_6 = az_s
+    serial_read()
+    y_6 = i
     old_y_6= line_6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
     line_6.set_ydata(new_y_6)
@@ -183,11 +181,11 @@ if __name__ == '__main__':
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'green')
     line_6, = ax_2.plot(np.arange(max_points), 
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
-    serial_read()
+   
     anim = animation.FuncAnimation(fig, animate, fargs = (roll_s),interval = 10)
-    anim_2 = animation.FuncAnimation(fig, animate_2, interval=10)
-    anim_3 = animation.FuncAnimation(fig, animate_3, interval=10)
-    anim_4 = animation.FuncAnimation(fig, animate_4, interval=10)
-    anim_5 = animation.FuncAnimation(fig, animate_5, interval=10)
-    anim_6 = animation.FuncAnimation(fig, animate_6, interval=10)
+    anim_2 = animation.FuncAnimation(fig, animate_2, fargs = (pitch_s), interval=10)
+    anim_3 = animation.FuncAnimation(fig, animate_3, fargs = (yaw_s), interval=10)
+    anim_4 = animation.FuncAnimation(fig, animate_4, fargs = (ax_s), interval=10)
+    anim_5 = animation.FuncAnimation(fig, animate_5, fargs = (ay_s), interval=10)
+    anim_6 = animation.FuncAnimation(fig, animate_6, fargs = (az_s), interval=10)
     plt.show()
