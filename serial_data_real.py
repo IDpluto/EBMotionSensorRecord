@@ -148,7 +148,7 @@ def save_data_hand(roll, pitch, yaw):
     yaw_h.append(0)
     roll_h.append(0)
     pitch_h.append(0)
-    yaw_h.append(0)
+
 
 def save_data_head(roll, pitch, yaw):
     roll_r = "%.2f" %(roll*rad2grad)
