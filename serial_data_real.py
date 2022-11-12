@@ -346,11 +346,11 @@ if __name__ == '__main__':
     anim_5 = animation.FuncAnimation(fig, animate_5, fargs = (ay_s), interval=10, blit=False)
     anim_6 = animation.FuncAnimation(fig, animate_6, fargs = (az_s),  interval=10, blit=False)
 
-    ani7 = animation.FuncAnimation(fig, animate_h1, fargs = (roll_h),  interval = 10, blit=False)
-    anim_8 = animation.FuncAnimation(fig, animate_h2, fargs = (pitch_h),  interval=10, blit=False)
-    anim_9 = animation.FuncAnimation(fig, animate_h3, fargs = (yaw_h),  interval=10, blit=False)
-    anim_10 = animation.FuncAnimation(fig, animate_h4, fargs = (ax_h),  interval=10, blit=False)
-    anim_11 = animation.FuncAnimation(fig, animate_h5, fargs = (ay_h), interval=10, blit=False)
-    anim_12 = animation.FuncAnimation(fig, animate_h6, fargs = (az_h),  interval=10, blit=False)
+    ani7 = animation.FuncAnimation(fig, animate_h1, fargs = (roll_h),  interval = 100, blit=False)
+    anim_8 = animation.FuncAnimation(fig, animate_h2, fargs = (pitch_h),  interval=100, blit=False)
+    anim_9 = animation.FuncAnimation(fig, animate_h3, fargs = (yaw_h),  interval=100, blit=False)
+    anim_10 = animation.FuncAnimation(fig, animate_h4, fargs = (ax_h),  interval=100, blit=False)
+    anim_11 = animation.FuncAnimation(fig, animate_h5, fargs = (ay_h), interval=100, blit=False)
+    anim_12 = animation.FuncAnimation(fig, animate_h6, fargs = (az_h),  interval=100, blit=False)
 
     plt.show()
