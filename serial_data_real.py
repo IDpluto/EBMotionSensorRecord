@@ -335,9 +335,9 @@ if __name__ == '__main__':
     line_4, = ax.plot(np.arange(max_points), 
         np.ones(max_points, dtype=np.float64)*np.nan, lw=2,ms=1, c = 'darkturquoise')
     line_5, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, lw=2,ms=2, c = 'darkviolet')
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=2,ms=1, c = 'darkviolet')
     line_6, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, lw=2,ms=3, c = 'darkorange')
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-',lw=2,ms=1, c = 'darkorange')
     
     line_h1, = ax_2.plot(np.arange(max_points_2), 
         np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
