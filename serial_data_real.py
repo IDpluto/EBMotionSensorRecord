@@ -66,6 +66,61 @@ def animate_6(i):
 #----------------------------------------------------
 
 
+def animate_h1(i):
+    
+    serial_read()
+    y = float(roll_h.pop())
+    old_y = line_h1.get_ydata()
+    new_y = np.r_[old_y[1:], y]
+    line_h1.set_ydata(new_y)
+    
+    #print(new_y)
+    return line_h1
+    
+def animate_h2(i):
+    serial_read()
+    y_2 = float(pitch_h.pop())
+    old_y_2 = line_h2.get_ydata()
+    new_y_2 = np.r_[old_y_2[1:], y_2]
+    line_h2.set_ydata(new_y_2)
+    #print(new_y_2)
+    return line_h2
+
+def animate_h3(i):
+    serial_read()
+    y_3 = float(yaw_h.pop())
+    old_y_3= line_h3.get_ydata()
+    new_y_3 = np.r_[old_y_3[1:], y_3]
+    line_h3.set_ydata(new_y_3)
+    
+    return line_h3
+
+def animate_h4(i):
+    serial_read()
+    y_4 = float(ax_h.pop())
+    old_y_4= line_h4.get_ydata()
+    new_y_4 = np.r_[old_y_4[1:], y_4]
+    line_h4.set_ydata(new_y_4)
+    
+    return line_h4
+
+def animate_h5(i):
+    serial_read()
+    y_5 = float(ay_h.pop())
+    old_y_5= line_h5.get_ydata(4)
+    new_y_5 = np.r_[old_y_5[1:], y_5]
+    line_h5.set_ydata(new_y_5)
+    #print(new_y_3)
+    return line_h5
+
+def animate_h6(i):
+    serial_read()
+    y_6 = float(az_h.pop())
+    old_y_6= line_h6.get_ydata()
+    new_y_6 = np.r_[old_y_6[1:], y_6]
+    line_h6.set_ydata(new_y_6)
+    #print(new_y_3)
+    return line_h6
 
 def quat_to_euler(x,y,z,w):
     euler = [0.0,0.0,0.0]
@@ -79,13 +134,21 @@ def quat_to_euler(x,y,z,w):
     return euler
 
 
-def save_data(roll, pitch, yaw):
+def save_data_hand(roll, pitch, yaw):
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
     yaw_r = "%.2f" %(yaw*rad2grad)
     roll_s.append(roll_r)
     pitch_s.append(pitch_r)
     yaw_s.append(yaw_r)
+
+def save_data_head(roll, pitch, yaw):
+    roll_r = "%.2f" %(roll*rad2grad)
+    pitch_r = "%.2f" %(pitch*rad2grad)
+    yaw_r = "%.2f" %(yaw*rad2grad)
+    roll_h.append(roll_r)
+    pitch_h.append(pitch_r)
+    yaw_h.append(yaw_r)
 
 
 
@@ -125,10 +188,16 @@ def serial_read():
                     acc_x = float(words[data_index+3]) * 100
                     acc_y = float(words[data_index+4]) * 100
                     acc_z = float(words[data_index+5]) * 100
-                    save_data(roll, pitch, yaw)
-                    ax_s.append(acc_x)
-                    ay_s.append(acc_y)
-                    az_s.append(acc_z)
+                    if (text == "ID:100-0"):
+                        save_data_hand(roll, pitch, yaw)
+                        ax_s.append(acc_x)
+                        ay_s.append(acc_y)
+                        az_s.append(acc_z)
+                    elif(text == "ID:100-1"):
+                        save_data_head(roll, pitch, yaw)
+                        ax_h.append(acc_x)
+                        ay_h.append(acc_y)
+                        az_h.append(acc_z)
                     count += 1
                 except: 
                     print (".")
@@ -167,10 +236,16 @@ if __name__ == '__main__':
     ax_s = deque()
     ay_s = deque()
     az_s = deque()
+    roll_h = deque()
+    pitch_h = deque()
+    yaw_h = deque()
+    ax_h = deque()
+    ay_h = deque()
+    az_h = deque()
     
 
     fig = plt.figure()    
-    ax = plt.subplot(211, xlim=(0, 40), ylim=(-300, 300))
+    ax = plt.subplot(211, xlim=(0, 40), ylim=(-400, 400))
     #ax = plt.title("test")
     ax_2 = plt.subplot(212, xlim=(0, 100), ylim=(-20, 20))
 
@@ -191,6 +266,19 @@ if __name__ == '__main__':
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkviolet')
     line_6, = ax.plot(np.arange(max_points), 
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkorange')
+    
+    line_h1, = ax_2.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
+    line_h2, = ax_2.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='green',ms=1)
+    line_h3, = ax_2.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='red',ms=1)
+    line_h4, = ax_2.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkturquoise')
+    line_h5, = ax_2.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkviolet')
+    line_h6, = ax_2.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkorange')
 
    
     anim = animation.FuncAnimation(fig, animate, fargs = (roll_s), frames= 200, interval = 10, blit=False)
@@ -199,5 +287,12 @@ if __name__ == '__main__':
     anim_4 = animation.FuncAnimation(fig, animate_4, fargs = (ax_s), frames= 200, interval=10, blit=False)
     anim_5 = animation.FuncAnimation(fig, animate_5, fargs = (ay_s), frames= 200, interval=10, blit=False)
     anim_6 = animation.FuncAnimation(fig, animate_6, fargs = (az_s), frames= 200, interval=10, blit=False)
+
+    ani7 = animation.FuncAnimation(fig, animate_h1, fargs = (roll_h), frames= 200, interval = 10, blit=False)
+    anim_8 = animation.FuncAnimation(fig, animate_h2, fargs = (pitch_h), frames= 200, interval=10, blit=False)
+    anim_9 = animation.FuncAnimation(fig, animate_h3, fargs = (yaw_h), frames= 200, interval=10, blit=False)
+    anim_10 = animation.FuncAnimation(fig, animate_h4, fargs = (ax_h), frames= 200, interval=10, blit=False)
+    anim_11 = animation.FuncAnimation(fig, animate_h5, fargs = (ay_h), frames= 200, interval=10, blit=False)
+    anim_12 = animation.FuncAnimation(fig, animate_h6, fargs = (az_h), frames= 200, interval=10, blit=False)
 
     plt.show()
