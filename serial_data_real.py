@@ -183,18 +183,25 @@ def serial_read():
             if(data_format==1): #euler
                 try:
                 
-                    roll = float(words[data_index])*grad2rad
-                    pitch = float(words[data_index+1])*grad2rad
-                    yaw = float(words[data_index+2])*grad2rad
-                    acc_x = float(words[data_index+3]) * 100
-                    acc_y = float(words[data_index+4]) * 100
-                    acc_z = float(words[data_index+5]) * 100
+                    
                     if (text == "ID:100-0"):
+                        roll = float(words[data_index])*grad2rad
+                        pitch = float(words[data_index+1])*grad2rad
+                        yaw = float(words[data_index+2])*grad2rad
+                        acc_x = float(words[data_index+3]) * 100
+                        acc_y = float(words[data_index+4]) * 100
+                        acc_z = float(words[data_index+5]) * 100
                         save_data_hand(roll, pitch, yaw)
                         ax_s.append(acc_x)
                         ay_s.append(acc_y)
                         az_s.append(acc_z)
                     if(text == "ID:100-1"):
+                        roll = float(words[data_index])*grad2rad
+                        pitch = float(words[data_index+1])*grad2rad
+                        yaw = float(words[data_index+2])*grad2rad
+                        acc_x = float(words[data_index+3]) * 100
+                        acc_y = float(words[data_index+4]) * 100
+                        acc_z = float(words[data_index+5]) * 100
                         save_data_head(roll, pitch, yaw)
                         ax_h.append(acc_x)
                         ay_h.append(acc_y)
