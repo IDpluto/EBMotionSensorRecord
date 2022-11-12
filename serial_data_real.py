@@ -316,8 +316,8 @@ if __name__ == '__main__':
     #plt.tight_layout()
 
 
-    max_points = 40
-    max_points_2 = 40
+    max_points = 10
+    max_points_2 = 10
     count = 0
     fieldnames = ["roll_hand", "pitch_hand", "yaw_hand", "acc_x_hand", "acc_y_hand", "acc_z_hand", "roll_head", "pitch_head", "yaw_head", "acc_x_head", "acc_y_head", "acc_z_head"]
 
