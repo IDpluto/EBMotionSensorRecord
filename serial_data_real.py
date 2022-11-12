@@ -157,9 +157,9 @@ def save_data_head(roll, pitch, yaw):
     roll_h.append(roll_r)
     pitch_h.append(pitch_r)
     yaw_h.append(yaw_r)
-    roll_r.append(roll_r)
-    pitch_r.append(pitch_r)
-    yaw_r.append(yaw_r)
+    roll_s.append(roll_r)
+    pitch_s.append(pitch_r)
+    yaw_s.append(yaw_r)
 
 def save_csv():
     
