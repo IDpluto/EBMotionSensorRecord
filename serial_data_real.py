@@ -184,9 +184,9 @@ if __name__ == '__main__':
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='red',ms=1)
     line_4, = ax_2.plot(np.arange(max_points_2), 
         np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'blue')
-    line_5, = ax_2.plot(np.arange(max_points), 
+    line_5, = ax_2.plot(np.arange(max_points_2), 
         np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'green')
-    line_6, = ax_2.plot(np.arange(max_points), 
+    line_6, = ax_2.plot(np.arange(max_points_2), 
         np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
 
    
