@@ -313,16 +313,18 @@ if __name__ == '__main__':
     ax_2.set_title("hand")
     ax_2.set_ylabel("val")
     plt.tight_layout()
+    plt.legend('test', 'test1')
 
 
     max_points = 40
     max_points_2 = 40
     count = 0
     fieldnames = ["roll_hand", "pitch_hand", "yaw_hand", "acc_x_hand", "acc_y_hand", "acc_z_hand", "roll_head", "pitch_head", "yaw_head", "acc_x_head", "acc_y_head", "acc_z_head"]
-
+    '''
     with open('/home/dohlee/crc_project/data/data1.csv','w') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
         csv_writer.writeheader()
+    '''
     
     line, = ax.plot(np.arange(max_points), 
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1, c='blue',ms=1)
