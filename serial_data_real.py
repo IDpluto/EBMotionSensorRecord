@@ -169,6 +169,8 @@ if __name__ == '__main__':
     fig = plt.figure()    
     ax = plt.subplot(211, xlim=(0, 50), ylim=(-1000, 1000))
     ax_2 = plt.subplot(212, xlim=(0, 50), ylim=(-30, 30))
+    ax_3 = plt.subplot(213, xlim=(0, 50), ylim=(-1000, 1000))
+    ax_4 = plt.subplot(214, xlim=(0, 50), ylim=(-30, 30))
 
     max_points = 50
     max_points_2 = 50
@@ -186,6 +188,10 @@ if __name__ == '__main__':
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'green')
     line_6, = ax_2.plot(np.arange(max_points), 
         np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
+    line_6, = ax_3.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
+    line_7, = ax_4.plot(np.arange(max_points), 
+        np.ones(max_points, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'red')
    
     anim = animation.FuncAnimation(fig, animate, fargs = (roll_s),interval = 10)
     anim_2 = animation.FuncAnimation(fig, animate_2, fargs = (pitch_s), interval=10)
@@ -193,4 +199,6 @@ if __name__ == '__main__':
     anim_4 = animation.FuncAnimation(fig, animate_4, fargs = (ax_s), interval=10)
     anim_5 = animation.FuncAnimation(fig, animate_5, fargs = (ay_s), interval=10)
     anim_6 = animation.FuncAnimation(fig, animate_6, fargs = (az_s), interval=10)
+    anim_7 = animation.FuncAnimation(fig, animate_5, fargs = (ay_s), interval=10)
+    anim_8 = animation.FuncAnimation(fig, animate_6, fargs = (az_s), interval=10)
     plt.show()
