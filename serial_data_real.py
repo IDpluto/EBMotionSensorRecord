@@ -305,7 +305,7 @@ if __name__ == '__main__':
     
 
     fig = plt.figure()
-    ax = plt.subplot(211, xlim=(0, 4), ylim=(-1000, 1000))
+    ax = plt.subplot(211, xlim=(0, 4), ylim=(-500, 500))
     
     ax.set_title("head")
     ax.set_ylabel("val")
