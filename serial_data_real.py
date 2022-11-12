@@ -176,7 +176,7 @@ def save_csv():
             "acc_z_head":az_chead.pop()
         }
         csv_writer.writerow(info)
-        time.sleep(1)
+        #time.sleep(1)
 
 
 def serial_read():
@@ -233,7 +233,7 @@ def serial_read():
                         ax_h.append(acc_x_t)
                         ay_h.append(acc_y_t)
                         az_h.append(acc_z_t)
-                    save_csv()
+                    #save_csv()
                 except: 
                     print ("miss_data")
             else: #(data_format==2)quaternion
