@@ -242,7 +242,7 @@ def serial_read():
                         ax_chead.append(acc_x)
                         ay_chead.append(acc_y)
                         az_chead.append(acc_z)
-                    save_csv()
+                    #save_csv()
                 except: 
                     print ("miss_data")
             else: #(data_format==2)quaternion
