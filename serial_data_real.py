@@ -327,11 +327,11 @@ if __name__ == '__main__':
 
     
     line, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=1,c='blue',ms=1)
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=1, c='blue',ms=1)
     line_2, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=1,c='green',ms=1)
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=1, c='green',ms=1)
     line_3, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=1,  c='red',ms=1)
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=1, c='red',ms=1)
     line_4, = ax.plot(np.arange(max_points), 
         np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=2, c = 'darkturquoise')
     line_5, = ax.plot(np.arange(max_points), 
