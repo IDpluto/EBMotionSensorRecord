@@ -49,6 +49,7 @@ def quat_to_euler(x,y,z,w):
     euler[2] = math.atan2(2.0*(y*z+x*w),(-sqx-sqy+sqz+sqw)) 
 
     return euler
+
 x_count = 0
 with open('/home/dohlee/crc_project/data/data1.csv','w') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
