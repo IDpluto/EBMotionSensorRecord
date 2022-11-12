@@ -211,7 +211,7 @@ def serial_read():
                         ay_s.append(acc_y)
                         az_s.append(acc_z)
                         save_csv(text, roll, pitch, yaw, acc_x, acc_y, acc_z)
-                    elif(text == "ID:100-1"):
+                    if(text == "ID:100-1"):
                         roll_t = float(words[data_index])*grad2rad
                         pitch_t = float(words[data_index+1])*grad2rad
                         yaw_t = float(words[data_index+2])*grad2rad
