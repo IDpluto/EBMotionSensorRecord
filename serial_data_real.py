@@ -11,7 +11,7 @@ import time
 def animate(i):
     
     serial_read()
-    y = float(i)
+    y = float(roll_s)
     print(y)
     old_y = line.get_ydata()
     new_y = np.r_[old_y[1:], y]
