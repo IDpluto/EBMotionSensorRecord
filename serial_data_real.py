@@ -313,7 +313,7 @@ if __name__ == '__main__':
     ax_2 = plt.subplot(212, xlim=(0, 4), ylim=(-250, 250))
     ax_2.set_title("head")
     ax_2.set_ylabel("val")
-    #plt.tight_layout()
+    plt.tight_layout()
 
 
     max_points = 4
