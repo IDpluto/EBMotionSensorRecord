@@ -12,7 +12,6 @@ def animate(i):
     
     serial_read()
     y = float(roll_s.popleft())
-    print(y)
     old_y = line.get_ydata()
     new_y = np.r_[old_y[1:], y]
     line.set_ydata(new_y)
@@ -81,9 +80,9 @@ def save_data(roll, pitch, yaw):
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
     yaw_r = "%.2f" %(yaw*rad2grad)
-    roll_s.appendleft(roll_r)
-    pitch_s.appendleft(pitch_r)
-    yaw_s.appendleft(yaw_r)
+    roll_s.append(roll_r)
+    pitch_s.append(pitch_r)
+    yaw_s.append(yaw_r)
 
 
 
@@ -124,9 +123,9 @@ def serial_read():
                     acc_y = float(words[data_index+4])
                     acc_z = float(words[data_index+5])
                     save_data(roll, pitch, yaw)
-                    ax_s.appendleft(acc_x)
-                    ay_s.appendleft(acc_y)
-                    az_s.appendleft(acc_z)
+                    ax_s.append(acc_x)
+                    ay_s.append(acc_y)
+                    az_s.append(acc_z)
                     count += 1
                 except: 
                     print (".")
@@ -168,8 +167,8 @@ if __name__ == '__main__':
     
 
     fig = plt.figure()    
-    ax = plt.subplot(211, xlim=(0, 50), ylim=(-500, 500))
-    ax_2 = plt.subplot(212, xlim=(0, 50), ylim=(-3, 3))
+    ax = plt.subplot(211, xlim=(0, 50), ylim=(-1000, 1000))
+    ax_2 = plt.subplot(212, xlim=(0, 50), ylim=(-30, 30))
 
     max_points = 50
     max_points_2 = 50
