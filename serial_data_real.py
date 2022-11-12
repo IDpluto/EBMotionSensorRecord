@@ -221,8 +221,6 @@ def serial_read():
                         ax_chand.append(acc_x)
                         ay_chand.append(acc_y)
                         az_chand.append(acc_z)
-                        
-                        
                     if(text == "ID:100-1"):
                         roll_t = float(words[data_index])*grad2rad
                         pitch_t = float(words[data_index+1])*grad2rad
@@ -234,6 +232,7 @@ def serial_read():
                         ax_h.append(acc_x_t)
                         ay_h.append(acc_y_t)
                         az_h.append(acc_z_t)
+                    save_csv()
                 except: 
                     print ("miss_data")
             else: #(data_format==2)quaternion
@@ -252,7 +251,7 @@ def serial_read():
                     yaw   = Euler[2]
                 except:
                     print (".")
-    save_csv()
+   
         
         
 
