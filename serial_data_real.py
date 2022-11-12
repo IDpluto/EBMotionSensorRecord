@@ -12,7 +12,7 @@ import csv
 def animate(i):
     
     serial_read()
-    y = float(roll_s.pop())
+    y = roll_s.pop()
     old_y = line.get_ydata()
     new_y = np.r_[old_y[1:], y]
     line.set_ydata(new_y)
@@ -22,7 +22,7 @@ def animate(i):
     
 def animate_2(i):
     serial_read()
-    y_2 = float(pitch_s.pop())
+    y_2 = pitch_s.pop()
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
     line_2.set_ydata(new_y_2)
@@ -31,7 +31,7 @@ def animate_2(i):
 
 def animate_3(i):
     serial_read()
-    y_3 = float(yaw_s.pop())
+    y_3 = yaw_s.pop()
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
     line_3.set_ydata(new_y_3)
@@ -40,7 +40,7 @@ def animate_3(i):
 
 def animate_4(i):
     serial_read()
-    y_4 = float(ax_s.pop())
+    y_4 = ax_s.pop()
     old_y_4= line_4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
     line_4.set_ydata(new_y_4)
@@ -49,7 +49,7 @@ def animate_4(i):
 
 def animate_5(i):
     serial_read()
-    y_5 = float(ay_s.pop())
+    y_5 = ay_s.pop()
     old_y_5= line_5.get_ydata()
     new_y_5 = np.r_[old_y_5[1:], y_5]
     line_5.set_ydata(new_y_5)
@@ -58,7 +58,7 @@ def animate_5(i):
 
 def animate_6(i):
     serial_read()
-    y_6 = float(az_s.pop())
+    y_6 = az_s.pop()
     old_y_6= line_6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
     line_6.set_ydata(new_y_6)
@@ -70,7 +70,7 @@ def animate_6(i):
 def animate_h1(i):
     
     #serial_read()
-    y = float(roll_h.pop())
+    y = roll_h.pop()
     old_y = line_h1.get_ydata()
     new_y = np.r_[old_y[1:], y]
     line_h1.set_ydata(new_y)
@@ -89,7 +89,7 @@ def animate_h2(i):
 
 def animate_h3(i):
     #serial_read()
-    y_3 = float(yaw_h.pop())
+    y_3 = yaw_h.pop()
     old_y_3= line_h3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
     line_h3.set_ydata(new_y_3)
@@ -98,7 +98,7 @@ def animate_h3(i):
 
 def animate_h4(i):
     #serial_read()
-    y_4 = float(ax_h.pop())
+    y_4 = ax_h.pop()
     old_y_4= line_h4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
     line_h4.set_ydata(new_y_4)
@@ -107,7 +107,7 @@ def animate_h4(i):
 
 def animate_h5(i):
     #serial_read()
-    y_5 = float(ay_h.pop())
+    y_5 = ay_h.pop()
     old_y_5= line_h5.get_ydata()
     new_y_5 = np.r_[old_y_5[1:], y_5]
     line_h5.set_ydata(new_y_5)
@@ -116,7 +116,7 @@ def animate_h5(i):
 
 def animate_h6(i):
     #serial_read()
-    y_6 = float(az_h.pop())
+    y_6 = az_h.pop()
     old_y_6= line_h6.get_ydata()
     new_y_6 = np.r_[old_y_6[1:], y_6]
     line_h6.set_ydata(new_y_6)
@@ -339,7 +339,7 @@ if __name__ == '__main__':
         np.ones(max_points_2, dtype=np.float64)*np.nan, lw=1,ms=1, c = 'darkorange')
 
    
-    anim = animation.FuncAnimation(fig, animate, fargs = (roll_s), frames= 200, interval = 10, blit=False)
+    anim = animation.FuncAnimation(fig, animate, fargs = (roll_s), frames= 200, interval = 10, blit=True)
     anim_2 = animation.FuncAnimation(fig, animate_2, fargs = (pitch_s), frames= 200, interval=10, blit=False)
     anim_3 = animation.FuncAnimation(fig, animate_3, fargs = (yaw_s), frames= 200, interval=10, blit=False)
     anim_4 = animation.FuncAnimation(fig, animate_4, fargs = (ax_s), frames= 200, interval=10, blit=False)
