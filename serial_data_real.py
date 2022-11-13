@@ -243,7 +243,7 @@ def serial_read():
                         ay_chead.append(acc_y)
                     
                         az_chead.append(acc_z)
-                    #save_csv()
+                    save_csv()
                 except: 
                     print ("miss_data")
             else: #(data_format==2)quaternion
@@ -263,11 +263,7 @@ def serial_read():
                 except:
                     print (".")
    
-        
-        
-
-
-
+   
 if __name__ == '__main__':
 
     grad2rad = 3.141592/180.0
