@@ -310,7 +310,7 @@ if __name__ == '__main__':
         csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
         csv_writer.writeheader()
     line, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, c='blue',ms=3 label ='test')
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, c='blue',ms=3, label ='test')
     line_2, = ax.plot(np.arange(max_points), 
         np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, c='green',ms=3)
     line_3, = ax.plot(np.arange(max_points), 
