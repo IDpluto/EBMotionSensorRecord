@@ -230,9 +230,6 @@ def serial_read():
                         ax_s.append(acc_x)
                         ay_s.append(acc_y)
                         az_s.append(acc_z)
-                        #ax_h.append(0)
-                        #ay_h.append(0)
-                        #az_h.append(0)
                         ax_chand.append(acc_x)
                         ay_chand.append(acc_y)
                         az_chand.append(acc_z)
@@ -247,31 +244,13 @@ def serial_read():
                         ax_h.append(acc_x_t)
                         ay_h.append(acc_y_t)
                         az_h.append(acc_z_t)
-                        #ax_s.append(0)
-                        #ay_s.append(0)
-                        #az_s.append(0)
-                        ax_chead.append(acc_x)
-                        ay_chead.append(acc_y)
-                        az_chead.append(acc_z)
+                        ax_chead.append(acc_x_t)
+                        ay_chead.append(acc_y_t)
+                        az_chead.append(acc_z_t)
                     save_csv()
                 except: 
                     print ("miss_data")
-            else: #(data_format==2)quaternion
-                try:
-                    q0 = float(words[data_index])
-                    q1 = float(words[data_index+1])
-                    q2 = float(words[data_index+2])
-                    q3 = float(words[data_index+3])
-                    acc_x = float(words[data_index+4])
-                    acc_y = float(words[data_index+5])
-                    acc_z = float(words[data_index+6])
-                    Euler = quat_to_euler(q0,q1,q2,q3)
 
-                    roll  = Euler[1]
-                    pitch = Euler[0]
-                    yaw   = Euler[2]
-                except:
-                    print (".")
    
    
 if __name__ == '__main__':
