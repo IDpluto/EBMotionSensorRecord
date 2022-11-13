@@ -11,7 +11,6 @@ import csv
 from datetime import datetime
 
 def animate(i):
-    
     serial_read()
     y = float(roll_s.pop())
     old_y = line.get_ydata()
@@ -331,7 +330,10 @@ if __name__ == '__main__':
     max_points_2 = 5
     count = 0
     fieldnames = ["Y-M-D", "H-M-S", "Roll_hand", "Pitch_hand", "Yaw_hand","Acc_x_hand", "Acc_y_hand", "Acc_z_hand",  "Roll_head", "Pitch_head",  "Yaw_head",  "Acc_x_head", "Acc_y_head", "Acc_z_head"]
+    ser.write(b"<sor16>")
+    time.sleep(1)
     ser.write(b"<??cg>")
+    
     
     with open('/home/dohlee/crc_project/data/data1.csv','w') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
