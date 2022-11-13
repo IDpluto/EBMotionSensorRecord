@@ -158,22 +158,35 @@ def save_data_head(roll, pitch, yaw):
     yaw_chead.append(yaw_r)
 
 def save_csv():
+    roll1 = float(roll_chand.pop())
+    pitch1 = float(pitch_chand.pop())
+    yaw1 = float(yaw_chand.pop())
+    ax1 = float(ax_chand.pop())
+    ay1 = float(ay_chand.pop())
+    az1 = float(az_chand.pop())
+    roll2 = float(roll_chead.pop())
+    pitch2 = float(pitch_chead.pop())
+    yaw2 = float(yaw_chead.pop())
+    ax2 = float(ax_chead.pop())
+    ay2 = float(ay_chead.pop())
+    az2 = float(az_chead.pop())
     
+
     with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
-            "roll_hand":float(roll_chand.pop()),
-            "pitch_hand":float(pitch_chand.pop()),
-            "yaw_hand":float(yaw_chand.pop()),
-            "acc_x_hand":float(ax_chand.pop()),
-            "acc_y_hand":float(ay_chand.pop()),
-            "acc_z_hand":float(az_chand.pop()),
-            "roll_head":float(roll_chead.pop()),
-            "pitch_head":float(pitch_chead.pop()),
-            "yaw_head":float(yaw_chead.pop()),
-            "acc_x_head":float(ax_chead.pop()),
-            "acc_y_head":float(ay_chead.pop()),
-            "acc_z_head":float(az_chead.pop())
+            "roll_hand": roll1,
+            "pitch_hand": pitch1,
+            "yaw_hand": yaw1,
+            "acc_x_hand": ax1,
+            "acc_y_hand": ay1,
+            "acc_z_hand": az1,
+            "roll_head": roll2,
+            "pitch_head": pitch2,
+            "yaw_head": yaw2,
+            "acc_x_head": ax2,
+            "acc_y_head": ay2,
+            "acc_z_head": az2
         }
         csv_writer.writerow(info)
         #time.sleep(1)
@@ -241,7 +254,6 @@ def serial_read():
                         #az_s.append(0)
                         ax_chead.append(acc_x)
                         ay_chead.append(acc_y)
-                    
                         az_chead.append(acc_z)
                     save_csv()
                 except: 
