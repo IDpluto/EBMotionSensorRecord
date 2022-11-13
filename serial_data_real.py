@@ -157,7 +157,7 @@ def save_data_head(roll, pitch, yaw):
     yaw_chead.append(yaw_r)
 
 def save_csv():
-    roll1 = float(roll_chand.pop())
+    roll1 = str(roll_chand.pop())
     pitch1 = float(pitch_chand.pop())
     yaw1 = float(yaw_chand.pop())
     ax1 = float(ax_chand.pop())
@@ -170,7 +170,6 @@ def save_csv():
     ay2 = float(ay_chead.pop())
     az2 = float(az_chead.pop())
     
-
     with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
