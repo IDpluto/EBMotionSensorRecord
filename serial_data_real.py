@@ -327,7 +327,8 @@ def serial_read():
                         ax_chead.append(acc_x_t)
                         ay_chead.append(acc_y_t)
                         az_chead.append(acc_z_t)
-                    
+                        day_p.append(now.date())
+                        time_p.append(now.time())                    
                 except: 
                     print ("miss_data")
 
