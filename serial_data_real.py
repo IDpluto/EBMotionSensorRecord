@@ -335,8 +335,8 @@ if __name__ == '__main__':
     line_h6, = ax_2.plot(np.arange(max_points_2), 
         np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1,ms=3, c = 'darkorange', label ='Acc_z')
 
-    ax.legend()
-    ax_2.legend()
+    ax.legend(loc = 'upper left')
+    ax_2.legend(loc = 'upper left')
 
    
     anim = animation.FuncAnimation(fig, animate, frames= None, interval = 10,blit=False, repeat = False)
