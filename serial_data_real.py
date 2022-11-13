@@ -157,7 +157,6 @@ def save_data_head(roll, pitch, yaw):
     yaw_chead.append(yaw_r)
 
 def save_csv():
-    print ("test")
     roll1 = float(roll_chand.pop())
     pitch1 = float(pitch_chand.pop())
     yaw1 = float(yaw_chand.pop())
@@ -170,7 +169,7 @@ def save_csv():
     ax2 = float(ax_chead.pop())
     ay2 = float(ay_chead.pop())
     az2 = float(az_chead.pop())
-    
+    print (roll1)
     with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
@@ -372,5 +371,5 @@ if __name__ == '__main__':
     anim_10 = animation.FuncAnimation(fig, animate_h4,  frames= None, interval=10, blit=False, repeat = False)
     anim_11 = animation.FuncAnimation(fig, animate_h5,  frames= None, interval=10, blit=False, repeat = False)
     anim_12 = animation.FuncAnimation(fig, animate_h6, frames= None, interval=10, blit=False, repeat = False)
-
     plt.show()
+    ser.close
