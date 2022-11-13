@@ -98,7 +98,7 @@ def animate_h1(i):
     old_y = line_h1.get_ydata()
     new_y = np.r_[old_y[1:], y]
     if (check_flag(new_y, old_y) == 1):
-        flag_ghand.append(1)
+        flag_ghead.append(1)
     else:
         flag_ghead.append(0)
     line_h1.set_ydata(new_y)
