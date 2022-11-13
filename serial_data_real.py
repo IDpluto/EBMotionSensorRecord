@@ -74,7 +74,6 @@ def animate_h1(i):
     old_y = line_h1.get_ydata()
     new_y = np.r_[old_y[1:], y]
     line_h1.set_ydata(new_y)
-    
     #print(new_y)
     return line_h1
     
