@@ -285,7 +285,7 @@ def serial_read():
 
             if(data_format==1): #euler
                 try:
-                    
+                    now = datetime.now()
                     if (text == "ID:100-0"):
                         roll = float(words[data_index])*grad2rad
                         pitch = float(words[data_index+1])*grad2rad
@@ -367,7 +367,7 @@ if __name__ == '__main__':
     day_p = deque()
     time_p = deque()
     
-    now = datetime.now()
+    
 
     fig = plt.figure()
     ax = plt.subplot(211, xlim=(0, 4.1), ylim=(-500, 500))
