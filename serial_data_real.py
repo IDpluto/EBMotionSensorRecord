@@ -7,7 +7,7 @@ import numpy as np
 from scipy import stats
 from collections import deque
 import time
-from datatime import datetime
+from datetime import datetime
 import csv
 
 def animate(i):
