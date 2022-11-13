@@ -289,19 +289,19 @@ if __name__ == '__main__':
     
 
     fig = plt.figure()
-    ax = plt.subplot(211, xlim=(0, 3), ylim=(-3, 3))
+    ax = plt.subplot(211, xlim=(0, 3), ylim=(-500, 500))
     
     ax.set_title("hand")
     ax.set_ylabel("val")
     #ax = plt.title("test")
-    ax_2 = plt.subplot(212, xlim=(0, 3), ylim=(-3, 3))
+    ax_2 = plt.subplot(212, xlim=(0, 3), ylim=(-500, 500))
     ax_2.set_title("head")
     ax_2.set_ylabel("val")
     plt.tight_layout()
 
 
-    max_points = 3
-    max_points_2 = 3
+    max_points = 4
+    max_points_2 = 4
     count = 0
     fieldnames = ["roll_hand", "pitch_hand", "yaw_hand", "acc_x_hand", "acc_y_hand", "acc_z_hand", "roll_head", "pitch_head", "yaw_head", "acc_x_head", "acc_y_head", "acc_z_head"]
     ser.write(b"<??cg>")
