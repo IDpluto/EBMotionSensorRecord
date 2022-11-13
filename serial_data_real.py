@@ -326,8 +326,8 @@ if __name__ == '__main__':
     plt.tight_layout()
 
 
-    max_points = 0.1
-    max_points_2 = 0.1
+    max_points = 1
+    max_points_2 = 1
     count = 0
     fieldnames = ["Y-M-D", "H-M-S", "Roll_hand", "Pitch_hand", "Yaw_hand","Acc_x_hand", "Acc_y_hand", "Acc_z_hand",  "Roll_head", "Pitch_head",  "Yaw_head",  "Acc_x_head", "Acc_y_head", "Acc_z_head"]
     ser.write(b"<sor3>")
