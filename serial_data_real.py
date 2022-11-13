@@ -380,7 +380,7 @@ if __name__ == '__main__':
     max_points = 5
     max_points_2 = 5
     count = 0
-    fieldnames = ["Flag_Gyro_hand", "Roll_hand", "Pitch_hand", "Flag_Acc_hand","Yaw_hand", "Acc_x_hand", "Acc_y_hand", "Acc_z_hand", "Flag_Gyro_head", "Roll_head", "Pitch_head",  "Yaw_head", "Flag_Acc_head", "Acc_x_head", "Acc_y_head", "Acc_z_head"]
+    fieldnames = ["Y-M-D", "H-M-S","Flag_Gyro_hand", "Roll_hand", "Pitch_hand", "Flag_Acc_hand","Yaw_hand", "Acc_x_hand", "Acc_y_hand", "Acc_z_hand", "Flag_Gyro_head", "Roll_head", "Pitch_head",  "Yaw_head", "Flag_Acc_head", "Acc_x_head", "Acc_y_head", "Acc_z_head"]
     ser.write(b"<??cg>")
     
     with open('/home/dohlee/crc_project/data/data1.csv','w') as csv_file:
