@@ -157,7 +157,8 @@ def save_data_head(roll, pitch, yaw):
     yaw_chead.append(yaw_r)
 
 def save_csv():
-    roll1 = str(roll_chand.pop())
+    print ("test")
+    roll1 = float(roll_chand.pop())
     pitch1 = float(pitch_chand.pop())
     yaw1 = float(yaw_chand.pop())
     ax1 = float(ax_chand.pop())
