@@ -8,6 +8,7 @@ from scipy import stats
 from collections import deque
 import time
 import csv
+from datetime import datetime
 
 def animate(i):
     
@@ -210,6 +211,8 @@ def save_data_head(roll, pitch, yaw):
     yaw_chead.append(yaw_r)
 
 def save_csv():
+    day_c = day_p.pop()
+    time_c = time_p.pop()
     flag_gh1 = int(flag_ghand.pop())
     flag_ah1 = int(flag_ahand.pop())
     flag_gh2 = int(flag_ghead.pop())
@@ -229,6 +232,8 @@ def save_csv():
     with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
+            "Y-M-D": day_c,
+            "H-M-S": time_c,
             "Flag_Gyro_hand": flag_gh1,
             "Roll_hand": roll1,
             "Pitch_hand": pitch1,
@@ -279,6 +284,7 @@ def serial_read():
 
             if(data_format==1): #euler
                 try:
+                    now = datetime.now()
                     if (text == "ID:100-0"):
                         roll = float(words[data_index])*grad2rad
                         pitch = float(words[data_index+1])*grad2rad
@@ -293,6 +299,8 @@ def serial_read():
                         ax_chand.append(acc_x)
                         ay_chand.append(acc_y)
                         az_chand.append(acc_z)
+                        day_p.append(now.date())
+                        time_p.append(now.time())
                     if(text == "ID:100-1"):
                         roll_t = float(words[data_index])*grad2rad
                         pitch_t = float(words[data_index+1])*grad2rad
@@ -352,6 +360,9 @@ if __name__ == '__main__':
     flag_ahand = deque()
     flag_ghead = deque()
     flag_ahead = deque()
+
+    day_p = deque()
+    time_p = deque()
     
 
     fig = plt.figure()
