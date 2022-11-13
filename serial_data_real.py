@@ -337,6 +337,8 @@ if __name__ == '__main__':
 
     ax.legend(loc = 'upper left')
     ax_2.legend(loc = 'upper left')
+    ax.grid()
+    ax_2.grid()
 
    
     anim = animation.FuncAnimation(fig, animate, frames= None, interval = 10,blit=False, repeat = False)
