@@ -226,6 +226,10 @@ def save_csv():
     ax2 = float(ax_chead.pop())
     ay2 = float(ay_chead.pop())
     az2 = float(az_chead.pop())
+    print ("ghand: %d", flag_gh1)
+    print ("ahand: %d", flag_ah1)
+    print ("ghead: %d", flag_gh2)
+    print ("ahead: %d", flag_ah2)
     with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
