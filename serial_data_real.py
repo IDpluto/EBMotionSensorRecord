@@ -212,7 +212,7 @@ def save_data_head(roll, pitch, yaw):
 
 def save_csv():
     #day_c = day_p.pop()
-    time_c = 'test'
+    time_c = 1
     print (time_c)
     flag_gh1 = int(flag_ghand.pop())
     flag_ah1 = int(flag_ahand.pop())
