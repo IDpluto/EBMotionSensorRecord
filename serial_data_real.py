@@ -300,8 +300,8 @@ if __name__ == '__main__':
     plt.tight_layout()
 
 
-    max_points = 4
-    max_points_2 = 4
+    max_points = 5
+    max_points_2 = 5
     count = 0
     fieldnames = ["roll_hand", "pitch_hand", "yaw_hand", "acc_x_hand", "acc_y_hand", "acc_z_hand", "roll_head", "pitch_head", "yaw_head", "acc_x_head", "acc_y_head", "acc_z_head"]
     ser.write(b"<??cg>")
