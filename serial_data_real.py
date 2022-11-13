@@ -310,30 +310,30 @@ if __name__ == '__main__':
         csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
         csv_writer.writeheader()
     line, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, c='blue',ms=3, label ='test')
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, c='blue',ms=3, label ='Roll')
     line_2, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, c='green',ms=3)
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, c='green',ms=3, label = 'Pitch')
     line_3, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, c='red',ms=3)
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, c='red',ms=3 = 'Yaw')
     line_4, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=3, c = 'darkturquoise')
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=3, c = 'darkturquoise', label = 'Acc_x')
     line_5, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=3, c = 'darkviolet')
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=3, c = 'darkviolet', label = 'Acc_y')
     line_6, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=3, c = 'darkorange')
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=3, c = 'darkorange', label = 'Acc_z')
     
     line_h1, = ax_2.plot(np.arange(max_points_2), 
-        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1, c='blue',ms=3)
+        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1, c='blue',ms=3, label ='Roll')
     line_h2, = ax_2.plot(np.arange(max_points_2), 
-        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1, c='green',ms=3)
+        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1, c='green',ms=3, label ='Pitch')
     line_h3, = ax_2.plot(np.arange(max_points_2), 
-        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1, c='red',ms=3)
+        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1, c='red',ms=3, label ='Yaw')
     line_h4, = ax_2.plot(np.arange(max_points_2), 
-        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1,ms=3, c = 'darkturquoise')
+        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1,ms=3, c = 'darkturquoise', label ='Acc_x')
     line_h5, = ax_2.plot(np.arange(max_points_2), 
-        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1,ms=3, c = 'darkviolet')
+        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1,ms=3, c = 'darkviolet', label ='Acc_y')
     line_h6, = ax_2.plot(np.arange(max_points_2), 
-        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1,ms=3, c = 'darkorange')
+        np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1,ms=3, c = 'darkorange', label ='Acc_z')
 
     ax.legend()
 
