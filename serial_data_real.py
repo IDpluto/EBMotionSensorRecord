@@ -310,7 +310,7 @@ if __name__ == '__main__':
         csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
         csv_writer.writeheader()
     line, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, c='blue',ms=3)
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, c='blue',ms=3 label ='test')
     line_2, = ax.plot(np.arange(max_points), 
         np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, c='green',ms=3)
     line_3, = ax.plot(np.arange(max_points), 
@@ -334,6 +334,8 @@ if __name__ == '__main__':
         np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1,ms=3, c = 'darkviolet')
     line_h6, = ax_2.plot(np.arange(max_points_2), 
         np.ones(max_points_2, dtype=np.float64)*np.nan, 'o-', lw=1,ms=3, c = 'darkorange')
+
+    ax.legend()
 
    
     anim = animation.FuncAnimation(fig, animate, frames= None, interval = 10,blit=False, repeat = False)
