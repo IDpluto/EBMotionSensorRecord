@@ -211,7 +211,7 @@ def save_data_head(roll, pitch, yaw):
     yaw_chead.append(yaw_r)
 
 def save_csv():
-    day_c = day_p.pop()
+    #day_c = day_p.pop()
     time_c = time_p.pop()
     print (time_c)
     flag_gh1 = int(flag_ghand.pop())
@@ -233,7 +233,7 @@ def save_csv():
     with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
-            "Y-M-D": day_c,
+            #"Y-M-D": day_c,
             "Time": time_c,
             "Flag_Gyro_hand": flag_gh1,
             "Roll_hand": roll1,
@@ -285,7 +285,7 @@ def serial_read():
 
             if(data_format==1): #euler
                 try:
-                    now = datetime.now()
+                    
                     if (text == "ID:100-0"):
                         roll = float(words[data_index])*grad2rad
                         pitch = float(words[data_index+1])*grad2rad
@@ -300,7 +300,7 @@ def serial_read():
                         ax_chand.append(acc_x)
                         ay_chand.append(acc_y)
                         az_chand.append(acc_z)
-                        day_p.append(now.date())
+                        #day_p.append(now.date())
                         time_p.append(now.time())
                     if(text == "ID:100-1"):
                         roll_t = float(words[data_index])*grad2rad
@@ -316,7 +316,7 @@ def serial_read():
                         ax_chead.append(acc_x_t)
                         ay_chead.append(acc_y_t)
                         az_chead.append(acc_z_t)
-                        day_p.append(now.date())
+                        #day_p.append(now.date())
                         time_p.append(now.time())
                     save_csv()
                 except: 
@@ -367,7 +367,7 @@ if __name__ == '__main__':
     day_p = deque()
     time_p = deque()
     
-    
+    now = datetime.now()
 
     fig = plt.figure()
     ax = plt.subplot(211, xlim=(0, 4.1), ylim=(-500, 500))
@@ -384,7 +384,7 @@ if __name__ == '__main__':
     max_points = 5
     max_points_2 = 5
     count = 0
-    fieldnames = ["Y-M-D", "Time", "Flag_Gyro_hand", "Roll_hand", "Pitch_hand", "Flag_Acc_hand","Yaw_hand", "Acc_x_hand", "Acc_y_hand", "Acc_z_hand", "Flag_gyro_head", "Roll_head", "Pitch_head",  "Yaw_head", "Flag_Acc_head", "Acc_x_head", "Acc_y_head", "Acc_z_head"]
+    fieldnames = ["Time", "Flag_Gyro_hand", "Roll_hand", "Pitch_hand", "Flag_Acc_hand","Yaw_hand", "Acc_x_hand", "Acc_y_hand", "Acc_z_hand", "Flag_gyro_head", "Roll_head", "Pitch_head",  "Yaw_head", "Flag_Acc_head", "Acc_x_head", "Acc_y_head", "Acc_z_head"]
     ser.write(b"<??cg>")
     
     with open('/home/dohlee/crc_project/data/data1.csv','w') as csv_file:
