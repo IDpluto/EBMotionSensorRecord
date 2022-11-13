@@ -314,7 +314,7 @@ if __name__ == '__main__':
     line_2, = ax.plot(np.arange(max_points), 
         np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, c='green',ms=3, label = 'Pitch')
     line_3, = ax.plot(np.arange(max_points), 
-        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, c='red',ms=3 = 'Yaw')
+        np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, c='red',ms=3 , label= 'Yaw')
     line_4, = ax.plot(np.arange(max_points), 
         np.ones(max_points, dtype=np.float64)*np.nan, 'o-', lw=1, ms=3, c = 'darkturquoise', label = 'Acc_x')
     line_5, = ax.plot(np.arange(max_points), 
