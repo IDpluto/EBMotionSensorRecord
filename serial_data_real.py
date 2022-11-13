@@ -21,6 +21,7 @@ def animate(i):
     else:
         flag_ghand.append(0)
     line.set_ydata(new_y)
+    save_csv()
     
     #print(new_y)
     return line
@@ -35,6 +36,7 @@ def animate_2(i):
     else:
         flag_ghand.append(0)
     line_2.set_ydata(new_y_2)
+    save_csv()
     #print(new_y_2)
     return line_2
 
@@ -48,6 +50,7 @@ def animate_3(i):
     else:
         flag_ghand.append(0)
     line_3.set_ydata(new_y_3)
+    save_csv()
     
     return line_3
 
@@ -61,6 +64,7 @@ def animate_4(i):
     else:
         flag_ahand.append(0)
     line_4.set_ydata(new_y_4)
+    save_csv()
     
     return line_4
 
@@ -74,6 +78,7 @@ def animate_5(i):
     else:
         flag_ahand.append(0)
     line_5.set_ydata(new_y_5)
+    save_csv()
     #print(new_y_3)
     return line_5
 
@@ -87,6 +92,7 @@ def animate_6(i):
     else:
         flag_ahand.append(0)
     line_6.set_ydata(new_y_6)
+    save_csv()
     #print(new_y_3)
     return line_6
 #----------------------------------------------------
@@ -103,6 +109,7 @@ def animate_h1(i):
     else:
         flag_ghead.append(0)
     line_h1.set_ydata(new_y)
+    save_csv()
     #print(new_y)
     return line_h1
     
@@ -116,6 +123,7 @@ def animate_h2(i):
     else:
         flag_ghead.append(0)
     line_h2.set_ydata(new_y_2)
+    save_csv()
     #print(new_y_2)
     return line_h2
 
@@ -129,6 +137,7 @@ def animate_h3(i):
     else:
         flag_ghead.append(0)
     line_h3.set_ydata(new_y_3)
+    save_csv()
     
     return line_h3
 
@@ -142,6 +151,7 @@ def animate_h4(i):
     else:
         flag_ahead.append(0)
     line_h4.set_ydata(new_y_4)
+    save_csv()
     
     return line_h4
 
@@ -155,6 +165,7 @@ def animate_h5(i):
     else:
         flag_ahead.append(0)
     line_h5.set_ydata(new_y_5)
+    save_csv()
     return line_h5
 
 def animate_h6(i):
@@ -167,6 +178,7 @@ def animate_h6(i):
     else:
         flag_ahead.append(0)
     line_h6.set_ydata(new_y_6)
+    save_csv()
     return line_h6
 
 def quat_to_euler(x,y,z,w):
@@ -315,7 +327,7 @@ def serial_read():
                         ax_chead.append(acc_x_t)
                         ay_chead.append(acc_y_t)
                         az_chead.append(acc_z_t)
-                    save_csv()
+                    
                 except: 
                     print ("miss_data")
 
@@ -360,6 +372,8 @@ if __name__ == '__main__':
     flag_ahand = deque()
     flag_ghead = deque()
     flag_ahead = deque()
+
+    
 
     day_p = deque()
     time_p = deque()
