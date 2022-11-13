@@ -116,7 +116,9 @@ def animate_h5(i):
 def animate_h6(i):
     serial_read()
     y_6 = float(az_h.pop())
+    print (y_6)
     old_y_6= line_h6.get_ydata()
+    print (old_y_6)
     new_y_6 = np.r_[old_y_6[1:], y_6]
     line_h6.set_ydata(new_y_6)
     #print(new_y_3)
