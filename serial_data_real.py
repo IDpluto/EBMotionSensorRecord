@@ -300,8 +300,8 @@ def serial_read():
                         ax_chand.append(acc_x)
                         ay_chand.append(acc_y)
                         az_chand.append(acc_z)
-                        day_p.append(time.strftime('%Y-%m-%d'))
-                        time_p.append(time.strftime('%H-%M-%S'))
+                        day_p.append(now.date())
+                        time_p.append(now.time())
                     if(text == "ID:100-1"):
                         roll_t = float(words[data_index])*grad2rad
                         pitch_t = float(words[data_index+1])*grad2rad
