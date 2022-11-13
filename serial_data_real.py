@@ -7,6 +7,7 @@ import numpy as np
 from scipy import stats
 from collections import deque
 import time
+from datatime import datetime
 import csv
 
 def animate(i):
@@ -283,6 +284,7 @@ def serial_read():
 
             if(data_format==1): #euler
                 try:
+                    now = datetime.now()
                     if (text == "ID:100-0"):
                         roll = float(words[data_index])*grad2rad
                         pitch = float(words[data_index+1])*grad2rad
@@ -313,8 +315,8 @@ def serial_read():
                         ax_chead.append(acc_x_t)
                         ay_chead.append(acc_y_t)
                         az_chead.append(acc_z_t)
-                        day_p.append(time.strftime('%Y-%m-%d'))
-                        time_p.append(time.strftime('%H-%M-%S'))
+                        day_p.append(now.strftime('%Y-%m-%d'))
+                        time_p.append(now.strftime('%H-%M-%S'))
                     save_csv()
                 except: 
                     print ("miss_data")
