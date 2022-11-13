@@ -15,7 +15,7 @@ def animate(i):
     y = float(roll_s.pop())
     old_y = line.get_ydata()
     new_y = np.r_[old_y[1:], y]
-    if (check_flag(y, old_y) == 1):
+    if (check_flag(new_y, old_y) == 1):
         flag.append(1)
     else:
         flag.append(0)
@@ -29,7 +29,7 @@ def animate_2(i):
     y_2 = float(pitch_s.pop())
     old_y_2 = line_2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
-    if (check_flag(y_2, old_y_2) == 1):
+    if (check_flag(new_y_2, old_y_2) == 1):
         flag.append(1)
     else:
         flag.append(0)
@@ -42,7 +42,7 @@ def animate_3(i):
     y_3 = float(yaw_s.pop())
     old_y_3= line_3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
-    if (check_flag(y_3, old_y_3) == 1):
+    if (check_flag(new_y_3, old_y_3) == 1):
         flag.append(1)
     else:
         flag.append(0)
@@ -55,7 +55,7 @@ def animate_4(i):
     y_4 = float(ax_s.pop())
     old_y_4= line_4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
-    if (check_flag(y_4, old_y_4) == 1):
+    if (check_flag(new_y_4, old_y_4) == 1):
         flag.append(1)
     else:
         flag.append(0)
@@ -68,7 +68,7 @@ def animate_5(i):
     y_5 = float(ay_s.pop())
     old_y_5= line_5.get_ydata()
     new_y_5 = np.r_[old_y_5[1:], y_5]
-    if (check_flag(y_5, old_y_5) == 1):
+    if (check_flag(new_y_5, old_y_5) == 1):
         flag.append(1)
     else:
         flag.append(0)
@@ -80,7 +80,7 @@ def animate_6(i):
     serial_read()
     y_6 = float(az_s.pop())
     old_y_6= line_6.get_ydata()
-    new_y_6 = np.r_[y_6[1:], y_6]
+    new_y_6 = np.r_[old_y_6[1:], y_6]
     if (check_flag(new_y_6, old_y_6) == 1):
         flag.append(1)
     else:
@@ -97,7 +97,7 @@ def animate_h1(i):
     y = float(roll_h.pop())
     old_y = line_h1.get_ydata()
     new_y = np.r_[old_y[1:], y]
-    if (check_flag(y, old_y) == 1):
+    if (check_flag(new_y, old_y) == 1):
         flag.append(1)
     else:
         flag.append(0)
@@ -110,7 +110,7 @@ def animate_h2(i):
     y_2 = float(pitch_h.pop())
     old_y_2 = line_h2.get_ydata()
     new_y_2 = np.r_[old_y_2[1:], y_2]
-    if (check_flag(y_2, old_y_2) == 1):
+    if (check_flag(new_y_2, old_y_2) == 1):
         flag.append(1)
     else:
         flag.append(0)
@@ -123,7 +123,7 @@ def animate_h3(i):
     y_3 = float(yaw_h.pop())
     old_y_3= line_h3.get_ydata()
     new_y_3 = np.r_[old_y_3[1:], y_3]
-    if (check_flag(y_3, old_y_3) == 1):
+    if (check_flag(new_y_3, old_y_3) == 1):
         flag.append(1)
     else:
         flag.append(0)
@@ -136,7 +136,7 @@ def animate_h4(i):
     y_4 = float(ax_h.pop())
     old_y_4= line_h4.get_ydata()
     new_y_4 = np.r_[old_y_4[1:], y_4]
-    if (check_flag(y_4, old_y_4) == 1):
+    if (check_flag(new_y_4, old_y_4) == 1):
         flag.append(1)
     else:
         flag.append(0)
@@ -149,7 +149,7 @@ def animate_h5(i):
     y_5 = float(ay_h.pop())
     old_y_5= line_h5.get_ydata()
     new_y_5 = np.r_[old_y_5[1:], y_5]
-    if (check_flag(y_5, old_y_5) == 1):
+    if (check_flag(new_y_5, old_y_5) == 1):
         flag.append(1)
     else:
         flag.append(0)
@@ -163,7 +163,7 @@ def animate_h6(i):
     old_y_6= line_h6.get_ydata()
     print (old_y_6)
     new_y_6 = np.r_[old_y_6[1:], y_6]
-    if (check_flag(y_6, old_y_6) == 1):
+    if (check_flag(new_y_6, old_y_6) == 1):
         flag.append(1)
     else:
         flag.append(0)
@@ -182,7 +182,7 @@ def quat_to_euler(x,y,z,w):
     return euler
 
 def check_flag(new, old):
-    if (new > old or new < old):
+    if (new.any() > old.any() or new.any() < old.any()):
         return 1
     else:
         return 0
