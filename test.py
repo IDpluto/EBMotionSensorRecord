@@ -172,43 +172,24 @@ def check_negative(data):
     else:
         return False
 
-def check_event(acha_x, acha_y, acha_z, ache_x, ache_y, ache_z):
-    if (check_negative(acha_x) == True):
-        if(acha_x < -8):
+def check_event(ach_x, ach_y, ach_z):
+    if (check_negative(ach_x) == True):
+        if(ach_x < -8):
             return True
-    if (check_negative(acha_y) == True):
-        if(acha_y < -8):
+    if (check_negative(ach_y) == True):
+        if(ach_y < -8):
             return True
-    if (check_negative(acha_z) == True):
-        if(acha_z < -8):
+    if (check_negative(ach_z) == True):
+        if(ach_z < -8):
+            return True 
+    if (check_negative(ach_x) == False):
+        if(ach_x > 8):
             return True
-    if (check_negative(ache_x) == True):
-        if(ache_x < -8):
+    if (check_negative(ach_y) == False):
+        if(ach_y > 8):
             return True
-    if (check_negative(ache_y) == True):
-        if(ache_y < -8):
-            return True
-    if (check_negative(ache_z) == True):
-        if(ache_z < -8):
-            return True
-    
-    if (check_negative(acha_x) == False):
-        if(acha_x > 8):
-            return True
-    if (check_negative(acha_y) == False):
-        if(acha_y > 8):
-            return True
-    if (check_negative(acha_z) == False):
-        if(acha_z > 8):
-            return True
-    if (check_negative(ache_x) == False):
-        if(ache_x > 8):
-            return True
-    if (check_negative(ache_y) == False):
-        if(ache_y > 8):
-            return True
-    if (check_negative(ache_z) == False):
-        if(ache_z > 8):
+    if (check_negative(ach_z) == False):
+        if(ach_z > 8):
             return True
     
     return False
@@ -255,8 +236,9 @@ def save_csv():
 
 
 def serial_read():
-    global sc
-
+    scha = 0
+    sche = 0
+    
     line = ser.readline()
     line = line.decode("ISO-8859-1")# .encode("utf-8")
     words = line.split(",")    # Fields split
@@ -285,9 +267,6 @@ def serial_read():
             if(data_format==1): #euler
                 try:
                     now = datetime.now()
-                    
-                    if (check_event(acc_x,acc_y,acc_z,acc_x_t,acc_y_t,acc_z_t) == True):
-                        sc = 1
                     if (text == "ID:100-0"):
                         roll = float(words[data_index])*grad2rad
                         pitch = float(words[data_index+1])*grad2rad
@@ -295,7 +274,9 @@ def serial_read():
                         acc_x = float(words[data_index+3]) * 100
                         acc_y = float(words[data_index+4]) * 100
                         acc_z = float(words[data_index+5]) * 100
-                        if (sc == 1):
+                        if (check_event(acc_x,acc_y,acc_z) == True):
+                            scha = 1
+                        if (scha == 1):
                             save_data_hand(roll, pitch, yaw)
                             ax_s.append(acc_x)
                             ay_s.append(acc_y)
@@ -312,7 +293,9 @@ def serial_read():
                         acc_x_t = float(words[data_index+3]) * 100
                         acc_y_t = float(words[data_index+4]) * 100
                         acc_z_t = float(words[data_index+5]) * 100
-                        if (sc == 1):
+                        if (check_event(acc_x_t,acc_y_t,acc_z_t) == True):
+                            sche = 1
+                        if (sche == 1 or scha == 1):
                             save_data_head(roll_t, pitch_t, yaw_t)
                             ax_h.append(acc_x_t)
                             ay_h.append(acc_y_t)
@@ -320,9 +303,18 @@ def serial_read():
                             ax_chead.append(acc_x_t)
                             ay_chead.append(acc_y_t)
                             az_chead.append(acc_z_t)
-                    if (sc == 1):
+                            if (sche == 1):
+                                save_data_hand(roll, pitch, yaw)
+                                ax_s.append(acc_x)
+                                ay_s.append(acc_y)
+                                az_s.append(acc_z)
+                                ax_chand.append(acc_x)
+                                ay_chand.append(acc_y)
+                                az_chand.append(acc_z)
+                                day_p.append(now.date())
+                                time_p.append(now.time())
+                    if (scha == 1 or sche == 1):
                         save_csv()
-                    sc = 0
                 except: 
                     print ("miss_data")
 
@@ -373,8 +365,6 @@ if __name__ == '__main__':
     '''
     day_p = deque()
     time_p = deque()
-    global sc
-    sc = 0
     
     flag_hand = 0
     flag_head = 0
