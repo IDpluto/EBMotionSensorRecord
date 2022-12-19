@@ -144,27 +144,29 @@ def quat_to_euler(x,y,z,w):
     return euler
 
 
-def save_data_hand(roll, pitch, yaw):
+def save_data_hand(roll, pitch, yaw, flag):
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
     yaw_r = "%.2f" %(yaw*rad2grad)
     roll_s.append(roll_r)
     pitch_s.append(pitch_r)
     yaw_s.append(yaw_r)
-    roll_chand.append(roll_r)
-    pitch_chand.append(pitch_r)
-    yaw_chand.append(yaw_r)
+    if (flag == 1):
+        roll_chand.append(roll_r)
+        pitch_chand.append(pitch_r)
+        yaw_chand.append(yaw_r)
 
-def save_data_head(roll, pitch, yaw):
+def save_data_head(roll, pitch, yaw, flag):
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
     yaw_r = "%.2f" %(yaw*rad2grad)
     roll_h.append(roll_r)
     pitch_h.append(pitch_r)
     yaw_h.append(yaw_r)
-    roll_chead.append(roll_r)
-    pitch_chead.append(pitch_r)
-    yaw_chead.append(yaw_r)
+    if (flag ==1):
+        roll_chead.append(roll_r)
+        pitch_chead.append(pitch_r)
+        yaw_chead.append(yaw_r)
 
 def check_negative(data):
     if (data < 0):
@@ -279,8 +281,8 @@ def serial_read():
                         az_s.append(acc_z)
                         if (check_event(acc_x,acc_y,acc_z) == True):
                             scha = 1
+                        save_data_hand(roll, pitch, yaw, scha)
                         if (scha == 1):
-                            save_data_hand(roll, pitch, yaw)
                             ax_chand.append(acc_x)
                             ay_chand.append(acc_y)
                             az_chand.append(acc_z)
@@ -298,13 +300,13 @@ def serial_read():
                         az_h.append(acc_z_t)
                         if (check_event(acc_x_t,acc_y_t,acc_z_t) == True):
                             sche = 1
+                        save_data_head(roll_t, pitch_t, yaw_t, sche)
                         if (sche == 1 or scha == 1):
-                            save_data_head(roll_t, pitch_t, yaw_t)
                             ax_chead.append(acc_x_t)
                             ay_chead.append(acc_y_t)
                             az_chead.append(acc_z_t)
                             if (sche == 1):
-                                save_data_hand(roll, pitch, yaw)
+                                save_data_hand(roll, pitch, yaw, 1)
                                 ax_chand.append(acc_x)
                                 ay_chand.append(acc_y)
                                 az_chand.append(acc_z)
