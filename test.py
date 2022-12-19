@@ -380,19 +380,19 @@ if __name__ == '__main__':
     
 
     fig = plt.figure()
-    ax = plt.subplot(211, xlim=(0, 3), ylim=(-300, 300))
+    ax = plt.subplot(211, xlim=(0, 6), ylim=(-300, 300))
     
     ax.set_title("head")
     ax.set_ylabel("val")
     #ax = plt.title("test")
-    ax_2 = plt.subplot(212, xlim=(0, 3), ylim=(-300, 300))
+    ax_2 = plt.subplot(212, xlim=(0, 6), ylim=(-300, 300))
     ax_2.set_title("hand")
     ax_2.set_ylabel("val")
     plt.tight_layout()
 
 
-    max_points = 4
-    max_points_2 = 4
+    max_points = 5
+    max_points_2 = 5
     s_count = 0
     fieldnames = ["Y-M-D", "H-M-S", "Roll_hand", "Pitch_hand", "Yaw_hand","Acc_x_hand", "Acc_y_hand", "Acc_z_hand",  "Roll_head", "Pitch_head",  "Yaw_head",  "Acc_x_head", "Acc_y_head", "Acc_z_head"]
     ser.write(b"<sor100>")
