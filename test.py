@@ -212,15 +212,6 @@ def check_event(acha_x, acha_y, acha_z, ache_x, ache_y, ache_z):
             return True
     
     return False
-    
-    
-    
-
-        
-            
-    
-        
-
 
 def save_csv():
     day_c = day_p.pop()
@@ -264,9 +255,7 @@ def save_csv():
 
 
 def serial_read():
-
-    global flag_hand
-    global flag_head
+    global sc
 
     line = ser.readline()
     line = line.decode("ISO-8859-1")# .encode("utf-8")
@@ -296,6 +285,9 @@ def serial_read():
             if(data_format==1): #euler
                 try:
                     now = datetime.now()
+                    
+                    if (check_event(acc_x,acc_y,acc_z,acc_x_t,acc_y_t,acc_z_t) == True):
+                        sc = 1
                     if (text == "ID:100-0"):
                         roll = float(words[data_index])*grad2rad
                         pitch = float(words[data_index+1])*grad2rad
@@ -303,15 +295,16 @@ def serial_read():
                         acc_x = float(words[data_index+3]) * 100
                         acc_y = float(words[data_index+4]) * 100
                         acc_z = float(words[data_index+5]) * 100
-                        save_data_hand(roll, pitch, yaw)
-                        ax_s.append(acc_x)
-                        ay_s.append(acc_y)
-                        az_s.append(acc_z)
-                        ax_chand.append(acc_x)
-                        ay_chand.append(acc_y)
-                        az_chand.append(acc_z)
-                        day_p.append(now.date())
-                        time_p.append(now.time())
+                        if (sc == 1):
+                            save_data_hand(roll, pitch, yaw)
+                            ax_s.append(acc_x)
+                            ay_s.append(acc_y)
+                            az_s.append(acc_z)
+                            ax_chand.append(acc_x)
+                            ay_chand.append(acc_y)
+                            az_chand.append(acc_z)
+                            day_p.append(now.date())
+                            time_p.append(now.time())
                     if(text == "ID:100-1"):
                         roll_t = float(words[data_index])*grad2rad
                         pitch_t = float(words[data_index+1])*grad2rad
@@ -319,20 +312,17 @@ def serial_read():
                         acc_x_t = float(words[data_index+3]) * 100
                         acc_y_t = float(words[data_index+4]) * 100
                         acc_z_t = float(words[data_index+5]) * 100
-                        save_data_head(roll_t, pitch_t, yaw_t)
-                        ax_h.append(acc_x_t)
-                        ay_h.append(acc_y_t)
-                        az_h.append(acc_z_t)
-                        ax_chead.append(acc_x_t)
-                        ay_chead.append(acc_y_t)
-                        az_chead.append(acc_z_t)
-                    if (flag_head == 1 and flag_hand == 1):
-                        if (check_event(acc_x,acc_y,acc_z,acc_x_t,acc_y_t,acc_z_t) == True):
-                            save_csv()
-                        else:
-                            pass
-                    flag_hand = 1
-                    flag_head = 1
+                        if (sc == 1):
+                            save_data_head(roll_t, pitch_t, yaw_t)
+                            ax_h.append(acc_x_t)
+                            ay_h.append(acc_y_t)
+                            az_h.append(acc_z_t)
+                            ax_chead.append(acc_x_t)
+                            ay_chead.append(acc_y_t)
+                            az_chead.append(acc_z_t)
+                    if (sc == 1):
+                        save_csv()
+                    sc = 0
                 except: 
                     print ("miss_data")
 
@@ -383,10 +373,9 @@ if __name__ == '__main__':
     '''
     day_p = deque()
     time_p = deque()
-
-    global flag_hand
-    global flag_head
-
+    global sc
+    sc = 0
+    
     flag_hand = 0
     flag_head = 0
     
