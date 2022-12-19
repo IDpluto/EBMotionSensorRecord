@@ -156,6 +156,16 @@ def save_data_hand(roll, pitch, yaw, flag):
         pitch_chand.append(pitch_r)
         yaw_chand.append(yaw_r)
 
+def sda_csv(roll, pitch, yaw,):
+    roll_r = "%.2f" %(roll*rad2grad)
+    pitch_r = "%.2f" %(pitch*rad2grad)
+    yaw_r = "%.2f" %(yaw*rad2grad)
+    roll_chand.append(roll_r)
+    pitch_chand.append(pitch_r)
+    yaw_chand.append(yaw_r)
+
+
+
 def save_data_head(roll, pitch, yaw, flag):
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
@@ -306,7 +316,7 @@ def serial_read():
                             ay_chead.append(acc_y_t)
                             az_chead.append(acc_z_t)
                             if (sche == 1):
-                                save_data_hand(roll, pitch, yaw, 1)
+                                sda_csv(roll, pitch, yaw)
                                 ax_chand.append(acc_x)
                                 ay_chand.append(acc_y)
                                 az_chand.append(acc_z)
