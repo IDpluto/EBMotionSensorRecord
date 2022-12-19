@@ -328,7 +328,7 @@ if __name__ == '__main__':
 
     max_points = 4
     max_points_2 = 4
-    count = 0
+    s_count = 0
     fieldnames = ["Y-M-D", "H-M-S", "Roll_hand", "Pitch_hand", "Yaw_hand","Acc_x_hand", "Acc_y_hand", "Acc_z_hand",  "Roll_head", "Pitch_head",  "Yaw_head",  "Acc_x_head", "Acc_y_head", "Acc_z_head"]
     ser.write(b"<sor100>")
     time.sleep(1)
