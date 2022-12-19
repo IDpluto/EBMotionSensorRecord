@@ -274,13 +274,13 @@ def serial_read():
                         acc_x = float(words[data_index+3]) * 100
                         acc_y = float(words[data_index+4]) * 100
                         acc_z = float(words[data_index+5]) * 100
+                        ax_s.append(acc_x)
+                        ay_s.append(acc_y)
+                        az_s.append(acc_z)
                         if (check_event(acc_x,acc_y,acc_z) == True):
                             scha = 1
                         if (scha == 1):
                             save_data_hand(roll, pitch, yaw)
-                            ax_s.append(acc_x)
-                            ay_s.append(acc_y)
-                            az_s.append(acc_z)
                             ax_chand.append(acc_x)
                             ay_chand.append(acc_y)
                             az_chand.append(acc_z)
@@ -293,21 +293,18 @@ def serial_read():
                         acc_x_t = float(words[data_index+3]) * 100
                         acc_y_t = float(words[data_index+4]) * 100
                         acc_z_t = float(words[data_index+5]) * 100
+                        ax_h.append(acc_x_t)
+                        ay_h.append(acc_y_t)
+                        az_h.append(acc_z_t)
                         if (check_event(acc_x_t,acc_y_t,acc_z_t) == True):
                             sche = 1
                         if (sche == 1 or scha == 1):
                             save_data_head(roll_t, pitch_t, yaw_t)
-                            ax_h.append(acc_x_t)
-                            ay_h.append(acc_y_t)
-                            az_h.append(acc_z_t)
                             ax_chead.append(acc_x_t)
                             ay_chead.append(acc_y_t)
                             az_chead.append(acc_z_t)
                             if (sche == 1):
                                 save_data_hand(roll, pitch, yaw)
-                                ax_s.append(acc_x)
-                                ay_s.append(acc_y)
-                                az_s.append(acc_z)
                                 ax_chand.append(acc_x)
                                 ay_chand.append(acc_y)
                                 az_chand.append(acc_z)
