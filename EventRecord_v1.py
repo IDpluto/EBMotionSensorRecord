@@ -183,22 +183,22 @@ def check_negative(data):
 
 def check_event(ach_x, ach_y, ach_z):
     if (check_negative(ach_x) == True):
-        if(ach_x < 8):
+        if(ach_x < 55):
             return True
     if (check_negative(ach_y) == True):
-        if(ach_y < 8):
+        if(ach_y < 55):
             return True
     if (check_negative(ach_z) == True):
-        if(ach_z < 8):
+        if(ach_z < 55):
             return True 
     if (check_negative(ach_x) == False):
-        if(ach_x > 8):
+        if(ach_x > 55):
             return True
     if (check_negative(ach_y) == False):
-        if(ach_y > 8):
+        if(ach_y > 55):
             return True
     if (check_negative(ach_z) == False):
-        if(ach_z > 8):
+        if(ach_z > 55):
             return True
     
     return False
