@@ -370,24 +370,6 @@ def serial_read():
                     time_stamp.append(0)
                     flag = 0
 
-                    '''
-                    if (flag == 1 and len(ax_chand) < 15 and s_flag == 0):
-                        save_csv()
-                        clear_que()
-                        s_flag = 1
-                    if (flag == 1 and len(ax_chand > 15 and s_flag == 0)):
-                        remove_que()
-                        save_csv()
-                        clear_que()
-                        s_flag = 1
-                    if (flag == 1 and s_count < 15 and s_flag == 1):
-                        save_csv()
-                        s_count += 1
-                    if s_count == 15:
-                        s_count = 0
-                        s_flag == 0
-                    '''
-
 def reset_sensor():
     i = 0
     while (i < 2):
@@ -395,7 +377,6 @@ def reset_sensor():
         pitch_chead.popleft()
         yaw_chead.popleft()
         i +=1
-
 
 def exit_event():
     reset_sensor()
@@ -458,12 +439,6 @@ if __name__ == '__main__':
     time_p = deque()
     time_stamp = deque()
 
-    #global s_count
-    #global s_flag
-    #global flag
-    #s_count = 0
-    #s_flag = 0
-    #flag = 0
     fig = plt.figure()
     ax = plt.subplot(211, xlim=(0, 6), ylim=(-600, 600))
     
@@ -532,6 +507,6 @@ if __name__ == '__main__':
     anim_10 = animation.FuncAnimation(fig, animate_h4,  frames= None, interval=10, blit=False, repeat = False)
     anim_11 = animation.FuncAnimation(fig, animate_h5,  frames= None, interval=10, blit=False, repeat = False)
     anim_12 = animation.FuncAnimation(fig, animate_h6, frames= None, interval=10, blit=False, repeat = False)
-    atexit.register(exit_event)
     plt.show()
+    atexit.register(exit_event)
     ser.close
