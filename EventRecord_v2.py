@@ -272,10 +272,19 @@ def save_csv():
 
 def t_event_save():
     i = 0
-    while(i < 30):
-        time_stamp.popleft()
-        save_csv()
-        i += 1
+
+    if (len(time_stamp) < 30):
+        while(i < len(time_stamp)):
+            time_stamp.popleft()
+            save_csv()
+            i += 1
+    else:
+        while(i < 30):
+            time_stamp.popleft()
+            save_csv()
+            i += 1
+
+    
 
 def event_save():
     i = 0
