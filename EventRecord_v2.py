@@ -383,6 +383,8 @@ def exit_event():
     re_flag = 0
     q_len = len(time_stamp)
     while (True):
+        if (len(time_stamp) == 0):
+            break
         if (time_stamp.popleft() == 0):
             zero_count += 1
         if (time_stamp.popleft() == 1):
@@ -394,9 +396,7 @@ def exit_event():
                 event_save()
                 zero_count = 0
         t_event_save()
-        if (len(time_stamp) == 0):
-            break
-
+        
 if __name__ == '__main__':
 
     grad2rad = 3.141592/180.0
