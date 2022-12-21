@@ -268,8 +268,8 @@ def save_csv():
             "Acc_z_head": az2
         }
         csv_writer.writerow(info)
-    _send_sensor_data_to_influxdb('Lab','Y-M-D', day_c)
-    _send_sensor_data_to_influxdb('Lab','H-M-S', time_c)
+    #_send_sensor_data_to_influxdb('Lab','Y-M-D', day_c)
+    #_send_sensor_data_to_influxdb('Lab','H-M-S', time_c)
     _send_sensor_data_to_influxdb('Lab','Roll_hand', roll1)
     _send_sensor_data_to_influxdb('Lab','Pitch_hand', pitch1)
     _send_sensor_data_to_influxdb('Lab','yaw_hand', yaw1)
