@@ -9,10 +9,11 @@ from collections import deque
 import time
 import csv
 from datetime import datetime
+import atexit
 
 def animate(i):
     
-    scount = serial_read()
+    serial_read()
     y = float(roll_s.pop())
     old_y = line.get_ydata()
     new_y = np.r_[old_y[1:], y]
@@ -172,6 +173,39 @@ def check_event(ach_x, ach_y, ach_z):
     
     return False
 
+def remove_que(count):
+    i = 0
+    while (i < count):
+        roll_chand.popleft()
+        pitch_chand.popleft()
+        yaw_chand.popleft()
+        roll_chead.popleft()
+        pitch_chead.popleft()
+        yaw_chead.popleft()
+        ax_chand.popleft()
+        ay_chand.popleft()
+        az_chand.popleft()
+        ax_chead.popleft()
+        ay_chead.popleft()
+        az_chead.popleft()
+        i += 1
+
+def clear_que():
+    roll_chand.clear()
+    pitch_chand.clear()
+    yaw_chand.clear()
+    roll_chead.clear()
+    pitch_chead.clear()
+    yaw_chead.clear()
+    ax_chand.clear()
+    ay_chand.clear()
+    az_chand.clear()
+    ax_chead.clear()
+    ay_chead.clear()
+    az_chead.clear()
+
+        
+
 
 def save_data_hand(roll, pitch, yaw):
     roll_r = "%.2f" %(roll*rad2grad)
@@ -196,20 +230,21 @@ def save_data_head(roll, pitch, yaw):
     yaw_chead.append(yaw_r)
 
 def save_csv():
-    day_c = day_p.pop()
-    time_c = time_p.pop()
-    roll1 = float(roll_chand.pop())
-    pitch1 = float(pitch_chand.pop())
-    yaw1 = float(yaw_chand.pop())
-    ax1 = float(ax_chand.pop())
-    ay1 = float(ay_chand.pop())
-    az1 = float(az_chand.pop())
-    roll2 = float(roll_chead.pop())
-    pitch2 = float(pitch_chead.pop())
-    yaw2 = float(yaw_chead.pop())
-    ax2 = float(ax_chead.pop())
-    ay2 = float(ay_chead.pop())
-    az2 = float(az_chead.pop())
+    
+    day_c = day_p.popleft()
+    time_c = time_p.popleft()
+    roll1 = float(roll_chand.popleft())
+    pitch1 = float(pitch_chand.popleft())
+    yaw1 = float(yaw_chand.popleft())
+    ax1 = float(ax_chand.popleft())
+    ay1 = float(ay_chand.popleft())
+    az1 = float(az_chand.popleft())
+    roll2 = float(roll_chead.popleft())
+    pitch2 = float(pitch_chead.popleft())
+    yaw2 = float(yaw_chead.popleft())
+    ax2 = float(ax_chead.popleft())
+    ay2 = float(ay_chead.popleft())
+    az2 = float(az_chead.popleft())
     with open('/home/dohlee/crc_project/data/data1.csv','a') as csv_file:
         csv_writer = csv.DictWriter(csv_file,fieldnames=fieldnames)
         info = {
@@ -235,13 +270,28 @@ def save_csv():
         csv_writer.writerow(info)
         #time.sleep(1)
 
+def t_event_save():
+    i = 0
+    while(i < 100):
+        time_stamp.popleft()
+        save_csv()
+        i += 1
+
+def event_save():
+    i = 0
+    while(i < 100):
+        save_csv()
+        i += 1
+
 
 def serial_read(s_count):
-  
+    flag = 0
     line = ser.readline()
     line = line.decode("ISO-8859-1")# .encode("utf-8")
     words = line.split(",")    # Fields split
-    flag = 0
+    #global flag
+    #global s_flag
+    #global s_count
     
     if(-1 < words[0].find('*')) :
         data_from=1     # sensor data
@@ -265,51 +315,87 @@ def serial_read(s_count):
                 data_format = 1 # euler
 
             if(data_format==1): #euler
-                try:
-                    now = datetime.now()
-                    if (text == "ID:100-0"):
-                        roll = float(words[data_index])*grad2rad
-                        pitch = float(words[data_index+1])*grad2rad
-                        yaw = float(words[data_index+2])*grad2rad
-                        acc_x = float(words[data_index+3]) * 100
-                        acc_y = float(words[data_index+4]) * 100
-                        acc_z = float(words[data_index+5]) * 100
-                        save_data_hand(roll, pitch, yaw)
-                        ax_s.append(acc_x)
-                        ay_s.append(acc_y)
-                        az_s.append(acc_z)
-                        if (check_event(acc_x,acc_y,acc_z) == True):
-                            flag = 1
-                        ax_chand.append(acc_x)
-                        ay_chand.append(acc_y)
-                        az_chand.append(acc_z)
-                        day_p.append(now.date())
-                        time_p.append(now.time())
-                    if(text == "ID:100-1"):
-                        roll_t = float(words[data_index])*grad2rad
-                        pitch_t = float(words[data_index+1])*grad2rad
-                        yaw_t = float(words[data_index+2])*grad2rad
-                        acc_x_t = float(words[data_index+3]) * 100
-                        acc_y_t = float(words[data_index+4]) * 100
-                        acc_z_t = float(words[data_index+5]) * 100
-                        save_data_head(roll_t, pitch_t, yaw_t)
-                        ax_h.append(acc_x_t)
-                        ay_h.append(acc_y_t)
-                        az_h.append(acc_z_t)
-                        ax_chead.append(acc_x_t)
-                        ay_chead.append(acc_y_t)
-                        az_chead.append(acc_z_t)
-                    save_csv()
-                    if (flag == 1):
-                        s_count += 1
-                    if (flag == 0 and s_count == 30) 
-                except: 
-                    print ("miss_data")
-                return s_count
-                       
+                
+                now = datetime.now()
+                if (text == "ID:100-0"):
+                    roll = float(words[data_index])*grad2rad
+                    pitch = float(words[data_index+1])*grad2rad
+                    yaw = float(words[data_index+2])*grad2rad
+                    acc_x = float(words[data_index+3]) * 100
+                    acc_y = float(words[data_index+4]) * 100
+                    acc_z = float(words[data_index+5]) * 100
+                    save_data_hand(roll, pitch, yaw)
+                    ax_s.append(acc_x)
+                    ay_s.append(acc_y)
+                    az_s.append(acc_z)
+                    if (check_event(acc_x,acc_y,acc_z) == True):
+                        flag = 1
+                    ax_chand.append(acc_x)
+                    ay_chand.append(acc_y)
+                    az_chand.append(acc_z)
+                    day_p.append(now.date())
+                    time_p.append(now.time())
+                if(text == "ID:100-1"):
+                    roll_t = float(words[data_index])*grad2rad
+                    pitch_t = float(words[data_index+1])*grad2rad
+                    yaw_t = float(words[data_index+2])*grad2rad
+                    acc_x_t = float(words[data_index+3]) * 100
+                    acc_y_t = float(words[data_index+4]) * 100
+                    acc_z_t = float(words[data_index+5]) * 100
+                    save_data_head(roll_t, pitch_t, yaw_t)
+                    ax_h.append(acc_x_t)
+                    ay_h.append(acc_y_t)
+                    az_h.append(acc_z_t)
+                    if (check_event(acc_x_t,acc_y_t,acc_z_t) == True):
+                        flag = 1
+                    ax_chead.append(acc_x_t)
+                    ay_chead.append(acc_y_t)
+                    az_chead.append(acc_z_t)
 
-   
-   
+                if (flag == 1):
+                    time_stamp.append(1)
+                else:
+                    time_stamp.append(0)
+
+                    '''
+                    if (flag == 1 and len(ax_chand) < 15 and s_flag == 0):
+                        save_csv()
+                        clear_que()
+                        s_flag = 1
+                    if (flag == 1 and len(ax_chand > 15 and s_flag == 0)):
+                        remove_que()
+                        save_csv()
+                        clear_que()
+                        s_flag = 1
+                    if (flag == 1 and s_count < 15 and s_flag == 1):
+                        save_csv()
+                        s_count += 1
+                    if s_count == 15:
+                        s_count = 0
+                        s_flag == 0
+                    '''
+                       
+def exit_event():
+    zero_count = 0
+    r_count = 0
+    flag = 0
+    re_flag = 0
+    q_len = len(time_stamp)
+    while (True):
+        if (time_stamp.popleft() == 0):
+            zero_count += 1
+        if (time_stamp.popleft() == 1):
+            if (zero_count < 100):
+                event_save()
+            elif (zero_count > 100):
+                r_count = zero_count - 100
+                remove_que(r_count)
+                event_save()
+                zero_count = 0
+        t_event_save()
+        if (len(time_stamp) == 0):
+            break
+
 if __name__ == '__main__':
 
     grad2rad = 3.141592/180.0
@@ -345,12 +431,16 @@ if __name__ == '__main__':
     ay_chead = deque()
     az_chead = deque()
 
-   
-
     day_p = deque()
     time_p = deque()
-    
+    time_stamp = deque()
 
+    #global s_count
+    #global s_flag
+    #global flag
+    #s_count = 0
+    #s_flag = 0
+    #flag = 0
     fig = plt.figure()
     ax = plt.subplot(211, xlim=(0, 6), ylim=(-600, 600))
     
@@ -405,7 +495,7 @@ if __name__ == '__main__':
     ax.grid()
     ax_2.grid()
 
-   
+
     anim = animation.FuncAnimation(fig, animate, frames= None, interval = 10,blit=False, repeat = False)
     anim_2 = animation.FuncAnimation(fig, animate_2,  frames= None, interval=10, blit=False, repeat = False)
     anim_3 = animation.FuncAnimation(fig, animate_3, frames= None, interval=10, blit=False, repeat = False)
@@ -419,5 +509,6 @@ if __name__ == '__main__':
     anim_10 = animation.FuncAnimation(fig, animate_h4,  frames= None, interval=10, blit=False, repeat = False)
     anim_11 = animation.FuncAnimation(fig, animate_h5,  frames= None, interval=10, blit=False, repeat = False)
     anim_12 = animation.FuncAnimation(fig, animate_h6, frames= None, interval=10, blit=False, repeat = False)
+    atexit.register(exit_event)
     plt.show()
     ser.close
