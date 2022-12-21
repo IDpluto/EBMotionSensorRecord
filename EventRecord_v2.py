@@ -272,16 +272,20 @@ def save_csv():
 
 def t_event_save():
     i = 0
-    while(i < 100):
+    while(i < 30):
         time_stamp.popleft()
         save_csv()
         i += 1
 
 def event_save():
     i = 0
-    while(i < 100):
-        save_csv()
-        i += 1
+    if (len(time_stamp) < 30):
+        while (i < len(time_stamp)):
+            save_csv()
+    else:
+        while(i < 30):
+            save_csv()
+            i += 1
 
 
 def serial_read():
@@ -388,10 +392,10 @@ def exit_event():
         if (time_stamp.popleft() == 0):
             zero_count += 1
         if (time_stamp.popleft() == 1):
-            if (zero_count < 100):
+            if (zero_count < 30):
                 event_save()
-            elif (zero_count > 100):
-                r_count = zero_count - 100
+            elif (zero_count > 30):
+                r_count = zero_count - 30
                 remove_que(r_count)
                 event_save()
                 zero_count = 0
