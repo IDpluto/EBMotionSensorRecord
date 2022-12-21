@@ -320,7 +320,6 @@ def serial_read():
                 data_format = 1 # euler
 
             if(data_format==1): #euler
-                
                 now = datetime.now()
                 if (text == "ID:100-0"):
                     roll = float(words[data_index])*grad2rad
@@ -338,8 +337,6 @@ def serial_read():
                     ax_chand.append(acc_x)
                     ay_chand.append(acc_y)
                     az_chand.append(acc_z)
-                    day_p.append(now.date())
-                    time_p.append(now.time())
                 if(text == "ID:100-1"):
                     roll_t = float(words[data_index])*grad2rad
                     pitch_t = float(words[data_index+1])*grad2rad
@@ -356,9 +353,8 @@ def serial_read():
                     ax_chead.append(acc_x_t)
                     ay_chead.append(acc_y_t)
                     az_chead.append(acc_z_t)
-                    day_p.append(now.date())
-                    time_p.append(now.time())
-
+                day_p.append(now.date())
+                time_p.append(now.time())
                 if (flag == 1):
                     time_stamp.append(1)
                 else:
@@ -382,15 +378,18 @@ def serial_read():
                         s_count = 0
                         s_flag == 0
                     '''
-                       
+
+def reset_sensor():
+    i = 0
+    while (i < 2):
+        roll_chead.popleft()
+        pitch_chead.popleft()
+        yaw_chead.popleft()
+        i +=1
+
+
 def exit_event():
-    print(len(roll_chand))
-    print(len(pitch_chand))
-    print(len(yaw_chand))
-    print(len(roll_chead))
-    print(len(pitch_chead))
-    print(len(yaw_chead))
-    '''
+    reset_sensor()
     zero_count = 0
     r_count = 0
     flag = 0
@@ -410,7 +409,6 @@ def exit_event():
                 event_save()
                 zero_count = 0
         t_event_save()
-        '''
         
 if __name__ == '__main__':
 
