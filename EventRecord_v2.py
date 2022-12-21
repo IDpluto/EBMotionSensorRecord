@@ -384,6 +384,13 @@ def serial_read():
                     '''
                        
 def exit_event():
+    print(len(roll_chand))
+    print(len(pitch_chand))
+    print(len(yaw_chand))
+    print(len(roll_chead))
+    print(len(pitch_chead))
+    print(len(yaw_chead))
+    '''
     zero_count = 0
     r_count = 0
     flag = 0
@@ -403,6 +410,7 @@ def exit_event():
                 event_save()
                 zero_count = 0
         t_event_save()
+        '''
         
 if __name__ == '__main__':
 
