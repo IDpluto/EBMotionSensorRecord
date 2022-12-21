@@ -282,6 +282,7 @@ def event_save():
     if (len(time_stamp) < 30):
         while (i < len(time_stamp)):
             save_csv()
+            i+=1
     else:
         while(i < 30):
             save_csv()
