@@ -356,6 +356,7 @@ def serial_read():
                     time_stamp.append(1)
                 else:
                     time_stamp.append(0)
+                    flag = 0
 
                     '''
                     if (flag == 1 and len(ax_chand) < 15 and s_flag == 0):
