@@ -10,6 +10,8 @@ import time
 import csv
 from datetime import datetime
 import atexit
+from influxdb import InfluxDBClient
+from typing import NamedTuple
 
 def animate(i):
     
@@ -204,9 +206,6 @@ def clear_que():
     ay_chead.clear()
     az_chead.clear()
 
-        
-
-
 def save_data_hand(roll, pitch, yaw):
     roll_r = "%.2f" %(roll*rad2grad)
     pitch_r = "%.2f" %(pitch*rad2grad)
@@ -229,8 +228,9 @@ def save_data_head(roll, pitch, yaw):
     pitch_chead.append(pitch_r)
     yaw_chead.append(yaw_r)
 
+
+
 def save_csv():
-    
     day_c = day_p.popleft()
     time_c = time_p.popleft()
     roll1 = float(roll_chand.popleft())
@@ -268,44 +268,50 @@ def save_csv():
             "Acc_z_head": az2
         }
         csv_writer.writerow(info)
-        #time.sleep(1)
-
+    _send_sensor_data_to_influxdb('Lab','Y-M-D', day_c)
+    _send_sensor_data_to_influxdb('Lab','H-M-S', time_c)
+    _send_sensor_data_to_influxdb('Lab','Roll_hand', roll1)
+    _send_sensor_data_to_influxdb('Lab','Pitch_hand', pitch1)
+    _send_sensor_data_to_influxdb('Lab','yaw_hand', yaw1)
+    _send_sensor_data_to_influxdb('Lab','Roll_head', roll2)
+    _send_sensor_data_to_influxdb('Lab','Pitch_head', pitch2)
+    _send_sensor_data_to_influxdb('Lab','yaw_head', yaw2)
+    _send_sensor_data_to_influxdb('Lab','Acc_x_hand', ax1)
+    _send_sensor_data_to_influxdb('Lab','Acc_y_hand', ay1)
+    _send_sensor_data_to_influxdb('Lab','Acc_z_hand', az1)
+    _send_sensor_data_to_influxdb('Lab','Acc_x_head', ax2)
+    _send_sensor_data_to_influxdb('Lab','Acc_y_head', ay2)
+    _send_sensor_data_to_influxdb('Lab','Acc_z_head', az2)
+        
 def t_event_save():
     i = 0
-
-    if (len(time_stamp) < 30):
+    if (len(time_stamp) < RECORD_TIME):
         while(i < len(time_stamp)):
             time_stamp.popleft()
             save_csv()
             i += 1
     else:
-        while(i < 30):
+        while(i < RECORD_TIME):
             time_stamp.popleft()
             save_csv()
             i += 1
 
-    
-
 def event_save():
     i = 0
-    if (len(time_stamp) < 30):
+    if (len(time_stamp) < RECORD_TIME):
         while (i < len(time_stamp)):
             save_csv()
             i+=1
     else:
-        while(i < 30):
+        while(i < RECORD_TIME):
             save_csv()
             i += 1
-
 
 def serial_read():
     flag = 0
     line = ser.readline()
     line = line.decode("ISO-8859-1")# .encode("utf-8")
     words = line.split(",")    # Fields split
-    #global flag
-    #global s_flag
-    #global s_count
     
     if(-1 < words[0].find('*')) :
         data_from=1     # sensor data
@@ -382,30 +388,61 @@ def exit_event():
     reset_sensor()
     zero_count = 0
     r_count = 0
-    flag = 0
-    re_flag = 0
-    q_len = len(time_stamp)
     while (True):
         if (len(time_stamp) == 0):
             break
         if (time_stamp.popleft() == 0):
             zero_count += 1
         if (time_stamp.popleft() == 1):
-            if (zero_count < 30):
+            if (zero_count < RECORD_TIME):
                 event_save()
-            elif (zero_count > 30):
-                r_count = zero_count - 30
+            elif (zero_count > RECORD_TIME):
+                r_count = zero_count - RECORD_TIME
                 remove_que(r_count)
                 event_save()
                 zero_count = 0
         t_event_save()
-        
+
+def _init_influxdb_database():
+    databases = influxdb_client.get_list_database()
+    if len(list(filter(lambda x: x['name'] == INFLUXDB_DATABASE, databases))) == 0:
+        influxdb_client.create_database(INFLUXDB_DATABASE)
+    influxdb_client.switch_database(INFLUXDB_DATABASE)
+
+def _send_sensor_data_to_influxdb(location, measurement, data_value):
+    json_body = [
+        {
+            'measurement': measurement,
+            'tags': {
+                'location': location
+            },
+            'fields': {
+                'value': data_value
+            }
+        }
+    ]
+    influxdb_client.write_points(json_body)
+
+
 if __name__ == '__main__':
+    INFLUXDB_ADDRESS = '192.9.66.167'
+    INFLUXDB_USER = 'dohlee'
+    INFLUXDB_PASSWORD = 'dohlee'
+    INFLUXDB_DATABASE = 'crc_stations'
+
+    RECORD_TIME = 30
+
+    influxdb_client = InfluxDBClient(INFLUXDB_ADDRESS, 8086, INFLUXDB_USER, INFLUXDB_PASSWORD, None)
+
+    class SesorData(NamedTuple):
+        location: str
+        measurement: str
+        value: float
 
     grad2rad = 3.141592/180.0
     rad2grad = 180.0/3.141592
+
     cos = math.cos
-    
     ser = serial.Serial('/dev/ttyUSB0', 921600)
   
     roll_s = deque()
@@ -439,6 +476,7 @@ if __name__ == '__main__':
     time_p = deque()
     time_stamp = deque()
 
+    _init_influxdb_database()
     fig = plt.figure()
     ax = plt.subplot(211, xlim=(0, 50), ylim=(-600, 600))
     
@@ -450,14 +488,12 @@ if __name__ == '__main__':
     ax_2.set_ylabel("val")
     plt.tight_layout()
 
-
     max_points = 50
     max_points_2 = 50
     fieldnames = ["Y-M-D", "H-M-S", "Roll_hand", "Pitch_hand", "Yaw_hand","Acc_x_hand", "Acc_y_hand", "Acc_z_hand",  "Roll_head", "Pitch_head",  "Yaw_head",  "Acc_x_head", "Acc_y_head", "Acc_z_head"]
     ser.write(b"<sor100>")
     time.sleep(1)
     ser.write(b"<??cg>")
-    
     
     with open('/home/dohlee/crc_project/data/data1.csv','w') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
@@ -492,7 +528,6 @@ if __name__ == '__main__':
     ax_2.legend(loc = 'upper left')
     ax.grid()
     ax_2.grid()
-
 
     anim = animation.FuncAnimation(fig, animate, frames= None, interval = 10,blit=False, repeat = False)
     anim_2 = animation.FuncAnimation(fig, animate_2,  frames= None, interval=10, blit=False, repeat = False)
