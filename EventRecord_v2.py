@@ -284,7 +284,7 @@ def event_save():
         i += 1
 
 
-def serial_read(s_count):
+def serial_read():
     flag = 0
     line = ser.readline()
     line = line.decode("ISO-8859-1")# .encode("utf-8")
