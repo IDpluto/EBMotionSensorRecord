@@ -1,0 +1,4 @@
+CREATE DATABASE crc_stations
+
+CREATE USER dohlee WITH PASSWORD 'dohlee'
+GRANT ALL ON crc_stations TO dohlee
