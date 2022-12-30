@@ -272,10 +272,10 @@ def save_csv():
     #_send_sensor_data_to_influxdb('Lab','H-M-S', time_c)
     _send_sensor_data_to_influxdb('Lab','Roll_hand', roll1)
     _send_sensor_data_to_influxdb('Lab','Pitch_hand', pitch1)
-    _send_sensor_data_to_influxdb('Lab','yaw_hand', yaw1)
+    _send_sensor_data_to_influxdb('Lab','Yaw_hand', yaw1)
     _send_sensor_data_to_influxdb('Lab','Roll_head', roll2)
     _send_sensor_data_to_influxdb('Lab','Pitch_head', pitch2)
-    _send_sensor_data_to_influxdb('Lab','yaw_head', yaw2)
+    _send_sensor_data_to_influxdb('Lab','Yaw_head', yaw2)
     _send_sensor_data_to_influxdb('Lab','Acc_x_hand', ax1)
     _send_sensor_data_to_influxdb('Lab','Acc_y_hand', ay1)
     _send_sensor_data_to_influxdb('Lab','Acc_z_hand', az1)
@@ -425,7 +425,7 @@ def _send_sensor_data_to_influxdb(location, measurement, data_value):
 
 
 if __name__ == '__main__':
-    INFLUXDB_ADDRESS = '192.9.66.167'
+    INFLUXDB_ADDRESS = '192.9.64.179'
     INFLUXDB_USER = 'dohlee'
     INFLUXDB_PASSWORD = 'dohlee'
     INFLUXDB_DATABASE = 'crc_stations'
@@ -480,11 +480,11 @@ if __name__ == '__main__':
     fig = plt.figure()
     ax = plt.subplot(211, xlim=(0, 50), ylim=(-600, 600))
     
-    ax.set_title("hand")
+    ax.set_title("head")
     ax.set_ylabel("val")
     #ax = plt.title("test")
     ax_2 = plt.subplot(212, xlim=(0, 50), ylim=(-600, 600))
-    ax_2.set_title("head")
+    ax_2.set_title("hand")
     ax_2.set_ylabel("val")
     plt.tight_layout()
 
